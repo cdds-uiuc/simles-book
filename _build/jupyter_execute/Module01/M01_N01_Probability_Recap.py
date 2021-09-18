@@ -18,21 +18,26 @@
 # ## Discrete Sample Space
 # **Roulette**
 # A simple example to illustrate the concept or probability spaces is the roullete. Here we'll consider an American Roullete with 38 equally-probably numbers.
-# ![image.png](attachment:a4607893-ee33-4c94-8e41-249e0835d5eb.png)
+# 
+# ![roulette.png](M01_roulette.png)
+# 
 # - ***Sample Space***:<br>
 #   The sample space is the space of all possible outcomes.
+#   
 # $$\Omega=\{\color{green}{00},\color{green}0,\color{red}1,2,\color{red}3,4,\ldots, \color{red}{36}\}$$
+# 
 # - ***Event Space:***<br>
 #     The event space is the set of all subsets of the sample space: 
+#     
 # $$\mathcal F=\left\{
 # \{\color{green}{00}\},
 # \{\color{green}{0}\},
 # \{\color{red}1\},
 # \{2\},\{\color{red}3\}\ldots,
-# \{\color{red}{36}\},
 # \{\color{green}{00},\color{green}0\},\ldots,
 # \{ \color{red}1,\ldots, 
 # \color{red}36\}\right\}$$
+# 
 # - ***Probability:***<br>
 #   For a roullete the probability is defined as $P=1/38$ for each of the 38 possible outcomes in the sample space. Each event also has an associated probability 
 # 
@@ -42,15 +47,16 @@
 # 
 # For example, consider a bet on a single number (e.g. on $\color{red}7$),  also called a straight-up bet. This event is equivalent to the outcome of the roullete being in the set $E_1=\{\color{red}1\}$. The probability of this event is $P(E_1)$=1/38.
 # 
-# <img src="attachment:157e2118-ad34-4a5c-a59b-d754679dddb9.png" width="400">
+# ![roulette_7.png](M01_roulette_7.png)
 # 
 # Alternatively consider a bet on red. This event is equivalent to the outcome being in $E_2=\left\{\color{red}{1},\color{red}{2},\color{red}{3},\ldots,\color{red}{36}\right\}$, and its probability is $P(E_2)=18/38$.
-# <img src="attachment:12a8b4fc-d3fd-416b-9bff-a533bb516008.png" width="400">
+# 
+# ![Red ](M01_roulette_red.png)
 # 
 # *Note*: Formally, the event space is a $\sigma$-algebra, and the probability function is a measure.
 # 
 # ## Infinite Sample Spaces
-# Why do we need to go through these definitions of event spaces and sample spaces? For probability spaces with a finite number of possibl outcomes we can assign a probability to each outcome and it becomes trivial to compute the probability of events. However, that is no longer the case when we start working with infinite sample spaces, such as an interval on the real line. For example, if the sample space of a random process is the interval $\mathcal S=[0,1]\in \mathbb R$, there are an infinite number of possible outcomes, and thus not all of them can have finite (non-zero) probability. In that case, we can only assign finite probabilities to sub-intervals, or subsets of the sample space. In other words, *in the most general case we can only assign finite probabilities to member of the event space $\mathcal E$*. However, the same rules of probabilites apply for both infinite and finite samples spaces, and it is easier to get an intuition for them on small, finite spaces. 
+# Why do we need to go through these definitions of event spaces and sample spaces? For probability spaces with a finite number of possibl outcomes we can assign a probability to each outcome and it becomes trivial to compute the probability of events. However, that is no longer the case when we start working with infinite sample spaces, such as an interval on the real line. For example, if the sample space of a random process is the interval $\Omega=[0,1]\in \mathbb R$, there are an infinite number of possible outcomes, and thus not all of them can have finite (non-zero) probability. In that case, we can only assign finite probabilities to sub-intervals, or subsets of the sample space. In other words, *in the most general case we can only assign finite probabilities to member of the event space $\mathcal E$*. However, the same rules of probabilites apply for both infinite and finite samples spaces, and it is easier to get an intuition for them on small, finite spaces. 
 # 
 # For purposes of this class, we don't need to worry about probability spaces, event spaces, and probability functions. However, simple examples such as these are useful in illustrating some very general properties of probabilities that we *will* use extensively in the class, especially in the chapters on statistical inference and Bayesian data analysis. 
 
@@ -62,6 +68,7 @@
 # The probability of roullete bets illustrates a general rule about combining probabilities. How do we compute the probability of an event? Consider two friends Alice and Bob, betting on the roullete, and say we want to compute the probability that at least one of them wins. We'll call this event $E$. 
 # 
 # First, let's say each of them bets one of the green zeros. Rolling a green zero is equivalent to rolling either $\color{green}0$ OR $\color{green}{00}$. The two friends going home with some money is associated with the subset $E=\{\color{green}0,\color{green}{00}\}$of the event space. If we allso associate Alice winning with event $A$ with rolling $\color{green}{00}$ and Bob winning event $B$ with rolling $\color{green}{00}$, we can write: 
+# 
 # $$P(E)=P(A \text{ OR } B)\equiv P(A \lor B)$$
 # 
 # Notice that 
@@ -71,37 +78,47 @@
 # 
 # On the other hand, consider a case where Alice bets on all the numbers between $1-6$, with win probability $P(A)=6/38$  and the Bob bets on his favourite numbers, $3$ and $33$, with win probability $P(B)=2/38$ Them winning something is associated with $E=\{1,2,3,4,5,6,33\}$, with $P(E)=7/38$. Notice that in thise $P(E)\neq P(A)+P(B)$
 # 
-# <div class="alert alert-block alert-info">
+# 
+# :::{important}
+# 
 # Thus, the general rule of combining probabilities is:
-#     $$P(A \text{ OR } B)=P(A \cup B)=P(A)+P(B)-P(A\cap B) $$
+# $$P(A \text{ OR } B)=P(A \cup B)=P(A)+P(B)-P(A\cap B)$$
+# 
 # with 
-#     $$P(A \text{ OR } B)=P(A \cup B)=P(A)+P(B)\text{, if } P(A\cap B)=\phi$$
-#     </div>
+# 
+# $$P(A \text{ OR } B)=P(A \cup B)=P(A)+P(B)\text{, if } P(A\cap B)=\phi$$
+# 
+# :::
 # 
 # 
 # ## Valid Probability Functions
-# <div class="alert alert-block alert-info">
 # In order for a function on the event space to be a valid probability function, it neeeds to obey the following properties 
-# <ul>
-#  <li>$P:\mathcal E \rightarrow [0,1]$
-#  <li>$P(\phi)=0$, where $\phi$ is the null-set</li>
-#  <li>$P(\mathcal S)=1$</li>
-#  <li>If $E_1$ and and $E_2$ are mutually exclusive events (i.e. $E_1 \cap E_2=\phi$), then the probability of $E_1$ OR $E_2$ occuring is 
-#      $$P(E_1 \text{ OR } E_2)=P(E_1\cup E_2)=P(E_1)+P(E_2)$$</li>
-#  </ul>
-#     </div>
+# 
+# :::{important}
+# 
+# - $P:\Omega \rightarrow [0,1]$
+# - $P(\phi)=0$, where $\phi$ is the null-set
+# - $P(\Omega)=1$
+# - If $E_1$ and and $E_2$ are mutually exclusive events (i.e. $E_1 \cap E_2=\phi$), then the probability of $E_1$ OR $E_2$ occuring is 
+# 
+#      $$P(E_1 \text{ OR } E_2)=P(E_1\cup E_2)=P(E_1)+P(E_2)$$
+# :::
+# 
 #     
 # ## Joint Probabilities
 # The joint probability of two events is the probability of both being true simultaneously. Consider the probability of both Alice AND Bob winning. We would denote this as 
+# 
 # $$P(A\text{ AND }B)\equiv P(A\land B)\equiv P(A,B)$$
+# 
 # The latter notation is the one we will be using a lot throughout the course. If each of them bets on one of the zeros, and there is thus no overlap between their bets, the probability of both winning is zero. In the second case, where Alice bets on $1$ through $6$ and Bob bets on $3$ and $33$, the probability of both of them winning is the probability of rolling a $3$, whith the intersection of the two events. This is a general rule of probability calculus:
 # 
-# <div class="alert alert-block alert-info">
+# :::{important}
+# 
 # The joint probability of two events is the probability of their intersection:
-# <ul>
-#  <li>$P(A,B)=P(A\cap B)$</li>
-#  <li>$P(A,B)=0 \text{ if } A\cap B=\phi$, and we would say that $A$ and $B$ are mutually exclusive</ul>
-#     </div>
+# - $P(A,B)=P(A\cap B)$
+# - $P(A,B)=0 \text{ if } A\cap B=\phi$, and we would say that $A$ and $B$ are mutually exclusive
+# 
+# :::
 
 # <hr style="border:1px solid black
 #            "> </hr>
@@ -110,7 +127,8 @@
 # Here we'll review some definitions and properties of conditional probabilities and independence that we will use throughout the course. This is more easily done when we have two random processes occuring simultaneously. So we will consider the roll of two independent and *fair* dice. 
 # 
 # The sample space, $\Omega$ is illustrated by the following table: 
-# <img src="attachment:8ca27a02-cc01-45b4-abbe-cd82dcf965d4.png" width="500">
+# 
+# ![two_dice.png](M01_two_dice.png)
 # 
 # The event space is the set of all subsets of $\Omega$ and the probability function for a fair dice is a constant functoin $P=1/36$. 
 # 
@@ -126,10 +144,13 @@
 # 
 # $P($<span style="color:blue">&#9861;</span> <span style="color:red">&#9861;</span>$)=P($<span style="color:blue">&#9861;</span>$)P($<span style="color:red">&#9861;</span>$)$
 # 
-# <div class="alert alert-block alert-info">
+# :::{important}
+# 
 # <b>Definition</b>: Two events are independent iff:
-#     $$P(A \text{ AND } B)=P(A,B)=P(A)P(B)$$
-# </div>
+# 
+# $$P(A \text{ AND } B)=P(A,B)=P(A)P(B)$$
+# 
+# :::
 # 
 # Fun sidenote: although it's harder, we can define independent events for a single dice! Consider the two events:
 # - A: "Green dice rolled even" with probability $P(A)=1/2$
@@ -160,11 +181,15 @@
 # 
 # The probabiliy of both being true is equal to 1/36. But you can think of it as the probability of rolling a 4 with the red dice (P(B)=1/6), and then rolling a "10" given that the red dice rolled 4 P(A|B)=1/6). 
 # 
-# <div class="alert alert-block alert-info">
+# :::{important}
+# 
 # <b>Definition</b>: The following relationships hold between joint and conditional probabilities:
-#     $$P(A,B)=P(A|B)P(B)$$
-#     $$P(A|B)=\frac{P(A,B)}{P(B)}$$
-# </div>
+# 
+# $$P(A,B)=P(A|B)P(B)$$
+# $$P(A|B)=\frac{P(A,B)}{P(B)}$$
+# 
+# :::
+# 
 # 
 # ## Bayes Rule
 # The above relation between conditional probabilities and joint probabilities leads us to one of the most useful formulas in statistics: Bayes' Rule. 
@@ -172,16 +197,22 @@
 # 
 # $$P(A,B)=P(A|B)P(B)=P(B|A)P(A)$$
 # 
-# <div class="alert alert-block alert-info">
-# <b>Bayes' Rule</b>: 
+# :::{important}
+# 
+# **Bayes' Rule**: 
 # $$P(A|B)=\frac{P(B|A)P(A)}{P(B)}$$
-# </div>
+# 
+# :::
 # 
 # ## Law of Total probability
+# 
+# :::{important}
 # 
 # The law of total probability says that if we have a partition of the sample space, $A_n$ such that $A_i\cap A_j=\phi$ if $i\neq j$.  and $\cap_{n} A_n = \Omega$, then
 # 
 # $$P(E)=\sum_n P(E|A_n)P(A_n)$$
+# 
+# :::
 # 
 # This should be intuitive with the fair dice example. For example, let $E$ be the event 'A total roll $D=6$ was rolled'. A partition $A_n$ could be 'the dice $X$ rolled n' for $n$ between 1 and 6. Thus, the total probability of $D=6$ is the sum of the probability of rolling a seven given that $X$ rolled 1, plus the probability of rolling a seven given that $X$ rolled a 2, and so on....
 
@@ -211,6 +242,7 @@
 # At this point it may seem like I'm inventing new terminology. For example, why do we need to call $X$ a random variable, and talk about the possibility that it takes on different values? It seems like the probability of X taking on each value is just the probability of each event in $\Omega$? 
 # 
 # Here is another example of a random variable on the same sample space: $Z$ is a random variable which takes the value $Z=0$ if the dice roll is odd and $Z=1$ if the dice roll is even. Thus, even though $X$ and $Z$ are associated with the same sample space and events, they take on different values. In this case, since $Z$ takes on only two values, 0 and 1 $Z$ would be called a Bernoulli random variable.
+# 
 # $$Z:\{1,2,3,4,5,6\} \rightarrow \{1,2\} $$
 # 
 # 

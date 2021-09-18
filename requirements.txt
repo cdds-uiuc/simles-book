@@ -1,5 +1,7 @@
 jupyter-book
 matplotlib
 numpy
-Pandas
+pandas
+scipy
+scikit-learn
 

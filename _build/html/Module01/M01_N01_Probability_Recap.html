@@ -1,0 +1,641 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Basics of probability &#8212; SIMLES: Statistical Inference and Machine Learning for Earth Sciences</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="shortcut icon" href="../_static/CDDS_logo.jpeg"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Discrete Random Variables" href="M01_N02_Discrete_Random_Variables.html" />
+    <link rel="prev" title="Welcome to your Jupyter Book" href="../intro.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      <img src="../_static/CDDS_logo.jpeg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">SIMLES: Statistical Inference and Machine Learning for Earth Sciences</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Welcome to your Jupyter Book
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Basics
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Basics of probability
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="M01_N02_Discrete_Random_Variables.html">
+   Discrete Random Variables
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="M01_N03_Continuous_Random_Variables.html">
+   Continous random variables
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="M01_N04_Moments_of_distributions.html">
+   Moments of distributions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="M01_N05_SampleStatistics.html">
+   Sample Statistics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="M01_N06_QQPlots.html">
+   QQ Plots
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="M01_Lab.html">
+   Lab 1
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Inference:Estimation and Hypothesis Testing
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Module02/M02_N01_Regression.html">
+   Regression
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Module02/M02_N02_Anscombe.html">
+   Anscombe’s Quartet
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/Module01/M01_N01_Probability_Recap.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/executablebooks/jupyter-book"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FModule01/M01_N01_Probability_Recap.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/Module01/M01_N01_Probability_Recap.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Basics of probability
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#fair-dice">
+     Fair Dice
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#sample-space-s">
+       <strong>
+        Sample Space
+       </strong>
+       :
+       <em>
+        S
+       </em>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#event-e">
+       <strong>
+        Event
+       </strong>
+       :
+       <em>
+        E
+       </em>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-event-a-total-of-seven-was-rolled-is-e-left-x-y-x-y-7-right-left-1-6-6-1-2-5-5-2-3-4-4-3-right-screen-20shot-202021-08-23-20at-204-14-36-20pm-png">
+     The event “a total of seven was rolled” is $
+     <span class="math notranslate nohighlight">
+      \(E=\left\{ (X,Y):X+Y=7\right\}==\left\{(1,6),(6,1),(2,5),(5,2),(3,4),(4,3)\right\}\)
+     </span>
+     $
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#probability-of-event-e-p-e">
+       <strong>
+        Probability of event
+        <span class="math notranslate nohighlight">
+         \(E\)
+        </span>
+       </strong>
+       :
+       <span class="math notranslate nohighlight">
+        \(P(E)\)
+       </span>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#finally-the-probability-of-rolling-a-combined-7-is-p-e-frac-text-number-of-ways-rolling-a-sece-can-occur-text-total-number-of-possible-outcomes-frac-left-1-6-6-1-2-5-5-2-3-4-4-3-right-s-x-y-frac-6-36-1-6">
+     Finally, the probability of rolling a combined 7 is
+$
+     <span class="math notranslate nohighlight">
+      \(P(E)=\frac{\text{Number of ways "rolling a sece" can occur }}{\text{ Total number of possible outcomes }}=\frac{|\left\{(1,6),(6,1),(2,5),(5,2),(3,4),(4,3)\right\}|}{|S_{X,Y}|}=\frac{6}{36}=1/6\)
+     </span>
+     $
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#joint-probability">
+       Joint Probability
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#independent-events">
+       Independent Events
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#conditional-probability">
+       Conditional Probability
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#bayes-rule">
+       Bayes Rule
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#law-of-total-probability">
+       Law of Total probability
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#random-variables">
+   1.2 Random variables
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#probability-mass-function">
+     Probability mass function
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#probability-vs-event">
+     Probability vs event
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#why-are-we-doing-this">
+   Why are we doing this?
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="basics-of-probability">
+<h1>Basics of probability<a class="headerlink" href="#basics-of-probability" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="fair-dice">
+<h2>Fair Dice<a class="headerlink" href="#fair-dice" title="Permalink to this headline">¶</a></h2>
+<p>We’ll start with a quick recap of notions of probability, using a pair of fair dice as an example. We’ll define some notions of probability and discuss them in the context of a pair of dice. Let’s call the first dice <em>X</em> and the second dice <em>Y</em>. The total roll of the double dice is <em>D</em>. The values of <em>D</em> are in the table below!
+<img alt="Screen%20Shot%202021-08-23%20at%204.05.39%20PM.png" src="Module01/attachment:Screen%20Shot%202021-08-23%20at%204.05.39%20PM.png" /></p>
+<html><span>&#9856</span></html>
+<hr class="docutils" />
+<div class="section" id="sample-space-s">
+<h3><strong>Sample Space</strong>: <em>S</em><a class="headerlink" href="#sample-space-s" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span> The set *S* of all possible outcomes of a trial or experiment. It can be discrete or continuous. 
+ 
+ For a single dice (let&#39;s say dice x), the sample space is the set $$S_X=\left\{1,2,3,4,5,6\right\}$$ 
+ 
+ For rolling the two dice $X$, and $Y$ the sample space the full set of possible combinations
+</pre></div>
+</div>
+<div class="math notranslate nohighlight">
+\[\begin{split} S_{X,Y}=\left\{\begin{split} &amp; (1,1),(1,2),(1,3),(1,4),(1,5),(1,6),\\ 
+&amp; (2,1),(2,2),(2,3),(2,4),(2,5),(2,6)\\
+&amp; (3,1),(3,2),(3,3),(3,4),(3,5),(3,6)\\
+&amp; (4,1),(4,2),(4,3),(4,4),(4,5),(4,6)\\
+&amp; (5,1),(5,2),(5,3),(5,4),(5,5),(5,6)\\
+&amp; (6,1),(6,2),(6,3),(6,4),(6,5),(6,6)\\
+\end{split}\right\} \end{split}\]</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="event-e">
+<h3><strong>Event</strong>: <em>E</em><a class="headerlink" href="#event-e" title="Permalink to this headline">¶</a></h3>
+<p>Some subset <em>E</em> of the sample space. For example, the event “dice rolled a 1” would be the subset E*={1} of the sample space. The event “the dice rolled an odd number” would be the subset <em>E</em>={1,3,5}.<br />
+The event “the first dice rolled a 3, and the second dice rolled a 4” would be <span class="math notranslate nohighlight">\(E=\left\{(3,4)\right\}\)</span>.</p>
+<p><img alt="Screen%20Shot%202021-08-23%20at%204.14.27%20PM.png" src="Module01/attachment:Screen%20Shot%202021-08-23%20at%204.14.27%20PM.png" /></p>
+<p>Be careful here. Contrast this with the event “both a 3 and a 4 were rolled”, which doesn’t specify the order. For this event, the subset is $<span class="math notranslate nohighlight">\(E=\left\{(3,4),(4,3)\right\}\)</span>$</p>
+<p><img alt="Screen%20Shot%202021-08-23%20at%204.14.31%20PM.png" src="Module01/attachment:Screen%20Shot%202021-08-23%20at%204.14.31%20PM.png" /></p>
+</div>
+</div>
+<div class="section" id="the-event-a-total-of-seven-was-rolled-is-e-left-x-y-x-y-7-right-left-1-6-6-1-2-5-5-2-3-4-4-3-right-screen-20shot-202021-08-23-20at-204-14-36-20pm-png">
+<h2>The event “a total of seven was rolled” is $<span class="math notranslate nohighlight">\(E=\left\{ (X,Y):X+Y=7\right\}==\left\{(1,6),(6,1),(2,5),(5,2),(3,4),(4,3)\right\}\)</span>$
+<img alt="Screen%20Shot%202021-08-23%20at%204.14.36%20PM.png" src="Module01/attachment:Screen%20Shot%202021-08-23%20at%204.14.36%20PM.png" /><a class="headerlink" href="#the-event-a-total-of-seven-was-rolled-is-e-left-x-y-x-y-7-right-left-1-6-6-1-2-5-5-2-3-4-4-3-right-screen-20shot-202021-08-23-20at-204-14-36-20pm-png" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="probability-of-event-e-p-e">
+<h3><strong>Probability of event <span class="math notranslate nohighlight">\(E\)</span></strong> : <span class="math notranslate nohighlight">\(P(E)\)</span><a class="headerlink" href="#probability-of-event-e-p-e" title="Permalink to this headline">¶</a></h3>
+<div class="math notranslate nohighlight">
+\[P(E)=\frac{\text{Number of ways E can occur }}{\text{ Total number of possible outcomes }}\]</div>
+<p>This is the same as the size (or measure) <span class="math notranslate nohighlight">\(|\cdot |\)</span>of the subset <span class="math notranslate nohighlight">\(E\)</span> representing that event relative to the size of the sample set <span class="math notranslate nohighlight">\(S\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[P(E) =\frac{|E|}{|S|}\]</div>
+<p>For a dice the probability of rolling 1 is equal to</p>
+<div class="math notranslate nohighlight">
+\[P(E)=\frac{\text{Number of ways &quot;rolling 1&quot; can occur }}{\text{ Total number of possible outcomes }}=\frac{|\left\{1\right\}|}{|S_X|}=1/6\]</div>
+<p>The probability of rolling “rolling an odd number” is equal to</p>
+<div class="math notranslate nohighlight">
+\[P(E)=\frac{\text{Number of ways &quot;rolling an odd number&quot; can occur }}{\text{ Total number of possible outcomes }}=\frac{|\left\{1,3,5\right\}|}{|S_X|}=3/6=1/2\]</div>
+</div>
+</div>
+<div class="section" id="finally-the-probability-of-rolling-a-combined-7-is-p-e-frac-text-number-of-ways-rolling-a-sece-can-occur-text-total-number-of-possible-outcomes-frac-left-1-6-6-1-2-5-5-2-3-4-4-3-right-s-x-y-frac-6-36-1-6">
+<h2>Finally, the probability of rolling a combined 7 is
+$<span class="math notranslate nohighlight">\(P(E)=\frac{\text{Number of ways &quot;rolling a sece&quot; can occur }}{\text{ Total number of possible outcomes }}=\frac{|\left\{(1,6),(6,1),(2,5),(5,2),(3,4),(4,3)\right\}|}{|S_{X,Y}|}=\frac{6}{36}=1/6\)</span>$<a class="headerlink" href="#finally-the-probability-of-rolling-a-combined-7-is-p-e-frac-text-number-of-ways-rolling-a-sece-can-occur-text-total-number-of-possible-outcomes-frac-left-1-6-6-1-2-5-5-2-3-4-4-3-right-s-x-y-frac-6-36-1-6" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="joint-probability">
+<h3>Joint Probability<a class="headerlink" href="#joint-probability" title="Permalink to this headline">¶</a></h3>
+<p>A joint probability is the probability that two events <span class="math notranslate nohighlight">\(E_1,E_2\)</span> both happen.We would denote this <span class="math notranslate nohighlight">\(P(E_1,E_2)\)</span>, or <span class="math notranslate nohighlight">\(P(E_1\land E_2)\)</span>, where <span class="math notranslate nohighlight">\(\land\)</span> represents the boolean operation <code class="docutils literal notranslate"><span class="pre">AND</span></code>.</p>
+<p>A simple example is the probability that <span class="math notranslate nohighlight">\(E_1\)</span>: Dice <span class="math notranslate nohighlight">\(X\)</span> rolls a 1 and event <span class="math notranslate nohighlight">\(E_2\)</span>,dice <span class="math notranslate nohighlight">\(Y\)</span> rolls a 3. In this case,
+<img alt="Screen%20Shot%202021-08-23%20at%208.21.58%20PM.png" src="Module01/attachment:Screen%20Shot%202021-08-23%20at%208.21.58%20PM.png" /></p>
+<p>You can see that the probability of both events happening is the same size as the intersection of the sets
+corresponding to each event. $<span class="math notranslate nohighlight">\(P(E_1,E_2)=P(E_1\cap E_2)\)</span><span class="math notranslate nohighlight">\(
+![Screen%20Shot%202021-08-23%20at%208.22.21%20PM.png](attachment:Screen%20Shot%202021-08-23%20at%208.22.21%20PM.png)
+\)</span><span class="math notranslate nohighlight">\(P(E_1,E_2)=P(E_1\cap E_2)=\frac{|\{(1,3)\}|}{|S_{X,Y}|}=\frac{1}{36}\)</span>$</p>
+<hr class="docutils" />
+<p>Here is another example: <span class="math notranslate nohighlight">\(E_1\)</span>: ‘the total roll is <span class="math notranslate nohighlight">\(D=6\)</span> and <span class="math notranslate nohighlight">\(E_2\)</span>: ‘dice <span class="math notranslate nohighlight">\(X\)</span> rolled an odd roll’.
+The probability of this joint event is the size of the subset that satisifies both events, i.e. the intersection of the two sets <span class="math notranslate nohighlight">\(E_1\)</span> and <span class="math notranslate nohighlight">\(E_2\)</span>
+<img alt="Screen%20Shot%202021-08-23%20at%208.16.05%20PM.png" src="Module01/attachment:Screen%20Shot%202021-08-23%20at%208.16.05%20PM.png" /></p>
+<p>The intersection is depicted below:</p>
+<p><img alt="Screen%20Shot%202021-08-23%20at%208.18.22%20PM.png" src="Module01/attachment:Screen%20Shot%202021-08-23%20at%208.18.22%20PM.png" /></p>
+<div class="math notranslate nohighlight">
+\[P(E_1,E_2)=P(E_1\cap E_2)=\frac{|\{(1,5),(5,1),(3,3)\}|}{|S_{X,Y}|}=\frac{3}{36}=\frac{1}{12}\]</div>
+</div>
+<div class="section" id="independent-events">
+<h3>Independent Events<a class="headerlink" href="#independent-events" title="Permalink to this headline">¶</a></h3>
+<p>Events <span class="math notranslate nohighlight">\(E_1\)</span> and <span class="math notranslate nohighlight">\(E_2\)</span> are independt if <span class="math notranslate nohighlight">\(P(E_1,E_2)=P(E_1)P(E_2)\)</span>, that is , if the probability of Event <span class="math notranslate nohighlight">\(E_1\)</span> happenign is not affected by whether Event <span class="math notranslate nohighlight">\(E_2\)</span> happens. Going back to thinking of sets as events, this happens if $<span class="math notranslate nohighlight">\(P(E_1,E_2)=P(E_1)\cdot P(E_2)\)</span>$</p>
+<p>For example, the events <span class="math notranslate nohighlight">\(E1\)</span> : Dice <span class="math notranslate nohighlight">\(X\)</span> rolls a 1 and event <span class="math notranslate nohighlight">\(E_2\)</span>,dice <span class="math notranslate nohighlight">\(Y\)</span> rolls a 3 are clearly independent. Whether <span class="math notranslate nohighlight">\(Y\)</span> has rolled a 3 or not has no bearing on what <span class="math notranslate nohighlight">\(X\)</span> rolls. Consequently,
+$<span class="math notranslate nohighlight">\(P(E_1,E_2)=P(E_1\cap E_2)=\frac{1}{36}=\frac{1}{6}\frac{1}{6}=\frac{|\{1\}|}{|S_X|}\frac{|\{3\}|}{|S_Y|}=P(E_1)P(E_2)\)</span>$</p>
+<p>On the other hand, the two events <span class="math notranslate nohighlight">\(E_1\)</span> ‘the total roll is <span class="math notranslate nohighlight">\(D\)</span>=6 and <span class="math notranslate nohighlight">\(E_2\)</span>: ‘dice <span class="math notranslate nohighlight">\(X\)</span> rolled an odd roll’ are not independent. If <span class="math notranslate nohighlight">\(X\)</span> rolled an odd roll, there are three combinations that will yield 6. If, on the other hand <span class="math notranslate nohighlight">\(X\)</span> has rolled an even roll (i.e. either 2,4, or 6), there are only two combinations that will yield 6.</p>
+<p>In this case, <span class="math notranslate nohighlight">\(P(E_1, E_2)=\frac{3}{36}\neq P(E_1)P(E_2)=\frac{5}{36}\frac{18}{36}=\frac{2.5}{36}\)</span>.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="conditional-probability">
+<h3>Conditional Probability<a class="headerlink" href="#conditional-probability" title="Permalink to this headline">¶</a></h3>
+<p>Conditional probability is the probabiltiy that event <span class="math notranslate nohighlight">\(E_1\)</span>  occurs <em><strong>given</strong></em> that event <span class="math notranslate nohighlight">\(E_2\)</span> has occured. For example, the probability of <span class="math notranslate nohighlight">\(E_1\)</span> ‘the total roll is <span class="math notranslate nohighlight">\(D=6\)</span> given that <span class="math notranslate nohighlight">\(E_2\)</span>: ‘<span class="math notranslate nohighlight">\(X\)</span> rolled an odd roll’ has occured.</p>
+<p>Given that <span class="math notranslate nohighlight">\(E_2\)</span> has occured the sample space is now only the subset where X is odd. This subspace has 18 elements. Out of these, <span class="math notranslate nohighlight">\(E_1\)</span> corresponds to the subset <span class="math notranslate nohighlight">\(\{ (1,5),(3,3),(5,1)\}\)</span>. So the probability of <span class="math notranslate nohighlight">\(D=6\)</span> ***given that *** X is odd is denoted as: <span class="math notranslate nohighlight">\(P(E_1|E_2)=3/18=1/6\)</span>.</p>
+<p>Conditional probabilities are formally defined as:
+$<span class="math notranslate nohighlight">\(P(E_1|E_2)=\frac{P(E_1, E_2)}{P(E_2)}\)</span>$.</p>
+<p>For our eample we can verif this. We’ve calculated the joint probability as 3/36, and the probability of ‘<span class="math notranslate nohighlight">\(X\)</span> rolls odd is 1/2</p>
+<p>$<span class="math notranslate nohighlight">\(P(E_1|E_2)=\frac{P(E_1,E_2)}{P(E_2)}=\frac{3/36}{1/2}=1/6\)</span>$.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="bayes-rule">
+<h3>Bayes Rule<a class="headerlink" href="#bayes-rule" title="Permalink to this headline">¶</a></h3>
+<p>If we rewroite the definition of conditional probability as <span class="math notranslate nohighlight">\(P(E_1,E_2)=P(E_1|E_2)P(E_2)\)</span>, and take advantage of the commutativity of the intersection operator, i.e. that <span class="math notranslate nohighlight">\(P(E_1,E_2)=P(E_1\cap E_2)=P(E_2 \cap E_1)\)</span>, we can write</p>
+<div class="math notranslate nohighlight">
+\[P(E_1,E_2)=P(E_1|E_2)P(E_2) = P(E_2|E_1)P(E_1)\]</div>
+<p>and immediately derive Bayes rule (Which will come in very handy later in the course)</p>
+<div class="math notranslate nohighlight">
+\[ P(E_1|E_2)=\frac{P(E_2|E_1)P(E_1)}{P(E_2)}\]</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="law-of-total-probability">
+<h3>Law of Total probability<a class="headerlink" href="#law-of-total-probability" title="Permalink to this headline">¶</a></h3>
+<p>The law of total probability says that if we have a partition of the sample space, <span class="math notranslate nohighlight">\(B_n\)</span> such that <span class="math notranslate nohighlight">\(B_i\cap B_j=\phi\)</span> if <span class="math notranslate nohighlight">\(i\neq j\)</span>.  and $<span class="math notranslate nohighlight">\(\cap_{n} B_n = S\)</span>$, then</p>
+<div class="math notranslate nohighlight">
+\[P(E)=\sum_n P(E|B_n)P(B_n)\]</div>
+<p>This should be intuitive with the fair dice example. For example, let <span class="math notranslate nohighlight">\(E\)</span> be the event ‘A total roll <span class="math notranslate nohighlight">\(D=6\)</span> was rolled’. A partition <span class="math notranslate nohighlight">\(B_n\)</span> could be ‘the dice <span class="math notranslate nohighlight">\(X\)</span> rolled n’ for <span class="math notranslate nohighlight">\(n\)</span> between 1 and 6. Thus, the total probability of <span class="math notranslate nohighlight">\(D=6\)</span> is the sum of the probability of rolling a seven given that <span class="math notranslate nohighlight">\(X\)</span> rolled 1, plus the probability of rolling a seven given that <span class="math notranslate nohighlight">\(X\)</span> rolled a 2, and so on….</p>
+<hr class="docutils" />
+<hr style="border:2px solid black
+           "> </hr>
+</div>
+</div>
+</div>
+<div class="section" id="random-variables">
+<h1>1.2 Random variables<a class="headerlink" href="#random-variables" title="Permalink to this headline">¶</a></h1>
+<p><strong>A random variable is a Real-valued variable whose whose values depend on outcomes of a random phenomenon.</strong></p>
+<p>Consider the case of a single fair dice, with possible values, i.e. sample space: $<span class="math notranslate nohighlight">\(S=\{1,2,3,4,5,6\}\)</span><span class="math notranslate nohighlight">\( 
+We can define a random variable \)</span>X$ whose value is equal to the dice roll. This random variable could take <em><strong>discrete</strong></em> values between 1 and 6.</p>
+<div class="section" id="probability-mass-function">
+<h2>Probability mass function<a class="headerlink" href="#probability-mass-function" title="Permalink to this headline">¶</a></h2>
+<p>The <strong>probability mass function</strong> , <span class="math notranslate nohighlight">\(p\)</span> of a random variable , <span class="math notranslate nohighlight">\(X\)</span> is the probability that the variable takes on a given value, and is often denoted by a small cap <span class="math notranslate nohighlight">\(p\)</span>. For example, the probability that <span class="math notranslate nohighlight">\(X\)</span> takes the value 5, could be denoted as <span class="math notranslate nohighlight">\(p(X=5)\)</span> or <span class="math notranslate nohighlight">\(p_X(5)\)</span> or, simply <span class="math notranslate nohighlight">\(p(5)\)</span>.</p>
+<p>Our <span class="math notranslate nohighlight">\(X\)</span> takes discrete values between 1 and 6, and the probabilit is the same for each value. We would call this a uniformly distributed discrete random variable, or a random variable with a discrete uniform distribution between 1 and 6.</p>
+<p>Let’s generate such a variable in python:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
+
+<span class="c1"># the stats class has a method to generate randint objects that deal with uniform discrete (integer-valued) random variables. </span>
+<span class="c1"># the randint object itself has method rvs to generate such a random variable:</span>
+
+
+<span class="c1">#rerun this cell several times</span>
+<span class="n">X</span><span class="o">=</span><span class="n">stats</span><span class="o">.</span><span class="n">randint</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">low</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[2]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="probability-vs-event">
+<h2>Probability vs event<a class="headerlink" href="#probability-vs-event" title="Permalink to this headline">¶</a></h2>
+<p>At this point it may seem like I’m inventing new terminology. For example, why do we need to call <span class="math notranslate nohighlight">\(D\)</span> a random variable, and talk about the possibility that it takes on different values? It seems like the probability of X taking on each value is just the probability of each event in <span class="math notranslate nohighlight">\(S\)</span>.</p>
+<p>Here is another example of a random variable on the same sample space: <span class="math notranslate nohighlight">\(Z\)</span> is a random variable which takes the value <span class="math notranslate nohighlight">\(Z=0\)</span> if the dice roll is odd and <span class="math notranslate nohighlight">\(Z=1\)</span> if the dice roll is even. Thus, even though <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Z\)</span> are associated with the same sample space and events, they take on different values.</p>
+<p>In this case, since <span class="math notranslate nohighlight">\(Z\)</span> takes on only two values, 0 and 1 <span class="math notranslate nohighlight">\(Z\)</span> would be called a Bernoulli random variable.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#rerun this cell several times</span>
+<span class="n">Z</span><span class="o">=</span><span class="n">stats</span><span class="o">.</span><span class="n">bernoulli</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Z</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="why-are-we-doing-this">
+<h1>Why are we doing this?<a class="headerlink" href="#why-are-we-doing-this" title="Permalink to this headline">¶</a></h1>
+<p>While the dice example here seems so simple as to be useless, it illustrates several properties of probabilities that are going to be useful later on when we’re talking about random variables:</p>
+<ul class="simple">
+<li><p>** Conditional Probability** The probability of random variable <span class="math notranslate nohighlight">\(X\)</span> taking the value <span class="math notranslate nohighlight">\(a\)</span>, conditional on random variable <span class="math notranslate nohighlight">\(Y\)</span> taking value <span class="math notranslate nohighlight">\(b\)</span> is:
+$<span class="math notranslate nohighlight">\(p(X=a|Y=b)=\frac{p(X=a,Y=b)}{p(Y=b)}\)</span>$</p></li>
+<li><p><strong>Independence</strong>: if random variables are independent, their joint is the product of their individual probability  $<span class="math notranslate nohighlight">\(p(X=a,Y=b)=p_{X,Y}(a,b)=p_X(a)p_Y(b)\)</span>$</p></li>
+</ul>
+<p>and so on for Bayes’ rule and the law of total probability</p>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./Module01"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="../intro.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Welcome to your Jupyter Book</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="M01_N02_Discrete_Random_Variables.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">Discrete Random Variables</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Cristian Proistosescu<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

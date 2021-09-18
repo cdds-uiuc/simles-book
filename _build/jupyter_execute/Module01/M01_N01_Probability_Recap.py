@@ -79,22 +79,20 @@
 # On the other hand, consider a case where Alice bets on all the numbers between $1-6$, with win probability $P(A)=6/38$  and the Bob bets on his favourite numbers, $3$ and $33$, with win probability $P(B)=2/38$ Them winning something is associated with $E=\{1,2,3,4,5,6,33\}$, with $P(E)=7/38$. Notice that in thise $P(E)\neq P(A)+P(B)$
 # 
 # 
-# :::{important}
-# 
+# ```{important}
 # Thus, the general rule of combining probabilities is:
 # $$P(A \text{ OR } B)=P(A \cup B)=P(A)+P(B)-P(A\cap B)$$
 # 
 # with 
 # 
 # $$P(A \text{ OR } B)=P(A \cup B)=P(A)+P(B)\text{, if } P(A\cap B)=\phi$$
-# 
-# :::
+# ```
 # 
 # 
 # ## Valid Probability Functions
 # In order for a function on the event space to be a valid probability function, it neeeds to obey the following properties 
 # 
-# :::{important}
+# ```{important}
 # 
 # - $P:\Omega \rightarrow [0,1]$
 # - $P(\phi)=0$, where $\phi$ is the null-set
@@ -102,7 +100,7 @@
 # - If $E_1$ and and $E_2$ are mutually exclusive events (i.e. $E_1 \cap E_2=\phi$), then the probability of $E_1$ OR $E_2$ occuring is 
 # 
 #      $$P(E_1 \text{ OR } E_2)=P(E_1\cup E_2)=P(E_1)+P(E_2)$$
-# :::
+# ```
 # 
 #     
 # ## Joint Probabilities
@@ -112,13 +110,11 @@
 # 
 # The latter notation is the one we will be using a lot throughout the course. If each of them bets on one of the zeros, and there is thus no overlap between their bets, the probability of both winning is zero. In the second case, where Alice bets on $1$ through $6$ and Bob bets on $3$ and $33$, the probability of both of them winning is the probability of rolling a $3$, whith the intersection of the two events. This is a general rule of probability calculus:
 # 
-# :::{important}
-# 
+# ```{imporatant}
 # The joint probability of two events is the probability of their intersection:
 # - $P(A,B)=P(A\cap B)$
 # - $P(A,B)=0 \text{ if } A\cap B=\phi$, and we would say that $A$ and $B$ are mutually exclusive
-# 
-# :::
+# ```
 
 # <hr style="border:1px solid black
 #            "> </hr>
@@ -144,13 +140,13 @@
 # 
 # $P($<span style="color:blue">&#9861;</span> <span style="color:red">&#9861;</span>$)=P($<span style="color:blue">&#9861;</span>$)P($<span style="color:red">&#9861;</span>$)$
 # 
-# :::{important}
+# ```{important}
 # 
 # <b>Definition</b>: Two events are independent iff:
 # 
 # $$P(A \text{ AND } B)=P(A,B)=P(A)P(B)$$
+# ```
 # 
-# :::
 # 
 # Fun sidenote: although it's harder, we can define independent events for a single dice! Consider the two events:
 # - A: "Green dice rolled even" with probability $P(A)=1/2$
@@ -181,14 +177,13 @@
 # 
 # The probabiliy of both being true is equal to 1/36. But you can think of it as the probability of rolling a 4 with the red dice (P(B)=1/6), and then rolling a "10" given that the red dice rolled 4 P(A|B)=1/6). 
 # 
-# :::{important}
+# ```{important}
 # 
 # <b>Definition</b>: The following relationships hold between joint and conditional probabilities:
 # 
 # $$P(A,B)=P(A|B)P(B)$$
 # $$P(A|B)=\frac{P(A,B)}{P(B)}$$
-# 
-# :::
+# ```
 # 
 # 
 # ## Bayes Rule
@@ -197,22 +192,22 @@
 # 
 # $$P(A,B)=P(A|B)P(B)=P(B|A)P(A)$$
 # 
-# :::{important}
+# ```{important}
 # 
 # **Bayes' Rule**: 
 # $$P(A|B)=\frac{P(B|A)P(A)}{P(B)}$$
 # 
-# :::
+# ```
 # 
 # ## Law of Total probability
 # 
-# :::{important}
+# ```{important}
 # 
 # The law of total probability says that if we have a partition of the sample space, $A_n$ such that $A_i\cap A_j=\phi$ if $i\neq j$.  and $\cap_{n} A_n = \Omega$, then
 # 
 # $$P(E)=\sum_n P(E|A_n)P(A_n)$$
 # 
-# :::
+# ```
 # 
 # This should be intuitive with the fair dice example. For example, let $E$ be the event 'A total roll $D=6$ was rolled'. A partition $A_n$ could be 'the dice $X$ rolled n' for $n$ between 1 and 6. Thus, the total probability of $D=6$ is the sum of the probability of rolling a seven given that $X$ rolled 1, plus the probability of rolling a seven given that $X$ rolled a 2, and so on....
 

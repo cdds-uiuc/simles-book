@@ -3,20 +3,16 @@
 
 # # Discrete Random Variables
 
-# In[45]:
+# In[25]:
 
 
-get_ipython().run_line_magic('reset', '')
+#%reset
 import numpy as np
 import matplotlib.pyplot as plt
-figsize=[4,2]
+figsize=[6,3]
 
 # These are some parameters to make figures nice (and big)
-get_ipython().run_line_magic('matplotlib', 'inline')
-get_ipython().run_line_magic('config', "InlineBackend.figure_format = 'retina'")
-plt.rcParams['figure.figsize'] = 16,8
 params = {'legend.fontsize': 'x-large',
-          'figure.figsize': (15, 5),
          'axes.labelsize': 'x-large',
          'axes.titlesize':'x-large',
          'xtick.labelsize':'x-large',
@@ -63,7 +59,7 @@ plt.rcParams.update(params)
 # 
 # 
 
-# In[46]:
+# In[26]:
 
 
 # let's import the stats module from the scipy library
@@ -81,7 +77,7 @@ print(X)
 # 
 # We can simulate a random variable using the fair die. For example, we can define a Bernoulli random variable $Y$ which takes value $1$ if the roll is larger than 3, and $0$ otherwise. In this case, the Bernoulli random variable has $p=0.5$.
 
-# In[47]:
+# In[27]:
 
 
 # rerun this cell to simulate more realizations of a bernoulli random variable
@@ -100,7 +96,7 @@ print(Y)
 # In practice, we can generate realizations of a Bernoulli random variable with any $p$ using the same <code>stats</code> module from <code>scipy</code>. 
 # https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.bernoulli.html
 
-# In[48]:
+# In[28]:
 
 
 # Rerun this cell to generate Bernoulli random variables with $p=0.5$
@@ -108,7 +104,7 @@ X=stats.bernoulli.rvs(p=0.5, size=1)
 print(X)
 
 
-# In[49]:
+# In[29]:
 
 
 # Rerun this cell to generate Bernoulli random variables with $p=0.9$
@@ -128,7 +124,7 @@ print(X)
 # We can generate realizations of this random variable by generating two (independent) dice and taking their sum
 # 
 
-# In[50]:
+# In[30]:
 
 
 X=stats.randint.rvs(low=1, high=7, size=1)
@@ -162,7 +158,7 @@ print(S)
 # **Uniformly distributed random variable (Sincle dice)**
 # 
 
-# In[51]:
+# In[31]:
 
 
 #define an x-axis
@@ -180,7 +176,7 @@ plt.show()
 
 # **Bernoulli Random variable** 
 
-# In[52]:
+# In[32]:
 
 
 #Bernoulli random variable with p=0.5
@@ -203,7 +199,7 @@ plt.show()
 # 
 # We don't have a ready-made method for generating a random variable with the same distribution as the sum of two random variables. But we can define and read the pmf from the table above
 
-# In[53]:
+# In[33]:
 
 
 # define the pmf
@@ -226,10 +222,11 @@ ax.legend(loc='best');
 # 
 # 
 
-# In[54]:
+# In[34]:
 
 
-#Rerun this cell several times to simulate 20 realizations of a Uniform Discrete Random Variable  (i.e. 20 throws of the die)
+#Rerun this cell several times to simulate 20 realizations 
+#of a Uniform Discrete Random Variable  (i.e. 20 throws of the die)
 X=stats.randint.rvs(low=1, high=7, size=20)
 print(X)
 
@@ -244,7 +241,7 @@ print(X)
 
 # **Discrete uniform RV (one die)**
 
-# In[55]:
+# In[35]:
 
 
 Ndraws=100
@@ -253,14 +250,15 @@ Ndraws=100
 x_uniform=np.arange(0,8,1)
 p_uniform=stats.randint.pmf(x_uniform,low=1,high=7)
 
-# generate random variables and define edges (note we want the integers to be in the bins, not at the edges)
+# generate random variables and define edges 
+# (note we want the integers to be in the bins, not at the edges)
 X_uniform=stats.randint.rvs(low=1, high=7, size=Ndraws)
 bin_edges_uniform=np.arange(0.5,8.5,1)
 
 print(X_uniform)
 
 
-# In[56]:
+# In[36]:
 
 
 fig, ax = plt.subplots(1, 1,figsize=figsize)
@@ -268,14 +266,14 @@ fig, ax = plt.subplots(1, 1,figsize=figsize)
 
 ax.hist(X_uniform,bins=bin_edges_uniform,density=True,rwidth=0.9,label='histrogram')
 ax.plot(x_uniform,p_uniform , 'ro',ms=10,
-        label='pmf')
-ax.legend()
-ax.set_xlim(left=-0.5, right=7.5)
+        label='pmf');
+ax.legend();
+ax.set_xlim(left=-0.5, right=7.5);
 
 
 # **Bernoulli**
 
-# In[57]:
+# In[37]:
 
 
 N_draws=10;
@@ -285,7 +283,8 @@ p_bern=0.5;
 x_bernoulli=np.arange(-1,3,1)
 p_bernoulli=stats.bernoulli.pmf(x_bernoulli,p=p_bern)
 
-# generate random variables and define edges (note we want the integers to be in the bins, not at the edges)
+# generate random variables and define edges 
+#(note we want the integers to be in the bins, not at the edges)
 X_bernoulli=stats.bernoulli.rvs(p=p_bern, size=N_draws)
 bin_edges_bernoulli=np.arange(-1.5,3.5,1)
 
@@ -294,10 +293,10 @@ bin_edges_bernoulli=np.arange(-1.5,3.5,1)
 fig, ax = plt.subplots(1, 1,figsize=figsize)
 ax.hist(X_bernoulli,bins=bin_edges_bernoulli,density=True,rwidth=0.9)
 ax.plot(x_bernoulli, p_bernoulli, 'ro',ms=10,
-        label='pmf')
+        label='pmf');
 
 
-# In[58]:
+# In[38]:
 
 
 Ndraws=100
@@ -306,7 +305,8 @@ Ndraws=100
 x_2dice=[2,3,4,5,6,7,8,9,10,11,12]
 p_2dice=np.asarray([1,2,3,4,5,6,5,4,3,2,1])/36
 
-# generate random variables and define edges (note we want the integers to be in the bins, not at the edges)
+# generate random variables and define edges 
+# (note we want the integers to be in the bins, not at the edges)
 X_1die=stats.randint.rvs(low=1, high=7, size=Ndraws)
 Y_1die=stats.randint.rvs(low=1, high=7, size=Ndraws)
 Z_2dice=X_1die+Y_1die
@@ -318,17 +318,15 @@ fig, ax = plt.subplots(1, 1,figsize=figsize)
 
 ax.hist(Z_2dice,bins=bin_edges_2dice,density=True,rwidth=0.9)
 ax.plot(x_2dice, p_2dice, 'ro',ms=10,
-        label='pmf')
+        label='pmf');
 
 
-# :::{warning}
-# 
+# ```{Danger}
 # For *discrete* random variables the histogram can give weird results if the bins are not set appropriately (for example if they are of unequal weidth)
-# 
-# :::
+# ```
 # 
 
-# In[59]:
+# In[39]:
 
 
 Ndraws=400
@@ -337,7 +335,8 @@ Ndraws=400
 x_uniform=np.arange(0,8,1)
 p_uniform=stats.randint.pmf(x_uniform,low=1,high=7)
 
-# generate random variables and define edges (note we want the integers to be in the bins, not at the edges)
+# generate random variables and define edges 
+# (note we want the integers to be in the bins, not at the edges)
 X_uniform=stats.randint.rvs(low=1, high=7, size=Ndraws)
 
 #compare teh two below:
@@ -350,7 +349,7 @@ fig, ax = plt.subplots(1, 1,figsize=figsize)
 
 ax.hist(X_uniform,bins=bin_edges_uniform,density=True,rwidth=0.9)
 ax.plot(x_uniform,p_uniform , 'ro',ms=10,
-        label='pmf')
+        label='pmf');
 
 
 # ### Convergence of histograms to pmfs
@@ -359,7 +358,7 @@ ax.plot(x_uniform,p_uniform , 'ro',ms=10,
 # 
 # $$h_N(x_i)\rightarrow p(x_i)$$
 
-# In[60]:
+# In[40]:
 
 
 # change the number of draws for the 2 dice case
@@ -369,7 +368,8 @@ Ndraws=100000
 x_2dice=[2,3,4,5,6,7,8,9,10,11,12]
 p_2dice=np.asarray([1,2,3,4,5,6,5,4,3,2,1])/36
 
-# generate random variables and define edges (note we want the integers to be in the bins, not at the edges)
+# generate random variables and define edges 
+# (note we want the integers to be in the bins, not at the edges)
 X_1die=stats.randint.rvs(low=1, high=7, size=Ndraws)
 Y_1die=stats.randint.rvs(low=1, high=7, size=Ndraws)
 Z_2dice=X_1die+Y_1die
@@ -381,5 +381,5 @@ fig, ax = plt.subplots(1, 1,figsize=figsize)
 
 ax.hist(Z_2dice,bins=bin_edges_2dice,density=True,rwidth=0.9)
 ax.plot(x_2dice, p_2dice, 'ro',ms=10,
-        label='pmf')
+        label='pmf');
 

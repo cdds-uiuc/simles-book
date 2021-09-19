@@ -3,7 +3,7 @@
 
 title: "SIMLES: Statistical Inference and Machine Learning for Earth Sciences"
 author: Cristian Proistosescu
-logo: CDDS_logo.jpeg
+logo: content/CDDS_logo.jpeg
 
 
 # Force re-execution of notebooks on each build.
@@ -31,7 +31,7 @@ repository:
 html:
   use_issues_button: true
   use_repository_button: true
-  favicon: CDDS_logo.jpeg
+  favicon: content/CDDS_logo.jpeg
 
 launch_buttons:
   colab_url: "https://colab.research.google.com"

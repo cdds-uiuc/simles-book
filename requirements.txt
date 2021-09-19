@@ -4,4 +4,6 @@ numpy
 pandas
 scipy
 scikit-learn
+xarray
+seaborn
 

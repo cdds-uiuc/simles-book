@@ -36,10 +36,3 @@ The course material is supplemented by in-class lecture and additional readings.
 - Julien Emile-Geay: <a href="https://figshare.com/articles/book/Data_Analysis_in_the_Earth_Environmental_Sciences/1014336/10">Data Analysis in the Earth & Environmental Sciences</a>
 - James, Witten, Hastie, Tibshirani: <a href="•	James, Witten, Hastie, Tibshirani: An introduction to statistical learning ">An introduction to statistical learning</a>
 
-# License for this book
-
-```{Note}
-All content in this book (ie, any files and content in the `content/` folder)
-is licensed under the [Creative Commons Attribution-ShareAlike 4.0 International](https://creativecommons.org/licenses/by-sa/4.0/)
-(CC BY-SA 4.0) license.
-```

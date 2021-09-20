@@ -189,7 +189,7 @@ phi_obliq_terms    =obliq_phase[np.asarray(terminations)]*np.pi/180
 R_obliq=1/8*np.abs(np.sum(np.cos(phi_obliq_terms)+1j*np.sin(phi_obliq_terms)))
 
 
-# In[11]:
+# In[19]:
 
 
 fig, ax = plt.subplots(1,1,figsize=[6,6])
@@ -212,7 +212,7 @@ ax.set_yticks([])
 ax.set_aspect( 1 )
 ax.set_xlim(left=-1.5,right=1.5)
 ax.set_ylim(bottom=-1.5,top=1.5)
-ax.set_title('R='+np.array2string(R_obliq,precision=2))
+ax.set_title('$R_{obs}$='+np.array2string(R_obliq,precision=2))
 
 for j in range(8):
     ax.annotate(labels[j],(x[j],y[j]),textcoords='offset points',xytext=(x[j]*20,y[j]*10),fontsize=15)
@@ -230,7 +230,7 @@ for j in range(8):
 # 
 # where $\eta_t \sim \mathcal N (\mu=1,\sigma=2)$. The non-zero mean will cause an average increase in ice volume. When the ice volume crosses the threshold $V_t>T_0$, it will deglaciate completely over a period of 10 kyr. 
 
-# In[12]:
+# In[61]:
 
 
 from scipy import stats
@@ -246,7 +246,7 @@ def H0(obliq_phase):
             V[t-1]=V[t]+stats.norm.rvs(loc=1.1,scale=2,size=1) 
             t=t-1;        
         elif t>10:     #crossing threshold at >10ky before present
-            terminations.append(t)            #note termination
+            terminations.append(t-5)            #note termination
             V[t-10:t]=np.linspace(0,V[t],10)  #deglaciate in 10kye
             t=t-10                            
         else:          
@@ -254,8 +254,9 @@ def H0(obliq_phase):
             #if we cross the threshold with less than 10ky left before present day, 
             # we can't just skip 10ky. 
             
-            terminations.append(t)
             V[0:t]=np.linspace(0,V[t],10)[-t:]  #only keep data until present day
+            if t>=5:    
+                terminations.append(t-5)
             t=0
 
     np.size(terminations)
@@ -263,44 +264,64 @@ def H0(obliq_phase):
     R_obliq=1/8*np.abs(np.sum(np.cos(phi_obliq_terms)+1j*np.sin(phi_obliq_terms)))
 
         
-    return R_obliq, terminations,phi_obliq_terms
+    return R_obliq, terminations,phi_obliq_terms,V
 
 # Generate a realizatoin of the null hypothesis
-R_obliq_H0,terminations_H0,phi_obliq_terms_H0=H0(obliq_phase)
+R_obliq_H0,terminations_H0,phi_obliq_terms_H0,V=H0(obliq_phase)
 
 
-# In[13]:
+# In[129]:
 
 
-fig, ax = plt.subplots(1,1,figsize=[6,6])
+fig, ax = plt.subplots(4,1,figsize=[12,12])
+for k in range(2):
 
-x=-np.sin(phi_obliq_terms_H0)
-y=np.cos(phi_obliq_terms_H0)
-labels=np.arange(np.size(terminations_H0))
+    R_obliq_H0,terminations_H0,phi_obliq_terms_H0,V=H0(obliq_phase)
+    plt.subplot(2,2,k+1)
+    ax=plt.gca()
+    x=-np.sin(phi_obliq_terms_H0)
+    y=np.cos(phi_obliq_terms_H0)
+    labels=np.arange(np.size(terminations_H0))
 
-circle_1 = plt.Circle(( 0 , 0 ), radius=1,facecolor='None' ,edgecolor=[0.5,0.5,0.5],linewidth=2)
-circle_r = plt.Circle(( 0 , 0 ), radius=R_obliq_H0,facecolor='None' ,edgecolor='b',linewidth=2,linestyle='--')
+    circle_1 = plt.Circle(( 0 , 0 ), radius=1,facecolor='None' ,edgecolor=[0.5,0.5,0.5],linewidth=2)
+    circle_r = plt.Circle(( 0 , 0 ), radius=R_obliq_H0,facecolor='None' ,edgecolor='b',linewidth=2,linestyle='--')
 
-ax.add_artist(circle_1)
-ax.add_artist(circle_r)
-ax.arrow(0,0,1/8*np.sum(x),1/8*np.sum(y),length_includes_head=True,head_width=0.075,color='r')
-ax.plot(x,y,'ro')
-ax.plot(0,0,'ko')
+    ax.add_artist(circle_1)
+    ax.add_artist(circle_r)
+    ax.arrow(0,0,1/8*np.sum(x),1/8*np.sum(y),length_includes_head=True,head_width=0.075,color='r')
+    ax.plot(x,y,'ro')
+    ax.plot(0,0,'ko')
 
-ax.set_xticks([])
-ax.set_yticks([])
-ax.set_aspect( 1 )
-ax.set_xlim(left=-1.5,right=1.5)
-ax.set_ylim(bottom=-1.5,top=1.5)
-ax.set_title('R='+np.array2string(R_obliq_H0,precision=2))
+    ax.set_xticks([])
+    ax.set_yticks([])
+    ax.set_aspect( 1 )
+    ax.set_xlim(left=-1.5,right=1.5)
+    ax.set_ylim(bottom=-1.5,top=1.5)
+    ax.set_title('$R_{H_0}$='+np.array2string(R_obliq_H0,precision=2))
 
-for j in range(np.size(terminations_H0)):
-    ax.annotate(labels[j],(x[j],y[j]),textcoords='offset points',xytext=(x[j]*20,y[j]*10),fontsize=15)
+
+    for j in range(np.size(terminations_H0)):
+        ax.annotate(labels[j],(x[j],y[j]),textcoords='offset points',xytext=(x[j]*20,y[j]*10),fontsize=15)
+
+    plt.subplot(6,1,k+4)
+    ax=plt.gca()
+    ax.plot(V,'k')
+    ax.plot(terminations_H0,V[terminations_H0],'ro')
+    ax.set_ylabel('Ice Volume');
+    
+    
+plt.subplot(6,1,6)
+
+ax=plt.gca()
+ax.plot(orb_age,obliq,'r')
+ax.set_ylabel('$obliquity$');
+ax.set_xlabel('age (ka)');
+ax.set_xlim(0,700);
 
 
 # # Exercises:
 # 
-# ## Exercise 1: Evaluate H_0
+# ## Exercise 1: Evaluate $H_0$
 # Generate a distribution of the null hypothesis, $H_0$, that is a distribution of the R-statistic for samples of the noise-model. Evaluate the p-value for the R-statistics of the glacial terminations.
 # 
 # Can we still reject the null hypothesis, despite our simpler approach? 

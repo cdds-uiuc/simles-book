@@ -8,6 +8,8 @@ This is a live and ***very much beta*** version of the course notes for the GEOL
 If you happened on this website and are not a student in the class, proceed with caution. The book is actively being changed and updated. Nothing is stable. The course is intended as a graduate-level hands-on introduction to Statistical Inference and Machine Learning methods across Earth and Environmental Sciences. You are welcome to play around with the materials but be warned: Here be dragons.
 ```
 
+This book contains the jupyter-noteboks for the class, and is meant to be supplemented by additional reading, lectures, and course projects.
+
 ## Running code:
 ```{important}
 To run a notebook in this book use the launch button (the little rocket at the top of notebooks) to launch either Binder Hub or Google Colab. 

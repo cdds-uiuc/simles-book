@@ -13,9 +13,10 @@ parts:
     #- file: Module01/M01_N05_SampleStatistics
     #- file: Module01/M01_N06_QQPlots
     #- file: Module01/M01_Lab
-  #- caption: "Inference:Estimation and Hypothesis Testing"
-  #  chapters:
-    #- file: Module02/M02_N01_Regression
+  - caption: "Inference:Estimation and Hypothesis Testing"
+    chapters:
+    - file: content/Module02/M02_N01_Regression
+    - file: content/Module02/M02_L01_Obliquity
     #- file: Module02/M02_N02_Anscombe
 
 

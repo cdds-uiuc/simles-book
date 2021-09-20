@@ -176,7 +176,7 @@ plt.show()
 
 # **Bernoulli Random variable** 
 
-# In[32]:
+# In[1]:
 
 
 #Bernoulli random variable with p=0.5
@@ -199,7 +199,7 @@ plt.show()
 # 
 # We don't have a ready-made method for generating a random variable with the same distribution as the sum of two random variables. But we can define and read the pmf from the table above
 
-# In[33]:
+# In[2]:
 
 
 # define the pmf

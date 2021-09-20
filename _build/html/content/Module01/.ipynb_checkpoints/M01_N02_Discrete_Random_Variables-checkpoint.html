@@ -447,7 +447,7 @@ The bottom of the above documentation page for <code>randint</code> describes th
 <p>The table above also allows us to easily compute the pmf for the sum of two fair dice. The pmf only takes non-zero values for <span class="math notranslate nohighlight">\(x_i\in\{1,\ldots,12\}\)</span>. For example <span class="math notranslate nohighlight">\(p(5)\)</span> is the probability of rolling a total of 5, and it can be read from the table as <span class="math notranslate nohighlight">\(p(5)=4/36=1/9\)</span></p>
 <p>Let’s visualize the pmfs for the three random variables described. The random variable objects &lt;cin <code>scipy.stats</code> have the pmf as a method</p>
 <p><strong>Uniformly distributed random variable (Sincle dice)</strong></p>
-<div class="cell tag_hide-input docutils container">
+<div class="cell tag_hidecode docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#define an x-axis</span>
 <span class="n">x</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
@@ -468,7 +468,7 @@ The bottom of the above documentation page for <code>randint</code> describes th
 </div>
 </div>
 <p><strong>Bernoulli Random variable</strong></p>
-<div class="cell tag_hide-input docutils container">
+<div class="cell tag_hidecode docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Bernoulli random variable with p=0.5</span>
 
@@ -493,7 +493,7 @@ The bottom of the above documentation page for <code>randint</code> describes th
 </div>
 <p><strong>Sum of two dice</strong></p>
 <p>We don’t have a ready-made method for generating a random variable with the same distribution as the sum of two random variables. But we can define and read the pmf from the table above</p>
-<div class="cell tag_hide-input docutils container">
+<div class="cell tag_hidecode docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># define the pmf</span>
 <span class="n">x_2dice</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">12</span><span class="p">]</span>
@@ -566,7 +566,7 @@ The cell above generates a single realizatoin of the random variable. But we can
 </div>
 </div>
 </div>
-<div class="cell tag_hide-input docutils container">
+<div class="cell tag_hidecode docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="n">figsize</span><span class="p">)</span>
 
@@ -584,7 +584,7 @@ The cell above generates a single realizatoin of the random variable. But we can
 </div>
 </div>
 <p><strong>Bernoulli</strong></p>
-<div class="cell tag_hide-input docutils container">
+<div class="cell tag_hidecode docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">N_draws</span><span class="o">=</span><span class="mi">10</span><span class="p">;</span>
 <span class="n">p_bern</span><span class="o">=</span><span class="mf">0.5</span><span class="p">;</span>
@@ -611,7 +611,7 @@ The cell above generates a single realizatoin of the random variable. But we can
 <img alt="../../_images/M01_N02_Discrete_Random_Variables_28_0.png" src="../../_images/M01_N02_Discrete_Random_Variables_28_0.png" />
 </div>
 </div>
-<div class="cell tag_hide-input docutils container">
+<div class="cell tag_hidecode docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Ndraws</span><span class="o">=</span><span class="mi">100</span>
 
@@ -644,7 +644,7 @@ The cell above generates a single realizatoin of the random variable. But we can
 <p class="admonition-title">Danger</p>
 <p>For <em>discrete</em> random variables the histogram can give weird results if the bins are not set appropriately (for example if they are of unequal weidth)</p>
 </div>
-<div class="cell tag_hide-input docutils container">
+<div class="cell tag_hidecode docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Ndraws</span><span class="o">=</span><span class="mi">400</span>
 
@@ -680,7 +680,7 @@ The cell above generates a single realizatoin of the random variable. But we can
 <p>As the number of draws, or realizations of the random variables increases, the histogram becomes a better and better approximation for the pmf.</p>
 <div class="math notranslate nohighlight">
 \[h_N(x_i)\rightarrow p(x_i)\]</div>
-<div class="cell tag_hide-input docutils container">
+<div class="cell tag_hidecode docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># change the number of draws for the 2 dice case</span>
 <span class="n">Ndraws</span><span class="o">=</span><span class="mi">100000</span>

@@ -89,9 +89,9 @@ for j in range(2):
 
 
 # # Phase of terminations
-# Next, we'll need to compute the phase of obliquity at the moment of terminations
-# Hubers Wunsch 2004 mention a "stroboscopic" sampling of obliquity, but do not give much detail. 
-# We'll use a very rough methodology illustrated below, where we take advantage of the fact that obliquity varies with a period of **aproximately** 41kyr.
+# Next, we'll need to compute the phase of obliquity at the moment of terminations.
+# Huybers Wunsch 2004 mention a "stroboscopic" sampling of obliquity, but do not give much detail. 
+# So instead, we'll use a very rough methodology illustrated below, where we take advantage of the fact that obliquity varies with a period of **aproximately** 41kyr.
 # ## Illustration of phase calculation:
 # We'll take at a point in time $t_0$ and we'll look at the previous $41$ kyr before $t_0$ (one full period of obliquity). We'll normalize obliquity to have zero mean, and a range of -1 to 1, and call the normalized obliquity over the 41ka preceeding $t_0$ as $y(t_0)$.
 # 

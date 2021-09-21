@@ -16,6 +16,8 @@ parts:
   - caption: "Inference:Estimation and Hypothesis Testing"
     chapters:
     - file: content/Module02/M02_N01_Regression
+    - file: content/Module02/M02_N02_Optimization
+    - file: content/Module02/M02_N03_HypothesisTesting
     - file: content/Module02/M02_L01_Obliquity
     #- file: Module02/M02_N02_Anscombe
 

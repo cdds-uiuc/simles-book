@@ -340,13 +340,14 @@
 <h1>Lab 1<a class="headerlink" href="#lab-1" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">reset</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#%reset</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
-
-
+<span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">os</span>
 
 <span class="c1"># These are some parameters to make figures nice (and big)</span>
 <span class="o">%</span><span class="k">matplotlib</span> inline
@@ -359,11 +360,6 @@
          <span class="s1">&#39;xtick.labelsize&#39;</span><span class="p">:</span><span class="s1">&#39;x-large&#39;</span><span class="p">,</span>
          <span class="s1">&#39;ytick.labelsize&#39;</span><span class="p">:</span><span class="s1">&#39;x-large&#39;</span><span class="p">}</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Once deleted, variables cannot be recovered. Proceed (y/[n])? y
 </pre></div>
 </div>
 </div>
@@ -469,9 +465,12 @@ The two random variables are obviously not independent. Indepencene requires \)<
 <p>The cell below computes hourly, daily, monthly, and annual values of precipitation. All you have to do is plot their histograms</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
-<span class="c1">#convert from m/hr to inches/hr, taking into account we only sample 4hrs of the day </span>
-<span class="n">ds</span><span class="o">=</span><span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="s1">&#39;/data/keeling/a/cristi/SIMLES/data/ERA5precip_urbana_1950-2021.nc&#39;</span><span class="p">);</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r</span><span class="o">=</span><span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;http://github.com/cdds-uiuc/simles-book/raw/master/content/Module01/data/ERA5precip_urbana_1950-2021.nc&#39;</span><span class="p">)</span>
+<span class="nb">open</span><span class="p">(</span><span class="s1">&#39;temp.nc&#39;</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
+<span class="n">ds</span><span class="o">=</span><span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="s1">&#39;temp.nc&#39;</span><span class="p">)</span>
+<span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s2">&quot;temp.nc&quot;</span><span class="p">)</span>
+
+
 <span class="n">unit_conv</span><span class="o">=</span><span class="mi">1000</span><span class="o">/</span><span class="mf">24.5</span><span class="o">*</span><span class="mi">6</span>
 
 <span class="n">pr_hr</span> <span class="o">=</span><span class="n">ds</span><span class="o">.</span><span class="n">tp</span><span class="o">*</span><span class="n">unit_conv</span><span class="p">;</span>
@@ -496,8 +495,10 @@ The two random variables are obviously not independent. Indepencene requires \)<
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># read data and take a cursory look</span>
-<span class="n">df</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;/data/keeling/a/cristi/SIMLES/data/Beaumont_precip.csv&#39;</span><span class="p">)</span>
-<span class="c1">#df=pd.read_csv(&#39;/data/keeling/a/cristi/SIMLES/data/PortArthur_precip.csv&#39;)</span>
+<span class="n">url_Beaumont</span><span class="o">=</span><span class="s1">&#39;https://cristi.web.illinois.edu/wp-content/uploads/2021/09/Beaumont_precip.csv&#39;</span>
+<span class="n">url_PortArthur</span><span class="o">=</span><span class="s1">&#39;https://cristi.web.illinois.edu/wp-content/uploads/2021/09/PortArthur_precip.csv&#39;</span>
+<span class="n">df</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url_Beaumont</span><span class="p">)</span>
+<span class="c1">#df=pd.read_csv(url_PortArthur)</span>
 <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>

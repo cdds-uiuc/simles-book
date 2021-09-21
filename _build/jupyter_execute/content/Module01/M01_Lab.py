@@ -3,16 +3,17 @@
 
 # # Lab 1
 
-# In[3]:
+# In[13]:
 
 
-get_ipython().run_line_magic('reset', '')
+#%reset
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 from scipy import stats
-
-
+import xarray as xr
+import requests
+import os
 
 # These are some parameters to make figures nice (and big)
 get_ipython().run_line_magic('matplotlib', 'inline')
@@ -107,12 +108,15 @@ plt.rcParams.update(params)
 # 
 # The cell below computes hourly, daily, monthly, and annual values of precipitation. All you have to do is plot their histograms
 
-# In[1]:
+# In[14]:
 
 
-import xarray as xr
-#convert from m/hr to inches/hr, taking into account we only sample 4hrs of the day 
-ds=xr.open_dataset('/data/keeling/a/cristi/SIMLES/data/ERA5precip_urbana_1950-2021.nc');
+r=requests.get('http://github.com/cdds-uiuc/simles-book/raw/master/content/Module01/data/ERA5precip_urbana_1950-2021.nc')
+open('temp.nc', 'wb').write(r.content)
+ds=xr.open_dataset('temp.nc')
+os.remove("temp.nc")
+
+
 unit_conv=1000/24.5*6
 
 pr_hr =ds.tp*unit_conv;
@@ -135,16 +139,18 @@ Nbins=15;
 # https://www.ncdc.noaa.gov/cdo-web/datasets/GHCND/stations/GHCND:USW00012917/detail
 # 
 
-# In[5]:
+# In[11]:
 
 
 # read data and take a cursory look
-df=pd.read_csv('/data/keeling/a/cristi/SIMLES/data/Beaumont_precip.csv')
-#df=pd.read_csv('/data/keeling/a/cristi/SIMLES/data/PortArthur_precip.csv')
+url_Beaumont='https://cristi.web.illinois.edu/wp-content/uploads/2021/09/Beaumont_precip.csv'
+url_PortArthur='https://cristi.web.illinois.edu/wp-content/uploads/2021/09/PortArthur_precip.csv'
+df=pd.read_csv(url_Beaumont)
+#df=pd.read_csv(url_PortArthur)
 df.head()
 
 
-# In[6]:
+# In[7]:
 
 
 # plot raw precipitation

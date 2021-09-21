@@ -14,6 +14,10 @@ This book contains the jupyter-noteboks for the class, and is meant to be supple
 ```{important}
 To run a notebook in this book use the launch button (the little rocket at the top of notebooks) to launch either Binder Hub or Google Colab. 
 ```
+```{danger}
+If you work in Google Colab on the course-version of the notebook you risk losing your work if you close the interactive session. If you want to work on a notebook, save it, and be able to return to it, make sure you save a copy of the notebook in your own google drive. This can be done in Colab by clicking "save a copy in Drive" under the "File" menu.
+```
+
 ## Errors, Typos, Examples, Feedback
 This is the first iteration of the material, written on the fly, as it is being taught, during a pandemic, and while raising an infant. Errors and typos abound. Finding typos and errors *and reporting them to me* will count towards your participation score in the class. Helpful feedback on the presentation is also welcomed. 
 

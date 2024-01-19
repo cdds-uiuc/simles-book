@@ -2,7 +2,7 @@
 
 # GEOL 593 / ATMS 597 
 
-This is a live and ***very much beta*** version of the course notes for the GEOL 593/ATMS 597, as the class is being actively taught for the first time in the Fall of 2021 at the University of Illinois at Urbana Champaign. 
+This is a live and ***very much beta*** version of the course notes for the GEOL 593/ATMS 597, as the class is being actively taught for the first time in the Spring of 2024 at the University of Illinois at Urbana Champaign. 
 
 ```{warning}
 If you happened on this website and are not a student in the class, proceed with caution. The book is actively being changed and updated. Nothing is stable. The course is intended as a graduate-level hands-on introduction to Statistical Inference and Machine Learning methods across Earth and Environmental Sciences. You are welcome to play around with the materials but be warned: Here be dragons.

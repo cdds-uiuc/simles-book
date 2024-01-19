@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Discrete Random Variables &#8212; SIMLES: Statistical Inference and Machine Learning for Earth Sciences</title>
+    <title>Random Variables and Probability Distributions &#8212; SIMLES: Statistical Inference and Machine Learning for Earth Sciences</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet" />
   <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -51,11 +51,10 @@
         const thebe_selector_output = ".output"
     </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
-    <link rel="canonical" href="https://cdds-uiuc.github.io/simles-book/content/Module01/M01_N02_Discrete_Random_Variables.html" />
+    <link rel="canonical" href="https://cdds-uiuc.github.io/simles-book/content/Module01/M01_N02_Random_Variables.html" />
     <link rel="shortcut icon" href="../../_static/CDDS_logo.jpeg"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Continous random variables" href="M01_N03_Continuous_Random_Variables.html" />
     <link rel="prev" title="Basics of probability" href="M01_N01_Probability_Recap.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -89,7 +88,7 @@
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../../intro.html">
-   SIMLES - About this book
+   SIMLES
   </a>
  </li>
 </ul>
@@ -118,12 +117,7 @@
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Discrete Random Variables
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="M01_N03_Continuous_Random_Variables.html">
-   Continous random variables
+   Random Variables and Probability Distributions
   </a>
  </li>
 </ul>
@@ -167,7 +161,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../_sources/content/Module01/M01_N02_Discrete_Random_Variables.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../../_sources/content/Module01/M01_N02_Random_Variables.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -187,7 +181,7 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/cdds-uiuc/simles-book/issues/new?title=Issue%20on%20page%20%2Fcontent/Module01/M01_N02_Discrete_Random_Variables.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/cdds-uiuc/simles-book/issues/new?title=Issue%20on%20page%20%2Fcontent/Module01/M01_N02_Random_Variables.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -208,7 +202,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/cdds-uiuc/simles-book/master?urlpath=lab/tree/content/Module01/M01_N02_Discrete_Random_Variables.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/cdds-uiuc/simles-book/master?urlpath=lab/tree/content/Module01/M01_N02_Random_Variables.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../../_static/images/logo_binder.svg"
@@ -216,7 +210,7 @@
         
         
         
-        <a class="colab-button" href="https://colab.research.google.com/github/cdds-uiuc/simles-book/blob/master/content/Module01/M01_N02_Discrete_Random_Variables.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+        <a class="colab-button" href="https://colab.research.google.com/github/cdds-uiuc/simles-book/blob/master/content/Module01/M01_N02_Random_Variables.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
                 title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
                     src="../../_static/images/logo_colab.png"
                     alt="Interact on Colab">Colab</button></a>
@@ -235,59 +229,127 @@
             </div>
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#from-random-process-to-random-variables">
-   From random process to random variables
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Random Variables and Probability Distributions
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#examples-of-discrete-random-variables">
-   Examples of discrete random variables
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#a-discrete-random-variables">
+   A. Discrete Random Variables
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#uniform-discrete-random-variable">
-     Uniform discrete random variable
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#from-random-process-to-random-variables">
+     From random process to random variables
     </a>
    </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#bernoulli-random-variable">
-     Bernoulli Random Variable
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#examples-of-discrete-random-variables">
+     1. Examples of discrete random variables
     </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#uniform-discrete-random-variable">
+       1.1 Uniform discrete random variable
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#bernoulli-random-variable">
+       1.2 Bernoulli Random Variable
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#sum-of-two-dice">
+       1.3 Sum of two dice
+      </a>
+     </li>
+    </ul>
    </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#sum-of-two-dice">
-     Sum of two dice
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#distributions-of-discrete-random-variable">
+     2. Distributions of discrete random variable
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#probability-mass-functions">
+       2.1 Probability mass functions
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#realization-draw">
+       2.2 Realization/Draw
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#histograms">
+       2.3 Histograms
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#convergence-of-histograms-to-pmfs">
+       2.4 Convergence of histograms to pmfs
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#b-continous-random-variables">
+   B. Continous random variables
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#distribution-functions">
+     1 Distribution functions
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#cumulative-distribution-function-cdf">
+       1.1 Cumulative Distribution function (CDF).
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#probability-density-functions-pdf-for-continuous-r-v-s">
+       1.2 Probability density functions (pdf) for continuous r.v.s
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#histogram">
+       1.3 Histogram
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#examples-of-continuous-random-variables">
+     2 Examples of continuous random variables
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#uniform">
+       2.1 Uniform
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#normal-gaussian">
+       2.1 Normal/Gaussian
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#mixed-random-variables">
+     3. Mixed random variables
     </a>
    </li>
   </ul>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#distributions-of-discrete-random-variable">
-   Distributions of discrete random variable
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#c-exercises">
+   C Exercises
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#probability-mass-functions">
-     Probability mass functions
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#realization-draw">
-     Realization/Draw
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#histograms">
-     Histograms
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#convergence-of-histograms-to-pmfs">
-     Convergence of histograms to pmfs
-    </a>
-   </li>
-  </ul>
  </li>
 </ul>
 
@@ -300,8 +362,12 @@
         
               <div>
                 
-  <div class="section" id="discrete-random-variables">
-<h1>Discrete Random Variables<a class="headerlink" href="#discrete-random-variables" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="random-variables-and-probability-distributions">
+<h1>Random Variables and Probability Distributions<a class="headerlink" href="#random-variables-and-probability-distributions" title="Permalink to this headline">¶</a></h1>
+<p><em><strong>Reading: Emile-Geay: Chapter 3</strong></em></p>
+</div>
+<div class="section" id="a-discrete-random-variables">
+<h1>A. Discrete Random Variables<a class="headerlink" href="#a-discrete-random-variables" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#%reset</span>
@@ -334,9 +400,9 @@ For our purspose we can define a (univariate) random variable <span class="math 
 <p>Examples of random variables: the result of rolling a dice. The total amount of rainfall falling in a day. The duration of rainfall falling in a day. The magnitude of an Earthquake.</p>
 </div>
 <div class="section" id="examples-of-discrete-random-variables">
-<h2>Examples of discrete random variables<a class="headerlink" href="#examples-of-discrete-random-variables" title="Permalink to this headline">¶</a></h2>
+<h2>1. Examples of discrete random variables<a class="headerlink" href="#examples-of-discrete-random-variables" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="uniform-discrete-random-variable">
-<h3>Uniform discrete random variable<a class="headerlink" href="#uniform-discrete-random-variable" title="Permalink to this headline">¶</a></h3>
+<h3>1.1 Uniform discrete random variable<a class="headerlink" href="#uniform-discrete-random-variable" title="Permalink to this headline">¶</a></h3>
 <p>The simples example of a random variable is that of a uniform discrete random variable. For example, consider the random variable <span class="math notranslate nohighlight">\(X\)</span> that is associated with the value on the face of a die. This random variable takes discrete values between 1 and 6.</p>
 <p><strong>Simulation</strong></p>
 <p>We can simulate this random variable using the <code>stats.randint.rvs</code> method from the <code>scipy</code> library.</p>
@@ -360,16 +426,17 @@ The bottom of the above documentation page for <code>randint</code> describes th
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[2]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[5]
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="section" id="bernoulli-random-variable">
-<h3>Bernoulli Random Variable<a class="headerlink" href="#bernoulli-random-variable" title="Permalink to this headline">¶</a></h3>
+<h3>1.2 Bernoulli Random Variable<a class="headerlink" href="#bernoulli-random-variable" title="Permalink to this headline">¶</a></h3>
 <p>A Bernoulli random variable is a variable that can only take values of <span class="math notranslate nohighlight">\(1\)</span> or <span class="math notranslate nohighlight">\(0\)</span>. It takes a value of <span class="math notranslate nohighlight">\(1\)</span> with probability <span class="math notranslate nohighlight">\(p\)</span> and <span class="math notranslate nohighlight">\(0\)</span> with probability <span class="math notranslate nohighlight">\(1-p\)</span></p>
-<p>We can simulate a random variable using the fair die. For example, we can define a Bernoulli random variable <span class="math notranslate nohighlight">\(Y\)</span> which takes value <span class="math notranslate nohighlight">\(1\)</span> if the roll is larger than 3, and <span class="math notranslate nohighlight">\(0\)</span> otherwise. In this case, the Bernoulli random variable has <span class="math notranslate nohighlight">\(p=0.5\)</span>.</p>
+<p>We can simulate a random variable using the fair die. For example, we can define a Bernoulli random variable <span class="math notranslate nohighlight">\(Y\)</span> which takes value <span class="math notranslate nohighlight">\(1\)</span> if the roll is larger than 3, and <span class="math notranslate nohighlight">\(0\)</span> otherwise. In this case, the Bernoulli random variable has <span class="math notranslate nohighlight">\(p=0.5\)</span>.
+Run the code block below a few times.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># rerun this cell to simulate more realizations of a bernoulli random variable</span>
@@ -383,7 +450,7 @@ The bottom of the above documentation page for <code>randint</code> describes th
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
 </pre></div>
 </div>
 </div>
@@ -406,6 +473,7 @@ The bottom of the above documentation page for <code>randint</code> describes th
 </div>
 </div>
 </div>
+<p>We can also generate more than one realization/sample of a random variable at once in python, by specifiying a size argument:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Rerun this cell to generate Bernoulli random variables with $p=0.9$</span>
@@ -415,15 +483,15 @@ The bottom of the above documentation page for <code>randint</code> describes th
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1 1 1 1 1 1 1 0 1 1 1 1 1 0 1 1 1 1 1 1 0 1 1 1 1 1 1 1 1 1 1 0 1 1 1 0 1
- 1 1 1 1 1 0 1 1 1 1 1 1 1]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0 1 1 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 1 1 1 1 1 1 0 0 1 1 0 1 1
+ 1 1 1 0 1 1 1 1 1 1 1 1 1]
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="section" id="sum-of-two-dice">
-<h3>Sum of two dice<a class="headerlink" href="#sum-of-two-dice" title="Permalink to this headline">¶</a></h3>
+<h3>1.3 Sum of two dice<a class="headerlink" href="#sum-of-two-dice" title="Permalink to this headline">¶</a></h3>
 <p>Let’s take another example of a random variable. Consider rolling two fair dice</p>
 <p><img alt="two_dice.png" src="../../_images/M01_two_dice.png" /></p>
 <p>And define a random variable <span class="math notranslate nohighlight">\(S\)</span> whose value is the sum of the two dice rolls.</p>
@@ -439,7 +507,7 @@ The bottom of the above documentation page for <code>randint</code> describes th
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[9]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[8]
 </pre></div>
 </div>
 </div>
@@ -447,9 +515,9 @@ The bottom of the above documentation page for <code>randint</code> describes th
 <hr style="border:1px solid black"> </hr></div>
 </div>
 <div class="section" id="distributions-of-discrete-random-variable">
-<h2>Distributions of discrete random variable<a class="headerlink" href="#distributions-of-discrete-random-variable" title="Permalink to this headline">¶</a></h2>
+<h2>2. Distributions of discrete random variable<a class="headerlink" href="#distributions-of-discrete-random-variable" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="probability-mass-functions">
-<h3>Probability mass functions<a class="headerlink" href="#probability-mass-functions" title="Permalink to this headline">¶</a></h3>
+<h3>2.1 Probability mass functions<a class="headerlink" href="#probability-mass-functions" title="Permalink to this headline">¶</a></h3>
 <p>How do we describe the possible outcome of a random variable? Random variables can be described - and are actually defined - by their distribution functions. Instead of a “bernoulli random variable” we will usually say a “Bernoulli-distributed random variable”.</p>
 <p>For discrete random variables these distributions functions are called <strong>probability mass functions (pmf)</strong>. the pmf of a random variable <span class="math notranslate nohighlight">\(X\)</span> is:</p>
 <div class="math notranslate nohighlight">
@@ -478,7 +546,7 @@ The bottom of the above documentation page for <code>randint</code> describes th
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/M01_N02_Discrete_Random_Variables_16_0.png" src="../../_images/M01_N02_Discrete_Random_Variables_16_0.png" />
+<img alt="../../_images/M01_N02_Random_Variables_18_0.png" src="../../_images/M01_N02_Random_Variables_18_0.png" />
 </div>
 </div>
 <p><strong>Bernoulli Random variable</strong></p>
@@ -502,18 +570,7 @@ The bottom of the above documentation page for <code>randint</code> describes th
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="mf">1e1</span><span class="n">d70f3b2ea</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">p</span><span class="o">=</span><span class="mf">0.5</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="c1">#define an x-axis</span>
-<span class="ne">----&gt; </span><span class="mi">5</span> <span class="n">x</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> 
-<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="c1">#plot</span>
-
-<span class="ne">NameError</span>: name &#39;np&#39; is not defined
-</pre></div>
-</div>
+<img alt="../../_images/M01_N02_Random_Variables_20_0.png" src="../../_images/M01_N02_Random_Variables_20_0.png" />
 </div>
 </div>
 <p><strong>Sum of two dice</strong></p>
@@ -536,23 +593,12 @@ The bottom of the above documentation page for <code>randint</code> describes th
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">2</span><span class="o">-</span><span class="n">bef10761eba6</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># define the pmf</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">x_2dice</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">12</span><span class="p">]</span>
-<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">p_2dice</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span><span class="o">/</span><span class="mi">36</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> 
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="c1">#notice we need to make the pmf p_2dice as numpy array.</span>
-
-<span class="ne">NameError</span>: name &#39;np&#39; is not defined
-</pre></div>
-</div>
+<img alt="../../_images/M01_N02_Random_Variables_22_0.png" src="../../_images/M01_N02_Random_Variables_22_0.png" />
 </div>
 </div>
 </div>
 <div class="section" id="realization-draw">
-<h3>Realization/Draw<a class="headerlink" href="#realization-draw" title="Permalink to this headline">¶</a></h3>
+<h3>2.2 Realization/Draw<a class="headerlink" href="#realization-draw" title="Permalink to this headline">¶</a></h3>
 <p>We would call the value of the random variable associated with a throw of the dice a <strong>realization</strong> or <strong>draw</strong> of the random process and of the random variable.
 The cell above generates a single realizatoin of the random variable. But we can generate multiple realizatoins at once and save them in an array</p>
 <div class="cell docutils container">
@@ -565,14 +611,14 @@ The cell above generates a single realizatoin of the random variable. But we can
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[5 1 6 2 2 1 1 5 6 3 2 1 1 4 4 1 5 4 5 5]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[6 3 5 5 5 1 4 5 1 1 6 5 4 1 2 2 3 2 1 6]
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="section" id="histograms">
-<h3>Histograms<a class="headerlink" href="#histograms" title="Permalink to this headline">¶</a></h3>
+<h3>2.3 Histograms<a class="headerlink" href="#histograms" title="Permalink to this headline">¶</a></h3>
 <p><b>Definition</b>: A histogram is an <em>approximate</em> representation of the distribution of a random variable, done through computing the frequency of observations occuring in certain ranges of values.</p>
 <p>To compute a histogram we have to draw realizations of a ranodm variable, define a set of bins, and count the number of realizations within each bin. Let’s do that for the three random variables discussed, and compare it with the pmf</p>
 <p>Note ther are several ways to compute a histogram: Using <a href="https://numpy.org/doc/stable/reference/generated/numpy.histogram.html">numpy.histrogram</a>,<a href="https://docs.scipy.org/doc/scipy-0.14.0/reference/generated/scipy.stats.histogram.html">scipy.histogram</a>, or <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.hist.html">matplotlib.pyplot.hist</a>.</p>
@@ -595,9 +641,9 @@ The cell above generates a single realizatoin of the random variable. But we can
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1 1 1 4 6 5 5 1 6 3 1 3 6 5 6 4 1 5 4 4 6 1 2 6 5 5 1 3 1 1 4 6 4 1 3 4 1
- 1 6 6 2 1 3 6 3 6 6 1 1 1 6 6 5 2 3 1 1 6 1 5 6 3 3 5 2 3 6 2 2 3 1 3 3 6
- 5 1 5 5 3 1 5 2 1 6 6 2 4 4 4 6 4 3 1 6 1 6 1 6 3 1]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1 3 3 1 2 6 6 2 1 2 4 6 5 2 6 1 2 4 3 1 4 2 3 2 6 3 3 3 3 2 6 6 4 2 1 4 5
+ 2 4 2 3 6 4 6 2 4 5 6 6 4 3 4 3 1 2 3 1 6 2 6 1 5 3 3 6 6 6 3 5 4 4 6 1 5
+ 4 3 6 1 5 2 3 2 5 4 1 2 2 4 1 5 3 1 4 6 6 5 3 6 3 1]
 </pre></div>
 </div>
 </div>
@@ -616,7 +662,7 @@ The cell above generates a single realizatoin of the random variable. But we can
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/M01_N02_Discrete_Random_Variables_26_0.png" src="../../_images/M01_N02_Discrete_Random_Variables_26_0.png" />
+<img alt="../../_images/M01_N02_Random_Variables_28_0.png" src="../../_images/M01_N02_Random_Variables_28_0.png" />
 </div>
 </div>
 <p><strong>Bernoulli</strong></p>
@@ -644,7 +690,7 @@ The cell above generates a single realizatoin of the random variable. But we can
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/M01_N02_Discrete_Random_Variables_28_0.png" src="../../_images/M01_N02_Discrete_Random_Variables_28_0.png" />
+<img alt="../../_images/M01_N02_Random_Variables_30_0.png" src="../../_images/M01_N02_Random_Variables_30_0.png" />
 </div>
 </div>
 <div class="cell tag_hide-input docutils container">
@@ -673,7 +719,7 @@ The cell above generates a single realizatoin of the random variable. But we can
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/M01_N02_Discrete_Random_Variables_29_0.png" src="../../_images/M01_N02_Discrete_Random_Variables_29_0.png" />
+<img alt="../../_images/M01_N02_Random_Variables_31_0.png" src="../../_images/M01_N02_Random_Variables_31_0.png" />
 </div>
 </div>
 <div class="admonition danger">
@@ -707,12 +753,12 @@ The cell above generates a single realizatoin of the random variable. But we can
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/M01_N02_Discrete_Random_Variables_31_0.png" src="../../_images/M01_N02_Discrete_Random_Variables_31_0.png" />
+<img alt="../../_images/M01_N02_Random_Variables_33_0.png" src="../../_images/M01_N02_Random_Variables_33_0.png" />
 </div>
 </div>
 </div>
 <div class="section" id="convergence-of-histograms-to-pmfs">
-<h3>Convergence of histograms to pmfs<a class="headerlink" href="#convergence-of-histograms-to-pmfs" title="Permalink to this headline">¶</a></h3>
+<h3>2.4 Convergence of histograms to pmfs<a class="headerlink" href="#convergence-of-histograms-to-pmfs" title="Permalink to this headline">¶</a></h3>
 <p>As the number of draws, or realizations of the random variables increases, the histogram becomes a better and better approximation for the pmf.</p>
 <div class="math notranslate nohighlight">
 \[h_N(x_i)\rightarrow p(x_i)\]</div>
@@ -743,11 +789,291 @@ The cell above generates a single realizatoin of the random variable. But we can
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/M01_N02_Discrete_Random_Variables_33_0.png" src="../../_images/M01_N02_Discrete_Random_Variables_33_0.png" />
+<img alt="../../_images/M01_N02_Random_Variables_35_0.png" src="../../_images/M01_N02_Random_Variables_35_0.png" />
 </div>
 </div>
 </div>
 </div>
+</div>
+<div class="section" id="b-continous-random-variables">
+<h1>B. Continous random variables<a class="headerlink" href="#b-continous-random-variables" title="Permalink to this headline">¶</a></h1>
+<p>Just like a discrete random variable (r.v.) , a continous random variable is a function that is defined on a samples
+space and takes value in the real numbers. However, unlike a discrete r.v. which takes a discrete set of values either finite or countably infinite, a continuous r.v. takes an uncountable number of values. For example, it might take any
+value in a given interval, or it might take any value in the real numbers.</p>
+<p>In this class, we will almost exclusively deal with continuous random variables, used to describe properties such as temperature, velocity, etc of continuous media such as as air, water, Earth’s mantle, etc.</p>
+<div class="section" id="distribution-functions">
+<h2>1 Distribution functions<a class="headerlink" href="#distribution-functions" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="cumulative-distribution-function-cdf">
+<h3>1.1 Cumulative Distribution function (CDF).<a class="headerlink" href="#cumulative-distribution-function-cdf" title="Permalink to this headline">¶</a></h3>
+<p>The cumulative distribiution function (CDF), <span class="math notranslate nohighlight">\(F(x)\)</span>, of a random variable - wheteher discrete or continuous - is defined as:
+$<span class="math notranslate nohighlight">\(F(x)=P(X\leq x)\)</span>$</p>
+<p>The CDF exists for any random variable, is piece-wise continous, and takes values between 0 an 1. If the random variables takes values in the interval <span class="math notranslate nohighlight">\([x_{min},x_{max}]\)</span>, then <span class="math notranslate nohighlight">\(F(x)=0\)</span> for <span class="math notranslate nohighlight">\(x&lt;x_{min}\)</span> and <span class="math notranslate nohighlight">\(F(x)=1\)</span> for <span class="math notranslate nohighlight">\(x&gt;x_{max}\)</span></p>
+<p>For a discrete random variable:
+$<span class="math notranslate nohighlight">\(F(x)=\sum_i P(X=x_i)=\sum_{i:x_i&lt;x}f(x_i)\)</span>$</p>
+<p>where <span class="math notranslate nohighlight">\(f(x_i)\)</span> is the pmf of X. For a discrete r.v. the CDF is going to look like a staircase, with jumps at the values <span class="math notranslate nohighlight">\(x_i\)</span> that <span class="math notranslate nohighlight">\(X\)</span> can take.</p>
+<p>In contrast, continuous random variables will have a continous CDFs. For the continous random variables considered in this class, the CDF will also be differentiable. Which means that we can also define a probability density function.</p>
+</div>
+<div class="section" id="probability-density-functions-pdf-for-continuous-r-v-s">
+<h3>1.2 Probability density functions (pdf) for continuous r.v.s<a class="headerlink" href="#probability-density-functions-pdf-for-continuous-r-v-s" title="Permalink to this headline">¶</a></h3>
+<p>The distribution of a continuous random variable is generally defined by a probability density function, or <em>pdf</em>. We will denote the pdf of r.v. <span class="math notranslate nohighlight">\(X\)</span> by <span class="math notranslate nohighlight">\(f_X(x)\)</span> or, more commonly, simply by <span class="math notranslate nohighlight">\(f(x)\)</span>. The pdf of <span class="math notranslate nohighlight">\(X\)</span> is the probability that <span class="math notranslate nohighlight">\(X\)</span> takes a values in an infinitesimalinterval around <span class="math notranslate nohighlight">\(x\)</span>:
+$<span class="math notranslate nohighlight">\(f(x)=P(X\in [x,x+dx])\)</span><span class="math notranslate nohighlight">\(
+or 
+\)</span><span class="math notranslate nohighlight">\(P(x\in [x_1,x_2])=\int_{x_1}^{x_2} f(x)dx\)</span>$</p>
+<p>The pdf of a continuous r.v. must satisfy a few properties, such as <span class="math notranslate nohighlight">\( \int_{-\infty}^{+\infty}f(x)dx=1\)</span> and <span class="math notranslate nohighlight">\(f(x)&gt;0\)</span>. There is a simple relation between the CDF and the pdf of a continuous r.v. analaogos to that between the CDF and the pmf of a discrete r.v.:
+$<span class="math notranslate nohighlight">\(F(x)=P(X&lt;x)=\int_{-\infty}^{u}f(u)du\)</span>$</p>
+</div>
+<div class="section" id="histogram">
+<h3>1.3 Histogram<a class="headerlink" href="#histogram" title="Permalink to this headline">¶</a></h3>
+<p>Just like for discrete r.v.s, we can use a histogram to approximate the pdf of a continuous random variable. The histogram makes more sense for a continous random variable. To compute a histogram we will need to define a set of bin edges <span class="math notranslate nohighlight">\({x_i}\)</span>, the histogram counts the number of realizations in each bin. So,
+$<span class="math notranslate nohighlight">\(h(x_i,x_j)= \text{# of realizations of }X\text{ between }x_i,x_j. \)</span>$</p>
+<p>A scaled, or normed, histogram is</p>
+<div class="math notranslate nohighlight">
+\[h(x_i,x_{i+1})= \frac{\text{# of realizations of }X\text{ between }x_i,x_{i+1}}{(\text{total # of realizations of }X )(x_{i+1}-x_i)}. \]</div>
+<p>For a very large number of realizations, the histogram will be equal to the average value of the pdf within a bin:
+$<span class="math notranslate nohighlight">\(h(x_i,x_{i+1})\approx \overline {f(x_i)}=\frac{\int_{x_i}^{x_i+1} f(u)du}{x_{i+1}-x_i}\)</span>$</p>
+<p>As long as the lower bin <span class="math notranslate nohighlight">\(x_1\)</span> is low enough that the probability of X taking values lower than it is small or zero, <span class="math notranslate nohighlight">\(f(x)\approx0\)</span>, for <span class="math notranslate nohighlight">\(x&lt;x_1\)</span>, we can also use a histogram to approximate a CDF:
+$<span class="math notranslate nohighlight">\(F(x_i)=\int_{-\infty}^{x_i}f(u)du \approx \sum_{j=0}^{j-1}\int_{x_i}^{x_i+1} f(u)du\approx\sum_{j=1}^{i-1} h(x_j,x_j+1)\cdot (x_{i+1}-x_i)\)</span>$</p>
+<p>All of the above will make more sense with some examples:</p>
+<hr style="border:2px solid black"> </hr></div>
+</div>
+<div class="section" id="examples-of-continuous-random-variables">
+<h2>2 Examples of continuous random variables<a class="headerlink" href="#examples-of-continuous-random-variables" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="uniform">
+<h3>2.1 Uniform<a class="headerlink" href="#uniform" title="Permalink to this headline">¶</a></h3>
+<p>The uniform distribution is the distribution of a random variable which has equal probabiliy of taking any value within an interval. The interval can be either open or closed, e.g. <span class="math notranslate nohighlight">\([a,b], [a,b)\)</span> or <span class="math notranslate nohighlight">\((a,b)\)</span>. The pdf of a continuous uniform r.v. defined in <span class="math notranslate nohighlight">\([a,b]\)</span> is</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}p(x)=\begin{cases}
+\frac{1}{b-a} &amp; \text{if }x\in[a,b]\\
+0 &amp; \text{if }x\notin[a,b]
+\end{cases}\end{split}\]</div>
+<p>the <span class="math notranslate nohighlight">\(1/(b-a)\)</span> comes from the condition that the pdf integrates to <span class="math notranslate nohighlight">\(1\)</span>. The CDF of a uniform r.v. is.
+$<span class="math notranslate nohighlight">\(F(x)=\int_{-\infty}^{x}f(u)du\)</span>$</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}F(x)=\begin{cases}
+0 &amp; \text{if }x&lt;a\\
+\frac{x-a}{b-a} &amp; \text{if }x\in[a,b]\\
+1 &amp; \text{if }x&gt;b
+\end{cases}\end{split}\]</div>
+<p>Let’s plot the pdf &amp; CDF of a uniform random variable</p>
+<p>Note <code>scipy</code> defines a continous uniform r.v. distribution in terms of location <code>loc</code> and <code>scale</code>, parameters, i.e. the r.v. is defined in <span class="math notranslate nohighlight">\([\text{loc},\text{loc}+\text{scale}]\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
+
+<span class="c1"># let&#39;s define a uniform r.v. on the interval 0,2</span>
+<span class="n">loc</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+<span class="n">scale</span><span class="o">=</span><span class="mi">2</span><span class="p">;</span>
+
+
+<span class="c1"># pdf,cdf</span>
+<span class="n">x_uniform</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">f_uniform</span><span class="o">=</span><span class="n">stats</span><span class="o">.</span><span class="n">uniform</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x_uniform</span><span class="p">,</span><span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">,</span><span class="n">scale</span><span class="o">=</span><span class="n">scale</span><span class="p">)</span>
+<span class="n">F_uniform</span><span class="o">=</span><span class="n">stats</span><span class="o">.</span><span class="n">uniform</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="n">x_uniform</span><span class="p">,</span><span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">,</span><span class="n">scale</span><span class="o">=</span><span class="n">scale</span><span class="p">)</span>
+
+<span class="c1">#plot</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_uniform</span><span class="p">,</span><span class="n">f_uniform</span> <span class="p">,</span> <span class="s1">&#39;r-&#39;</span><span class="p">,</span><span class="n">ms</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;pdf&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_uniform</span><span class="p">,</span><span class="n">F_uniform</span> <span class="p">,</span> <span class="s1">&#39;r-&#39;</span><span class="p">,</span><span class="n">ms</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;CDF&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x13786bac0&gt;
+</pre></div>
+</div>
+<img alt="../../_images/M01_N02_Random_Variables_42_1.png" src="../../_images/M01_N02_Random_Variables_42_1.png" />
+</div>
+</div>
+<p>Let’s generate some samples and compute a histogram.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">loc</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+<span class="n">scale</span><span class="o">=</span><span class="mi">2</span><span class="p">;</span>
+
+<span class="n">Ndraws</span><span class="o">=</span><span class="mi">200000</span><span class="p">;</span>
+<span class="n">Nbin_edges</span><span class="o">=</span><span class="mi">201</span><span class="p">;</span>
+
+<span class="c1"># pdf,cdf</span>
+<span class="n">x_uniform</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">f_uniform</span><span class="o">=</span><span class="n">stats</span><span class="o">.</span><span class="n">uniform</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x_uniform</span><span class="p">,</span><span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">,</span><span class="n">scale</span><span class="o">=</span><span class="n">scale</span><span class="p">)</span>
+<span class="n">F_uniform</span><span class="o">=</span><span class="n">stats</span><span class="o">.</span><span class="n">uniform</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="n">x_uniform</span><span class="p">,</span><span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">,</span><span class="n">scale</span><span class="o">=</span><span class="n">scale</span><span class="p">)</span>
+
+
+<span class="c1"># generate random variables </span>
+<span class="n">X_uniform</span><span class="o">=</span><span class="n">stats</span><span class="o">.</span><span class="n">uniform</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">,</span><span class="n">scale</span><span class="o">=</span><span class="n">scale</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">Ndraws</span><span class="p">)</span>
+<span class="c1"># let&#39;s examine the draws. remember they should be uniformyl distributed between loc and loc+scale</span>
+<span class="c1">#print(X_uniform)</span>
+
+
+<span class="c1"># let&#39;s compute the histogram, compare it to the pdf, and use it to approximate the CDF</span>
+<span class="c1"># we&#39;ll use the numpy histogram function, since we need the values of the histogram. </span>
+<span class="c1"># Note the numpy histogram function outputs both histogram values and bin edges. </span>
+<span class="c1">#We only need the values, so we need to take the first component, [0], of the output</span>
+
+<span class="n">bin_edges_uniform</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="n">Nbin_edges</span><span class="p">)</span>
+<span class="n">bin_centers</span><span class="o">=</span><span class="p">(</span><span class="n">bin_edges_uniform</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span><span class="o">+</span><span class="n">bin_edges_uniform</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">/</span><span class="mi">2</span>
+
+<span class="n">histogram</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">X_uniform</span><span class="p">,</span><span class="n">bin_edges_uniform</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">F_approx</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">histogram</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">bin_edges_uniform</span><span class="p">))</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">X_uniform</span><span class="p">,</span><span class="n">bin_edges_uniform</span><span class="p">,</span><span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">rwidth</span><span class="o">=</span><span class="mf">0.95</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;histogram&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_uniform</span><span class="p">,</span><span class="n">f_uniform</span> <span class="p">,</span> <span class="s1">&#39;r-&#39;</span><span class="p">,</span><span class="n">ms</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;pdf&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">bin_centers</span><span class="p">,</span><span class="n">F_approx</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;hist approx &#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_uniform</span><span class="p">,</span><span class="n">F_uniform</span> <span class="p">,</span> <span class="s1">&#39;r-&#39;</span><span class="p">,</span><span class="n">ms</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;CDF&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x13764b8e0&gt;
+</pre></div>
+</div>
+<img alt="../../_images/M01_N02_Random_Variables_44_1.png" src="../../_images/M01_N02_Random_Variables_44_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="normal-gaussian">
+<h3>2.1 Normal/Gaussian<a class="headerlink" href="#normal-gaussian" title="Permalink to this headline">¶</a></h3>
+<p>The most common distribution we will encounter is the Gaussian (or Normal distribution). It is the most commonly occuring distribution in nature - and it is in fact the <em>central</em> distribution to which other distributions gravitate, as we shall discuss later. More properties of the gaussian distribution will come up thrughout the course, but let’s introduce it here:</p>
+<p>The pdf of a gaussian(normal distribution) is defined by two parameters, <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(\sigma\)</span>, called the locatoin and the scale parameter, which, as we shall see, are also the mean and standard deviation. We wil learn more about these parameters in the next chapter, but it’s easier to illustrate them once we have some distributions from which we can generate samples.
+$<span class="math notranslate nohighlight">\(f(x)=\frac{1}{\sqrt{2\pi\sigma^2}}\exp\left[-\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^2\right]\)</span>$</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.norm.html</span>
+<span class="c1"># scipy defines mu as locatiom, and sigma as scale. </span>
+<span class="c1"># Play around with these parametrs to see how the distribution changes. </span>
+
+
+<span class="n">xlim_left</span><span class="o">=-</span><span class="mi">10</span><span class="p">;</span>
+<span class="n">xlim_right</span><span class="o">=</span><span class="mi">10</span><span class="p">;</span>
+
+<span class="n">mu</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+<span class="n">sigma</span><span class="o">=</span><span class="mi">3</span><span class="p">;</span>
+
+<span class="c1"># you should also play arond with the number of draws and bins of the histogram.</span>
+<span class="c1"># there are some guidelines for choosing the number of bins (Emile-Geay&#39;s book talks a bit about them)</span>
+<span class="n">Ndraws</span><span class="o">=</span><span class="mi">200000</span><span class="p">;</span>
+<span class="n">Nbin_edges</span><span class="o">=</span><span class="mi">20</span><span class="p">;</span>
+
+<span class="c1"># pdf,cdf</span>
+<span class="n">x_norm</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">xlim_left</span><span class="p">,</span><span class="n">xlim_right</span><span class="p">,</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">f_norm</span><span class="o">=</span><span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x_norm</span><span class="p">,</span><span class="n">loc</span><span class="o">=</span><span class="n">mu</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">sigma</span><span class="p">)</span>
+<span class="n">F_norm</span><span class="o">=</span><span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="n">x_norm</span><span class="p">,</span><span class="n">loc</span><span class="o">=</span><span class="n">mu</span><span class="p">,</span><span class="n">scale</span><span class="o">=</span><span class="n">sigma</span><span class="p">)</span>
+
+<span class="c1"># generate random variables and define edges (note we want the integers to be in the bins, not at the edges)</span>
+<span class="n">X_norm</span><span class="o">=</span><span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="n">mu</span><span class="p">,</span><span class="n">scale</span><span class="o">=</span><span class="n">sigma</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">Ndraws</span><span class="p">)</span>
+<span class="n">bin_edges_norm</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">xlim_left</span><span class="p">,</span><span class="n">xlim_right</span><span class="p">,</span><span class="n">Nbin_edges</span><span class="p">)</span>
+
+<span class="n">bin_edges</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">xlim_left</span><span class="p">,</span><span class="n">xlim_right</span><span class="p">,</span><span class="n">Nbin_edges</span><span class="p">)</span>
+<span class="n">bin_centers</span><span class="o">=</span><span class="p">(</span><span class="n">bin_edges</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span><span class="o">+</span><span class="n">bin_edges</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">/</span><span class="mi">2</span>
+<span class="n">histogram</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">X_norm</span><span class="p">,</span><span class="n">bin_edges</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">F_approx</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">histogram</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">bin_edges</span><span class="p">))</span>
+
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+
+
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_norm</span><span class="p">,</span><span class="n">f_norm</span> <span class="p">,</span> <span class="s1">&#39;r-&#39;</span><span class="p">,</span><span class="n">ms</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;pdf&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">X_norm</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="n">bin_edges_norm</span><span class="p">,</span><span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">rwidth</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;histogram&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">bin_centers</span><span class="p">,</span><span class="n">F_approx</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;histogram approx&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_norm</span><span class="p">,</span><span class="n">F_norm</span> <span class="p">,</span> <span class="s1">&#39;r-&#39;</span><span class="p">,</span><span class="n">ms</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;CDF&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x116f02bb0&gt;
+</pre></div>
+</div>
+<img alt="../../_images/M01_N02_Random_Variables_46_1.png" src="../../_images/M01_N02_Random_Variables_46_1.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="mixed-random-variables">
+<h2>3. Mixed random variables<a class="headerlink" href="#mixed-random-variables" title="Permalink to this headline">¶</a></h2>
+<p>Some random variables are “mixed” random variables, where the distribution contains a discrete part, and a continuous part.</p>
+<p>Take, for example, the distribution of precipitation amount at Willard airport from 1997 until today.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">df</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;./data/Beaumont_precip.csv&#39;</span><span class="p">)</span>
+<span class="n">precip_willard</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;PRCP&#39;</span><span class="p">];</span>
+
+<span class="n">Nbin_edges</span><span class="o">=</span><span class="mi">100</span>
+<span class="n">xlim_left</span><span class="o">=-</span><span class="mf">0.5</span>
+<span class="n">xlim_right</span><span class="o">=</span><span class="mi">3</span>
+
+<span class="n">bin_edges</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">xlim_left</span><span class="p">,</span><span class="n">xlim_right</span><span class="p">,</span><span class="n">Nbin_edges</span><span class="p">)</span>
+<span class="n">bin_centers</span><span class="o">=</span><span class="p">(</span><span class="n">bin_edges</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span><span class="o">+</span><span class="n">bin_edges</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">/</span><span class="mi">2</span>
+<span class="n">histogram</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">precip_willard</span><span class="p">,</span><span class="n">bin_edges</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">F_approx</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">histogram</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">bin_edges</span><span class="p">))</span>
+
+
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">precip_willard</span><span class="p">,</span><span class="n">bin_edges</span><span class="p">,</span><span class="n">density</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">rwidth</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">right</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;# of days&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Precip amount&#39;</span><span class="p">)</span>
+
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">precip_willard</span><span class="p">,</span><span class="n">bin_edges</span><span class="p">,</span><span class="n">density</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">rwidth</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">right</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="n">top</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;# of days&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Precip amount&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">bin_centers</span><span class="p">,</span><span class="n">F_approx</span><span class="p">,</span><span class="s1">&#39;.-&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;CDF approximation&#39;</span><span class="p">)</span>
+<span class="c1"># approximate the cdf</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x13b132df0&gt;]
+</pre></div>
+</div>
+<img alt="../../_images/M01_N02_Random_Variables_48_1.png" src="../../_images/M01_N02_Random_Variables_48_1.png" />
+</div>
+</div>
+<p>What do we see? Notice the jump in the CDF at 0. This means there is about an <span class="math notranslate nohighlight">\(80\%\)</span> probability that there is no rain, i.e. it only rains on <span class="math notranslate nohighlight">\(20\%\)</span> of days. So for <span class="math notranslate nohighlight">\(x=0\)</span>, there is a finite probability <span class="math notranslate nohighlight">\(P(X=0)=20\%\)</span>. For everything else, the probability is (in principle) continuous, and described by a continous pdf that describes the probability of precipitation falling in an infinitesimal interval around x.</p>
+<p>In practice, when working with real data all distributions will be discretized by the measurement precision of the instrument used.</p>
+</div>
+</div>
+<div class="section" id="c-exercises">
+<h1>C Exercises<a class="headerlink" href="#c-exercises" title="Permalink to this headline">¶</a></h1>
+<p>Plot the pdf, cdf, and draw histogram for a few other common distributions. The easiest way to find the relevant modules in scipy.stats is to google “scipy stats poisson” and so on.</p>
+<p>Here are a few suggestions:</p>
+<ul class="simple">
+<li><p>Discrete:</p>
+<ul>
+<li><p>poisson distribution</p></li>
+<li><p>binomial distribution</p></li>
+</ul>
+</li>
+<li><p>Continuous</p>
+<ul>
+<li><p>exponential distribution</p></li>
+<li><p>laplace distribution</p></li>
+<li><p>gamma distribution</p></li>
+</ul>
+</li>
+</ul>
 </div>
 
     <script type="text/x-thebe-config">
@@ -788,15 +1114,6 @@ The cell above generates a single realizatoin of the random variable. But we can
             </div>
         </a>
     </div>
-     <div id="next">
-        <a class="right-next" href="M01_N03_Continuous_Random_Variables.html" title="next page">
-            <div class="prevnext-info">
-                <p class="prevnext-label">next</p>
-                <p class="prevnext-title">Continous random variables</p>
-            </div>
-            <i class="prevnext-label fas fa-angle-right"></i>
-        </a>
-     </div>
 
 </div>
         

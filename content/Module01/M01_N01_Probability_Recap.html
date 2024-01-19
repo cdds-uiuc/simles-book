@@ -1,0 +1,582 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Basics of probability &#8212; SIMLES: Statistical Inference and Machine Learning for Earth Sciences</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet" />
+  <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="shortcut icon" href="../../_static/CDDS_logo.jpeg"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Discrete Random Variables" href="M01_N02_Discrete_Random_Variables.html" />
+    <link rel="prev" title="About this book" href="../../intro.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+      <img src="../../_static/CDDS_logo.jpeg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">SIMLES: Statistical Inference and Machine Learning for Earth Sciences</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro.html">
+   About this book
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  1.Basics
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Basics of probability
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="M01_N02_Discrete_Random_Variables.html">
+   Discrete Random Variables
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="M01_N03_Continuous_Random_Variables.html">
+   Continous random variables
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/content/Module01/M01_N01_Probability_Recap.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/cdds-uiuc/simles-book"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/cdds-uiuc/simles-book/issues/new?title=Issue%20on%20page%20%2Fcontent/Module01/M01_N01_Probability_Recap.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/cdds-uiuc/simles-book/master?urlpath=lab/tree/content/Module01/M01_N01_Probability_Recap.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/cdds-uiuc/simles-book/blob/master/content/Module01/M01_N01_Probability_Recap.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Basics of probability
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#probability-spaces">
+   Probability Spaces
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#discrete-sample-space">
+     Discrete Sample Space
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#infinite-sample-spaces">
+     Infinite Sample Spaces
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#calculus-of-probabilities">
+   Calculus of Probabilities
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#combining-probabilities">
+     Combining probabilities
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#valid-probability-functions">
+     Valid Probability Functions
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#joint-probabilities">
+     Joint Probabilities
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#conditional-probabilities-independence">
+   Conditional Probabilities &amp; Independence
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#independent-events">
+     Independent Events
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#conditional-probability">
+     Conditional Probability
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#bayes-rule">
+     Bayes Rule
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#law-of-total-probability">
+     Law of Total probability
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#random-variables">
+   Random variables
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="basics-of-probability">
+<h1>Basics of probability<a class="headerlink" href="#basics-of-probability" title="Permalink to this headline">¶</a></h1>
+<p>We’ll start by reviewing some basics of probability theory. I will use some simple examples - dice and roullete - to illustrate basic probability concepts. We’ll also use these simple examples to build intuition on several properties of probabilities - the law of total probability, independence, conditional probability, and Bayes’s rule - that can be generalized, and will be used throughout the course.</p>
+</div>
+<div class="section" id="probability-spaces">
+<h1>Probability Spaces<a class="headerlink" href="#probability-spaces" title="Permalink to this headline">¶</a></h1>
+<p>To work with probabilites we need to define three things:</p>
+<ol class="simple">
+<li><p>A sample space, <span class="math notranslate nohighlight">\(\Omega\)</span></p></li>
+<li><p>An event space, <span class="math notranslate nohighlight">\(\mathcal F\)</span></p></li>
+<li><p>A probability function, <span class="math notranslate nohighlight">\(P\)</span></p></li>
+</ol>
+<p>Read more about probability spaces on <a href="https://en.wikipedia.org/wiki/Probability_space"> Wikipedia</a></p>
+<div class="section" id="discrete-sample-space">
+<h2>Discrete Sample Space<a class="headerlink" href="#discrete-sample-space" title="Permalink to this headline">¶</a></h2>
+<p><strong>Roulette</strong>
+A simple example to illustrate the concept or probability spaces is the roullete. Here we’ll consider an American Roullete with 38 equally-probably numbers.</p>
+<p><img alt="roulette.png" src="../../_images/M01_roulette.png" /></p>
+<ul class="simple">
+<li><p><em><strong>Sample Space</strong></em>:<br>
+The sample space is the space of all possible outcomes.</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\Omega=\{\color{green}{00},\color{green}0,\color{red}1,2,\color{red}3,4,\ldots, \color{red}{36}\}\]</div>
+<ul class="simple">
+<li><p><em><strong>Event Space:</strong></em><br>
+The event space is the set of all subsets of the sample space:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\mathcal F=\left\{
+\{\color{green}{00}\},
+\{\color{green}{0}\},
+\{\color{red}1\},
+\{2\},\{\color{red}3\}\ldots,
+\{\color{green}{00},\color{green}0\},\ldots,
+\{ \color{red}1,\ldots, 
+\color{red}36\}\right\}\]</div>
+<ul class="simple">
+<li><p><em><strong>Probability:</strong></em><br>
+For a roullete the probability is defined as <span class="math notranslate nohighlight">\(P=1/38\)</span> for each of the 38 possible outcomes in the sample space. Each event also has an associated probability</p></li>
+</ul>
+<p>We note a couple of things. The Sample space and the event space do not uniquely define the probability. For example, we could have a biased roullete (perhaps using a magnet and a metal ball), such that the ball is more likely to fall on particular numbers. In that case, the probability of individual outcomes in the sample space may not be equal. However, as we discusss more below, the total sum of probabilities across the possible outcomes still has to equal 1, unless there is a chance that the ball falls off the roullete table and none of the outcomes is hit.</p>
+<p>Note also that outcomes are different from events. A single outcome, e.g. a roullete roll of <span class="math notranslate nohighlight">\(\color{green}{00}\)</span> is associated with multiple possible events. It helps to think of an event as a possible bet , and the event space  as <em>the space of all possible bets</em>. Any bet you make on the roullete can be expressed as a subset of <span class="math notranslate nohighlight">\(\mathcal F\)</span>, and has a probability associated with it.</p>
+<p>For example, consider a bet on a single number (e.g. on <span class="math notranslate nohighlight">\(\color{red}7\)</span>),  also called a straight-up bet. This event is equivalent to the outcome of the roullete being in the set <span class="math notranslate nohighlight">\(E_1=\{\color{red}1\}\)</span>. The probability of this event is <span class="math notranslate nohighlight">\(P(E_1)\)</span>=1/38.</p>
+<p><img alt="roulette_7.png" src="../../_images/M01_roulette_7.png" /></p>
+<p>Alternatively consider a bet on red. This event is equivalent to the outcome being in <span class="math notranslate nohighlight">\(E_2=\left\{\color{red}{1},\color{red}{2},\color{red}{3},\ldots,\color{red}{36}\right\}\)</span>, and its probability is <span class="math notranslate nohighlight">\(P(E_2)=18/38\)</span>.</p>
+<p><img alt="Red " src="../../_images/M01_roulette_red.png" /></p>
+<p><em>Note</em>: Formally, the event space is a <span class="math notranslate nohighlight">\(\sigma\)</span>-algebra, and the probability function is a measure.</p>
+</div>
+<div class="section" id="infinite-sample-spaces">
+<h2>Infinite Sample Spaces<a class="headerlink" href="#infinite-sample-spaces" title="Permalink to this headline">¶</a></h2>
+<p>Why do we need to go through these definitions of event spaces and sample spaces? For probability spaces with a finite number of possibl outcomes we can assign a probability to each outcome and it becomes trivial to compute the probability of events. However, that is no longer the case when we start working with infinite sample spaces, such as an interval on the real line. For example, if the sample space of a random process is the interval <span class="math notranslate nohighlight">\(\Omega=[0,1]\in \mathbb R\)</span>, there are an infinite number of possible outcomes, and thus not all of them can have finite (non-zero) probability. In that case, we can only assign finite probabilities to sub-intervals, or subsets of the sample space. In other words, <em>in the most general case we can only assign finite probabilities to member of the event space <span class="math notranslate nohighlight">\(\mathcal E\)</span></em>. However, the same rules of probabilites apply for both infinite and finite samples spaces, and it is easier to get an intuition for them on small, finite spaces.</p>
+<p>For purposes of this class, we don’t need to worry about probability spaces, event spaces, and probability functions. However, simple examples such as these are useful in illustrating some very general properties of probabilities that we <em>will</em> use extensively in the class, especially in the chapters on statistical inference and Bayesian data analysis.</p>
+<hr style="border:1px solid black
+           "> </hr></div>
+</div>
+<div class="section" id="calculus-of-probabilities">
+<h1>Calculus of Probabilities<a class="headerlink" href="#calculus-of-probabilities" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="combining-probabilities">
+<h2>Combining probabilities<a class="headerlink" href="#combining-probabilities" title="Permalink to this headline">¶</a></h2>
+<p>The probability of roullete bets illustrates a general rule about combining probabilities. How do we compute the probability of an event? Consider two friends Alice and Bob, betting on the roullete, and say we want to compute the probability that at least one of them wins. We’ll call this event <span class="math notranslate nohighlight">\(E\)</span>.</p>
+<p>First, let’s say each of them bets one of the green zeros. Rolling a green zero is equivalent to rolling either <span class="math notranslate nohighlight">\(\color{green}0\)</span> OR <span class="math notranslate nohighlight">\(\color{green}{00}\)</span>. The two friends going home with some money is associated with the subset <span class="math notranslate nohighlight">\(E=\{\color{green}0,\color{green}{00}\}\)</span>of the event space. If we allso associate Alice winning with event <span class="math notranslate nohighlight">\(A\)</span> with rolling <span class="math notranslate nohighlight">\(\color{green}{00}\)</span> and Bob winning event <span class="math notranslate nohighlight">\(B\)</span> with rolling <span class="math notranslate nohighlight">\(\color{green}{00}\)</span>, we can write:</p>
+<div class="math notranslate nohighlight">
+\[P(E)=P(A \text{ OR } B)\equiv P(A \lor B)\]</div>
+<p>Notice that</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\{\color{green}{00,0}\}\)</span>=<span class="math notranslate nohighlight">\(\{\color{green}{00}\}\cup\{\color{green}{0}\}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\{\color{green}{00}\}\cap\{\color{green}{0}\}=0\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(P(\{\color{green}{00}\}\cup\{\color{green}{0}\})=P(\{\color{green}{00}\})+P(\{\color{green}{0}\})\)</span></p></li>
+</ul>
+<p>On the other hand, consider a case where Alice bets on all the numbers between <span class="math notranslate nohighlight">\(1-6\)</span>, with win probability <span class="math notranslate nohighlight">\(P(A)=6/38\)</span>  and the Bob bets on his favourite numbers, <span class="math notranslate nohighlight">\(3\)</span> and <span class="math notranslate nohighlight">\(33\)</span>, with win probability <span class="math notranslate nohighlight">\(P(B)=2/38\)</span> Them winning something is associated with <span class="math notranslate nohighlight">\(E=\{1,2,3,4,5,6,33\}\)</span>, with <span class="math notranslate nohighlight">\(P(E)=7/38\)</span>. Notice that in thise <span class="math notranslate nohighlight">\(P(E)\neq P(A)+P(B)\)</span></p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Thus, the general rule of combining probabilities is:
+$<span class="math notranslate nohighlight">\(P(A \text{ OR } B)=P(A \cup B)=P(A)+P(B)-P(A\cap B)\)</span>$</p>
+<p>with</p>
+<div class="math notranslate nohighlight">
+\[P(A \text{ OR } B)=P(A \cup B)=P(A)+P(B)\text{, if } P(A\cap B)=\phi\]</div>
+</div>
+</div>
+<div class="section" id="valid-probability-functions">
+<h2>Valid Probability Functions<a class="headerlink" href="#valid-probability-functions" title="Permalink to this headline">¶</a></h2>
+<p>In order for a function on the event space to be a valid probability function, it neeeds to obey the following properties</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(P:\Omega \rightarrow [0,1]\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(P(\phi)=0\)</span>, where <span class="math notranslate nohighlight">\(\phi\)</span> is the null-set</p></li>
+<li><p><span class="math notranslate nohighlight">\(P(\Omega)=1\)</span></p></li>
+<li><p>If <span class="math notranslate nohighlight">\(E_1\)</span> and and <span class="math notranslate nohighlight">\(E_2\)</span> are mutually exclusive events (i.e. <span class="math notranslate nohighlight">\(E_1 \cap E_2=\phi\)</span>), then the probability of <span class="math notranslate nohighlight">\(E_1\)</span> OR <span class="math notranslate nohighlight">\(E_2\)</span> occuring is</p>
+<div class="math notranslate nohighlight">
+\[P(E_1 \text{ OR } E_2)=P(E_1\cup E_2)=P(E_1)+P(E_2)\]</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="joint-probabilities">
+<h2>Joint Probabilities<a class="headerlink" href="#joint-probabilities" title="Permalink to this headline">¶</a></h2>
+<p>The joint probability of two events is the probability of both being true simultaneously. Consider the probability of both Alice AND Bob winning. We would denote this as</p>
+<div class="math notranslate nohighlight">
+\[P(A\text{ AND }B)\equiv P(A\land B)\equiv P(A,B)\]</div>
+<p>The latter notation is the one we will be using a lot throughout the course. If each of them bets on one of the zeros, and there is thus no overlap between their bets, the probability of both winning is zero. In the second case, where Alice bets on <span class="math notranslate nohighlight">\(1\)</span> through <span class="math notranslate nohighlight">\(6\)</span> and Bob bets on <span class="math notranslate nohighlight">\(3\)</span> and <span class="math notranslate nohighlight">\(33\)</span>, the probability of both of them winning is the probability of rolling a <span class="math notranslate nohighlight">\(3\)</span>, whith the intersection of the two events. This is a general rule of probability calculus:</p>
+<hr style="border:1px solid black
+           "> </hr></div>
+</div>
+<div class="section" id="conditional-probabilities-independence">
+<h1>Conditional Probabilities &amp; Independence<a class="headerlink" href="#conditional-probabilities-independence" title="Permalink to this headline">¶</a></h1>
+<p>Here we’ll review some definitions and properties of conditional probabilities and independence that we will use throughout the course. This is more easily done when we have two random processes occuring simultaneously. So we will consider the roll of two independent and <em>fair</em> dice.</p>
+<p>The sample space, <span class="math notranslate nohighlight">\(\Omega\)</span> is illustrated by the following table:</p>
+<p><img alt="two_dice.png" src="content/Module01/M01_two_dice.png" /></p>
+<p>The event space is the set of all subsets of <span class="math notranslate nohighlight">\(\Omega\)</span> and the probability function for a fair dice is a constant functoin <span class="math notranslate nohighlight">\(P=1/36\)</span>.</p>
+<p>For example the <em>event</em> <span class="math notranslate nohighlight">\(E\)</span>=”a total roll of 3” is the intersection of two different outcome “red dice rolls 1 and greeen dice rolls 2” is different from “red dice rolls 2 and green dice rolls 1”, i.e. <span class="math notranslate nohighlight">\(\{\color{red}1,\color{green}2\} ,\{\color{green}2,\color{red}1\}\)</span> The probability of rolling a 3 is thus <span class="math notranslate nohighlight">\(P(\{\color{red}1,\color{green}2\})+P(\{\color{green}1,\color{red}2)\}=2/36\)</span>.</p>
+<p>We can also define events applicable to a single dice. For example, “the red dice rolled a 1”. The probability of the red dice rolling a 1 is 1/6, and it can also be written as the union of all the six outcomes in which the red dice rolls 1.</p>
+<div class="section" id="independent-events">
+<h2>Independent Events<a class="headerlink" href="#independent-events" title="Permalink to this headline">¶</a></h2>
+<p>The role of one dice should not affect the role of the other. The two dice are <em><strong>independent</strong></em>.</p>
+<p>Example: what is the probability of rolling a <span style="color:blue">⚅</span> <span style="color:red">⚅</span> is 1/36. It is also the probability of rolling both a <span style="color:blue">⚅</span> and a <span style="color:red">⚅</span> at the same time. The probability for each dice 1/6, so their combined probability is</p>
+<p><span class="math notranslate nohighlight">\(P(\)</span><span style="color:blue">⚅</span> <span style="color:red">⚅</span><span class="math notranslate nohighlight">\()=P(\)</span><span style="color:blue">⚅</span><span class="math notranslate nohighlight">\()P(\)</span><span style="color:red">⚅</span><span class="math notranslate nohighlight">\()\)</span></p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p><b>Definition</b>: Two events are independent iff:</p>
+<div class="math notranslate nohighlight">
+\[P(A \text{ AND } B)=P(A,B)=P(A)P(B)\]</div>
+</div>
+<p>Fun sidenote: although it’s harder, we can define independent events for a single dice! Consider the two events:</p>
+<ul class="simple">
+<li><p>A: “Green dice rolled even” with probability <span class="math notranslate nohighlight">\(P(A)=1/2\)</span></p></li>
+<li><p>B: “Green dice rolled less than three”, with probability <span class="math notranslate nohighlight">\(P(B)=1/3\)</span><br></p></li>
+</ul>
+<p>The joint probability of both events happening is the probability of the dice rolling a 2, so it is <span class="math notranslate nohighlight">\(P(A,B)=1/6=P(A)P(B)\)</span></p>
+</div>
+<div class="section" id="conditional-probability">
+<h2>Conditional Probability<a class="headerlink" href="#conditional-probability" title="Permalink to this headline">¶</a></h2>
+<p>Consider the previous example, with two independent events. How can two events on the same dice be independent? It’s easier to think through this process sequentially, or <em>conditionally</em>. Think of the probability of both “rolling even” and “rolling less than three” as “the probability of rolling even” and, subsequently, also “rolling less than three”. The truth values of those statemetns do not change if you look at them one at a time.</p>
+<p>If you roll even, the probability of rolling less than 3 is 1/3, i.e. the probability of rolling a 2.</p>
+<p>If you roll odd, the probability of rolling &lt;3 is still 1/3, i.e. the probability of rolling a 1.</p>
+<p>So whether you roll odd or even does not impact the P of rolling less than three. Thus, the two events are independent.</p>
+<p>This notion of whether the realization of one event affects the probability of another event is quantified using conditoinal probabilities.</p>
+<p><em><strong>Notation</strong></em>: <span class="math notranslate nohighlight">\(P(A|B)\)</span>=The conditional probability of event <span class="math notranslate nohighlight">\(A\)</span> being true <strong>given</strong> that event <span class="math notranslate nohighlight">\(B\)</span> is true.</p>
+<p>Examples: What is the probability of the event “A” =”rolling a combined 10”? It is the probability of the events consisting of  and it is 3/36. Now, what is the probability of rolling a combined 10, <strong>given</strong> that the red dice rolled a 4. Well, it is the probability of the green dice rolling a 6, which is 1/6.</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(P(&quot;10&quot;)=3/36\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(P(&quot;10&quot;|\)</span><span style="color:red">⚃</span><span class="math notranslate nohighlight">\()=1/6\)</span></p></li>
+</ul>
+<p>Let’s use our sequential thinking to come up with a very useful properties of conditional probabilities. Consider the joint event of “A”=”rolling a combined “10” and “B” the red dice rolling 4.</p>
+<p>The probabiliy of both being true is equal to 1/36. But you can think of it as the probability of rolling a 4 with the red dice (P(B)=1/6), and then rolling a “10” given that the red dice rolled 4 P(A|B)=1/6).</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p><b>Definition</b>: The following relationships hold between joint and conditional probabilities:</p>
+<div class="math notranslate nohighlight">
+\[P(A,B)=P(A|B)P(B)\]</div>
+<div class="math notranslate nohighlight">
+\[P(A|B)=\frac{P(A,B)}{P(B)}\]</div>
+</div>
+</div>
+<div class="section" id="bayes-rule">
+<h2>Bayes Rule<a class="headerlink" href="#bayes-rule" title="Permalink to this headline">¶</a></h2>
+<p>The above relation between conditional probabilities and joint probabilities leads us to one of the most useful formulas in statistics: Bayes’ Rule.
+Notice that we can write <span class="math notranslate nohighlight">\(P(A,B)\)</span> as either <span class="math notranslate nohighlight">\(P(A|B)P(B)\)</span> or <span class="math notranslate nohighlight">\(P(B|A)P(A)\)</span>. We can manipulate this relation to understand how the relation between the conditional probability of A given B and the conditional probability of B given A</p>
+<div class="math notranslate nohighlight">
+\[P(A,B)=P(A|B)P(B)=P(B|A)P(A)\]</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p><strong>Bayes’ Rule</strong>:
+$<span class="math notranslate nohighlight">\(P(A|B)=\frac{P(B|A)P(A)}{P(B)}\)</span>$</p>
+</div>
+</div>
+<div class="section" id="law-of-total-probability">
+<h2>Law of Total probability<a class="headerlink" href="#law-of-total-probability" title="Permalink to this headline">¶</a></h2>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The law of total probability says that if we have a partition of the sample space, <span class="math notranslate nohighlight">\(A_n\)</span> such that <span class="math notranslate nohighlight">\(A_i\cap A_j=\phi\)</span> if <span class="math notranslate nohighlight">\(i\neq j\)</span>.  and <span class="math notranslate nohighlight">\(\cap_{n} A_n = \Omega\)</span>, then</p>
+<div class="math notranslate nohighlight">
+\[P(E)=\sum_n P(E|A_n)P(A_n)\]</div>
+</div>
+<p>This should be intuitive with the fair dice example. For example, let <span class="math notranslate nohighlight">\(E\)</span> be the event ‘A total roll <span class="math notranslate nohighlight">\(D=6\)</span> was rolled’. A partition <span class="math notranslate nohighlight">\(A_n\)</span> could be ‘the dice <span class="math notranslate nohighlight">\(X\)</span> rolled n’ for <span class="math notranslate nohighlight">\(n\)</span> between 1 and 6. Thus, the total probability of <span class="math notranslate nohighlight">\(D=6\)</span> is the sum of the probability of rolling a seven given that <span class="math notranslate nohighlight">\(X\)</span> rolled 1, plus the probability of rolling a seven given that <span class="math notranslate nohighlight">\(X\)</span> rolled a 2, and so on….</p>
+<hr style="border:1px solid black
+           "> </hr>
+</div>
+</div>
+<div class="section" id="random-variables">
+<h1>Random variables<a class="headerlink" href="#random-variables" title="Permalink to this headline">¶</a></h1>
+<p><em><strong>Definition</strong></em>: A random variable is a real-valued function whose whose values depend on outcomes of a random phenomenon.**</p>
+<div class="math notranslate nohighlight">
+\[X:\Omega \rightarrow \mathbb R\]</div>
+<p>Consider the case of a single fair dice, with possible values, i.e. sample space:</p>
+<div class="math notranslate nohighlight">
+\[\Omega=\{1,2,3,4,5,6\}\]</div>
+<p>We can define a random variable <span class="math notranslate nohighlight">\(X\)</span> whose value is equal to the dice roll. This random variable could take <em><strong>discrete</strong></em> values between 1 and 6.</p>
+<div class="math notranslate nohighlight">
+\[X:\{1,2,3,4,5,6\} \rightarrow \{1,2,3,4,5,6\} \]</div>
+<p>If the dice is fair, than the probability of X taking each value is the same, and equal to 1/6. We would call this a discrete uniform random variable.</p>
+<p>At this point it may seem like I’m inventing new terminology. For example, why do we need to call <span class="math notranslate nohighlight">\(X\)</span> a random variable, and talk about the possibility that it takes on different values? It seems like the probability of X taking on each value is just the probability of each event in <span class="math notranslate nohighlight">\(\Omega\)</span>?</p>
+<p>Here is another example of a random variable on the same sample space: <span class="math notranslate nohighlight">\(Z\)</span> is a random variable which takes the value <span class="math notranslate nohighlight">\(Z=0\)</span> if the dice roll is odd and <span class="math notranslate nohighlight">\(Z=1\)</span> if the dice roll is even. Thus, even though <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Z\)</span> are associated with the same sample space and events, they take on different values. In this case, since <span class="math notranslate nohighlight">\(Z\)</span> takes on only two values, 0 and 1 <span class="math notranslate nohighlight">\(Z\)</span> would be called a Bernoulli random variable.</p>
+<div class="math notranslate nohighlight">
+\[Z:\{1,2,3,4,5,6\} \rightarrow \{1,2\} \]</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./content/Module01"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="../../intro.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">About this book</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="M01_N02_Discrete_Random_Variables.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">Discrete Random Variables</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Cristian Proistosescu<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

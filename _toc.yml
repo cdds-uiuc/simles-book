@@ -4,7 +4,7 @@
 format: jb-book
 root: Readme
 parts:
-  - R	
+  - Resources	
   - caption: 1.Basics
     chapters:
     - file: content/Module01/M01_N01_Probability_Recap

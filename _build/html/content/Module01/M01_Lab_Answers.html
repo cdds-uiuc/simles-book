@@ -1,0 +1,1080 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exercise 1: Unfair dice &#8212; SIMLES: Statistical Inference and Machine Learning for Earth Sciences</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet" />
+  <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="shortcut icon" href="../../_static/CDDS_logo.jpeg"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+      <img src="../../_static/CDDS_logo.jpeg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">SIMLES: Statistical Inference and Machine Learning for Earth Sciences</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro.html">
+   About this book
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  1.Basics
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="M01_N01_Probability_Recap.html">
+   Basics of probability
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="M01_N02_Discrete_Random_Variables.html">
+   Discrete Random Variables
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="M01_N03_Continuous_Random_Variables.html">
+   Continous random variables
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/content/Module01/M01_Lab_Answers.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/cdds-uiuc/simles-book"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/cdds-uiuc/simles-book/issues/new?title=Issue%20on%20page%20%2Fcontent/Module01/M01_Lab_Answers.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/cdds-uiuc/simles-book/master?urlpath=lab/tree/content/Module01/M01_Lab_Answers.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/cdds-uiuc/simles-book/blob/master/content/Module01/M01_Lab_Answers.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Exercise 1: Unfair dice
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#question">
+     Question:
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#answer">
+       Answer
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise-2-covariance-vs-independence">
+   Exercise 2: Covariance vs independence
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#question-1-theory">
+     Question 1 (Theory):
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id1">
+       Answer:
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#question-2-numerical">
+     Question 2 (Numerical):
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id2">
+       Answer
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise-3-central-limit-theorem">
+   Exercise 3: Central Limit Theorem
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#question-1-continuous-random-variables">
+     Question 1: Continuous random variables:
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id3">
+       Answer:
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#question-2-discrete-random-variables">
+     Question 2: Discrete random variables:
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id4">
+       Answer
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#question-3-precip-in-urbana">
+     Question 3: Precip in Urbana
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id5">
+       Answer
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercise-4-houston-precipitation-return-times-via-mle">
+   Exercise 4: Houston precipitation return times via MLE
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#question-1">
+     Question 1:
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id6">
+       Answer:
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#question-2">
+     Question 2:
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id7">
+       Answer
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#question-3">
+     Question 3:
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id8">
+       Answer
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">reset</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
+
+
+
+<span class="c1"># These are some parameters to make figures nice (and big)</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="o">%</span><span class="k">config</span> InlineBackend.figure_format = &#39;retina&#39; 
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">16</span><span class="p">,</span><span class="mi">8</span>
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;legend.fontsize&#39;</span><span class="p">:</span> <span class="s1">&#39;x-large&#39;</span><span class="p">,</span>
+          <span class="s1">&#39;figure.figsize&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span>
+         <span class="s1">&#39;axes.labelsize&#39;</span><span class="p">:</span> <span class="s1">&#39;x-large&#39;</span><span class="p">,</span>
+         <span class="s1">&#39;axes.titlesize&#39;</span><span class="p">:</span><span class="s1">&#39;x-large&#39;</span><span class="p">,</span>
+         <span class="s1">&#39;xtick.labelsize&#39;</span><span class="p">:</span><span class="s1">&#39;x-large&#39;</span><span class="p">,</span>
+         <span class="s1">&#39;ytick.labelsize&#39;</span><span class="p">:</span><span class="s1">&#39;x-large&#39;</span><span class="p">}</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Once deleted, variables cannot be recovered. Proceed (y/[n])?  y
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="exercise-1-unfair-dice">
+<h1>Exercise 1: Unfair dice<a class="headerlink" href="#exercise-1-unfair-dice" title="Permalink to this headline">¶</a></h1>
+<p>Consider a pair of unfair dice. The probabilities for the two dice are as follows:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Roll</p></th>
+<th class="head"><p>Probability Dice 1</p></th>
+<th class="head"><p>Probability Dice 2</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>1/8</p></td>
+<td><p>1/10</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>1/8</p></td>
+<td><p>1/10</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>1/8</p></td>
+<td><p>1/10</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>1/8</p></td>
+<td><p>1/10</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>1/8</p></td>
+<td><p>3/10</p></td>
+</tr>
+<tr class="row-odd"><td><p>6</p></td>
+<td><p>3/8</p></td>
+<td><p>3/10</p></td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="question">
+<h2>Question:<a class="headerlink" href="#question" title="Permalink to this headline">¶</a></h2>
+<p>Use the law of total probability. to compute the probability of rolling a total of 11.</p>
+<div class="section" id="answer">
+<h3>Answer<a class="headerlink" href="#answer" title="Permalink to this headline">¶</a></h3>
+<p>We denote by <span class="math notranslate nohighlight">\(S\)</span> the sum of the dice and by <span class="math notranslate nohighlight">\(D_1\)</span> the value of the roll of dice 1
+$<span class="math notranslate nohighlight">\(P(S=11)=\sum_{n=1}^{6}P(S=11|D_{1}=n)\)</span><span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\(P(S=11)=P(S=11|D_{1}=5)\cdot P(D_{1}=5)+P(S=11|D_{1}=6)\cdot P(D_{1}=6)\)</span><span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\(P(S=11)=P(D_{2}=6)\cdot P(D_{1}=5)+P(D_{2}=6)\cdot P(D_{1}=5)\)</span><span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\(P(S=11)=3/10\cdot1/8+3/10\cdot3/8=10/80=1/8\)</span>$</p>
+<hr style="border:2px solid black"> </hr></div>
+</div>
+</div>
+<div class="section" id="exercise-2-covariance-vs-independence">
+<h1>Exercise 2: Covariance vs independence<a class="headerlink" href="#exercise-2-covariance-vs-independence" title="Permalink to this headline">¶</a></h1>
+<p>Consider two random variables, <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span>. <span class="math notranslate nohighlight">\(X\)</span> is uniformly distributed over the interval <span class="math notranslate nohighlight">\(\left[-1,1\right]\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[X\sim U[-1,1],\]</div>
+<p>while <span class="math notranslate nohighlight">\(Y\)</span> is normally distributed (Gaussian), with a variance equal to <span class="math notranslate nohighlight">\(X^{2}\)</span>. We would denote this as:
+$<span class="math notranslate nohighlight">\(Y|X\sim\mathcal{N}\left(0,X^{2}\right),\)</span><span class="math notranslate nohighlight">\(
+to imply that
+\)</span><span class="math notranslate nohighlight">\(P(Y=y|X=x)=p(y|x)=\left(2\pi x^2\right)^{-1/2}\exp\left[-\frac{1}{2}\left(\frac{y}{x}\right)^2\right]\)</span><span class="math notranslate nohighlight">\(
+The two random variables are obviously not independent. Indepencene requires \)</span>p(y|x)=p(y)<span class="math notranslate nohighlight">\(, which in turn would imply \)</span>p(y)=p(y|x_1)p(y|x_2)<span class="math notranslate nohighlight">\( for \)</span>x_1\neq x_2$.</p>
+<div class="section" id="question-1-theory">
+<h2>Question 1 (Theory):<a class="headerlink" href="#question-1-theory" title="Permalink to this headline">¶</a></h2>
+<p>Prove analyitically that <span class="math notranslate nohighlight">\(Cov(X,Y)=0\)</span>.<br>
+<em>Hint:</em> Use the relation <span class="math notranslate nohighlight">\(p(x,y)=p(y|x)p(x)\)</span> to compute <span class="math notranslate nohighlight">\(E(XY)\)</span>. Alternatively, you can use the same relation to first prove <span class="math notranslate nohighlight">\(E(E(Y|X))\)</span>.</p>
+<div class="section" id="id1">
+<h3>Answer:<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<div class="math notranslate nohighlight">
+\[Cov(X,Y)=E(XY)-E(X)E(Y)=E(XY)\]</div>
+<div class="math notranslate nohighlight">
+\[=\int_{-1}^{1}\int_{-\infty}^{\infty}x\cdot y\cdot p(x,y)\cdot dx\cdot dy=\int_{-1}^{1}\int_{-\infty}^{\infty}y\cdot x\cdot p(y|x)p(x)\cdot dx\cdot dy\]</div>
+<div class="math notranslate nohighlight">
+\[=\int_{-1}^{1}\left[\int_{-\infty}^{\infty}y\cdot p(y|x)\cdot dy\right]x\cdot dx\]</div>
+<div class="math notranslate nohighlight">
+\[=\int_{-1}^{1}\left[\int_{-\infty}^{\infty}y\cdot\frac{1}{\sqrt{2\pi x^{2}}}e^{-\frac{1}{2}\left(\frac{y}{x}\right)^{2}}\right]x\cdot dx\]</div>
+<p>The inner integral is just the expected value of <span class="math notranslate nohighlight">\(y\)</span> for a constant <span class="math notranslate nohighlight">\(x\)</span>, <span class="math notranslate nohighlight">\(E(Y|X)\)</span> and it is zero, since <span class="math notranslate nohighlight">\(Y|X\sim\mathcal{N}\left(0,X^{2}\right)\)</span>. Thus, since the integrand is zero, the whole intergral is zero.</p>
+</div>
+</div>
+<div class="section" id="question-2-numerical">
+<h2>Question 2 (Numerical):<a class="headerlink" href="#question-2-numerical" title="Permalink to this headline">¶</a></h2>
+<p>Show, numerically, that expected covariance is zero.</p>
+<ol class="simple">
+<li><p>Draw <span class="math notranslate nohighlight">\(n\)</span> samples <span class="math notranslate nohighlight">\((x_j,y_j)\)</span> of <span class="math notranslate nohighlight">\((X,Y)\)</span> and plot <span class="math notranslate nohighlight">\(y_j\)</span> vs <span class="math notranslate nohighlight">\(x_j\)</span> for <span class="math notranslate nohighlight">\(n=100\)</span>:</p></li>
+<li><p>Compute the sample covariance <span class="math notranslate nohighlight">\(s_{n-1}=\frac{1}{n-1}\sum_{j=1}^{n}(y_j-\overline y)(x_j-\overline x)\)</span> of <span class="math notranslate nohighlight">\(X,Y\)</span> for <span class="math notranslate nohighlight">\(n=100\)</span>. Repeat the experiment a large number of times (e.g. <span class="math notranslate nohighlight">\(M=10,000\)</span>) and plot the sampling distribution of <span class="math notranslate nohighlight">\(s_{100-1}\)</span>. What is the mean of the sampling distribution.</p></li>
+<li><p>Now increase the sample size up to <span class="math notranslate nohighlight">\(n=100,000\)</span> and plot the value of the sample covariance as a function of <span class="math notranslate nohighlight">\(n\)</span>. By the Law of Large Numbers you should see it asymptote to zero</p></li>
+</ol>
+<div class="section" id="id2">
+<h3>Answer<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y</span><span class="o">=</span><span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">20</span><span class="p">),</span><span class="n">scale</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">20</span><span class="p">),</span><span class="n">size</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fb38809a2e0&gt;]
+</pre></div>
+</div>
+<img alt="../../_images/M01_Lab_Answers_8_1.png" src="../../_images/M01_Lab_Answers_8_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#2.1</span>
+<span class="n">Ndraws</span><span class="o">=</span><span class="mi">100</span>
+<span class="n">X</span><span class="o">=</span><span class="n">stats</span><span class="o">.</span><span class="n">uniform</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">loc</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span><span class="n">scale</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="n">Ndraws</span><span class="p">);</span>
+<span class="n">Y</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="n">Ndraws</span><span class="p">])</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">Ndraws</span><span class="p">):</span>
+    <span class="n">Y</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">scale</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="p">]),</span><span class="n">size</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">,</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
+
+<span class="n">scov</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">Ndraws</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">X</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">X</span><span class="p">))</span><span class="o">*</span><span class="p">(</span><span class="n">Y</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">Y</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">scov</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-0.058481969016028465
+</pre></div>
+</div>
+<img alt="../../_images/M01_Lab_Answers_9_1.png" src="../../_images/M01_Lab_Answers_9_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#2.2</span>
+<span class="n">M</span><span class="o">=</span><span class="mi">1000</span>
+<span class="n">Ndraws</span><span class="o">=</span><span class="mi">100</span>
+
+<span class="n">scov</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">M</span><span class="p">);</span>
+
+<span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">M</span><span class="p">):</span>
+    <span class="n">X</span><span class="o">=</span><span class="n">stats</span><span class="o">.</span><span class="n">uniform</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">loc</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span><span class="n">scale</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="n">Ndraws</span><span class="p">);</span>
+    <span class="n">Y</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="n">Ndraws</span><span class="p">]);</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">Ndraws</span><span class="p">):</span>
+        <span class="n">Y</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">scale</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="p">]),</span><span class="n">size</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
+    <span class="n">scov</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">Ndraws</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">X</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">X</span><span class="p">))</span><span class="o">*</span><span class="p">(</span><span class="n">Y</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">Y</span><span class="p">)));</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">scov</span><span class="p">,</span><span class="n">rwidth</span><span class="o">=</span><span class="mf">0.98</span><span class="p">);</span> 
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">scov</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.0017581522990870384
+</pre></div>
+</div>
+<img alt="../../_images/M01_Lab_Answers_10_1.png" src="../../_images/M01_Lab_Answers_10_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#2.3</span>
+<span class="n">Ndraws</span><span class="o">=</span><span class="mi">100000</span>
+<span class="n">scov</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">Ndraws</span><span class="p">)</span>
+
+
+<span class="n">X</span><span class="o">=</span><span class="n">stats</span><span class="o">.</span><span class="n">uniform</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">loc</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span><span class="n">scale</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="n">Ndraws</span><span class="p">)</span>
+<span class="n">Y</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="n">Ndraws</span><span class="p">])</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">Ndraws</span><span class="p">):</span>
+    <span class="n">Y</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">scale</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="p">]),</span><span class="n">size</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">i</span><span class="o">&gt;</span><span class="mi">1</span><span class="p">:</span>
+        <span class="n">scov</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">i</span><span class="p">]</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">i</span><span class="p">]))</span><span class="o">*</span><span class="p">(</span><span class="n">Y</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">i</span><span class="p">]</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">Y</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">i</span><span class="p">])))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">scov</span><span class="p">)</span>   
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/M01_Lab_Answers_11_0.png" src="../../_images/M01_Lab_Answers_11_0.png" />
+</div>
+</div>
+<hr style="border:2px solid black"> </hr></div>
+</div>
+</div>
+<div class="section" id="exercise-3-central-limit-theorem">
+<h1>Exercise 3: Central Limit Theorem<a class="headerlink" href="#exercise-3-central-limit-theorem" title="Permalink to this headline">¶</a></h1>
+<p>The central limit theorem says that the distribution of the sample mean of <strong>any</strong> random variable approaches a normal distribution.</p>
+<p><strong>Theorem</strong> Let <span class="math notranslate nohighlight">\( X_1, \cdots , X_n  \)</span> be <span class="math notranslate nohighlight">\(n\)</span> independent and identically distributed (i.i.d) random variables with expectation <span class="math notranslate nohighlight">\(\mu\)</span> and variance <span class="math notranslate nohighlight">\(\sigma^2\)</span>. The distribution of the sample mean <span class="math notranslate nohighlight">\(\overline X_n=\frac{1}{n}\sum_{i=1}^n X_i\)</span> approaches the distribution of a gaussian</p>
+<div class="math notranslate nohighlight">
+\[\overline X_n \sim \mathcal N (\mu,\sigma^2/n),\]</div>
+<p>for large <span class="math notranslate nohighlight">\(n\)</span>.</p>
+<p>In this exercise, you will convince yourself of this theorem numerically. Here is a recipe for how to do it:</p>
+<ul class="simple">
+<li><p>Pick your probability distribution. The CLT even works for discrete random variables!</p></li>
+<li><p>Generate a random <span class="math notranslate nohighlight">\(n \times m\)</span> matrix (<span class="math notranslate nohighlight">\(n\)</span> rows, <span class="math notranslate nohighlight">\(m\)</span> columns) of realizations from that distribution.</p></li>
+<li><p>For each column, find the sample mean <span class="math notranslate nohighlight">\(\overline X_n\)</span> of the <span class="math notranslate nohighlight">\(n\)</span> samples, by taking the mean along the first (0-th) dimension. You now have <span class="math notranslate nohighlight">\(m\)</span> independent realizations of the sample mean <span class="math notranslate nohighlight">\(\overline X_n\)</span>.</p></li>
+<li><p>You can think of each column as an experiment where you take <span class="math notranslate nohighlight">\(n\)</span> samples and average over them. We want to know the distribution of the sample-mean. The <span class="math notranslate nohighlight">\(m\)</span> columns represent <span class="math notranslate nohighlight">\(m\)</span> experiments, and thus provide us with <span class="math notranslate nohighlight">\(m\)</span> realizations of the sample mean random variable. From these we can approximate a distribution of the sample mean (via, e.g. a histogram).</p></li>
+<li><p>On top of the histogram of the sample mean distribution, plot the pdf of a normal distribution with the same process mean and process variance as the sample mean of the distribution of <span class="math notranslate nohighlight">\(\overline X_n\)</span>.</p></li>
+</ul>
+<div class="section" id="question-1-continuous-random-variables">
+<h2>Question 1: Continuous random variables:<a class="headerlink" href="#question-1-continuous-random-variables" title="Permalink to this headline">¶</a></h2>
+<p>Demonstrate, numerically, that the sample mean of a number of Gamma-distributed random variables is approximately normal. <a class="reference external" href="https://en.wikipedia.org/wiki/Gamma_distribution">https://en.wikipedia.org/wiki/Gamma_distribution</a></p>
+<p>Plot the distribution of the sample mean for <span class="math notranslate nohighlight">\(n=[1,5,25,100]\)</span>,using <span class="math notranslate nohighlight">\(m=10,000\)</span>, and overlay it with a normal pdf. For best visualization,use values of <span class="math notranslate nohighlight">\(\alpha=1\)</span> loc<span class="math notranslate nohighlight">\(=0\)</span>, scale=<span class="math notranslate nohighlight">\(1\)</span> for the gamma distribution; 30 bins for the histogram; and set the x-limits of [0,4] for all four values of <span class="math notranslate nohighlight">\(n\)</span>.</p>
+<div class="section" id="id3">
+<h3>Answer:<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">=</span><span class="mi">10000</span>
+<span class="n">n</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">100</span><span class="p">]</span>
+<span class="n">Nbins</span><span class="o">=</span><span class="mi">30</span>
+
+<span class="n">fig</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">[</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">])</span>
+
+<span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
+<span class="n">loc</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+<span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
+<span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+    <span class="n">x</span><span class="o">=</span><span class="n">stats</span><span class="o">.</span><span class="n">gamma</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span><span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">,</span><span class="n">scale</span><span class="o">=</span><span class="n">scale</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="p">[</span><span class="n">n</span><span class="p">[</span><span class="n">j</span><span class="p">],</span><span class="n">m</span><span class="p">])</span>
+    <span class="n">sample_mean</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">);</span>
+
+    <span class="n">z</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">100</span><span class="p">);</span>
+    <span class="n">norm_pdf</span><span class="o">=</span><span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">z</span><span class="p">,</span><span class="n">loc</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">sample_mean</span><span class="p">),</span><span class="n">scale</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">sample_mean</span><span class="p">));</span>
+
+    <span class="n">ax</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">sample_mean</span><span class="p">,</span><span class="n">Nbins</span><span class="p">,</span><span class="n">rwidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">z</span><span class="p">,</span><span class="n">norm_pdf</span><span class="p">);</span>
+    <span class="n">ax</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">right</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/M01_Lab_Answers_15_0.png" src="../../_images/M01_Lab_Answers_15_0.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="question-2-discrete-random-variables">
+<h2>Question 2: Discrete random variables:<a class="headerlink" href="#question-2-discrete-random-variables" title="Permalink to this headline">¶</a></h2>
+<p>Demonstrate, numerically, that the sample mean of a large number of random dice throws is approximately normal.</p>
+<p>Simulate the dice using a discrete uniform random variables <code>stats.randint.rvs</code>, taking values from 1 to 6 (remember Python is right exclusive). The sample mean <span class="math notranslate nohighlight">\(\overline X_n\)</span> is thus equivalnt to the average value of the dice throw <span class="math notranslate nohighlight">\(n\)</span> throws.</p>
+<p>Plot the normalized (density=True) histogram for <span class="math notranslate nohighlight">\(n=[1,2,25,200]\)</span>, using <span class="math notranslate nohighlight">\(m=100,000\)</span>, and overlay it with a normal pdf. For best visualization use 50 bins for the histogram, and set the x-limits of [1,6] for all four values of <span class="math notranslate nohighlight">\(n\)</span>.</p>
+<div class="section" id="id4">
+<h3>Answer<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">=</span><span class="mi">100000</span>
+<span class="n">n</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">25</span><span class="p">,</span><span class="mi">200</span><span class="p">]</span>
+<span class="n">Nbins</span><span class="o">=</span><span class="mi">50</span>
+
+<span class="n">fig</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">[</span><span class="mi">16</span><span class="p">,</span><span class="mi">8</span><span class="p">])</span>
+
+<span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
+<span class="n">loc</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+<span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
+<span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+    <span class="n">x</span><span class="o">=</span><span class="n">stats</span><span class="o">.</span><span class="n">randint</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="p">[</span><span class="n">n</span><span class="p">[</span><span class="n">j</span><span class="p">],</span><span class="n">m</span><span class="p">])</span>
+    <span class="n">sample_mean</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">);</span>
+
+    <span class="n">z</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">1000</span><span class="p">);</span>
+    <span class="n">norm_pdf</span><span class="o">=</span><span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">z</span><span class="p">,</span><span class="n">loc</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">sample_mean</span><span class="p">),</span><span class="n">scale</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">sample_mean</span><span class="p">));</span>
+
+    <span class="n">ax</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">sample_mean</span><span class="p">,</span><span class="n">Nbins</span><span class="p">,</span><span class="n">rwidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">z</span><span class="p">,</span><span class="n">norm_pdf</span><span class="p">);</span>
+    <span class="n">ax</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">right</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="question-3-precip-in-urbana">
+<h2>Question 3: Precip in Urbana<a class="headerlink" href="#question-3-precip-in-urbana" title="Permalink to this headline">¶</a></h2>
+<p>Plot the histograms of precipitation in urbana on hourly, daily, monthly, and annual time scales. What do you observe?</p>
+<p>For convenience, I’ve downloaded 4-times daily hourly data from ERA5 for the gridcell representing Urbana. We’ll use xarray since it makes it very easy to compute daily-, monthly-, and annual-total precipitation.</p>
+<p>The cell below computes hourly, daily, monthly, and annual values of precipitation. All you have to do is plot their histograms</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
+<span class="c1">#convert from m/hr to inches/hr, taking into account we only sample 4hrs of the day </span>
+<span class="n">ds</span><span class="o">=</span><span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="s1">&#39;/data/keeling/a/cristi/SIMLES/data/ERA5precip_urbana_1950-2021.nc&#39;</span><span class="p">);</span>
+<span class="n">unit_conv</span><span class="o">=</span><span class="mi">1000</span><span class="o">/</span><span class="mf">24.5</span><span class="o">*</span><span class="mi">6</span>
+
+<span class="n">pr_hr</span> <span class="o">=</span><span class="n">ds</span><span class="o">.</span><span class="n">tp</span><span class="o">*</span><span class="n">unit_conv</span><span class="p">;</span>
+<span class="n">pr_day</span> <span class="o">=</span><span class="n">pr_hr</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="s1">&#39;1D&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
+<span class="n">pr_mon</span><span class="o">=</span><span class="n">pr_hr</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="s1">&#39;1M&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
+<span class="n">pr_yr</span> <span class="o">=</span><span class="n">pr_hr</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="s1">&#39;1Y&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
+
+<span class="n">Nbins</span><span class="o">=</span><span class="mi">15</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id5">
+<h3>Answer<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Nbins</span><span class="o">=</span><span class="mi">15</span>
+<span class="n">fig</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">[</span><span class="mi">12</span><span class="p">,</span><span class="mi">12</span><span class="p">]);</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">pr_hr</span><span class="p">,</span><span class="n">Nbins</span><span class="p">,</span><span class="n">rwidth</span><span class="o">=</span><span class="mf">0.9</span><span class="p">);</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">pr_day</span><span class="p">,</span><span class="n">Nbins</span><span class="p">,</span><span class="n">rwidth</span><span class="o">=</span><span class="mf">0.9</span><span class="p">);</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">pr_mon</span><span class="p">,</span><span class="n">Nbins</span><span class="p">,</span><span class="n">rwidth</span><span class="o">=</span><span class="mf">0.9</span><span class="p">);</span><span class="mi">4</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">pr_yr</span><span class="p">,</span><span class="n">Nbins</span><span class="p">,</span><span class="n">rwidth</span><span class="o">=</span><span class="mf">0.9</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/M01_Lab_Answers_22_0.png" src="../../_images/M01_Lab_Answers_22_0.png" />
+</div>
+</div>
+<hr style="border:2px solid black"> </hr></div>
+</div>
+</div>
+<div class="section" id="exercise-4-houston-precipitation-return-times-via-mle">
+<h1>Exercise 4: Houston precipitation return times via MLE<a class="headerlink" href="#exercise-4-houston-precipitation-return-times-via-mle" title="Permalink to this headline">¶</a></h1>
+<p>In the wake of Hurricane Harvey, many have described the assocaited flooding as a “500-year event”. How can this be, given that in most places there are only a few decades of data available? In this exercise we apply a simple (and most likely wrong) methodology to estimate <em>return periods</em>, and comment on the wisdom of that concept.</p>
+<p>Let’s load and get to know the data. We are looking at daily precip data (in cm) at Beaumont Research Center and Port Arthur, two of the weather stations in the Houston area that reported very high daily precip totals.</p>
+<p>The data comes from NOAA GHCN:<br>
+<a class="reference external" href="https://www.ncdc.noaa.gov/cdo-web/datasets/GHCND/stations/GHCND:USC00410613/detail">https://www.ncdc.noaa.gov/cdo-web/datasets/GHCND/stations/GHCND:USC00410613/detail</a><br>
+<a class="reference external" href="https://www.ncdc.noaa.gov/cdo-web/datasets/GHCND/stations/GHCND:USW00012917/detail">https://www.ncdc.noaa.gov/cdo-web/datasets/GHCND/stations/GHCND:USW00012917/detail</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># read data and take a cursory look</span>
+<span class="c1">#df=pd.read_csv(&#39;/data/keeling/a/cristi/SIMLES/data/Beaumont_precip.csv&#39;)</span>
+<span class="n">df</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;/data/keeling/a/cristi/SIMLES/data/PortArthur_precip.csv&#39;</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>STATION</th>
+      <th>NAME</th>
+      <th>DATE</th>
+      <th>DAPR</th>
+      <th>MDPR</th>
+      <th>PRCP</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>USW00012917</td>
+      <td>PORT ARTHUR SE TX REGIONAL AIRPORT, TX US</td>
+      <td>1947-10-01</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>USW00012917</td>
+      <td>PORT ARTHUR SE TX REGIONAL AIRPORT, TX US</td>
+      <td>1947-10-02</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>USW00012917</td>
+      <td>PORT ARTHUR SE TX REGIONAL AIRPORT, TX US</td>
+      <td>1947-10-03</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>USW00012917</td>
+      <td>PORT ARTHUR SE TX REGIONAL AIRPORT, TX US</td>
+      <td>1947-10-04</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>USW00012917</td>
+      <td>PORT ARTHUR SE TX REGIONAL AIRPORT, TX US</td>
+      <td>1947-10-05</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># plot raw precipitation</span>
+<span class="n">precip_raw</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;PRCP&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">precip_raw</span><span class="o">=</span><span class="n">precip_raw</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">precip_raw</span><span class="p">)</span><span class="o">==</span><span class="kc">False</span><span class="p">]</span> <span class="c1"># take out nans</span>
+
+<span class="n">fig</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">precip_raw</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;day since beginning of record&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Daily Precip (cm)&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Daily Precip (cm)&#39;)
+</pre></div>
+</div>
+<img alt="../../_images/M01_Lab_Answers_26_1.png" src="../../_images/M01_Lab_Answers_26_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot the histogram of the data. </span>
+<span class="c1"># For distributions such as a gamma distribution it makes sense to use a logarithmic axis.</span>
+<span class="c1">#define bin edges and bin widths. </span>
+<span class="c1"># we&#39;ll use the maximum value in the data to define the upper limit</span>
+
+<span class="n">bin_edge_low</span><span class="o">=</span><span class="mi">0</span>
+<span class="n">bin_edge_high</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">precip_raw</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span>
+<span class="n">bin_width</span><span class="o">=</span><span class="mf">0.25</span>
+<span class="n">bin_edges</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">bin_edge_low</span><span class="p">,</span><span class="n">bin_edge_high</span><span class="p">,</span><span class="n">bin_width</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">precip_raw</span><span class="p">,</span><span class="n">bin_edges</span><span class="p">,</span><span class="n">rwidth</span><span class="o">=</span><span class="mf">0.9</span><span class="p">);</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;daily precip (cm)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;count (number of days)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">precip_raw</span><span class="p">,</span><span class="n">bin_edges</span><span class="p">,</span><span class="n">rwidth</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_yscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;daily precip (cm)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;count (number of days)&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;count (number of days)&#39;)
+</pre></div>
+</div>
+<img alt="../../_images/M01_Lab_Answers_27_1.png" src="../../_images/M01_Lab_Answers_27_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># the jump in the first bin indicates a probability mass at 0  ( a large number of days do not see any precipitation). </span>
+<span class="c1"># Let&#39;s only look at days when it rains. While we&#39;re at it, let&#39;s clean NaNs as well.</span>
+<span class="n">precip</span><span class="o">=</span><span class="n">precip_raw</span><span class="p">[</span><span class="n">precip_raw</span><span class="o">&gt;</span><span class="mf">0.01</span><span class="p">]</span>
+
+<span class="c1"># Plot the histogram of the data</span>
+<span class="n">fig</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">precip</span><span class="p">,</span><span class="n">bin_edges</span><span class="p">,</span><span class="n">rwidth</span><span class="o">=</span><span class="mf">0.9</span><span class="p">);</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;daily precip (cm)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;count (number of days)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;daily precip (cm)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;count (number of days)&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">precip</span><span class="p">,</span><span class="n">bin_edges</span><span class="p">,</span><span class="n">rwidth</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_yscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;daily precip (cm)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;count (number of days)&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;count (number of days)&#39;)
+</pre></div>
+</div>
+<img alt="../../_images/M01_Lab_Answers_28_1.png" src="../../_images/M01_Lab_Answers_28_1.png" />
+</div>
+</div>
+<div class="section" id="question-1">
+<h2>Question 1:<a class="headerlink" href="#question-1" title="Permalink to this headline">¶</a></h2>
+<p>Fit an gamma distribution to the data, using the <code>stats.gamma.fit</code> method to obtain maximum likelihood estimates for the parameters.
+Show the fit by overlaying the pdf of the gamma distribution with mle parameters on top of the histogram of daily precipitation at Beaumont Research Center.</p>
+<p>Hints:</p>
+<ul class="simple">
+<li><p>you’ll need to show a <em>density</em> estimate of the histogram, unlike the count i.e. ensure <code>density=True</code>.</p></li>
+<li><p>The method will output the thre parameters of the gamma random variable: <code>a,loc,scale</code> (see documentation <a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.gamma.html"> here</a>). So you’ll need to call it as <code>alpha_mle,loc_mle,scale_mle=stats.gama.fit( …. )</code></p></li>
+</ul>
+<div class="section" id="id6">
+<h3>Answer:<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">alpha_mle</span><span class="p">,</span><span class="n">loc_mle</span><span class="p">,</span><span class="n">scale_mle</span><span class="o">=</span><span class="n">stats</span><span class="o">.</span><span class="n">gamma</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">precip</span><span class="p">)</span>
+<span class="n">x_plot</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">precip</span><span class="p">),</span><span class="mi">200</span><span class="p">)</span>
+<span class="n">gamma_pdf</span><span class="o">=</span><span class="n">stats</span><span class="o">.</span><span class="n">gamma</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x_plot</span><span class="p">,</span><span class="n">alpha_mle</span><span class="p">,</span><span class="n">loc_mle</span><span class="p">,</span><span class="n">scale_mle</span><span class="p">)</span>
+
+
+<span class="c1"># Plot the histogram of the data</span>
+<span class="n">fig</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">precip</span><span class="p">,</span><span class="n">bin_edges</span><span class="p">,</span><span class="n">rwidth</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span><span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;daily precip (cm)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;count (number of days)&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">precip</span><span class="p">,</span><span class="n">bin_edges</span><span class="p">,</span><span class="n">rwidth</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span><span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_yscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_plot</span><span class="p">,</span><span class="n">gamma_pdf</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_plot</span><span class="p">,</span><span class="n">gamma_pdf</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x2afc8b33cb80&gt;]
+</pre></div>
+</div>
+<img alt="../../_images/M01_Lab_Answers_31_1.png" src="../../_images/M01_Lab_Answers_31_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">precip</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>26.03
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="question-2">
+<h2>Question 2:<a class="headerlink" href="#question-2" title="Permalink to this headline">¶</a></h2>
+<p>Compute the return time of the rainiest day recorded at Beaumont Research Center (in years).</p>
+<p>What does this mean? The rainiest day at Beaumont brought <span class="math notranslate nohighlight">\(x\)</span> cm. The return time represents how often we would expect to get <span class="math notranslate nohighlight">\(x\)</span> cm or more of rain at Beaumont.</p>
+<p>To compute the return time we need to compute the probability of daily rain &gt;<span class="math notranslate nohighlight">\(x\)</span> cm. The inverse of this probability is the frequency of daily rain &gt;<span class="math notranslate nohighlight">\(x\)</span> cm.</p>
+<p>For example, if the probability of daily rain &gt; 3 cm =1/30, it means we would expect that it rains 3 cm or more once about every 30 day, and we would say 3 cm is a 10 day event.</p>
+<p>For the largest precip event the probability will be significantly smaller, and thus the return time significantly larger</p>
+<p><em>Hint</em>: Remember that the probability of daily rain being <em>less</em> than <span class="math notranslate nohighlight">\(x\)</span> cm is given by the CDF: $<span class="math notranslate nohighlight">\(F(x)=P(\text{daily rain}&lt;x\text{ cm})\)</span>$.
+<em>Hint</em>: The answer should only take a very small number of lines of code</p>
+<div class="section" id="id7">
+<h3>Answer<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gamma_F</span><span class="o">=</span><span class="n">stats</span><span class="o">.</span><span class="n">gamma</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="n">x_plot</span><span class="p">,</span><span class="n">alpha_mle</span><span class="p">,</span><span class="n">loc_mle</span><span class="p">,</span><span class="n">scale_mle</span><span class="p">)</span>
+<span class="n">prob</span><span class="o">=</span><span class="mi">1</span><span class="o">-</span><span class="n">stats</span><span class="o">.</span><span class="n">gamma</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">precip</span><span class="p">),</span><span class="n">alpha_mle</span><span class="p">,</span><span class="n">loc_mle</span><span class="p">,</span><span class="n">scale_mle</span><span class="p">)</span>
+<span class="mi">1</span><span class="o">/</span><span class="n">prob</span><span class="o">/</span><span class="mi">365</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4080713.548079735
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="question-3">
+<h2>Question 3:<a class="headerlink" href="#question-3" title="Permalink to this headline">¶</a></h2>
+<p>Repeat the analysis for the Port Arthur data. If you fit a Gamma ditribution and compute the return time of the largest daily rain event, what is the return time?</p>
+<p>Does that seem reasonable? Why do you think the statistical model fails here? Think of the type of precipitation events that make up the precipitation data at Port Arthur</p>
+<p>{
+“tags”: [
+“margin”,
+]
+}</p>
+<div class="section" id="id8">
+<h3>Answer<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># read data and take a cursory look</span>
+<span class="n">df</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;/data/keeling/a/cristi/SIMLES/data/PortArthur_precip.csv&#39;</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+
+<span class="c1"># plot raw precipitation</span>
+<span class="n">precip_raw</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;PRCP&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">precip_raw</span><span class="o">=</span><span class="n">precip_raw</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">precip_raw</span><span class="p">)</span><span class="o">==</span><span class="kc">False</span><span class="p">]</span> <span class="c1"># take out nans</span>
+<span class="n">precip</span><span class="o">=</span><span class="n">precip_raw</span><span class="p">[</span><span class="n">precip_raw</span><span class="o">&gt;</span><span class="mf">0.01</span><span class="p">]</span>
+
+
+<span class="n">alpha_mle</span><span class="p">,</span><span class="n">loc_mle</span><span class="p">,</span><span class="n">scale_mle</span><span class="o">=</span><span class="n">stats</span><span class="o">.</span><span class="n">gamma</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">precip</span><span class="p">)</span>
+<span class="n">x_plot</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">precip</span><span class="p">),</span><span class="mi">200</span><span class="p">)</span>
+<span class="n">gamma_pdf</span><span class="o">=</span><span class="n">stats</span><span class="o">.</span><span class="n">gamma</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x_plot</span><span class="p">,</span><span class="n">alpha_mle</span><span class="p">,</span><span class="n">loc_mle</span><span class="p">,</span><span class="n">scale_mle</span><span class="p">)</span>
+
+
+<span class="c1"># Plot the histogram of the data</span>
+<span class="n">fig</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">precip</span><span class="p">,</span><span class="n">bin_edges</span><span class="p">,</span><span class="n">rwidth</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span><span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;daily precip (cm)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;count (number of days)&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">precip</span><span class="p">,</span><span class="n">bin_edges</span><span class="p">,</span><span class="n">rwidth</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span><span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_yscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_plot</span><span class="p">,</span><span class="n">gamma_pdf</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_plot</span><span class="p">,</span><span class="n">gamma_pdf</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x2afc9072a2e0&gt;]
+</pre></div>
+</div>
+<img alt="../../_images/M01_Lab_Answers_38_1.png" src="../../_images/M01_Lab_Answers_38_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gamma_F</span><span class="o">=</span><span class="n">stats</span><span class="o">.</span><span class="n">gamma</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="n">x_plot</span><span class="p">,</span><span class="n">alpha_mle</span><span class="p">,</span><span class="n">loc_mle</span><span class="p">,</span><span class="n">scale_mle</span><span class="p">)</span>
+<span class="n">prob</span><span class="o">=</span><span class="mi">1</span><span class="o">-</span><span class="n">stats</span><span class="o">.</span><span class="n">gamma</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">precip</span><span class="p">),</span><span class="n">alpha_mle</span><span class="p">,</span><span class="n">loc_mle</span><span class="p">,</span><span class="n">scale_mle</span><span class="p">)</span>
+<span class="mi">1</span><span class="o">/</span><span class="n">prob</span><span class="o">/</span><span class="mi">365</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4080713.548079735
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./content/Module01"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Cristian Proistosescu<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

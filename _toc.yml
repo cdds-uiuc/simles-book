@@ -1,0 +1,29 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: Readme
+parts:
+  - R	
+  - caption: 1.Basics
+    chapters:
+    - file: content/Module01/M01_N01_Probability_Recap
+    - file: content/Module01/M01_N02_Discrete_Random_Variables
+    - file: content/Module01/M01_N03_Continuous_Random_Variables
+    #- file: content/Module01/M01_Lab
+    #- file: Module01/M01_N04_Moments_of_distributions
+    #- file: Module01/M01_N05_SampleStatistics
+    #- file: Module01/M01_N06_QQPlots
+    
+#  - caption: "Inference:Estimation and Hypothesis Testing"
+#    chapters:
+#    - file: content/Module02/M02_N01_Regression
+#    - file: content/Module02/M02_N02_Optimization
+#    - file: content/Module02/M02_N03_HypothesisTesting
+#   - file: content/Module02/M02_L01_Obliquity
+#   #- file: Module02/M02_N02_Anscombe
+
+
+
+
+

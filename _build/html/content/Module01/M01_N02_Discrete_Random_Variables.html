@@ -1,0 +1,812 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Discrete Random Variables &#8212; SIMLES: Statistical Inference and Machine Learning for Earth Sciences</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet" />
+  <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="shortcut icon" href="../../_static/CDDS_logo.jpeg"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Continous random variables" href="M01_N03_Continuous_Random_Variables.html" />
+    <link rel="prev" title="Basics of probability" href="M01_N01_Probability_Recap.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+      <img src="../../_static/CDDS_logo.jpeg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">SIMLES: Statistical Inference and Machine Learning for Earth Sciences</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro.html">
+   About this book
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  1.Basics
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="M01_N01_Probability_Recap.html">
+   Basics of probability
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Discrete Random Variables
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="M01_N03_Continuous_Random_Variables.html">
+   Continous random variables
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/content/Module01/M01_N02_Discrete_Random_Variables.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/cdds-uiuc/simles-book"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/cdds-uiuc/simles-book/issues/new?title=Issue%20on%20page%20%2Fcontent/Module01/M01_N02_Discrete_Random_Variables.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/cdds-uiuc/simles-book/master?urlpath=lab/tree/content/Module01/M01_N02_Discrete_Random_Variables.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/cdds-uiuc/simles-book/blob/master/content/Module01/M01_N02_Discrete_Random_Variables.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#from-random-process-to-random-variables">
+   From random process to random variables
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#examples-of-discrete-random-variables">
+   Examples of discrete random variables
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#uniform-discrete-random-variable">
+     Uniform discrete random variable
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#bernoulli-random-variable">
+     Bernoulli Random Variable
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sum-of-two-dice">
+     Sum of two dice
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#distributions-of-discrete-random-variable">
+   Distributions of discrete random variable
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#probability-mass-functions">
+     Probability mass functions
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#realization-draw">
+     Realization/Draw
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#histograms">
+     Histograms
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#convergence-of-histograms-to-pmfs">
+     Convergence of histograms to pmfs
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="discrete-random-variables">
+<h1>Discrete Random Variables<a class="headerlink" href="#discrete-random-variables" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#%reset</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">figsize</span><span class="o">=</span><span class="p">[</span><span class="mi">6</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+
+<span class="c1"># These are some parameters to make figures nice (and big)</span>
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;legend.fontsize&#39;</span><span class="p">:</span> <span class="s1">&#39;x-large&#39;</span><span class="p">,</span>
+         <span class="s1">&#39;axes.labelsize&#39;</span><span class="p">:</span> <span class="s1">&#39;x-large&#39;</span><span class="p">,</span>
+         <span class="s1">&#39;axes.titlesize&#39;</span><span class="p">:</span><span class="s1">&#39;x-large&#39;</span><span class="p">,</span>
+         <span class="s1">&#39;xtick.labelsize&#39;</span><span class="p">:</span><span class="s1">&#39;x-large&#39;</span><span class="p">,</span>
+         <span class="s1">&#39;ytick.labelsize&#39;</span><span class="p">:</span><span class="s1">&#39;x-large&#39;</span><span class="p">}</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Random_variable">https://en.wikipedia.org/wiki/Random_variable</a></p>
+<div class="section" id="from-random-process-to-random-variables">
+<h2>From random process to random variables<a class="headerlink" href="#from-random-process-to-random-variables" title="Permalink to this headline">¶</a></h2>
+<p>Consider the random process of throwing a six-sided fair die,
+<span class="math notranslate nohighlight">\(\Omega\)</span>={<span>⚀,⚁,⚂,⚃,⚄,⚅</span>}</p>
+<p><strong>Definition</strong>: Random variable
+For our purspose we can define a (univariate) random variable <span class="math notranslate nohighlight">\(X\)</span> is a function that defined on the sample space of a random process that associates a real number for every event in the event space of the sample space.</p>
+<div class="math notranslate nohighlight">
+\[ X:\Omega \rightarrow \mathbb{R}\]</div>
+<p>We will denote by capital <span class="math notranslate nohighlight">\(X\)</span> the random variable, i.e., the function from <span class="math notranslate nohighlight">\(\mathcal S\)</span> to <span class="math notranslate nohighlight">\(\mathbb R\)</span>,  and by small cap <span class="math notranslate nohighlight">\(x\)</span>, the value the random variable <span class="math notranslate nohighlight">\(X\)</span> takes in the real numbers.</p>
+<p>Examples of random variables: the result of rolling a dice. The total amount of rainfall falling in a day. The duration of rainfall falling in a day. The magnitude of an Earthquake.</p>
+</div>
+<div class="section" id="examples-of-discrete-random-variables">
+<h2>Examples of discrete random variables<a class="headerlink" href="#examples-of-discrete-random-variables" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="uniform-discrete-random-variable">
+<h3>Uniform discrete random variable<a class="headerlink" href="#uniform-discrete-random-variable" title="Permalink to this headline">¶</a></h3>
+<p>The simples example of a random variable is that of a uniform discrete random variable. For example, consider the random variable <span class="math notranslate nohighlight">\(X\)</span> that is associated with the value on the face of a die. This random variable takes discrete values between 1 and 6.</p>
+<p><strong>Simulation</strong></p>
+<p>We can simulate this random variable using the <code>stats.randint.rvs</code> method from the <code>scipy</code> library.</p>
+<p>However, remember that python interprets intervals as closed on the left(lower bound)
+and open on the right (upper bound). If you specify a bound in python using <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span>, Python itnerprets it as <span class="math notranslate nohighlight">\([a,b)\)</span>. So to specify the discrete itnerval <span class="math notranslate nohighlight">\([1,6]\)</span> we actually have to specify it as <span class="math notranslate nohighlight">\([1,7)\)</span>. This is sometimes called left-inclusive right-exclusive, because the value on the left (lower bound) is included, whereas the value on the right (upper bound) is excluded.</p>
+<p>The <code>stats</code> class has a method to generate randint objects that deal with uniform discrete (integer-valued) random variables.
+<a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/tutorial/stats/discrete_randint.html">https://docs.scipy.org/doc/scipy/reference/tutorial/stats/discrete_randint.html</a>
+<a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/reference/generated/scipy.stats.randint.html#scipy.stats.randint">https://docs.scipy.org/doc/scipy/reference/reference/generated/scipy.stats.randint.html#scipy.stats.randint</a> <br>
+The bottom of the above documentation page for <code>randint</code> describes the methods. The randint object has method <code>rvs</code> to generate such a random variable</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># let&#39;s import the stats module from the scipy library</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
+
+<span class="c1">#Simulate random variable taking values between 1 (inclusive) and 7 (exclusive). </span>
+<span class="c1">#Let&#39;s say we only want to simulate this random variable once</span>
+<span class="c1"># Rerun this cell several times to simulate a throw of the dice</span>
+<span class="n">X</span><span class="o">=</span><span class="n">stats</span><span class="o">.</span><span class="n">randint</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">low</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[2]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="bernoulli-random-variable">
+<h3>Bernoulli Random Variable<a class="headerlink" href="#bernoulli-random-variable" title="Permalink to this headline">¶</a></h3>
+<p>A Bernoulli random variable is a variable that can only take values of <span class="math notranslate nohighlight">\(1\)</span> or <span class="math notranslate nohighlight">\(0\)</span>. It takes a value of <span class="math notranslate nohighlight">\(1\)</span> with probability <span class="math notranslate nohighlight">\(p\)</span> and <span class="math notranslate nohighlight">\(0\)</span> with probability <span class="math notranslate nohighlight">\(1-p\)</span></p>
+<p>We can simulate a random variable using the fair die. For example, we can define a Bernoulli random variable <span class="math notranslate nohighlight">\(Y\)</span> which takes value <span class="math notranslate nohighlight">\(1\)</span> if the roll is larger than 3, and <span class="math notranslate nohighlight">\(0\)</span> otherwise. In this case, the Bernoulli random variable has <span class="math notranslate nohighlight">\(p=0.5\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># rerun this cell to simulate more realizations of a bernoulli random variable</span>
+<span class="n">X</span><span class="o">=</span><span class="n">stats</span><span class="o">.</span><span class="n">randint</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">low</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">X</span><span class="o">&gt;</span><span class="mi">3</span><span class="p">:</span> 
+    <span class="n">Y</span><span class="o">=</span><span class="mi">1</span>
+<span class="k">else</span><span class="p">:</span> 
+    <span class="n">Y</span><span class="o">=</span><span class="mi">0</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+</pre></div>
+</div>
+</div>
+</div>
+<p>Another way to generate a Bernoulli random variable with <span class="math notranslate nohighlight">\(p=1\)</span> is by flipping a fair coin, and assigning <span class="math notranslate nohighlight">\(1\)</span> for heads and <span class="math notranslate nohighlight">\(0\)</span> for tails.</p>
+<p>We could generate a Bernoulli random variable with <span class="math notranslate nohighlight">\(p=1/3\)</span> by defining it as taking value 1 if the die roll is larger than 4 (i.e. 5 or 6), and zero otherwise.</p>
+<p>In practice, we can generate realizations of a Bernoulli random variable with any <span class="math notranslate nohighlight">\(p\)</span> using the same <code>stats</code> module from <code>scipy</code>.
+<a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.bernoulli.html">https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.bernoulli.html</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Rerun this cell to generate Bernoulli random variables with $p=0.5$</span>
+<span class="n">X</span><span class="o">=</span><span class="n">stats</span><span class="o">.</span><span class="n">bernoulli</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Rerun this cell to generate Bernoulli random variables with $p=0.9$</span>
+<span class="n">X</span><span class="o">=</span><span class="n">stats</span><span class="o">.</span><span class="n">bernoulli</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1 1 1 1 1 1 1 0 1 1 1 1 1 0 1 1 1 1 1 1 0 1 1 1 1 1 1 1 1 1 1 0 1 1 1 0 1
+ 1 1 1 1 1 0 1 1 1 1 1 1 1]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="sum-of-two-dice">
+<h3>Sum of two dice<a class="headerlink" href="#sum-of-two-dice" title="Permalink to this headline">¶</a></h3>
+<p>Let’s take another example of a random variable. Consider rolling two fair dice</p>
+<p><img alt="two_dice.png" src="content/Module01/M01_two_dice.png" /></p>
+<p>And define a random variable <span class="math notranslate nohighlight">\(S\)</span> whose value is the sum of the two dice rolls.</p>
+<p><img alt="dice_sum" src="content/Module01/M01_dice_sum.png" /></p>
+<p>We can generate realizations of this random variable by generating two (independent) dice and taking their sum</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span><span class="o">=</span><span class="n">stats</span><span class="o">.</span><span class="n">randint</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">low</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">Y</span><span class="o">=</span><span class="n">stats</span><span class="o">.</span><span class="n">randint</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">low</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">S</span><span class="o">=</span><span class="n">X</span><span class="o">+</span><span class="n">Y</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">S</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[9]
+</pre></div>
+</div>
+</div>
+</div>
+<hr style="border:1px solid black"> </hr></div>
+</div>
+<div class="section" id="distributions-of-discrete-random-variable">
+<h2>Distributions of discrete random variable<a class="headerlink" href="#distributions-of-discrete-random-variable" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="probability-mass-functions">
+<h3>Probability mass functions<a class="headerlink" href="#probability-mass-functions" title="Permalink to this headline">¶</a></h3>
+<p>How do we describe the possible outcome of a random variable? Random variables can be described - and are actually defined - by their distribution functions. Instead of a “bernoulli random variable” we will usually say a “Bernoulli-distributed random variable”.</p>
+<p>For discrete random variables these distributions functions are called <strong>probability mass functions (pmf)</strong>. the pmf of a random variable <span class="math notranslate nohighlight">\(X\)</span> is:</p>
+<div class="math notranslate nohighlight">
+\[p(x_i)=P(X=x_i),\]</div>
+<p>sometimes denoted as</p>
+<div class="math notranslate nohighlight">
+\[p_X(x_i).\]</div>
+<p>For the uniform discrete random variable associated with a roll of the dice the distribution function is pretty straight-forward. It takes value of 1/6 if <span class="math notranslate nohighlight">\(x_i\in\{1,2,3,4,5,6\}\)</span> and zero otherwise. The Bernoulli random variable with parameter p has a similarly straightforward pmf, which takes value of <span class="math notranslate nohighlight">\(p\)</span> for <span class="math notranslate nohighlight">\(x_i\)</span>=1, and <span class="math notranslate nohighlight">\(1-p\)</span> for <span class="math notranslate nohighlight">\(x_i=0\)</span>.</p>
+<p>The table above also allows us to easily compute the pmf for the sum of two fair dice. The pmf only takes non-zero values for <span class="math notranslate nohighlight">\(x_i\in\{1,\ldots,12\}\)</span>. For example <span class="math notranslate nohighlight">\(p(5)\)</span> is the probability of rolling a total of 5, and it can be read from the table as <span class="math notranslate nohighlight">\(p(5)=4/36=1/9\)</span></p>
+<p>Let’s visualize the pmfs for the three random variables described. The random variable objects &lt;cin <code>scipy.stats</code> have the pmf as a method</p>
+<p><strong>Uniformly distributed random variable (Sincle dice)</strong></p>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#define an x-axis</span>
+<span class="n">x</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1">#plot </span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="n">figsize</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">stats</span><span class="o">.</span><span class="n">randint</span><span class="o">.</span><span class="n">pmf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">low</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">high</span><span class="o">=</span><span class="mi">7</span><span class="p">),</span> <span class="s1">&#39;ro&#39;</span><span class="p">,</span><span class="n">ms</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+        <span class="n">label</span><span class="o">=</span><span class="s1">&#39;pmf&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Discrete random variable uniformy distributed between 1 and 6&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/M01_N02_Discrete_Random_Variables_16_0.png" src="../../_images/M01_N02_Discrete_Random_Variables_16_0.png" />
+</div>
+</div>
+<p><strong>Bernoulli Random variable</strong></p>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Bernoulli random variable with p=0.5</span>
+
+<span class="n">p</span><span class="o">=</span><span class="mf">0.5</span>
+<span class="c1">#define an x-axis</span>
+<span class="n">x</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1">#plot </span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="n">figsize</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">stats</span><span class="o">.</span><span class="n">bernoulli</span><span class="o">.</span><span class="n">pmf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">p</span><span class="p">),</span> <span class="s1">&#39;ro&#39;</span><span class="p">,</span><span class="n">ms</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+        <span class="n">label</span><span class="o">=</span><span class="s1">&#39;pmf&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Bernoulli with p=0.4&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="mf">1e1</span><span class="n">d70f3b2ea</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">p</span><span class="o">=</span><span class="mf">0.5</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="c1">#define an x-axis</span>
+<span class="ne">----&gt; </span><span class="mi">5</span> <span class="n">x</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> 
+<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="c1">#plot</span>
+
+<span class="ne">NameError</span>: name &#39;np&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Sum of two dice</strong></p>
+<p>We don’t have a ready-made method for generating a random variable with the same distribution as the sum of two random variables. But we can define and read the pmf from the table above</p>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># define the pmf</span>
+<span class="n">x_2dice</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">12</span><span class="p">]</span>
+<span class="n">p_2dice</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span><span class="o">/</span><span class="mi">36</span>
+
+<span class="c1">#notice we need to make the pmf p_2dice as numpy array.</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="n">figsize</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_2dice</span><span class="p">,</span> <span class="n">p_2dice</span><span class="p">,</span> <span class="s1">&#39;ro&#39;</span><span class="p">,</span><span class="n">ms</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+        <span class="n">label</span><span class="o">=</span><span class="s1">&#39;pmf&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Discrete random variable uniformy distributed between 1 and 6&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">2</span><span class="o">-</span><span class="n">bef10761eba6</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># define the pmf</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">x_2dice</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">12</span><span class="p">]</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">p_2dice</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span><span class="o">/</span><span class="mi">36</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> 
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="c1">#notice we need to make the pmf p_2dice as numpy array.</span>
+
+<span class="ne">NameError</span>: name &#39;np&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="realization-draw">
+<h3>Realization/Draw<a class="headerlink" href="#realization-draw" title="Permalink to this headline">¶</a></h3>
+<p>We would call the value of the random variable associated with a throw of the dice a <strong>realization</strong> or <strong>draw</strong> of the random process and of the random variable.
+The cell above generates a single realizatoin of the random variable. But we can generate multiple realizatoins at once and save them in an array</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Rerun this cell several times to simulate 20 realizations </span>
+<span class="c1">#of a Uniform Discrete Random Variable  (i.e. 20 throws of the die)</span>
+<span class="n">X</span><span class="o">=</span><span class="n">stats</span><span class="o">.</span><span class="n">randint</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">low</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[5 1 6 2 2 1 1 5 6 3 2 1 1 4 4 1 5 4 5 5]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="histograms">
+<h3>Histograms<a class="headerlink" href="#histograms" title="Permalink to this headline">¶</a></h3>
+<p><b>Definition</b>: A histogram is an <em>approximate</em> representation of the distribution of a random variable, done through computing the frequency of observations occuring in certain ranges of values.</p>
+<p>To compute a histogram we have to draw realizations of a ranodm variable, define a set of bins, and count the number of realizations within each bin. Let’s do that for the three random variables discussed, and compare it with the pmf</p>
+<p>Note ther are several ways to compute a histogram: Using <a href="https://numpy.org/doc/stable/reference/generated/numpy.histogram.html">numpy.histrogram</a>,<a href="https://docs.scipy.org/doc/scipy-0.14.0/reference/generated/scipy.stats.histogram.html">scipy.histogram</a>, or <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.hist.html">matplotlib.pyplot.hist</a>.</p>
+<p><strong>Discrete uniform RV (one die)</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Ndraws</span><span class="o">=</span><span class="mi">100</span>
+
+<span class="c1"># PMF</span>
+<span class="n">x_uniform</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">p_uniform</span><span class="o">=</span><span class="n">stats</span><span class="o">.</span><span class="n">randint</span><span class="o">.</span><span class="n">pmf</span><span class="p">(</span><span class="n">x_uniform</span><span class="p">,</span><span class="n">low</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">high</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
+
+<span class="c1"># generate random variables and define edges </span>
+<span class="c1"># (note we want the integers to be in the bins, not at the edges)</span>
+<span class="n">X_uniform</span><span class="o">=</span><span class="n">stats</span><span class="o">.</span><span class="n">randint</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">low</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">Ndraws</span><span class="p">)</span>
+<span class="n">bin_edges_uniform</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">8.5</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">X_uniform</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1 1 1 4 6 5 5 1 6 3 1 3 6 5 6 4 1 5 4 4 6 1 2 6 5 5 1 3 1 1 4 6 4 1 3 4 1
+ 1 6 6 2 1 3 6 3 6 6 1 1 1 6 6 5 2 3 1 1 6 1 5 6 3 3 5 2 3 6 2 2 3 1 3 3 6
+ 5 1 5 5 3 1 5 2 1 6 6 2 4 4 4 6 4 3 1 6 1 6 1 6 3 1]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="n">figsize</span><span class="p">)</span>
+
+
+<span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">X_uniform</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="n">bin_edges_uniform</span><span class="p">,</span><span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">rwidth</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;histrogram&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_uniform</span><span class="p">,</span><span class="n">p_uniform</span> <span class="p">,</span> <span class="s1">&#39;ro&#39;</span><span class="p">,</span><span class="n">ms</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+        <span class="n">label</span><span class="o">=</span><span class="s1">&#39;pmf&#39;</span><span class="p">);</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">left</span><span class="o">=-</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">7.5</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/M01_N02_Discrete_Random_Variables_26_0.png" src="../../_images/M01_N02_Discrete_Random_Variables_26_0.png" />
+</div>
+</div>
+<p><strong>Bernoulli</strong></p>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">N_draws</span><span class="o">=</span><span class="mi">10</span><span class="p">;</span>
+<span class="n">p_bern</span><span class="o">=</span><span class="mf">0.5</span><span class="p">;</span>
+
+<span class="c1">#PMF</span>
+<span class="n">x_bernoulli</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">p_bernoulli</span><span class="o">=</span><span class="n">stats</span><span class="o">.</span><span class="n">bernoulli</span><span class="o">.</span><span class="n">pmf</span><span class="p">(</span><span class="n">x_bernoulli</span><span class="p">,</span><span class="n">p</span><span class="o">=</span><span class="n">p_bern</span><span class="p">)</span>
+
+<span class="c1"># generate random variables and define edges </span>
+<span class="c1">#(note we want the integers to be in the bins, not at the edges)</span>
+<span class="n">X_bernoulli</span><span class="o">=</span><span class="n">stats</span><span class="o">.</span><span class="n">bernoulli</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="n">p_bern</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">N_draws</span><span class="p">)</span>
+<span class="n">bin_edges_bernoulli</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mf">1.5</span><span class="p">,</span><span class="mf">3.5</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+
+
+<span class="c1">#Plot</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="n">figsize</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">X_bernoulli</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="n">bin_edges_bernoulli</span><span class="p">,</span><span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">rwidth</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_bernoulli</span><span class="p">,</span> <span class="n">p_bernoulli</span><span class="p">,</span> <span class="s1">&#39;ro&#39;</span><span class="p">,</span><span class="n">ms</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+        <span class="n">label</span><span class="o">=</span><span class="s1">&#39;pmf&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/M01_N02_Discrete_Random_Variables_28_0.png" src="../../_images/M01_N02_Discrete_Random_Variables_28_0.png" />
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Ndraws</span><span class="o">=</span><span class="mi">100</span>
+
+<span class="c1"># PMF</span>
+<span class="n">x_2dice</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">12</span><span class="p">]</span>
+<span class="n">p_2dice</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span><span class="o">/</span><span class="mi">36</span>
+
+<span class="c1"># generate random variables and define edges </span>
+<span class="c1"># (note we want the integers to be in the bins, not at the edges)</span>
+<span class="n">X_1die</span><span class="o">=</span><span class="n">stats</span><span class="o">.</span><span class="n">randint</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">low</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">Ndraws</span><span class="p">)</span>
+<span class="n">Y_1die</span><span class="o">=</span><span class="n">stats</span><span class="o">.</span><span class="n">randint</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">low</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">Ndraws</span><span class="p">)</span>
+<span class="n">Z_2dice</span><span class="o">=</span><span class="n">X_1die</span><span class="o">+</span><span class="n">Y_1die</span>
+
+<span class="n">bin_edges_2dice</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">1.5</span><span class="p">,</span><span class="mf">13.5</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="n">figsize</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">Z_2dice</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="n">bin_edges_2dice</span><span class="p">,</span><span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">rwidth</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_2dice</span><span class="p">,</span> <span class="n">p_2dice</span><span class="p">,</span> <span class="s1">&#39;ro&#39;</span><span class="p">,</span><span class="n">ms</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+        <span class="n">label</span><span class="o">=</span><span class="s1">&#39;pmf&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/M01_N02_Discrete_Random_Variables_29_0.png" src="../../_images/M01_N02_Discrete_Random_Variables_29_0.png" />
+</div>
+</div>
+<div class="admonition danger">
+<p class="admonition-title">Danger</p>
+<p>For <em>discrete</em> random variables the histogram can give weird results if the bins are not set appropriately (for example if they are of unequal weidth)</p>
+</div>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Ndraws</span><span class="o">=</span><span class="mi">400</span>
+
+<span class="c1"># PMF</span>
+<span class="n">x_uniform</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">p_uniform</span><span class="o">=</span><span class="n">stats</span><span class="o">.</span><span class="n">randint</span><span class="o">.</span><span class="n">pmf</span><span class="p">(</span><span class="n">x_uniform</span><span class="p">,</span><span class="n">low</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">high</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
+
+<span class="c1"># generate random variables and define edges </span>
+<span class="c1"># (note we want the integers to be in the bins, not at the edges)</span>
+<span class="n">X_uniform</span><span class="o">=</span><span class="n">stats</span><span class="o">.</span><span class="n">randint</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">low</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">Ndraws</span><span class="p">)</span>
+
+<span class="c1">#compare teh two below:</span>
+<span class="c1">#bin_edges_uniform=np.asarray([0.5, 1.5, 2.5, 3.5, 4.5, 5.5, 6.5])</span>
+<span class="n">bin_edges_uniform</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">([</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">,</span> <span class="mf">3.1</span><span class="p">,</span> <span class="mf">4.9</span><span class="p">,</span> <span class="mf">5.5</span><span class="p">,</span> <span class="mf">6.5</span><span class="p">])</span>
+
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="n">figsize</span><span class="p">)</span>
+
+
+<span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">X_uniform</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="n">bin_edges_uniform</span><span class="p">,</span><span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">rwidth</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_uniform</span><span class="p">,</span><span class="n">p_uniform</span> <span class="p">,</span> <span class="s1">&#39;ro&#39;</span><span class="p">,</span><span class="n">ms</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+        <span class="n">label</span><span class="o">=</span><span class="s1">&#39;pmf&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/M01_N02_Discrete_Random_Variables_31_0.png" src="../../_images/M01_N02_Discrete_Random_Variables_31_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="convergence-of-histograms-to-pmfs">
+<h3>Convergence of histograms to pmfs<a class="headerlink" href="#convergence-of-histograms-to-pmfs" title="Permalink to this headline">¶</a></h3>
+<p>As the number of draws, or realizations of the random variables increases, the histogram becomes a better and better approximation for the pmf.</p>
+<div class="math notranslate nohighlight">
+\[h_N(x_i)\rightarrow p(x_i)\]</div>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># change the number of draws for the 2 dice case</span>
+<span class="n">Ndraws</span><span class="o">=</span><span class="mi">100000</span>
+
+<span class="c1"># PMF</span>
+<span class="n">x_2dice</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">12</span><span class="p">]</span>
+<span class="n">p_2dice</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span><span class="o">/</span><span class="mi">36</span>
+
+<span class="c1"># generate random variables and define edges </span>
+<span class="c1"># (note we want the integers to be in the bins, not at the edges)</span>
+<span class="n">X_1die</span><span class="o">=</span><span class="n">stats</span><span class="o">.</span><span class="n">randint</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">low</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">Ndraws</span><span class="p">)</span>
+<span class="n">Y_1die</span><span class="o">=</span><span class="n">stats</span><span class="o">.</span><span class="n">randint</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">low</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">Ndraws</span><span class="p">)</span>
+<span class="n">Z_2dice</span><span class="o">=</span><span class="n">X_1die</span><span class="o">+</span><span class="n">Y_1die</span>
+
+<span class="n">bin_edges_2dice</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">1.5</span><span class="p">,</span><span class="mf">13.5</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="n">figsize</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">Z_2dice</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="n">bin_edges_2dice</span><span class="p">,</span><span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">rwidth</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_2dice</span><span class="p">,</span> <span class="n">p_2dice</span><span class="p">,</span> <span class="s1">&#39;ro&#39;</span><span class="p">,</span><span class="n">ms</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+        <span class="n">label</span><span class="o">=</span><span class="s1">&#39;pmf&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/M01_N02_Discrete_Random_Variables_33_0.png" src="../../_images/M01_N02_Discrete_Random_Variables_33_0.png" />
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./content/Module01"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="M01_N01_Probability_Recap.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Basics of probability</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="M01_N03_Continuous_Random_Variables.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">Continous random variables</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Cristian Proistosescu<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

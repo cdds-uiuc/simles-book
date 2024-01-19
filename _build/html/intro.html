@@ -1,0 +1,373 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About this book &#8212; SIMLES: Statistical Inference and Machine Learning for Earth Sciences</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="shortcut icon" href="_static/CDDS_logo.jpeg"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Basics of probability" href="content/Module01/M01_N01_Probability_Recap.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      <img src="_static/CDDS_logo.jpeg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">SIMLES: Statistical Inference and Machine Learning for Earth Sciences</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1 current">
+  <a class="reference internal" href="#">
+   About this book
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  1.Basics
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="content/Module01/M01_N01_Probability_Recap.html">
+   Basics of probability
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="content/Module01/M01_N02_Discrete_Random_Variables.html">
+   Discrete Random Variables
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="content/Module01/M01_N03_Continuous_Random_Variables.html">
+   Continous random variables
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/intro.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/cdds-uiuc/simles-book"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/cdds-uiuc/simles-book/issues/new?title=Issue%20on%20page%20%2Fintro.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   About this book
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#geol-593-atms-597">
+   GEOL 593 / ATMS 597
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#running-code">
+     Running code:
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#errors-typos-examples-feedback">
+     Errors, Typos, Examples, Feedback
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#resources">
+     Resources
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#readings">
+     Readings
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#license-for-this-book">
+   License for this book
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="about-this-book">
+<h1>About this book<a class="headerlink" href="#about-this-book" title="Permalink to this headline">¶</a></h1>
+</div>
+<div class="section" id="geol-593-atms-597">
+<h1>GEOL 593 / ATMS 597<a class="headerlink" href="#geol-593-atms-597" title="Permalink to this headline">¶</a></h1>
+<p>This is a live and <em><strong>very much beta</strong></em> version of the course notes for the GEOL 593/ATMS 597, as the class is being actively taught for the first time in the Fall of 2021 at the University of Illinois at Urbana Champaign.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If you happened on this website and are not a student in the class, proceed with caution. The book is actively being changed and updated. Nothing is stable. The course is intended as a graduate-level hands-on introduction to Statistical Inference and Machine Learning methods across Earth and Environmental Sciences. You are welcome to play around with the materials but be warned: Here be dragons.</p>
+</div>
+<p>This book contains the jupyter-noteboks for the class, and is meant to be supplemented by additional reading, lectures, and course projects.</p>
+<div class="section" id="running-code">
+<h2>Running code:<a class="headerlink" href="#running-code" title="Permalink to this headline">¶</a></h2>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>To run a notebook in this book use the launch button (the little rocket at the top of notebooks) to launch either Binder Hub or Google Colab.</p>
+</div>
+<div class="admonition danger">
+<p class="admonition-title">Danger</p>
+<p>If you work in Google Colab on the course-version of the notebook you risk losing your work if you close the interactive session. If you want to work on a notebook, save it, and be able to return to it, make sure you save a copy of the notebook in your own google drive. This can be done in Colab by clicking “save a copy in Drive” under the “File” menu.</p>
+</div>
+</div>
+<div class="section" id="errors-typos-examples-feedback">
+<h2>Errors, Typos, Examples, Feedback<a class="headerlink" href="#errors-typos-examples-feedback" title="Permalink to this headline">¶</a></h2>
+<p>This is the first iteration of the material, written on the fly, as it is being taught, during a pandemic, and while raising an infant. Errors and typos abound. Finding typos and errors <em>and reporting them to me</em> will count towards your participation score in the class. Helpful feedback on the presentation is also welcomed.</p>
+<p>Well-written examples applications in the Earth and Environmental Sciences are <em>especially</em> welcomed, and will earn participation grade (if a student in the class), or brownie points + eternal gratitude + acknowledgemetns if not.</p>
+</div>
+<div class="section" id="resources">
+<h2>Resources<a class="headerlink" href="#resources" title="Permalink to this headline">¶</a></h2>
+<p>The class assumes basic knowledge of Python. It will also make use of a number of libraries for scientific computing. The most commonly used packages are <code>numpy</code>, <code>pandas</code>,<code>scipy</code> ,<code>scikit-learn</code> , and <code>matplotlib</code>. We will also make ocassional use of <code>xarray</code>, <code>cartopy</code> <code>statsmodel</code>, <code>seaborn</code> and many others.</p>
+<p>The course notebooks will give you ample examples of how to use these libraries, so it is not necessary to be familiar with them beforehand. At the same time, this is not a scientific computing class, so it is assumed that you can read and reproduce scientific computing code, and are able to look up documentations and examples by yourself.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>I <em>strongly</em> recommend that before embarking on this class you go through a tutorial or a class on scientific computing in python. My recommendation is</p>
+<ul class="simple">
+<li><p>Ryan Abernathey’s <a ref="https://earth-env-data-science.github.io/intro.html">Introduction to Earth and
+Environmental Data Science</a>. <br></p></li>
+</ul>
+</div>
+<p>The materials is  easily accessed in the same Jupyter Book format as this courses.</p>
+</div>
+<div class="section" id="readings">
+<h2>Readings<a class="headerlink" href="#readings" title="Permalink to this headline">¶</a></h2>
+<p>The course material is supplemented by in-class lecture and additional readings. The recommended reading for the class consists of two freely-available textbooks:</p>
+<ul class="simple">
+<li><p>Julien Emile-Geay: <a href="https://figshare.com/articles/book/Data_Analysis_in_the_Earth_Environmental_Sciences/1014336/10">Data Analysis in the Earth &amp; Environmental Sciences</a></p></li>
+<li><p>James, Witten, Hastie, Tibshirani: <a href="•	James, Witten, Hastie, Tibshirani: An introduction to statistical learning ">An introduction to statistical learning</a></p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="license-for-this-book">
+<h1>License for this book<a class="headerlink" href="#license-for-this-book" title="Permalink to this headline">¶</a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>All content in this book (ie, any files and content in the <code class="docutils literal notranslate"><span class="pre">content/</span></code> folder)
+is licensed under the <a class="reference external" href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International</a>
+(CC BY-SA 4.0) license.</p>
+</div>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+     <div id="next">
+        <a class="right-next" href="content/Module01/M01_N01_Probability_Recap.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">Basics of probability</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Cristian Proistosescu<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

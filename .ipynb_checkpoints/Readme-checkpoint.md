@@ -1,4 +1,4 @@
-# SIMLES
+# SIMLES - About this book 
 # Statistical Inference and Machine Learning for Earth Sciences
 ## GEOL 593 / ATMS 597 
 
@@ -34,11 +34,13 @@ The materials is  easily accessed in the same Jupyter Book format as this course
 
 ## Readings
 The course material is supplemented by in-class lecture and additional readings. The recommended reading for the class consists of two freely-available textbooks:
-- Julien Emile-Geay: [Data Analysis in the Earth & Environmental Sciences](https://figshare.com/articles/book/Data_Analysis_in_the_Earth_Environmental_Sciences/1014336/10)
-- James, Witten, Hastie, Tibshirani: [An introduction to statistical learning with Python](https://www.statlearning.com/)
+- Julien Emile-Geay: <a href="https://figshare.com/articles/book/Data_Analysis_in_the_Earth_Environmental_Sciences/1014336/10">Data Analysis in the Earth & Environmental Sciences</a>
+- James, Witten, Hastie, Tibshirani: <a href="•	James, Witten, Hastie, Tibshirani: An introduction to statistical learning ">An introduction to statistical learning</a>
 
+# License for this book
 
-Selected reading will be assigned from several other textbooks. All of these are freely available either online or through the UIUC library:
-- Dennis Hartmann: [Objective Analysis Course Notes](https://atmos.uw.edu/~dennis/552_Notes_ftp.html) 
-- Von Storch and Zwiers: Statistical Analysis in Climate Research [UIUC library link](https://i-share-uiu.primo.exlibrisgroup.com/permalink/01CARLI_UIU/gpjosq/alma99653508612205899)
-- Hastie, Tibshirani, Friedman: [The elements of statistical learning : data mining, inference, and prediction](https://hastie.su.domains/ElemStatLearn/)
+```{Note}
+All content in this book (ie, any files and content in the `content/` folder)
+is licensed under the [Creative Commons Attribution-ShareAlike 4.0 International](https://creativecommons.org/licenses/by-sa/4.0/)
+(CC BY-SA 4.0) license.
+```

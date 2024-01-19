@@ -1,23 +1,18 @@
-# About this book
+# SIMLES
+# Statistical Inference and Machine Learning for Earth Sciences
+## GEOL 593 / ATMS 597 
 
-# GEOL 593 / ATMS 597 
 
-This is a live and ***very much beta*** version of the course notes for the GEOL 593/ATMS 597, as the class is being actively taught for the first time in the Fall of 2021 at the University of Illinois at Urbana Champaign. 
+This is a live and ***very much beta*** version of the course notes for the GEOL 593/ATMS 597, as the class is being actively taught for the first time in the Spring of 2024 at the University of Illinois at Urbana Champaign. 
 
 ```{warning}
 If you happened on this website and are not a student in the class, proceed with caution. The book is actively being changed and updated. Nothing is stable. The course is intended as a graduate-level hands-on introduction to Statistical Inference and Machine Learning methods across Earth and Environmental Sciences. You are welcome to play around with the materials but be warned: Here be dragons.
 ```
 
-This book contains the jupyter-noteboks for the class, and is meant to be supplemented by additional reading, lectures, and course projects.
-
 ## Running code:
 ```{important}
 To run a notebook in this book use the launch button (the little rocket at the top of notebooks) to launch either Binder Hub or Google Colab. 
 ```
-```{danger}
-If you work in Google Colab on the course-version of the notebook you risk losing your work if you close the interactive session. If you want to work on a notebook, save it, and be able to return to it, make sure you save a copy of the notebook in your own google drive. This can be done in Colab by clicking "save a copy in Drive" under the "File" menu.
-```
-
 ## Errors, Typos, Examples, Feedback
 This is the first iteration of the material, written on the fly, as it is being taught, during a pandemic, and while raising an infant. Errors and typos abound. Finding typos and errors *and reporting them to me* will count towards your participation score in the class. Helpful feedback on the presentation is also welcomed. 
 
@@ -39,13 +34,11 @@ The materials is  easily accessed in the same Jupyter Book format as this course
 
 ## Readings
 The course material is supplemented by in-class lecture and additional readings. The recommended reading for the class consists of two freely-available textbooks:
-- Julien Emile-Geay: <a href="https://figshare.com/articles/book/Data_Analysis_in_the_Earth_Environmental_Sciences/1014336/10">Data Analysis in the Earth & Environmental Sciences</a>
-- James, Witten, Hastie, Tibshirani: <a href="•	James, Witten, Hastie, Tibshirani: An introduction to statistical learning ">An introduction to statistical learning</a>
+- Julien Emile-Geay: [Data Analysis in the Earth & Environmental Sciences](https://figshare.com/articles/book/Data_Analysis_in_the_Earth_Environmental_Sciences/1014336/10)
+- James, Witten, Hastie, Tibshirani: [An introduction to statistical learning with Python](https://www.statlearning.com/)
 
-# License for this book
 
-```{Note}
-All content in this book (ie, any files and content in the `content/` folder)
-is licensed under the [Creative Commons Attribution-ShareAlike 4.0 International](https://creativecommons.org/licenses/by-sa/4.0/)
-(CC BY-SA 4.0) license.
-```
+Selected reading will be assigned from several other textbooks. All of these are freely available either online or through the UIUC library:
+- Dennis Hartmann: [Objective Analysis Course Notes](https://atmos.uw.edu/~dennis/552_Notes_ftp.html) 
+- Von Storch and Zwiers: Statistical Analysis in Climate Research [UIUC library link](https://i-share-uiu.primo.exlibrisgroup.com/permalink/01CARLI_UIU/gpjosq/alma99653508612205899)
+- Hastie, Tibshirani, Friedman: [The elements of statistical learning : data mining, inference, and prediction](https://hastie.su.domains/ElemStatLearn/)

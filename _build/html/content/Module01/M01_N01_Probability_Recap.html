@@ -51,11 +51,12 @@
         const thebe_selector_output = ".output"
     </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="canonical" href="https://cdds-uiuc.github.io/simles-book/content/Module01/M01_N01_Probability_Recap.html" />
     <link rel="shortcut icon" href="../../_static/CDDS_logo.jpeg"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Discrete Random Variables" href="M01_N02_Discrete_Random_Variables.html" />
-    <link rel="prev" title="About this book" href="../../intro.html" />
+    <link rel="next" title="Random Variables and Probability Distributions" href="M01_N02_Random_Variables.html" />
+    <link rel="prev" title="Programming" href="../../Programming.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -88,7 +89,19 @@
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../../intro.html">
-   About this book
+   SIMLES
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Resources
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../Programming.html">
+   Programming
   </a>
  </li>
 </ul>
@@ -104,13 +117,8 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="M01_N02_Discrete_Random_Variables.html">
-   Discrete Random Variables
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="M01_N03_Continuous_Random_Variables.html">
-   Continous random variables
+  <a class="reference internal" href="M01_N02_Random_Variables.html">
+   Random Variables and Probability Distributions
   </a>
  </li>
 </ul>
@@ -311,6 +319,7 @@
                 
   <div class="section" id="basics-of-probability">
 <h1>Basics of probability<a class="headerlink" href="#basics-of-probability" title="Permalink to this headline">¶</a></h1>
+<p>***Reading: Emile-Geay: Chapters 1,2 ***</p>
 <p>We’ll start by reviewing some basics of probability theory. I will use some simple examples - dice and roullete - to illustrate basic probability concepts. We’ll also use these simple examples to build intuition on several properties of probabilities - the law of total probability, independence, conditional probability, and Bayes’s rule - that can be generalized, and will be used throughout the course.</p>
 </div>
 <div class="section" id="probability-spaces">
@@ -418,7 +427,7 @@ $<span class="math notranslate nohighlight">\(P(A \text{ OR } B)=P(A \cup B)=P(A
 <h1>Conditional Probabilities &amp; Independence<a class="headerlink" href="#conditional-probabilities-independence" title="Permalink to this headline">¶</a></h1>
 <p>Here we’ll review some definitions and properties of conditional probabilities and independence that we will use throughout the course. This is more easily done when we have two random processes occuring simultaneously. So we will consider the roll of two independent and <em>fair</em> dice.</p>
 <p>The sample space, <span class="math notranslate nohighlight">\(\Omega\)</span> is illustrated by the following table:</p>
-<p><img alt="two_dice.png" src="content/Module01/M01_two_dice.png" /></p>
+<p><img alt="two_dice.png" src="../../_images/M01_two_dice.png" /></p>
 <p>The event space is the set of all subsets of <span class="math notranslate nohighlight">\(\Omega\)</span> and the probability function for a fair dice is a constant functoin <span class="math notranslate nohighlight">\(P=1/36\)</span>.</p>
 <p>For example the <em>event</em> <span class="math notranslate nohighlight">\(E\)</span>=”a total roll of 3” is the intersection of two different outcome “red dice rolls 1 and greeen dice rolls 2” is different from “red dice rolls 2 and green dice rolls 1”, i.e. <span class="math notranslate nohighlight">\(\{\color{red}1,\color{green}2\} ,\{\color{green}2,\color{red}1\}\)</span> The probability of rolling a 3 is thus <span class="math notranslate nohighlight">\(P(\{\color{red}1,\color{green}2\})+P(\{\color{green}1,\color{red}2)\}=2/36\)</span>.</p>
 <p>We can also define events applicable to a single dice. For example, “the red dice rolled a 1”. The probability of the red dice rolling a 1 is 1/6, and it can also be written as the union of all the six outcomes in which the red dice rolls 1.</p>
@@ -537,19 +546,19 @@ $<span class="math notranslate nohighlight">\(P(A|B)=\frac{P(B|A)P(A)}{P(B)}\)</
 <div class='prev-next-bottom'>
     
     <div id="prev">
-        <a class="left-prev" href="../../intro.html" title="previous page">
+        <a class="left-prev" href="../../Programming.html" title="previous page">
             <i class="prevnext-label fas fa-angle-left"></i>
             <div class="prevnext-info">
                 <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">About this book</p>
+                <p class="prevnext-title">Programming</p>
             </div>
         </a>
     </div>
      <div id="next">
-        <a class="right-next" href="M01_N02_Discrete_Random_Variables.html" title="next page">
+        <a class="right-next" href="M01_N02_Random_Variables.html" title="next page">
             <div class="prevnext-info">
                 <p class="prevnext-label">next</p>
-                <p class="prevnext-title">Discrete Random Variables</p>
+                <p class="prevnext-title">Random Variables and Probability Distributions</p>
             </div>
             <i class="prevnext-label fas fa-angle-right"></i>
         </a>
@@ -565,7 +574,7 @@ $<span class="math notranslate nohighlight">\(P(A|B)=\frac{P(B|A)P(A)}{P(B)}\)</
         
           By Cristian Proistosescu<br/>
         
-            &copy; Copyright 2021.<br/>
+            &copy; Copyright 2024.<br/>
       </p>
     </div>
   </footer>

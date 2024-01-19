@@ -2,6 +2,7 @@
 # coding: utf-8
 
 # # Basics of probability
+# ***Reading: Emile-Geay: Chapters 1,2 ***
 
 # We'll start by reviewing some basics of probability theory. I will use some simple examples - dice and roullete - to illustrate basic probability concepts. We'll also use these simple examples to build intuition on several properties of probabilities - the law of total probability, independence, conditional probability, and Bayes's rule - that can be generalized, and will be used throughout the course. 
 # 

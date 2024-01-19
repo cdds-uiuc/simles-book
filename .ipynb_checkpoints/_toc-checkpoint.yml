@@ -2,15 +2,14 @@
 # Learn more at https://jupyterbook.org/customize/toc.html
 
 format: jb-book
-root: intro.md
+root: Readme
 parts:
-  - caption: Resources
-    chapters:
-    - file: Programming
+  - R	
   - caption: 1.Basics
     chapters:
     - file: content/Module01/M01_N01_Probability_Recap
-    - file: content/Module01/M01_N02_Random_Variables
+    - file: content/Module01/M01_N02_Discrete_Random_Variables
+    - file: content/Module01/M01_N03_Continuous_Random_Variables
     #- file: content/Module01/M01_Lab
     #- file: Module01/M01_N04_Moments_of_distributions
     #- file: Module01/M01_N05_SampleStatistics

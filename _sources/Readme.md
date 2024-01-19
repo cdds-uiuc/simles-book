@@ -1,8 +1,9 @@
-# About this book
+# SIMLES - About this book 
+# Statistical Inference and Machine Learning for Earth Sciences
+## GEOL 593 / ATMS 597 
 
-# GEOL 593 / ATMS 597 
 
-This is a live and ***very much beta*** version of the course notes for the GEOL 593/ATMS 597, as the class is being actively taught for the first time in the Fall of 2021 at the University of Illinois at Urbana Champaign. 
+This is a live and ***very much beta*** version of the course notes for the GEOL 593/ATMS 597, as the class is being actively taught for the first time in the Spring of 2024 at the University of Illinois at Urbana Champaign. 
 
 ```{warning}
 If you happened on this website and are not a student in the class, proceed with caution. The book is actively being changed and updated. Nothing is stable. The course is intended as a graduate-level hands-on introduction to Statistical Inference and Machine Learning methods across Earth and Environmental Sciences. You are welcome to play around with the materials but be warned: Here be dragons.
@@ -35,11 +36,3 @@ The materials is  easily accessed in the same Jupyter Book format as this course
 The course material is supplemented by in-class lecture and additional readings. The recommended reading for the class consists of two freely-available textbooks:
 - Julien Emile-Geay: <a href="https://figshare.com/articles/book/Data_Analysis_in_the_Earth_Environmental_Sciences/1014336/10">Data Analysis in the Earth & Environmental Sciences</a>
 - James, Witten, Hastie, Tibshirani: <a href="•	James, Witten, Hastie, Tibshirani: An introduction to statistical learning ">An introduction to statistical learning</a>
-
-# License for this book
-
-```{Note}
-All content in this book (ie, any files and content in the `content/` folder)
-is licensed under the [Creative Commons Attribution-ShareAlike 4.0 International](https://creativecommons.org/licenses/by-sa/4.0/)
-(CC BY-SA 4.0) license.
-```

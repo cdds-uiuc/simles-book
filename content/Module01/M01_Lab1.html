@@ -556,8 +556,7 @@ document.write(`
 <h2>Question 1.1:<a class="headerlink" href="#question-1-1" title="Permalink to this heading">#</a></h2>
 <p>Compute the probability of rolling a total of 11.</p>
 <p><em>Hint</em>: Use the law of total probability to compute the probability of rolling an eleven, conditional on the roll of the first dice:</p>
-<div class="math notranslate nohighlight">
-\[P(S=11)=\sum_{n=1}^{6}P(S=11|D_{1}=n)\]</div>
+<p><span class="math notranslate nohighlight">\(P(S=11)=\sum_{n=1}^{6}P(S=11|D_{1}=n)\)</span></p>
 <section id="answer">
 <h3>Answer<a class="headerlink" href="#answer" title="Permalink to this heading">#</a></h3>
 </section>
@@ -646,15 +645,9 @@ document.write(`
 <p>The cell below computes hourly, daily, monthly, and annual values of precipitation. All you have to do is plot their histograms</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
-<span class="c1">#convert from m/hr to inches/hr, taking into account we only sample 4hrs of the day </span>
-<span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlretrieve</span>
-
-
-<span class="n">fname</span><span class="o">=</span><span class="s1">&#39;ERA5precip_urbana_1950-2021.nc&#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fname</span><span class="o">=</span><span class="s1">&#39;ERA5precip_urbana_1950-2021.nc&#39;</span>
 <span class="n">fpath</span><span class="o">=</span><span class="s1">&#39;/Users/cristi/Dropbox/SIMLES/simles-book/content/Module01/&#39;</span>
-<span class="n">file</span><span class="o">=</span><span class="n">fpath</span><span class="o">+</span><span class="n">fname</span>
-<span class="n">ds</span><span class="o">=</span><span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">file</span><span class="p">);</span>
+<span class="n">ds</span><span class="o">=</span><span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">fname</span><span class="p">);</span>
 
 <span class="n">unit_conv</span><span class="o">=</span><span class="mi">1000</span><span class="o">/</span><span class="mf">24.5</span><span class="o">*</span><span class="mi">6</span>
 
@@ -729,7 +722,7 @@ $<span class="math notranslate nohighlight">\( r=\sqrt{x^2+y^2}&lt;1\)</span>$</
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x13eedd100&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x13f3cb170&gt;]
 </pre></div>
 </div>
 <img alt="../../_images/b105389e064334b246f032970f8962e60f5f89c5f15b11f6d9b67b69a0144077.png" src="../../_images/b105389e064334b246f032970f8962e60f5f89c5f15b11f6d9b67b69a0144077.png" />

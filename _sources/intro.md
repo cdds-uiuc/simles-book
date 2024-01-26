@@ -11,8 +11,9 @@ If you happened on this website and are not a student in the class, proceed with
 
 ## Running code:
 ```{important}
-To run a notebook in this book use the launch button (the little rocket at the top of notebooks) to launch either Binder Hub or Google Colab. 
+To run a notebook in this book you can either download the notebook and run it locally, or use the launch button (the little rocket at the top of notebooks) to launch either Google Colab or Binder Hub. 
 ```
+
 ## Errors, Typos, Examples, Feedback
 This is the first iteration of the material, written on the fly, as it is being taught, during a pandemic, and while raising an infant. Errors and typos abound. Finding typos and errors *and reporting them to me* will count towards your participation score in the class. Helpful feedback on the presentation is also welcomed. 
 

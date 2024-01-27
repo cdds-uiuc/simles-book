@@ -1,0 +1,923 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Moments &#8212; SIMLES: Statistical Inference and Machine Learning for Earth Sciences</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/Module01/M01_N03_Moments';</script>
+    <link rel="canonical" href="https://cdds-uiuc.github.io/simles-book/content/Module01/M01_N03_Moments.html" />
+    <link rel="shortcut icon" href="../../_static/CDDS_logo.jpeg"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Sample Statistics" href="M01_N04_SampleStatistics.html" />
+    <link rel="prev" title="Lab 1.1" href="M01_Lab1.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/CDDS_logo.jpeg" class="logo__image only-light" alt="SIMLES: Statistical Inference and Machine Learning for Earth Sciences - Home"/>
+    <script>document.write(`<img src="../../_static/CDDS_logo.jpeg" class="logo__image only-dark" alt="SIMLES: Statistical Inference and Machine Learning for Earth Sciences - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    SIMLES
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Programming.html">Programming</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">1.Basics</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="M01_N01_Probability_Recap.html">Basics of probability</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="M01_N02_Random_Variables.html">Random Variables</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="M01_Lab1.html">Lab 1.1</a></li>
+
+
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Moments</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="M01_N04_SampleStatistics.html">Sample Statistics</a></li>
+
+
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/cdds-uiuc/simles-book/master?urlpath=lab/tree/content/Module01/M01_N03_Moments.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/cdds-uiuc/simles-book/blob/master/content/Module01/M01_N03_Moments.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/cdds-uiuc/simles-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/cdds-uiuc/simles-book/issues/new?title=Issue%20on%20page%20%2Fcontent/Module01/M01_N03_Moments.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/content/Module01/M01_N03_Moments.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Moments</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Moments</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#expected-value-mean">Expected value/mean</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">Examples</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#higher-order-moments">Higher Order Moments</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#variance-and-standard-deviation">Variance and Standard Deviation</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Examples</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#covariance-correlation-and-independence">Covariance, Correlation, and Independence</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-multivariate-normal-distribution">Example: Multivariate Normal Distribution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Exercise:</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="moments">
+<h1>Moments<a class="headerlink" href="#moments" title="Permalink to this heading">#</a></h1>
+<p><em><strong>Readings:</strong></em></p>
+<p><em><strong>Ross: Chapter 2.4 &amp; 2.5</strong></em>
+<em><strong>Emile-Geay: Chapter 3</strong></em></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
+
+<span class="c1"># These are some parameters to make figures nice (and big)</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="o">%</span><span class="k">config</span> InlineBackend.figure_format = &#39;retina&#39; 
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">16</span><span class="p">,</span><span class="mi">8</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;text.usetex&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;legend.fontsize&#39;</span><span class="p">:</span> <span class="s1">&#39;x-large&#39;</span><span class="p">,</span>
+          <span class="s1">&#39;figure.figsize&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span>
+         <span class="s1">&#39;axes.labelsize&#39;</span><span class="p">:</span> <span class="s1">&#39;x-large&#39;</span><span class="p">,</span>
+         <span class="s1">&#39;axes.titlesize&#39;</span><span class="p">:</span><span class="s1">&#39;x-large&#39;</span><span class="p">,</span>
+         <span class="s1">&#39;xtick.labelsize&#39;</span><span class="p">:</span><span class="s1">&#39;x-large&#39;</span><span class="p">,</span>
+         <span class="s1">&#39;ytick.labelsize&#39;</span><span class="p">:</span><span class="s1">&#39;x-large&#39;</span><span class="p">}</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="expected-value-mean">
+<h1>Expected value/mean<a class="headerlink" href="#expected-value-mean" title="Permalink to this heading">#</a></h1>
+<p>The expected value of a random variable is the average value we would expect to get if we could sample a random variable an infinite number of times. It represents a average of all the possible outcomes, weighted by how probably they are.</p>
+<p>The <em>expected value</em> of a random variable is also called its <em>first order moment</em>, <em>mean</em>, or <em>average</em>. It is computed using the <em>expectation operator</em>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}E(X)=\mu=\begin{cases}
+\sum_{i=1}^{N}x_{i}P(X=x_{i}) &amp; \text{if }X\text{ is discrete}\\
+\int_{\mathbb{R}}x f(x)dx &amp; \text{if }X\text{ is continuous}
+\end{cases}\end{split}\]</div>
+<p>The expected value is also sometimes denoted using the bracket notation. We will make use of this later on:</p>
+<div class="math notranslate nohighlight">
+\[\left &lt; X\right&gt; = E(X)\]</div>
+<section id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">#</a></h2>
+<p><em><strong>Bernoulli random variable</strong></em>. For a binomial random variable <span class="math notranslate nohighlight">\(X_{bin}\)</span> with <span class="math notranslate nohighlight">\(p=0.5\)</span>, the possible outcomes are 0 and 1, and the probabiltiy mass function (pmf) is given by <span class="math notranslate nohighlight">\(p(0)=p(1)=0.5\)</span>. In this case, the Expected value, or mean, is</p>
+<div class="math notranslate nohighlight">
+\[ E(X)=\left&lt;X\right&gt; = \sum_{i=1}^{2}x_{i}P(X=x_{i}) = 0\cdot P(X=0) + 1 \cdot P(X=1) = 0\cdot 0.5 +  1\cdot 0.5 = 0.5\]</div>
+<p>since <span class="math notranslate nohighlight">\(p(X=x_i)=1/6\)</span> for <span class="math notranslate nohighlight">\(x_i\in \{1,\ldots,6\}\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[ E(X)=\left&lt;X\right&gt; = \sum_{i=1}^{6}x_{i}P(X=x_{i}) =\]</div>
+<div class="math notranslate nohighlight">
+\[ = 1\cdot 1/6+2\cdot 1/6+3\cdot 1/6+4\cdot 1/6+5\cdot 1/6+6\cdot 1/6=7/2=3.5\]</div>
+<p><em><strong>Continuous uniform random variable</strong></em>. Let’s now look at the continuous case, focusing first on a random variable that is uniformly uniform distribution over the interval <span class="math notranslate nohighlight">\([a,b]\)</span>. the probability is <span class="math notranslate nohighlight">\(f(x)=1/[b-a]\)</span> if <span class="math notranslate nohighlight">\(x\in[a,b]\)</span> and <span class="math notranslate nohighlight">\(0\)</span> otherwise. So the expectation will be:</p>
+<div class="math notranslate nohighlight">
+\[\int_{\mathbb{R}}xf(x)dx=\int_{a}^{b}x\frac{1}{b-a}dx=\left.\frac{1}{b-a}\frac{x^{2}}{2}\right|_{a}^{b}=\frac{1}{2}\frac{b^{2}-a^{2}}{b-a}=\frac{1}{2}\frac{(b+a)(b-a)}{b-a}=\frac{a+b}{2}\]</div>
+<p><em><strong>Gaussian random variable</strong></em> For a Gaussian/Normal random variable with pdf <span class="math notranslate nohighlight">\(f(x)=\frac{1}{\sqrt{2\pi}\sigma}e^{\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^{2}}\)</span> it can be shown (Example 2.22 in Ross) that <span class="math notranslate nohighlight">\(E(X)=\mu\)</span>. So the distribution of a gaussian random variable is itself written in terms of the the first moment <span class="math notranslate nohighlight">\(\mu\)</span>.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p><strong>Key property of expectation: linearity</strong></p>
+<div class="math notranslate nohighlight">
+\[E(aX+bY)=aE(x)+bE(y)\]</div>
+<p>where <span class="math notranslate nohighlight">\(X,Y\)</span> are random variables and <span class="math notranslate nohighlight">\(a,b\)</span> are constants.</p>
+</div>
+<p>We can also define the expected value, or mean, of any function of a random variable:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}E(g(X))=\begin{cases}
+\sum_{i=1}^{N}g(x_{i})P(X=x_{i}) &amp; \text{if }X\text{ is discrete}\\
+\int_{\mathbb{R}}g(x)f(x)dx &amp; \text{if }X\text{ is continuous}
+\end{cases}\end{split}\]</div>
+</section>
+<section id="exercise">
+<h2>Exercise<a class="headerlink" href="#exercise" title="Permalink to this heading">#</a></h2>
+<p><em><strong>Discrete uniform random variable (fair die)</strong></em>. Check for yourself that the average roll of the fair dice, i.e. the expectation of discrete uniform random variable taking values between 1 and 6 is <span class="math notranslate nohighlight">\(E(X)=3.5\)</span>.</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="higher-order-moments">
+<h1>Higher Order Moments<a class="headerlink" href="#higher-order-moments" title="Permalink to this heading">#</a></h1>
+<p>We can define higher order moments of a distribution as
+$<span class="math notranslate nohighlight">\( m(X,n)=E(X^n)=\sum_{i=1}^N x_i^nP(X=x_i)\)</span><span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\( m(X,n)=E(X^n)=\int_\mathbb{R}x^n f(x)dx\)</span>$
+for, respectively, discrete and continuous r.v.s. We will mostly be interested in centered moments, primarily variance.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="variance-and-standard-deviation">
+<h1>Variance and Standard Deviation<a class="headerlink" href="#variance-and-standard-deviation" title="Permalink to this heading">#</a></h1>
+<p>A closely related notion to the second order moment is the <strong>variance</strong> or centered second moment, defined as:
+$<span class="math notranslate nohighlight">\(V(X)=E([X-E(x)]^2)=E([X-\mu]^2)=\int_\mathbb{R}(x-\mu)^2f(x)dx\)</span>$</p>
+<p>Expanding the square and using the linearity of the expectation operator, we can show that the variance can also be written as:
+$<span class="math notranslate nohighlight">\(V(X)=E(X^2)-(E(X))^2=E(X^2)-\mu^2\)</span>$</p>
+<p>or</p>
+<div class="math notranslate nohighlight">
+\[ V(X)=\left&lt; X^2 \right&gt;-\left&lt;X\right&gt;^2 \]</div>
+<p>Variance is often denoted by <span class="math notranslate nohighlight">\(\sigma^2\)</span>, i.e. <span class="math notranslate nohighlight">\(V(x)=\sigma^2_X\)</span></p>
+<p><em><strong>Derivation</strong></em>:The property above is important, and a useful case-study to exemplify the linearity property of the expectation operator. Let’s show that two ways of writing the variance are equivalent:</p>
+<div class="math notranslate nohighlight">
+\[E([X-E(x)]^2)=E([X-\mu]^2)=E(X^2-2X\mu + \mu^2)=E(X^2)-2E(X\mu)+E(\mu^2)\]</div>
+<p>Where we have used the linearity property. Now, if we keep in mind that while <span class="math notranslate nohighlight">\(X\)</span> is a random variable <span class="math notranslate nohighlight">\(\mu=E(x)\)</span> is a constant number, we can apply the linearity property to say that <span class="math notranslate nohighlight">\(E(\mu X)=\mu E(x)=\mu^2\)</span>. Also, since <span class="math notranslate nohighlight">\(\mu\)</span> is just a number, <span class="math notranslate nohighlight">\(E(\mu)=\mu\)</span>, and thus <span class="math notranslate nohighlight">\(E(\mu^2)=\mu^2\)</span>. Thus,</p>
+<div class="math notranslate nohighlight">
+\[E(X^2)-2E(X\mu)+E(\mu^2)=E(X^2)-2\mu^2+\mu^2=E(X^2)-\mu^2\]</div>
+<p>*<strong>Standard deviation</strong>
+Another closely related measure is standard deviation, defined simply as the square root of the variance
+$<span class="math notranslate nohighlight">\(\text{std}=\sqrt{V(X)}=\sqrt{E([X-\mu]^2)}\)</span>$</p>
+<p>Variance and standard deviation are measures of the spread of a distribution.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p><strong>Key Properties of Variance</strong></p>
+<div class="math notranslate nohighlight">
+\[ V(X+b)=V(x)\]</div>
+<div class="math notranslate nohighlight">
+\[ V(aX)=a^2V(x)\]</div>
+<div class="math notranslate nohighlight">
+\[ \text{std}(aX)=a \cdot\text{std}(X)\]</div>
+</div>
+<section id="id1">
+<h2>Examples<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<p><em><strong>Discrete uniform random variable (fair die)</strong></em>. How do we find the variance and standard deviation of the outcome of a roll of the fair dice? Answer:
+$<span class="math notranslate nohighlight">\(V(x)=E[X^{2}]-E[X]^{2}=\sum_{x=1}^{6}x^{2}P(X=x)\)</span><span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\(==1^{2}\frac{1}{6}+2^{2}\frac{1}{6}+3^{2}\frac{1}{6}+4^{2}\frac{1}{6}+5^{2}\frac{1}{6}+6^{2}\frac{1}{6}=\frac{91}{6}\)</span>$</p>
+<p><em><strong>Gaussian distribution</strong></em>
+The pdf of a normally distributed r.v. with location parameter <span class="math notranslate nohighlight">\(\mu\)</span> and scale parameter <span class="math notranslate nohighlight">\(\sigma\)</span> is
+$<span class="math notranslate nohighlight">\(f(x)=\frac{1}{\sqrt{2\pi\sigma^2}}\exp\left[-\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^2\right]\)</span><span class="math notranslate nohighlight">\(
+It can be shown (E.g. Ross Section 2.4, example 2.26) that 
+\)</span><span class="math notranslate nohighlight">\( V(X)=\sigma^2\)</span><span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\(\text{std}=\sigma\)</span>$</p>
+<p>For a gaussian/normal random variable it’s worth remembering the <a class="reference external" href="https://en.wikipedia.org/wiki/68%E2%80%9395%E2%80%9399.7_rule">68-99-99.7 rule</a>. That is, 68% of the values/outcomes of a gaussian/normal random variable lie within 1 standard deviation of th mean, 95% of the values lie within two standard deviations and 99.7% of the values lie within three standard deviations of the mean.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># let&#39;s plot the pdf of a gaussian random variable along with the standard deviation. </span>
+<span class="c1"># let&#39;s choose a gaussian/normal r.v. with mean(location) =1 and standard deviation (scale) =3</span>
+
+<span class="c1"># define a vector of point at which to evaluate  the pdf </span>
+<span class="n">mu</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
+<span class="n">sigma</span><span class="o">=</span><span class="mi">3</span><span class="p">;</span>
+<span class="n">xlim_left</span><span class="o">=-</span><span class="mi">10</span><span class="p">;</span>
+<span class="n">xlim_right</span><span class="o">=</span><span class="mi">10</span><span class="p">;</span>
+<span class="n">x_norm</span><span class="o">=</span><span class="n">x_norm</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">xlim_left</span><span class="p">,</span><span class="n">xlim_right</span><span class="p">,</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">pdf_norm</span><span class="o">=</span><span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x_norm</span><span class="p">,</span><span class="n">loc</span><span class="o">=</span><span class="n">mu</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">sigma</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_norm</span><span class="p">,</span><span class="n">pdf_norm</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.15</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;$\mu$&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">mu</span><span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">sigma</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.15</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;$\mu$-2 $\sigma$&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">,</span><span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">mu</span><span class="o">-</span><span class="n">sigma</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.15</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;$\mu$-1 $\sigma$&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">mu</span><span class="o">+</span><span class="n">sigma</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.15</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;$\mu$+1 $\sigma$&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">mu</span><span class="o">+</span><span class="mi">2</span><span class="o">*</span><span class="n">sigma</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.15</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;$\mu$+2 $\sigma$&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;probability density&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Pdf of a gaussian/normal random variable with mean and standard deviations&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;&gt;:14: SyntaxWarning: invalid escape sequence &#39;\m&#39;
+&lt;&gt;:15: SyntaxWarning: invalid escape sequence &#39;\m&#39;
+&lt;&gt;:16: SyntaxWarning: invalid escape sequence &#39;\m&#39;
+&lt;&gt;:17: SyntaxWarning: invalid escape sequence &#39;\m&#39;
+&lt;&gt;:18: SyntaxWarning: invalid escape sequence &#39;\m&#39;
+&lt;&gt;:14: SyntaxWarning: invalid escape sequence &#39;\m&#39;
+&lt;&gt;:15: SyntaxWarning: invalid escape sequence &#39;\m&#39;
+&lt;&gt;:16: SyntaxWarning: invalid escape sequence &#39;\m&#39;
+&lt;&gt;:17: SyntaxWarning: invalid escape sequence &#39;\m&#39;
+&lt;&gt;:18: SyntaxWarning: invalid escape sequence &#39;\m&#39;
+/var/folders/pr/3_264g5j1d15jdsjfgsqbdj80000gp/T/ipykernel_3281/693198820.py:14: SyntaxWarning: invalid escape sequence &#39;\m&#39;
+  plt.vlines(mu,0,0.15,label=&#39;$\mu$&#39;,color=&#39;k&#39;)
+/var/folders/pr/3_264g5j1d15jdsjfgsqbdj80000gp/T/ipykernel_3281/693198820.py:15: SyntaxWarning: invalid escape sequence &#39;\m&#39;
+  plt.vlines(mu-2*sigma,0,0.15,label=&#39;$\mu$-2 $\sigma$&#39;,color=&#39;g&#39;,linestyle=&#39;--&#39;)
+/var/folders/pr/3_264g5j1d15jdsjfgsqbdj80000gp/T/ipykernel_3281/693198820.py:16: SyntaxWarning: invalid escape sequence &#39;\m&#39;
+  plt.vlines(mu-sigma,0,0.15,label=&#39;$\mu$-1 $\sigma$&#39;,color=&#39;g&#39;)
+/var/folders/pr/3_264g5j1d15jdsjfgsqbdj80000gp/T/ipykernel_3281/693198820.py:17: SyntaxWarning: invalid escape sequence &#39;\m&#39;
+  plt.vlines(mu+sigma,0,0.15,label=&#39;$\mu$+1 $\sigma$&#39;,color=&#39;b&#39;)
+/var/folders/pr/3_264g5j1d15jdsjfgsqbdj80000gp/T/ipykernel_3281/693198820.py:18: SyntaxWarning: invalid escape sequence &#39;\m&#39;
+  plt.vlines(mu+2*sigma,0,0.15,label=&#39;$\mu$+2 $\sigma$&#39;,color=&#39;b&#39;,linestyle=&#39;--&#39;)
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Pdf of a gaussian/normal random variable with mean and standard deviations&#39;)
+</pre></div>
+</div>
+<img alt="../../_images/b2a0d475f1268f2d7a5103a1fc549e9adad575b7a09c8803278bf2c1f8388f3d.png" src="../../_images/b2a0d475f1268f2d7a5103a1fc549e9adad575b7a09c8803278bf2c1f8388f3d.png" />
+</div>
+</div>
+</section>
+<section id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h2>
+<p><strong>1. Continuous Uniform distributions</strong> The pdf of a r.v. uniformly distributed over the interval <span class="math notranslate nohighlight">\([a,b]\)</span> is <span class="math notranslate nohighlight">\(f(x)=\frac{1}{b-a}\)</span></p>
+<p>Show that</p>
+<div class="math notranslate nohighlight">
+\[ V(X)=\frac{1}{12}(b-a)^2\]</div>
+<p><strong>2.Plot the pdf of a gamma distribution</strong>. Plto the pdf of a gamma distribution, along with its mean and standard deviations , specifically the points in the pdf that are, respectively, 1  and 2 standard deviations away from the mean. Choose shape parameter <code>a</code><span class="math notranslate nohighlight">\(=\alpha=3\)</span> and scale parameter <code>scale</code> <span class="math notranslate nohighlight">\(=\theta=1\)</span>. Use the <code>scipy.stats.gamma</code> method (<a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.gamma.html">documentation link</a> ). You’ll need to know (e.g. <a class="reference external" href="https://en.wikipedia.org/wiki/Gamma_distribution">Wikipedia</a>) that for a gamma random variable <span class="math notranslate nohighlight">\(\mu=E(X)=\alpha\theta\)</span> and <span class="math notranslate nohighlight">\(\sigma=\sqrt{V(X)}=\sqrt{\alpha\theta^2}\)</span>. Notice that the probability of an outocome that is two standard deviations lower than the mean is nil, while it is possible to get an outcome that is two standard deviations higher than the mean.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Exercise Block</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="covariance-correlation-and-independence">
+<h1>Covariance, Correlation, and Independence<a class="headerlink" href="#covariance-correlation-and-independence" title="Permalink to this heading">#</a></h1>
+<p>In practice we are often interested in more than one quantity. We could have more than one measurements, or more than one quantity we are trying to infer, or perhaps our model has more than one parameter. We thus need to be able to make statistical statements about more than one random variable at a time.</p>
+<p>We have defined joint probability of two random variables as <span class="math notranslate nohighlight">\(p(x,y)=P(X=x \text{ AND } Y=y)\)</span> for discrete random variables and <span class="math notranslate nohighlight">\(p(x,y)=P(X\in [x,x+dx{] \text{ AND }Y\in [y,y+dy])}\)</span> for continuous random variables.</p>
+<p><em><strong>Expectations of multiple variables</strong></em>
+Just like for a single random variable, we can define the expectation of a function of more than one random variable</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}E(g(X,Y))=\begin{cases}
+\sum_{i=1}^{N}g(x_{i},y_i)P(X=x_{i},Y=y_i) &amp; \text{if }X,Y\text{ are discrete}\\
+\int_{\mathbb{R^2}}g(x,y)p(x,y)dxdy &amp; \text{if }X,Y\text{ are continuous}
+\end{cases}\end{split}\]</div>
+<p><strong>Sum and linearity</strong> For this example, we’ll restrict ourselves to the continuous case. If g(X,Y)=X+Y, then</p>
+<div class="math notranslate nohighlight">
+\[E(X+Y)=\int_{R^{2}}(x+y)p(x,y)dxdy=\int xp(x,y)dxdy+\int yp(x,y)dxdy\]</div>
+<p>If we set <span class="math notranslate nohighlight">\(g(x,y)=x\)</span> and <span class="math notranslate nohighlight">\(g(x,y)=y\)</span> i the definition of expectation above, we can see that the first integral is just <span class="math notranslate nohighlight">\(E(X)\)</span> and the second integral is <span class="math notranslate nohighlight">\(E(Y)\)</span>, so we recover the linearity property <span class="math notranslate nohighlight">\(E(X+Y)=E(X)+E(Y)\)</span>.</p>
+<p><strong>Product</strong> Let’s now set <span class="math notranslate nohighlight">\(g(X,Y)=XY\)</span>, then <span class="math notranslate nohighlight">\(E(XY)=\int_{R^{2}}xy\cdot p(x,y)\cdot dxdy\)</span>. <strong>IF</strong> X and Y are independent, then <span class="math notranslate nohighlight">\(p(x,y)=p(x)p(y)\)</span> and some simple manipulation of the integral gives us <span class="math notranslate nohighlight">\(E(XY)=E(X)E(Y)\)</span>. However, this ONLY holds IF the variables are independent. A very common mistake is to assume that the expectation of the product is equal tot he product of the expectations. This is not generally true.</p>
+<p><em><strong>Covariance</strong></em>
+For variables that are not independent, we are often interested in how they relate to each other. The most common metric for that relationship is the covariance. We can define Covariance in a way that is analogous to variance:</p>
+<div class="math notranslate nohighlight">
+\[ Cov(X,Y)=E[(X-E[X])(Y-E[Y])] =\left&lt;\left(X-\left&lt;X\right&gt;\right)\left(Y-\left&lt;Y\right&gt;\right)\right&gt;.\]</div>
+<p>Note that if the means are zero, then <span class="math notranslate nohighlight">\(Cov(X,Y)=E(XY)=\left&lt;XY\right&gt;\)</span>. Taking out the means just centers the random variables.</p>
+<p>Similarly as for variance, we can use the linearity property of expectation to show that</p>
+<div class="math notranslate nohighlight">
+\[ Cov(X,Y)=E[XY]-E[X]E[Y]=\left&lt;XY\right&gt; - \left&lt;X\right&gt;\left&lt;Y\right&gt;\]</div>
+<p><span class="math notranslate nohighlight">\(Cov(X,Y)\)</span> is also sometimes denoted as cross-covariance, while <span class="math notranslate nohighlight">\(Cov(X,X)\)</span> is called auto-covariance.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p><strong>Key Properties of Covariance</strong></p>
+<div class="math notranslate nohighlight">
+\[ Cov(X,Y)=Cov(Y,x)\]</div>
+<div class="math notranslate nohighlight">
+\[ Cov(aX,Y)=a\cdot Cov(X,y)\]</div>
+<div class="math notranslate nohighlight">
+\[ Cov(X,Y+Z)=Cov(X,Y)+COV(Y,Z)\]</div>
+<div class="math notranslate nohighlight">
+\[ Var(X+Y)=Var(X)+Var(Y)+2Cov(X,Y)\]</div>
+</div>
+<p><em><strong>Correlation</strong></em>
+It is often practical to rescale the random variables and rescale the covariance to be between zero and one. One of the advantages of this rescaling is that it removes the dependence of X and Y on units.</p>
+<p>The correlation coefficient is defined as:</p>
+<div class="math notranslate nohighlight">
+\[ \rho=\frac{Cov(X,Y)}{\sigma_X\sigma_Y}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\sigma_X=std(X)=\sqrt{Var(X)}\)</span> is the standard deviation of X. The correlation coefficient always lies between -1 and 1. If <span class="math notranslate nohighlight">\(0&lt;\rho&lt;1\)</span> we would say the variables are correlated, if <span class="math notranslate nohighlight">\(-1&lt;\rho&lt;0\)</span> we would say the variables are anti correlated, and if <span class="math notranslate nohighlight">\(\rho=0\)</span> we would say the variables are not correlated.</p>
+<p>The square of the correlation coefficient <span class="math notranslate nohighlight">\(\rho^2\)</span> quantifies the amount of variance that is shared between variables <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span>.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p><strong>Key Properties of Correlation</strong></p>
+<div class="math notranslate nohighlight">
+\[ -1&lt;\rho&lt;1\]</div>
+<p>If <span class="math notranslate nohighlight">\(|\rho|=1\)</span> the variabels are linearly related, i.e. <span class="math notranslate nohighlight">\(X\)</span> can be written as <span class="math notranslate nohighlight">\(X=aY+b\)</span>.</p>
+</div>
+<p><em><strong>Covariance Matrix</strong></em>
+The general way of writing the covariance between multiple random variables <span class="math notranslate nohighlight">\(X_i\)</span> is by using a covariance matrix <span class="math notranslate nohighlight">\(\Sigma\)</span>, defined as</p>
+<div class="math notranslate nohighlight">
+\[\Sigma_{i,j}=Cov(X_i,X_j)\]</div>
+<p>For the case of two variables, <span class="math notranslate nohighlight">\(X,Y\)</span>, the covariance matrix takes the form:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \Sigma_{XY}=\left[\begin{array}{cc}
+Cov(X,X) &amp; Cov(X,Y)\\
+Cov(Y,X) &amp; Var(Y,U)
+\end{array}\right]=\left[\begin{array}{cc}
+Var(X) &amp; Cov(X,Y)\\
+Cov(X,Y) &amp; Var(Y)
+\end{array}\right]\end{split}\]</div>
+<p>By the definition of covariance, the covariance matrix can also be written as:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\Sigma_{XY}=\left[\begin{array}{cc}
+\sigma_{X}^{2} &amp; \rho\sigma_{X}\sigma_{Y}\\
+\rho\sigma_{X}\sigma_{Y} &amp; \sigma_{Y}^{2}
+\end{array}\right]\end{split}\]</div>
+<p><em><strong>Independence</strong></em>
+Note that while two independent random variables will have an correlation and covariance of 0, a correlation or covariance of 0 does not imply indepenence: <a class="reference external" href="https://en.wikipedia.org/wiki/Correlation#/media/File:Correlation_examples2.svg">Example</a></p>
+<section id="example-multivariate-normal-distribution">
+<h2>Example: Multivariate Normal Distribution<a class="headerlink" href="#example-multivariate-normal-distribution" title="Permalink to this heading">#</a></h2>
+<p>We’ll generate some draws from a multivariate normal distribution (<a class="reference external" href="https://en.wikipedia.org/wiki/Multivariate_normal_distribution#Bivariate_conditional_expectation">Wikipedia link</a>). This is a well-behaved joint distribution of normal/gaussian random variables. If two random variables are drawn from a bivariate multivariate normal, than both of them are normal, and they are correlated. The multivariate normal of dimension n is defined in terms of a vector of means containing the (marginal) means of each of those random variables, and a covariance matrix of size <span class="math notranslate nohighlight">\(n\times n\)</span> containing the variances and covariances between each set of random variables. We would denote this multivariate distribution by</p>
+<div class="math notranslate nohighlight">
+\[ \mathbf{X}\sim\mathcal{N}\left(\mathbf{\mu,\Sigma}\right),\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mathbf{X}=[X_1,X_2,\ldots,X_n]\)</span> is a vector containing the correlated random variables <span class="math notranslate nohighlight">\(X_i\)</span>.</p>
+<p>We’ll draw some samples from a bivariate normal distribution below:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#parameters</span>
+<span class="n">rho_vals</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mf">0.8</span><span class="p">,</span><span class="mi">0</span> <span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.9</span> <span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+
+<span class="n">fig</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">[</span><span class="mi">20</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
+<span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="n">mu_x</span><span class="o">=</span><span class="mi">1</span>     <span class="c1"># mean of X</span>
+    <span class="n">mu_y</span><span class="o">=</span><span class="mi">0</span>     <span class="c1"># mean of Y</span>
+    <span class="n">var_X</span><span class="o">=</span><span class="mi">1</span>    <span class="c1"># Variance of X</span>
+    <span class="n">var_Y</span><span class="o">=</span><span class="mi">2</span>    <span class="c1"># variance of Y</span>
+    <span class="n">rho</span><span class="o">=</span><span class="n">rho_vals</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>  <span class="c1"># Correlation coefficient</span>
+    
+    <span class="c1"># make a covariance matrix</span>
+    <span class="n">mu_vec</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">mu_x</span><span class="p">,</span><span class="n">mu_y</span><span class="p">])</span>
+    <span class="n">cov_mat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">var_X</span><span class="p">,</span> <span class="n">rho</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">var_X</span><span class="o">*</span><span class="n">var_Y</span><span class="p">)],</span> <span class="p">[</span><span class="n">rho</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">var_X</span><span class="o">*</span><span class="n">var_Y</span><span class="p">),</span> <span class="n">var_Y</span><span class="p">]])</span>
+    <span class="n">Xvec</span><span class="o">=</span><span class="n">stats</span><span class="o">.</span><span class="n">multivariate_normal</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">cov</span> <span class="o">=</span> <span class="n">cov_mat</span><span class="p">,</span> <span class="n">mean</span> <span class="o">=</span> <span class="n">mu_vec</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
+    
+
+    <span class="n">ax</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Xvec</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span><span class="n">Xvec</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/44ff277878b7a6ba659e01dbb767f86209c6e395f65165bba42d48c490f0f808.png" src="../../_images/44ff277878b7a6ba659e01dbb767f86209c6e395f65165bba42d48c490f0f808.png" />
+</div>
+</div>
+</section>
+<section id="id2">
+<h2>Exercise:<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<p>Prove that <span class="math notranslate nohighlight">\( Var(X+Y)=Var(X)+Var(Y)+2Cov(X,Y)\)</span>.</p>
+<p><em>Hint</em> Use  <span class="math notranslate nohighlight">\(Cov(X,Y+Z)=Cov(X,Y)+Cov(Y,Z)\)</span> and <span class="math notranslate nohighlight">\(Var(X)=Cov(X,X)\)</span></p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./content/Module01"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="M01_Lab1.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Lab 1.1</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="M01_N04_SampleStatistics.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Sample Statistics</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Moments</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#expected-value-mean">Expected value/mean</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">Examples</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#higher-order-moments">Higher Order Moments</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#variance-and-standard-deviation">Variance and Standard Deviation</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Examples</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#covariance-correlation-and-independence">Covariance, Correlation, and Independence</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-multivariate-normal-distribution">Example: Multivariate Normal Distribution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Exercise:</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Cristian Proistosescu
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

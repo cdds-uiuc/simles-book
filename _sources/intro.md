@@ -16,14 +16,9 @@ To run a notebook in this book you can either download the notebook and run it l
 ***Environment***
 If you are running this notebook on your own machine, I recommend you use the environment provided  in this file: [simles-book.yml](https://raw.githubusercontent.com/cdds-uiuc/simles-book/main/simles-book.yml).
 
-***simles-dev.yml is a live document*** that will change as a I build the book and discover new dependencies. If you are findign you are missing a library, the first thing to do is make sure your environment is up to date.
+***simles-book.yml is a live document*** that will change as a I build the book and discover new dependencies. If you are findign you are missing a library, the first thing to do is make sure your environment is up to date.
 
 ```
-
-
-
-
-
 
 ## Errors, Typos, Examples, Feedback
 This is the first iteration of the material, written on the fly, as it is being taught, and while raising a toddler. Errors and typos abound. Finding typos and errors *and reporting them to me* will count towards your participation score in the class. Helpful feedback on the presentation is also welcomed. You can submit a github issue via the github button at the top of the notebook.  

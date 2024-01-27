@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Random Variables and Probability Distributions &#8212; SIMLES: Statistical Inference and Machine Learning for Earth Sciences</title>
+    <title>Random Variables &#8212; SIMLES: Statistical Inference and Machine Learning for Earth Sciences</title>
   
   
   
@@ -185,11 +185,21 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Random Variables and Probability Distributions</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Random Variables</a></li>
 
 
 
 <li class="toctree-l1"><a class="reference internal" href="M01_Lab1.html">Lab 1.1</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="M01_N03_Moments.html">Moments</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="M01_N04_SampleStatistics.html">Sample Statistics</a></li>
+
 
 
 
@@ -427,7 +437,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Random Variables and Probability Distributions</h1>
+    <h1>Random Variables</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -437,7 +447,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Random Variables and Probability Distributions</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Random Variables</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#a-discrete-random-variables">A. Discrete Random Variables</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#from-random-process-to-random-variables">From random process to random variables</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples-of-discrete-random-variables">1. Examples of discrete random variables</a><ul class="nav section-nav flex-column">
@@ -483,8 +493,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="random-variables-and-probability-distributions">
-<h1>Random Variables and Probability Distributions<a class="headerlink" href="#random-variables-and-probability-distributions" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="random-variables">
+<h1>Random Variables<a class="headerlink" href="#random-variables" title="Permalink to this heading">#</a></h1>
 <p><em><strong>Reading: Emile-Geay: Chapter 3</strong></em></p>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="a-discrete-random-variables">
@@ -1113,7 +1123,7 @@ $<span class="math notranslate nohighlight">\(F(x)=\int_{-\infty}^{x}f(u)du\)</s
 <section id="normal-gaussian">
 <h3>2.1 Normal/Gaussian<a class="headerlink" href="#normal-gaussian" title="Permalink to this heading">#</a></h3>
 <p>The most common distribution we will encounter is the Gaussian (or Normal distribution). It is the most commonly occuring distribution in nature - and it is in fact the <em>central</em> distribution to which other distributions gravitate, as we shall discuss later. More properties of the gaussian distribution will come up thrughout the course, but let’s introduce it here:</p>
-<p>The pdf of a gaussian(normal distribution) is defined by two parameters, <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(\sigma\)</span>, called the locatoin and the scale parameter, which, as we shall see, are also the mean and standard deviation. We wil learn more about these parameters in the next chapter, but it’s easier to illustrate them once we have some distributions from which we can generate samples.
+<p>The pdf of a gaussian(normal distribution) is defined by two parameters, <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(\sigma\)</span>, called the location and the scale parameter, which, as we shall see, are also the mean and standard deviation. We wil learn more about these parameters in the next chapter, but it’s easier to illustrate them once we have some distributions from which we can generate samples.
 $<span class="math notranslate nohighlight">\(f(x)=\frac{1}{\sqrt{2\pi\sigma^2}}\exp\left[-\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^2\right]\)</span>$</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1311,7 +1321,7 @@ $<span class="math notranslate nohighlight">\(f(x)=\frac{1}{\sqrt{2\pi\sigma^2}}
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Random Variables and Probability Distributions</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Random Variables</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#a-discrete-random-variables">A. Discrete Random Variables</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#from-random-process-to-random-variables">From random process to random variables</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples-of-discrete-random-variables">1. Examples of discrete random variables</a><ul class="nav section-nav flex-column">

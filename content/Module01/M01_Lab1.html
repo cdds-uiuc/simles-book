@@ -69,7 +69,8 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="shortcut icon" href="../../_static/CDDS_logo.jpeg"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="prev" title="Random Variables and Probability Distributions" href="M01_N02_Random_Variables.html" />
+    <link rel="next" title="Moments" href="M01_N03_Moments.html" />
+    <link rel="prev" title="Random Variables" href="M01_N02_Random_Variables.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -184,11 +185,21 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="M01_N02_Random_Variables.html">Random Variables and Probability Distributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="M01_N02_Random_Variables.html">Random Variables</a></li>
 
 
 
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Lab 1.1</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="M01_N03_Moments.html">Moments</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="M01_N04_SampleStatistics.html">Sample Statistics</a></li>
+
 
 
 
@@ -630,8 +641,6 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#convert from m/hr to inches/hr, taking into account we only sample 4hrs of the day </span>
 <span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlretrieve</span>
-
-
 <span class="n">url</span><span class="o">=</span><span class="s1">&#39;https://github.com/cdds-uiuc/simles-book/raw/5faf634/content/Module01/data/ERA5precip_urbana_1950-2021.nc&#39;</span>
 <span class="n">fname</span><span class="o">=</span><span class="s1">&#39;ERA5precip_urbana_1950-2021.nc&#39;</span>
 <span class="n">urlretrieve</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">fname</span><span class="p">);</span>
@@ -646,7 +655,6 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fname</span><span class="o">=</span><span class="s1">&#39;ERA5precip_urbana_1950-2021.nc&#39;</span>
-<span class="n">fpath</span><span class="o">=</span><span class="s1">&#39;/Users/cristi/Dropbox/SIMLES/simles-book/content/Module01/&#39;</span>
 <span class="n">ds</span><span class="o">=</span><span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">fname</span><span class="p">);</span>
 
 <span class="n">unit_conv</span><span class="o">=</span><span class="mi">1000</span><span class="o">/</span><span class="mf">24.5</span><span class="o">*</span><span class="mi">6</span>
@@ -770,8 +778,17 @@ $<span class="math notranslate nohighlight">\( r=\sqrt{x^2+y^2}&lt;1\)</span>$</
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Random Variables and Probability Distributions</p>
+        <p class="prev-next-title">Random Variables</p>
       </div>
+    </a>
+    <a class="right-next"
+       href="M01_N03_Moments.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Moments</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>

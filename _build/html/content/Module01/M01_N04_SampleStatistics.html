@@ -158,8 +158,8 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="../../_static/CDDS_logo.jpeg" class="logo__image only-light" alt="SIMLES: Statistical Inference and Machine Learning for Earth Sciences - Home"/>
-    <script>document.write(`<img src="../../_static/CDDS_logo.jpeg" class="logo__image only-dark" alt="SIMLES: Statistical Inference and Machine Learning for Earth Sciences - Home"/>`);</script>
+    <img src="../../_static/CDDS_logo.png" class="logo__image only-light" alt="SIMLES: Statistical Inference and Machine Learning for Earth Sciences - Home"/>
+    <script>document.write(`<img src="../../_static/CDDS_logo.png" class="logo__image only-dark" alt="SIMLES: Statistical Inference and Machine Learning for Earth Sciences - Home"/>`);</script>
   
   
 </a></div>
@@ -518,13 +518,12 @@ document.write(`
 <h1>Sample Mean and the Law of Large Numbers<a class="headerlink" href="#sample-mean-and-the-law-of-large-numbers" title="Permalink to this heading">#</a></h1>
 <p>Consider a gaussian process. Let’s say this process has true mean <span class="math notranslate nohighlight">\(\mu\)</span> and true variance <span class="math notranslate nohighlight">\(\sigma^2\)</span>. When we work with random samples in python (or any programming language), the process mean and process variance are the values of <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(\sigma\)</span> we pass to the method that generates random samples such as
 <code>stats.norm.rvs(loc=mu,scale=sigma, size=Ndraws)</code></p>
-<p>We denote a random variable with a Normal/Gaussian distribution with location/mean <span class="math notranslate nohighlight">\(\mu\)</span> and scale/variance <span class="math notranslate nohighlight">\(\sigma^2\)</span> as $<span class="math notranslate nohighlight">\( X\sim\mathcal{N}(\mu,\sigma^2)\)</span>$</p>
-<p>If we only have a sample of this random variable we can estimate the mean using the <strong>sample mean</strong>:
-$<span class="math notranslate nohighlight">\(\overline{X}_n=\frac{1}{n}\sum_{i=1}^n X_i\)</span>$.</p>
-<p>The law of large numbers tells us that the sample mean converges to the process mean for a large enough sample.</p>
-<p><a class="reference external" href="https://en.wikipedia.org/wiki/Law_of_large_numbers">https://en.wikipedia.org/wiki/Law_of_large_numbers</a></p>
+<p>We denote a random variable with a Normal/Gaussian distribution with location/mean <span class="math notranslate nohighlight">\(\mu\)</span> and scale/variance <span class="math notranslate nohighlight">\(\sigma^2\)</span> as</p>
 <div class="math notranslate nohighlight">
-\[ \overline{X}_n \rightarrow \mu \]</div>
+\[ X\sim\mathcal{N}(\mu,\sigma^2)\]</div>
+<p>If we only have a sample of this random variable we can estimate the mean using the <strong>sample mean</strong>:</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}\overline{X}_n=\frac{1}{n}\sum_{i=1}^n X_i$$. \\The law of large numbers tells us that the sample mean converges to the process mean for a large enough sample. \\https://en.wikipedia.org/wiki/Law_of_large_numbers\\$$ \overline{X}_n \rightarrow \mu \end{aligned}\end{align} \]</div>
 <section id="estimators">
 <h2>Estimators<a class="headerlink" href="#estimators" title="Permalink to this heading">#</a></h2>
 <p>An estimator is a function (rule) for calculating an estimate of a given quantity based on observed data. <a class="reference external" href="https://en.wikipedia.org/wiki/Estimator">Wikipedia article</a></p>
@@ -575,9 +574,10 @@ $<span class="math notranslate nohighlight">\(\overline{X}_n=\frac{1}{n}\sum_{i=
 <div class="math notranslate nohighlight">
 \[E(\overline{X}_n)=E(X)=\mu\]</div>
 <p>While the consistency and unbiasedness look similar, they are actually different. The sample mean is itself a random variable, as it is the sum of <span class="math notranslate nohighlight">\(n\)</span> random variables. Thus, it will have a distribution and it will have a mean - or expected - value.</p>
-<p>Here is one way to think about this. Say we are taking daily measurements of a quantity in the lab. We want to measure a true quantity, but we can only do so with some error. Let’s say those errors are normally distributed, and we can model our measurement as:
-$<span class="math notranslate nohighlight">\(X=\mu +\varepsilon\)</span><span class="math notranslate nohighlight">\(  
-where \)</span>\varepsilon<span class="math notranslate nohighlight">\( are random errors with zero-mean and variance \)</span>\sigma<span class="math notranslate nohighlight">\(. In this case oure measurement \)</span>X$ is a random variable whose process mean is the true value of the quantity we are after.</p>
+<p>Here is one way to think about this. Say we are taking daily measurements of a quantity in the lab. We want to measure a true quantity, but we can only do so with some error. Let’s say those errors are normally distributed, and we can model our measurement as:</p>
+<div class="math notranslate nohighlight">
+\[X=\mu +\varepsilon\]</div>
+<p>where <span class="math notranslate nohighlight">\(\varepsilon\)</span> are random errors with zero-mean and variance <span class="math notranslate nohighlight">\(\sigma\)</span>. In this case oure measurement <span class="math notranslate nohighlight">\(X\)</span> is a random variable whose process mean is the true value of the quantity we are after.</p>
 <p>Let’s say we take a sample of size <span class="math notranslate nohighlight">\(n\)</span> of that process. Consistency tells us that as the sample mean gets <em>larger</em>, i.e., as we take more independent measurements and average them together, we would approach the true mean. The bias tell us what would happen if we repeat the measurement. Say, we take another sample mean of size <span class="math notranslate nohighlight">\(n\)</span> tomorrow, and another the day after, and so on. Would the mean of all of those sample means also approach the true mean? Yes, if the estimator is also unbiased.</p>
 <p>In practice, we may not be able to either take an infinitely large sample, or repeate the measurement. It’s possible that all we have is a sample of size n. We would like to know whether that sample is an unbiased estimate.</p>
 <p>For the sample mean, this is easy to prove. Since the sample mean is a random variable, we can also apply the law of large numbers to it: Expectation of the sample mean would actually be the average of an infinite number of sample means.</p>
@@ -588,8 +588,9 @@ where \)</span>\varepsilon<span class="math notranslate nohighlight">\( are rand
 \[E(\overline{X}_n)=\lim_{k\rightarrow \infty} \frac{1}{k}\frac{1}{n}\sum_{j=1}^k\sum_{i=1}^n X_{i,j}\]</div>
 <div class="math notranslate nohighlight">
 \[E(\overline{X}_n)=\frac{1}{n}\sum_{j=1}^n\left[\lim_{k\rightarrow \infty} \frac{1}{k}\sum_{i=1}^k X_{i,j}\right]\]</div>
-<p>By the law of large numbers,
-$<span class="math notranslate nohighlight">\(E(\overline{X}_n)=\frac{1}{n}\sum_{j=1}^n n\mu=\mu\)</span>$</p>
+<p>By the law of large numbers,</p>
+<div class="math notranslate nohighlight">
+\[E(\overline{X}_n)=\frac{1}{n}\sum_{j=1}^n n\mu=\mu\]</div>
 <p>We will assume that we have multiple samples/batches, each with multiple draw/outcomes/measurements of a random variable. Each sample will have the same size, and we will take the sample mean for each of them. Since we don’t have an infinite number of draws, the sample mean will be noisy - it will not be exactly equal to the true process mean. But will the distribution of these sample means be centered around the process mean?</p>
 </section>
 <section id="exercise">
@@ -637,10 +638,12 @@ $<span class="math notranslate nohighlight">\(E(\overline{X}_n)=\frac{1}{n}\sum_
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="sample-variance-standard-deviation">
 <h1>Sample Variance / Standard Deviation<a class="headerlink" href="#sample-variance-standard-deviation" title="Permalink to this heading">#</a></h1>
-<p>Remember, the variance is defined as:
-$<span class="math notranslate nohighlight">\(V(X)=E([X-\mu)^2]\)</span>$</p>
-<p>Just like the sample mean, we can define an estimator for the variance as the sample variance.
-$<span class="math notranslate nohighlight">\(s_n^2=\frac{1}{n}\sum_{i=1}^n(X_i-\overline{X}_n)^2\)</span>$</p>
+<p>Remember, the variance is defined as:</p>
+<div class="math notranslate nohighlight">
+\[V(X)=E([X-\mu)^2]\]</div>
+<p>Just like the sample mean, we can define an estimator for the variance as the sample variance.</p>
+<div class="math notranslate nohighlight">
+\[s_n^2=\frac{1}{n}\sum_{i=1}^n(X_i-\overline{X}_n)^2\]</div>
 <p>Now let’s check consistency and bias for the sample variance</p>
 <section id="consistency">
 <h2>Consistency<a class="headerlink" href="#consistency" title="Permalink to this heading">#</a></h2>
@@ -720,8 +723,9 @@ $<span class="math notranslate nohighlight">\(s_n^2=\frac{1}{n}\sum_{i=1}^n(X_i-
 </div>
 </div>
 <p>So, the simple sample standard variance is a <em><strong>consistent, but biased</strong></em> estimator of the process variance. Sure, if the sample is large enough, it will eventually converget. But for finite samples, its expected value is <strong>not</strong> equal to the true value of the process variance.</p>
-<p>It turns out that if we want a consistent <em>and</em> unbiased estimator for the variance we have to use a corrected sample variance
-$<span class="math notranslate nohighlight">\(s_{n-1}^2=\frac{1}{n-1}\sum_{i=1}^n(X_i-\overline{X}_n)^2\)</span>$</p>
+<p>It turns out that if we want a consistent <em>and</em> unbiased estimator for the variance we have to use a corrected sample variance</p>
+<div class="math notranslate nohighlight">
+\[s_{n-1}^2=\frac{1}{n-1}\sum_{i=1}^n(X_i-\overline{X}_n)^2\]</div>
 <p>We will show why that is in class.</p>
 </section>
 <section id="id1">

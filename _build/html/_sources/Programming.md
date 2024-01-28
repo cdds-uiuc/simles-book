@@ -1,7 +1,7 @@
 # Programming
 
 ## Python
-The class assumes basic knowledge of Python. It will also make use of a number of libraries for scientific computing. The most commonly used packages are <code>numpy</code>, <code>pandas</code>,<code>scipy</code> ,<code>scikit-learn</code> , and <code>matplotlib</code>. We will also make ocassional use of <code>xarray</code>, <code>cartopy</code> <code>statsmodel</code>, <code>seaborn</code> and many others. 
+The class assumes basic knowledge of Python. It will also make use of a number of libraries for scientific computing. The most commonly used packages are <code>numpy</code>, <code>pandas</code>, <code>scipy</code>,<code>scikit-learn</code>, and <code>matplotlib</code>. We will also make ocassional use of <code>xarray</code>, <code>cartopy</code>, <code>statsmodel</code>, <code>seaborn</code> and many others. 
  The course notebooks will give you ample examples of how to use these libraries, so it is not necessary to be familiar with them beforehand. At the same time, this is not a scientific computing class, so it is assumed that you can read and reproduce scientific computing code, and are able to look up documentations and examples by yourself.
 
 If your goal is learning the  basics of handling datasets (including large datasets)  I highly recommend the more programming focused ATMS 517 / GEOL 517 - Data Science for Geosciences. 

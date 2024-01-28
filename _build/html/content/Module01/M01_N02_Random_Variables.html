@@ -159,8 +159,8 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="../../_static/CDDS_logo.jpeg" class="logo__image only-light" alt="SIMLES: Statistical Inference and Machine Learning for Earth Sciences - Home"/>
-    <script>document.write(`<img src="../../_static/CDDS_logo.jpeg" class="logo__image only-dark" alt="SIMLES: Statistical Inference and Machine Learning for Earth Sciences - Home"/>`);</script>
+    <img src="../../_static/CDDS_logo.png" class="logo__image only-light" alt="SIMLES: Statistical Inference and Machine Learning for Earth Sciences - Home"/>
+    <script>document.write(`<img src="../../_static/CDDS_logo.png" class="logo__image only-dark" alt="SIMLES: Statistical Inference and Machine Learning for Earth Sciences - Home"/>`);</script>
   
   
 </a></div>
@@ -538,7 +538,7 @@ For our purspose we can define a (univariate) random variable <span class="math 
 <p><strong>Simulation</strong></p>
 <p>We can simulate this random variable using the <code>stats.randint.rvs</code> method from the <code>scipy</code> library.</p>
 <p>However, remember that python interprets intervals as closed on the left(lower bound)
-and open on the right (upper bound). If you specify a bound in python using <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span>, Python itnerprets it as <span class="math notranslate nohighlight">\(\[a,b)\)</span>. So to specify the discrete itnerval <span class="math notranslate nohighlight">\([1,6]\)</span> we actually have to specify it as <span class="math notranslate nohighlight">\(\[1,7)\)</span>. This is sometimes called left-inclusive right-exclusive, because the value on the left (lower bound) is included, whereas the value on the right (upper bound) is excluded.</p>
+and open on the right (upper bound). If you specify a bound in python using <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span>, Python itnerprets it as <span class="math notranslate nohighlight">\([a,b)\)</span>. So to specify the discrete itnerval <span class="math notranslate nohighlight">\([1,6]\)</span> we actually have to specify it as <span class="math notranslate nohighlight">\([1,7)\)</span>. This is sometimes called left-inclusive right-exclusive, because the value on the left (lower bound) is included, whereas the value on the right (upper bound) is excluded.</p>
 <p>The <code>stats</code> class has a method to generate <code>randint</code> objects to describe a uniform discrete (integer-valued) random variable-
 <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.randint.html">https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.randint.html</a></p>
 <br>
@@ -986,34 +986,42 @@ value in a given interval, or it might take any value in the real numbers.</p>
 <h2>1 Distribution functions<a class="headerlink" href="#distribution-functions" title="Permalink to this heading">#</a></h2>
 <section id="cumulative-distribution-function-cdf">
 <h3>1.1 Cumulative Distribution function (CDF).<a class="headerlink" href="#cumulative-distribution-function-cdf" title="Permalink to this heading">#</a></h3>
-<p>The cumulative distribiution function (CDF), <span class="math notranslate nohighlight">\(F(x)\)</span>, of a random variable - wheteher discrete or continuous - is defined as:
-$<span class="math notranslate nohighlight">\(F(x)=P(X\leq x)\)</span>$</p>
+<p>The cumulative distribiution function (CDF), <span class="math notranslate nohighlight">\(F(x)\)</span>, of a random variable - wheteher discrete or continuous - is defined as:</p>
+<div class="math notranslate nohighlight">
+\[F(x)=P(X\leq x)\]</div>
 <p>The CDF exists for any random variable, is piece-wise continous, and takes values between 0 an 1. If the random variables takes values in the interval <span class="math notranslate nohighlight">\([x_{min},x_{max}]\)</span>, then <span class="math notranslate nohighlight">\(F(x)=0\)</span> for <span class="math notranslate nohighlight">\(x&lt;x_{min}\)</span> and <span class="math notranslate nohighlight">\(F(x)=1\)</span> for <span class="math notranslate nohighlight">\(x&gt;x_{max}\)</span></p>
-<p>For a discrete random variable:
-$<span class="math notranslate nohighlight">\(F(x)=\sum_i P(X=x_i)=\sum_{i:x_i&lt;x}f(x_i)\)</span>$</p>
+<p>For a discrete random variable:</p>
+<div class="math notranslate nohighlight">
+\[F(x)=\sum_i P(X=x_i)=\sum_{i:x_i&lt;x}f(x_i)\]</div>
 <p>where <span class="math notranslate nohighlight">\(f(x_i)\)</span> is the pmf of X. For a discrete r.v. the CDF is going to look like a staircase, with jumps at the values <span class="math notranslate nohighlight">\(x_i\)</span> that <span class="math notranslate nohighlight">\(X\)</span> can take.</p>
 <p>In contrast, continuous random variables will have a continous CDFs. For the continous random variables considered in this class, the CDF will also be differentiable. Which means that we can also define a probability density function.</p>
 </section>
 <section id="probability-density-functions-pdf-for-continuous-r-v-s">
 <h3>1.2 Probability density functions (pdf) for continuous r.v.s<a class="headerlink" href="#probability-density-functions-pdf-for-continuous-r-v-s" title="Permalink to this heading">#</a></h3>
-<p>The distribution of a continuous random variable is generally defined by a probability density function, or <em>pdf</em>. We will denote the pdf of r.v. <span class="math notranslate nohighlight">\(X\)</span> by <span class="math notranslate nohighlight">\(f_X(x)\)</span> or, more commonly, simply by <span class="math notranslate nohighlight">\(f(x)\)</span>. The pdf of <span class="math notranslate nohighlight">\(X\)</span> is the probability that <span class="math notranslate nohighlight">\(X\)</span> takes a values in an infinitesimalinterval around <span class="math notranslate nohighlight">\(x\)</span>:
-$<span class="math notranslate nohighlight">\(f(x)=P(X\in [x,x+dx])\)</span><span class="math notranslate nohighlight">\(
-or 
-\)</span><span class="math notranslate nohighlight">\(P(x\in [x_1,x_2])=\int_{x_1}^{x_2} f(x)dx\)</span>$</p>
-<p>The pdf of a continuous r.v. must satisfy a few properties, such as <span class="math notranslate nohighlight">\( \int_{-\infty}^{+\infty}f(x)dx=1\)</span> and <span class="math notranslate nohighlight">\(f(x)&gt;0\)</span>. There is a simple relation between the CDF and the pdf of a continuous r.v. analaogos to that between the CDF and the pmf of a discrete r.v.:
-$<span class="math notranslate nohighlight">\(F(x)=P(X&lt;x)=\int_{-\infty}^{u}f(u)du\)</span>$</p>
+<p>The distribution of a continuous random variable is generally defined by a probability density function, or <em>pdf</em>. We will denote the pdf of r.v. <span class="math notranslate nohighlight">\(X\)</span> by <span class="math notranslate nohighlight">\(f_X(x)\)</span> or, more commonly, simply by <span class="math notranslate nohighlight">\(f(x)\)</span>. The pdf of <span class="math notranslate nohighlight">\(X\)</span> is the probability that <span class="math notranslate nohighlight">\(X\)</span> takes a values in an infinitesimalinterval around <span class="math notranslate nohighlight">\(x\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[f(x)=P(X\in [x,x+dx])\]</div>
+<p>or</p>
+<div class="math notranslate nohighlight">
+\[P(x\in [x_1,x_2])=\int_{x_1}^{x_2} f(x)dx\]</div>
+<p>The pdf of a continuous r.v. must satisfy a few properties, such as <span class="math notranslate nohighlight">\( \int_{-\infty}^{+\infty}f(x)dx=1\)</span> and <span class="math notranslate nohighlight">\(f(x)&gt;0\)</span>. There is a simple relation between the CDF and the pdf of a continuous r.v. analaogos to that between the CDF and the pmf of a discrete r.v.:</p>
+<div class="math notranslate nohighlight">
+\[F(x)=P(X&lt;x)=\int_{-\infty}^{u}f(u)du\]</div>
 </section>
 <section id="histogram">
 <h3>1.3 Histogram<a class="headerlink" href="#histogram" title="Permalink to this heading">#</a></h3>
-<p>Just like for discrete r.v.s, we can use a histogram to approximate the pdf of a continuous random variable. The histogram makes more sense for a continous random variable. To compute a histogram we will need to define a set of bin edges <span class="math notranslate nohighlight">\({x_i}\)</span>, the histogram counts the number of realizations in each bin. So,
-$<span class="math notranslate nohighlight">\(h(x_i,x_j)= \text{# of realizations of }X\text{ between }x_i,x_j. \)</span>$</p>
+<p>Just like for discrete r.v.s, we can use a histogram to approximate the pdf of a continuous random variable. The histogram makes more sense for a continous random variable. To compute a histogram we will need to define a set of bin edges <span class="math notranslate nohighlight">\({x_i}\)</span>, the histogram counts the number of realizations in each bin. So,</p>
+<div class="math notranslate nohighlight">
+\[h(x_i,x_j)= \text{# of realizations of }X\text{ between }x_i,x_j. \]</div>
 <p>A scaled, or normed, histogram is</p>
 <div class="math notranslate nohighlight">
 \[h(x_i,x_{i+1})= \frac{\text{# of realizations of }X\text{ between }x_i,x_{i+1}}{(\text{total # of realizations of }X )(x_{i+1}-x_i)}. \]</div>
-<p>For a very large number of realizations, the histogram will be equal to the average value of the pdf within a bin:
-$<span class="math notranslate nohighlight">\(h(x_i,x_{i+1})\approx \overline {f(x_i)}=\frac{\int_{x_i}^{x_i+1} f(u)du}{x_{i+1}-x_i}\)</span>$</p>
-<p>As long as the lower bin <span class="math notranslate nohighlight">\(x_1\)</span> is low enough that the probability of X taking values lower than it is small or zero, <span class="math notranslate nohighlight">\(f(x)\approx0\)</span>, for <span class="math notranslate nohighlight">\(x&lt;x_1\)</span>, we can also use a histogram to approximate a CDF:
-$<span class="math notranslate nohighlight">\(F(x_i)=\int_{-\infty}^{x_i}f(u)du \approx \sum_{j=0}^{j-1}\int_{x_i}^{x_i+1} f(u)du\approx\sum_{j=1}^{i-1} h(x_j,x_j+1)\cdot (x_{i+1}-x_i)\)</span>$</p>
+<p>For a very large number of realizations, the histogram will be equal to the average value of the pdf within a bin:</p>
+<div class="math notranslate nohighlight">
+\[h(x_i,x_{i+1})\approx \overline {f(x_i)}=\frac{\int_{x_i}^{x_i+1} f(u)du}{x_{i+1}-x_i}\]</div>
+<p>As long as the lower bin <span class="math notranslate nohighlight">\(x_1\)</span> is low enough that the probability of X taking values lower than it is small or zero, <span class="math notranslate nohighlight">\(f(x)\approx0\)</span>, for <span class="math notranslate nohighlight">\(x&lt;x_1\)</span>, we can also use a histogram to approximate a CDF:</p>
+<div class="math notranslate nohighlight">
+\[F(x_i)=\int_{-\infty}^{x_i}f(u)du \approx \sum_{j=0}^{j-1}\int_{x_i}^{x_i+1} f(u)du\approx\sum_{j=1}^{i-1} h(x_j,x_j+1)\cdot (x_{i+1}-x_i)\]</div>
 <p>All of the above will make more sense with some examples:</p>
 <hr style="border:2px solid black"> </hr></section>
 </section>
@@ -1027,8 +1035,9 @@ $<span class="math notranslate nohighlight">\(F(x_i)=\int_{-\infty}^{x_i}f(u)du 
 \frac{1}{b-a} &amp; \text{if }x\in[a,b]\\
 0 &amp; \text{if }x\notin[a,b]
 \end{cases}\end{split}\]</div>
-<p>the <span class="math notranslate nohighlight">\(1/(b-a)\)</span> comes from the condition that the pdf integrates to <span class="math notranslate nohighlight">\(1\)</span>. The CDF of a uniform r.v. is.
-$<span class="math notranslate nohighlight">\(F(x)=\int_{-\infty}^{x}f(u)du\)</span>$</p>
+<p>the <span class="math notranslate nohighlight">\(1/(b-a)\)</span> comes from the condition that the pdf integrates to <span class="math notranslate nohighlight">\(1\)</span>. The CDF of a uniform r.v. is.</p>
+<div class="math notranslate nohighlight">
+\[F(x)=\int_{-\infty}^{x}f(u)du\]</div>
 <div class="math notranslate nohighlight">
 \[\begin{split}F(x)=\begin{cases}
 0 &amp; \text{if }x&lt;a\\
@@ -1123,8 +1132,9 @@ $<span class="math notranslate nohighlight">\(F(x)=\int_{-\infty}^{x}f(u)du\)</s
 <section id="normal-gaussian">
 <h3>2.1 Normal/Gaussian<a class="headerlink" href="#normal-gaussian" title="Permalink to this heading">#</a></h3>
 <p>The most common distribution we will encounter is the Gaussian (or Normal distribution). It is the most commonly occuring distribution in nature - and it is in fact the <em>central</em> distribution to which other distributions gravitate, as we shall discuss later. More properties of the gaussian distribution will come up thrughout the course, but let’s introduce it here:</p>
-<p>The pdf of a gaussian(normal distribution) is defined by two parameters, <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(\sigma\)</span>, called the location and the scale parameter, which, as we shall see, are also the mean and standard deviation. We wil learn more about these parameters in the next chapter, but it’s easier to illustrate them once we have some distributions from which we can generate samples.
-$<span class="math notranslate nohighlight">\(f(x)=\frac{1}{\sqrt{2\pi\sigma^2}}\exp\left[-\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^2\right]\)</span>$</p>
+<p>The pdf of a gaussian(normal distribution) is defined by two parameters, <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(\sigma\)</span>, called the location and the scale parameter, which, as we shall see, are also the mean and standard deviation. We wil learn more about these parameters in the next chapter, but it’s easier to illustrate them once we have some distributions from which we can generate samples.</p>
+<div class="math notranslate nohighlight">
+\[f(x)=\frac{1}{\sqrt{2\pi\sigma^2}}\exp\left[-\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^2\right]\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.norm.html</span>

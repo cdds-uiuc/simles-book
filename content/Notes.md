@@ -6,3 +6,11 @@
 - Joint Distribution plots (in the continuous random variable lecture). Easiest example is probably Gaussian distribution. Plot conditional and marginal distributions.
 - Joint/Conditional Inference (?)
 - Poisson distribution could be useful for Earthquakes?
+
+- MLE
+	- Parallel Univers
+	- Binomial
+	- Normal
+	- Exponential
+	- Earthquake
+	- Flood Return Rate

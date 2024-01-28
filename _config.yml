@@ -6,7 +6,7 @@
 # Book settings
 title: "SIMLES: Statistical Inference and Machine Learning for Earth Sciences"
 author: Cristian Proistosescu
-logo: content/CDDS_logo.jpeg
+logo: content/CDDS_logo.png
 copyright: "2024"
 
 # Patterns to skip when building the book. Can be glob-style (e.g. "*skip.ipynb")

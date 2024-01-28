@@ -2,12 +2,24 @@
 # Statistical Inference and Machine Learning for Earth Sciences
 ## GEOL 593 / ATMS 597 
 
+As the name suggests, this jupyter boook provides an introduction to Statistical Inference and Machine Learning for Earth Sciences. The book strives to place itself between traditional textbooks focused on theory and derivations and applied online tutorialsheavily reliant on pre-existing libraries. The goal is a mix of of conceptual and practical  applications, where intuition is build using visualizations, simple examles, and synthetic data. 
+
+The approach to each statistical and machine learning concept generally consists of three steps: 
+1. Build intuition and conceptual understanding using theory, equations, and visualizations.
+2. Develop simplified version of methods and algorithm that are applied to synthetic data
+3. Apply efficient python library versions of the algorithm to real data. 
+
+The course is intended as hands-on introduction for graduate student and advanced undergraduates. The material assumes no formal training in statistics, machine learning, or probabilities, but it assumes good knowledge of calculus, and very basic knowledge of linear algebra and programming in python. 
+
+```{warning}
 
 This is a live and ***very much beta*** version of the course notes for the GEOL 593/ATMS 597, as the class is being actively taught for the first time in the Spring of 2024 at the University of Illinois at Urbana Champaign. 
 
-```{warning}
-If you happened on this website and are not a student in the class, proceed with caution. The book is actively being changed and updated. Nothing is stable. The course is intended as a graduate-level hands-on introduction to Statistical Inference and Machine Learning methods across Earth and Environmental Sciences. You are welcome to play around with the materials but be warned: Here be dragons.
+If you happened on this website and are not a student in the class, proceed with caution. The book is actively being changed and updated. Nothing is stable. You are welcome to play around with the materials but be warned: Here be dragons.
+
 ```
+
+
 
 ## Running code:
 To run a notebook in this book you can either download the notebook and run it locally, or use the launch button (the little rocket at the top of notebooks) to launch either Google Colab or Binder Hub. 
@@ -16,12 +28,14 @@ To run a notebook in this book you can either download the notebook and run it l
 ***Environment***
 If you are running this notebook on your own machine, I recommend you use the environment provided  in this file: [simles-book.yml](https://raw.githubusercontent.com/cdds-uiuc/simles-book/main/simles-book.yml).
 
-***simles-book.yml is a live document*** that will change as a I build the book and discover new dependencies. If you are findign you are missing a library, the first thing to do is make sure your environment is up to date.
+***simles-book.yml is a live document*** that will change as a I build the book and discover new dependencies. If you are finding you are missing a library, the first thing to do is make sure your environment is up to date.
 
 ```
 
 ## Errors, Typos, Examples, Feedback
-This is the first iteration of the material, written on the fly, as it is being taught, and while raising a toddler. Errors and typos abound. Finding typos and errors *and reporting them to me* will count towards your participation score in the class. Helpful feedback on the presentation is also welcomed. You can submit a github issue via the github button at the top of the notebook.  
+This is the first iteration of the material, written on the fly, as it is being taught, and while raising a toddler. Errors and typos abound. Finding typos and errors *and reporting them to me* will count towards your participation score in the class. Helpful feedback on the presentation is also welcomed. 
+
+You can submit a github issue via the github button at the top of the notebook.  
 
 Well-written examples applications in the Earth and Environmental Sciences are *especially* welcomed, and will earn participation grade (if a student in the class), or brownie points + eternal gratitude + acknowledgemetns if not. 
 

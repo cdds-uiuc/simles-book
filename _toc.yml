@@ -7,15 +7,16 @@ parts:
   - caption: Resources
     chapters:
     - file: Programming
-  - caption: 1.Basics
+  - caption: 1. Probability Models
     chapters:
     - file: content/Module01/M01_N01_Probability_Recap
     - file: content/Module01/M01_N02_Random_Variables
     - file: content/Module01/M01_Lab1
     - file: content/Module01/M01_N03_Moments
     - file: content/Module01/M01_N04_SampleStatistics
-    #- file: Module01/M01_N06_QQPlots
-    
+  - caption: 2. Inference
+    chapters:
+    - file: content/Module02/M02_N01_Estimation
 #  - caption: "Inference:Estimation and Hypothesis Testing"
 #    chapters:
 #    - file: content/Module02/M02_N01_Regression

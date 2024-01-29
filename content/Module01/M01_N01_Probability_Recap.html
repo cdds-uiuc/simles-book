@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Basics of probability &#8212; SIMLES: Statistical Inference and Machine Learning for Earth Sciences</title>
+    <title>Basics of probabilities &#8212; SIMLES: Statistical Inference and Machine Learning for Earth Sciences</title>
   
   
   
@@ -178,9 +178,9 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../Programming.html">Programming</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">1.Basics</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">1. Probability Models</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Basics of probability</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Basics of probabilities</a></li>
 
 
 
@@ -200,6 +200,13 @@ const thebe_selector_output = ".output, .cell_output"
 
 <li class="toctree-l1"><a class="reference internal" href="M01_N04_SampleStatistics.html">Sample Statistics</a></li>
 
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">2. Inference</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Module02/M02_N01_Estimation.html">Estimators and the Maximum Likelihood</a></li>
 
 
 
@@ -437,7 +444,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Basics of probability</h1>
+    <h1>Basics of probabilities</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -447,7 +454,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Basics of probability</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Basics of probabilities</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#probability-spaces">Probability Spaces</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discrete-sample-space">Discrete Sample Space</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#infinite-sample-spaces">Infinite Sample Spaces</a></li>
@@ -479,14 +486,16 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="basics-of-probability">
-<h1>Basics of probability<a class="headerlink" href="#basics-of-probability" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="basics-of-probabilities">
+<h1>Basics of probabilities<a class="headerlink" href="#basics-of-probabilities" title="Permalink to this heading">#</a></h1>
 <p><em><strong>Reading: Emile-Geay: Chapters 1,2</strong></em></p>
-<p>We’ll start by reviewing some basics of probability theory. I will use some simple examples - dice and roullete - to illustrate basic probability concepts. We’ll also use these simple examples to build intuition on several properties of probabilities - the law of total probability, independence, conditional probability, and Bayes’s rule - that can be generalized, and will be used throughout the course.</p>
+<p>In this module, we will learn how to model and describe the outcome of random processes.</p>
+<p>We’ll start by reviewing some basics of probability theory. I will use some simple examples - dice and roullete - as simple models to illustrate basic probability concepts. We’ll also use these simple examples to build intuition on several properties of probabilities - the law of total probability, independence, conditional probability, and Bayes’s rule - that can be generalized, and will be used throughout the course.</p>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="probability-spaces">
 <h1>Probability Spaces<a class="headerlink" href="#probability-spaces" title="Permalink to this heading">#</a></h1>
-<p>To work with probabilites we need to define three things:</p>
+<p>A probability model is a representation of a random process, or random phenomenon. To build a probability model of a random process we need a probablity space, and a random varible. This notebook will focus on probability spaces.</p>
+<p>To define a probability space we need:</p>
 <ol class="arabic simple">
 <li><p>A sample space, <span class="math notranslate nohighlight">\(\Omega\)</span></p></li>
 <li><p>An event space, <span class="math notranslate nohighlight">\(\mathcal F\)</span></p></li>
@@ -750,7 +759,7 @@ $<span class="math notranslate nohighlight">\(P(A|B)=\frac{P(B|A)P(A)}{P(B)}\)</
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Basics of probability</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Basics of probabilities</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#probability-spaces">Probability Spaces</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discrete-sample-space">Discrete Sample Space</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#infinite-sample-spaces">Infinite Sample Spaces</a></li>

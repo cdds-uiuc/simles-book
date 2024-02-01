@@ -17,6 +17,7 @@ parts:
   - caption: 2. Inference
     chapters:
     - file: content/Module02/M02_N01_Estimation
+    - file: content/Module02/M02_N02_Cookbook_MLE
 #  - caption: "Inference:Estimation and Hypothesis Testing"
 #    chapters:
 #    - file: content/Module02/M02_N01_Regression

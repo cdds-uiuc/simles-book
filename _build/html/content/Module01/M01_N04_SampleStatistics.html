@@ -210,6 +210,9 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
+<li class="toctree-l1"><a class="reference internal" href="../Module02/M02_N02_Cookbook_MLE.html">Cookbook: Maximum Likelihood Estimator</a></li>
+
+
 </ul>
 
     </div>
@@ -506,7 +509,8 @@ document.write(`
 <span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
 
 <span class="c1"># These are some parameters to make figures nice (and big)</span>
-<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="o">%</span><span class="k">matplotlib</span> in
+    <span class="n">line</span>
 <span class="o">%</span><span class="k">config</span> InlineBackend.figure_format = &#39;retina&#39; 
 <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">16</span><span class="p">,</span><span class="mi">8</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;text.usetex&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
@@ -517,6 +521,14 @@ document.write(`
          <span class="s1">&#39;xtick.labelsize&#39;</span><span class="p">:</span><span class="s1">&#39;x-large&#39;</span><span class="p">,</span>
          <span class="s1">&#39;ytick.labelsize&#39;</span><span class="p">:</span><span class="s1">&#39;x-large&#39;</span><span class="p">}</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>  <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">7</span>
+    <span class="n">line</span>
+    <span class="o">^</span>
+<span class="ne">IndentationError</span>: unexpected indent
 </pre></div>
 </div>
 </div>
@@ -531,7 +543,11 @@ document.write(`
 \[ X\sim\mathcal{N}(\mu,\sigma^2)\]</div>
 <p>If we only have a sample of this random variable we can estimate the mean using the <strong>sample mean</strong>:</p>
 <div class="math notranslate nohighlight">
-\[ \begin{align}\begin{aligned}\overline{X}_n=\frac{1}{n}\sum_{i=1}^n X_i$$. \\The law of large numbers tells us that the sample mean converges to the process mean for a large enough sample. \\https://en.wikipedia.org/wiki/Law_of_large_numbers\\$$ \overline{X}_n \rightarrow \mu \end{aligned}\end{align} \]</div>
+\[\overline{X}_n=\frac{1}{n}\sum_{i=1}^n X_i\]</div>
+<p>The law of large numbers tells us that the sample mean converges to the process mean for a large enough sample.</p>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Law_of_large_numbers">https://en.wikipedia.org/wiki/Law_of_large_numbers</a></p>
+<div class="math notranslate nohighlight">
+\[ \overline{X}_n \rightarrow \mu \]</div>
 <section id="estimators">
 <h2>Estimators<a class="headerlink" href="#estimators" title="Permalink to this heading">#</a></h2>
 <p>An estimator is a function (rule) for calculating an estimate of a given quantity based on observed data. <a class="reference external" href="https://en.wikipedia.org/wiki/Estimator">Wikipedia article</a></p>
@@ -753,7 +769,8 @@ document.write(`
 <p>Since the sample mean is a random variable, it means it has a distribution. The Central Limit Theorem tells us what that distribution is:</p>
 <p><em><strong>Central Limit Theorem:</strong></em>
 For a sequence <span class="math notranslate nohighlight">\(\{X_1,\ldots, X_n\}\)</span>,of independent and identically distributed random variables with mean <span class="math notranslate nohighlight">\(\mu\)</span> and variance <span class="math notranslate nohighlight">\(\sigma^2\)</span>, if the sample size <span class="math notranslate nohighlight">\(n\)</span> is large enough, the distribution of the sample mean is normal with mean <span class="math notranslate nohighlight">\(\mu\)</span> and variance <span class="math notranslate nohighlight">\(\sigma^2/n\)</span>:</p>
-<p>$<span class="math notranslate nohighlight">\(\overline{X}_n=\frac{1}{n}\sum_{i=1}^n X_i \sim \mathcal N(\mu,\sigma^2/n)\)</span>$.</p>
+<div class="math notranslate nohighlight">
+\[\overline{X}_n=\frac{1}{n}\sum_{i=1}^n X_i \sim \mathcal N(\mu,\sigma^2/n)\]</div>
 <p>This is one of the most powerful results in statistics. It tells us how quickly the uncertainty in the mean decreases: in particular, the variance decreases as the number of observations (and that the standard deviation decreases as the square root of the number of observations).</p>
 <p><strong>Attention</strong> Notice that the Central Limit Theorem does <strong>not</strong> require the random variables to be normal/gaussian. That’s right, the sample mean of <strong>any</strong> random variable tends to be normal/gaussian for a large enough sample.</p>
 <p><img alt="Patrikc" src="https://c.tenor.com/3xoRK7hFE3gAAAAC/patrick-star-spongebob-squarepants.gif" /></p>

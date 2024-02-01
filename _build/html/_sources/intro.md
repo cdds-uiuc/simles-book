@@ -2,6 +2,15 @@
 # Statistical Inference and Machine Learning for Earth Sciences
 ## GEOL 593 / ATMS 597 
 
+```{warning}
+
+This is a live and ***very much beta*** version of the course notes for the GEOL 593/ATMS 597, as the class is being actively taught for the first time in the Spring of 2024 at the University of Illinois at Urbana Champaign. 
+
+If you happened on this website and are not a student in the class, proceed with caution. The book is actively being changed and updated. Nothing is stable. You are welcome to play around with the materials but be warned: Here be dragons.
+
+```
+
+
 As the name suggests, this jupyter boook provides an introduction to Statistical Inference and Machine Learning for Earth Sciences. The book strives to place itself between traditional textbooks focused on theory and derivations and applied online tutorialsheavily reliant on pre-existing libraries. The goal is a mix of of conceptual and practical  applications, where intuition is build using visualizations, simple examles, and synthetic data. 
 
 The approach to each statistical and machine learning concept generally consists of three steps: 
@@ -11,13 +20,6 @@ The approach to each statistical and machine learning concept generally consists
 
 The course is intended as hands-on introduction for graduate student and advanced undergraduates. The material assumes no formal training in statistics, machine learning, or probabilities, but it assumes good knowledge of calculus, and very basic knowledge of linear algebra and programming in python. 
 
-```{warning}
-
-This is a live and ***very much beta*** version of the course notes for the GEOL 593/ATMS 597, as the class is being actively taught for the first time in the Spring of 2024 at the University of Illinois at Urbana Champaign. 
-
-If you happened on this website and are not a student in the class, proceed with caution. The book is actively being changed and updated. Nothing is stable. You are welcome to play around with the materials but be warned: Here be dragons.
-
-```
 
 
 

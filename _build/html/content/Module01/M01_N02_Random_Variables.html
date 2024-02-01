@@ -210,6 +210,9 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
+<li class="toctree-l1"><a class="reference internal" href="../Module02/M02_N02_Cookbook_MLE.html">Cookbook: Maximum Likelihood Estimator</a></li>
+
+
 </ul>
 
     </div>
@@ -511,6 +514,7 @@ document.write(`
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#%reset</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
 <span class="n">figsize</span><span class="o">=</span><span class="p">[</span><span class="mi">6</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
 
 <span class="c1"># These are some parameters to make figures nice (and big)</span>
@@ -552,10 +556,7 @@ and open on the right (upper bound). If you specify a bound in python using <spa
 The bottom of the above documentation page for <code>randint</code> describes the methods. One of the methods associated with this random variable is the <code>rvs</code> which generates samples (draws) from such a random variable (i.e. simulate the roll of a die). 
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># let&#39;s import the stats module from the scipy library</span>
-<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
-
-<span class="c1">#Simulate random variable taking values between 1 (inclusive) and 7 (exclusive). </span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Simulate random variable taking values between 1 (inclusive) and 7 (exclusive). </span>
 <span class="c1">#Let&#39;s say we only want to simulate this random variable once</span>
 <span class="c1"># Rerun this cell several times to simulate a throw of the dice</span>
 
@@ -887,15 +888,16 @@ The cell above generates a single realizatoin of the random variable. But we can
 
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="n">figsize</span><span class="p">)</span>
 
-<span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">Z_2dice</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="n">bin_edges_2dice</span><span class="p">,</span><span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">rwidth</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">Z_2dice</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="n">bin_edges_2dice</span><span class="p">,</span><span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">rwidth</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;histogram&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_2dice</span><span class="p">,</span> <span class="n">p_2dice</span><span class="p">,</span> <span class="s1">&#39;ro&#39;</span><span class="p">,</span><span class="n">ms</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
         <span class="n">label</span><span class="o">=</span><span class="s1">&#39;pmf&#39;</span><span class="p">);</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
 </pre></div>
 </div>
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/37e4281f6289989b28e0d8a90efd07fa197bf88fce3edf8721a35f3021dda852.png" src="../../_images/37e4281f6289989b28e0d8a90efd07fa197bf88fce3edf8721a35f3021dda852.png" />
+<img alt="../../_images/0f4cc9dae4321abb1d03b31effbb7e5247c1227ceb4ba135765d89c1f3522589.png" src="../../_images/0f4cc9dae4321abb1d03b31effbb7e5247c1227ceb4ba135765d89c1f3522589.png" />
 </div>
 </div>
 <div class="admonition danger">
@@ -1210,7 +1212,7 @@ value in a given interval, or it might take any value in the real numbers.</p>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
-<span class="n">df</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;./data/Beaumont_precip.csv&#39;</span><span class="p">)</span>
+<span class="n">df</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://github.com/cdds-uiuc/simles-book/raw/main/content/Module02/data/Beaumont_precip.csv&#39;</span><span class="p">)</span>
 <span class="n">precip_willard</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;PRCP&#39;</span><span class="p">];</span>
 
 <span class="n">Nbin_edges</span><span class="o">=</span><span class="mi">100</span>
@@ -1243,10 +1245,10 @@ value in a given interval, or it might take any value in the real numbers.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x13b132df0&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x158760830&gt;]
 </pre></div>
 </div>
-<img alt="../../_images/1c8a8083bc24cd2314690e1f1434792656c4f8ded4058b06239a7438b6165e4b.png" src="../../_images/1c8a8083bc24cd2314690e1f1434792656c4f8ded4058b06239a7438b6165e4b.png" />
+<img alt="../../_images/52ed5a9013c256c0bacc0861ca9bb5d090c3c4d3e438a8a77bbab7744722f22f.png" src="../../_images/52ed5a9013c256c0bacc0861ca9bb5d090c3c4d3e438a8a77bbab7744722f22f.png" />
 </div>
 </div>
 <p>What do we see? Notice the jump in the CDF at 0. This means there is about an <span class="math notranslate nohighlight">\(80\%\)</span> probability that there is no rain, i.e. it only rains on <span class="math notranslate nohighlight">\(20\%\)</span> of days. So for <span class="math notranslate nohighlight">\(x=0\)</span>, there is a finite probability <span class="math notranslate nohighlight">\(P(X=0)=20\%\)</span>. For everything else, the probability is (in principle) continuous, and described by a continous pdf that describes the probability of precipitation falling in an infinitesimal interval around x.</p>

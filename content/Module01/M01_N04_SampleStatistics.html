@@ -66,7 +66,6 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'content/Module01/M01_N04_SampleStatistics';</script>
     <link rel="canonical" href="https://cdds-uiuc.github.io/simles-book/content/Module01/M01_N04_SampleStatistics.html" />
-    <link rel="shortcut icon" href="../../_static/CDDS_logo.jpeg"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Estimators and the Maximum Likelihood" href="../Module02/M02_N01_Estimation.html" />
@@ -203,6 +202,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
+
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">2. Inference</span></p>
 <ul class="nav bd-sidenav">
@@ -210,7 +210,22 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="../Module02/M02_N02_Cookbook_MLE.html">Cookbook: Maximum Likelihood Estimator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Module02/M02_N02_Cookbook_Gutenberg-Richter_Law.html">Cookbook: MLE for Gutenberg-Richter Law</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Module02/M02_N03_Cookbook_Precipitation_Return_Times.html">Cookbook: Precipitation return times for Hurricane Harvey</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Module02/M02_Lab2-1.html">Lab 2.1</a></li>
+
+
+
+
+
 
 
 </ul>
@@ -475,6 +490,11 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Exercise:</a></li>
 </ul>
 </li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#the-extreme-value-theorem">The extreme value theorem</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exponential-distribution">Exponential distribution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#uniform-distribution">Uniform distribution</a></li>
+</ul>
+</li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#sample-covariance-and-correlation">Sample Covariance and Correlation</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pearson-correlation-coefficeient">Pearson Correlation Coefficeient</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spurious-correlation">Spurious Correlation</a></li>
@@ -509,9 +529,6 @@ document.write(`
 <span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
 
 <span class="c1"># These are some parameters to make figures nice (and big)</span>
-<span class="o">%</span><span class="k">matplotlib</span> in
-    <span class="n">line</span>
-<span class="o">%</span><span class="k">config</span> InlineBackend.figure_format = &#39;retina&#39; 
 <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">16</span><span class="p">,</span><span class="mi">8</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;text.usetex&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
 <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;legend.fontsize&#39;</span><span class="p">:</span> <span class="s1">&#39;x-large&#39;</span><span class="p">,</span>
@@ -521,14 +538,6 @@ document.write(`
          <span class="s1">&#39;xtick.labelsize&#39;</span><span class="p">:</span><span class="s1">&#39;x-large&#39;</span><span class="p">,</span>
          <span class="s1">&#39;ytick.labelsize&#39;</span><span class="p">:</span><span class="s1">&#39;x-large&#39;</span><span class="p">}</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>  <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">7</span>
-    <span class="n">line</span>
-    <span class="o">^</span>
-<span class="ne">IndentationError</span>: unexpected indent
 </pre></div>
 </div>
 </div>
@@ -585,10 +594,10 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x2965518b0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x1370f7a10&gt;
 </pre></div>
 </div>
-<img alt="../../_images/b911e19e1d0d3a2d825505bba57328b3e4d164bee2c05344c7e6908510304b91.png" src="../../_images/b911e19e1d0d3a2d825505bba57328b3e4d164bee2c05344c7e6908510304b91.png" />
+<img alt="../../_images/3816faf3173d67338851faad87641885fb38e115df4be5095a89702c0e215d36.png" src="../../_images/3816faf3173d67338851faad87641885fb38e115df4be5095a89702c0e215d36.png" />
 </div>
 </div>
 </section>
@@ -655,7 +664,7 @@ document.write(`
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;distribution of sample mean&#39;)
 </pre></div>
 </div>
-<img alt="../../_images/214fa09eed39462f6632cce9ce70a1ce21d045d0908ffa56af28a0f30ebcf01c.png" src="../../_images/214fa09eed39462f6632cce9ce70a1ce21d045d0908ffa56af28a0f30ebcf01c.png" />
+<img alt="../../_images/0fe645916eb392ddc3308f0d30d0968374ab64e1d26905f83e062b3d85c38eac.png" src="../../_images/0fe645916eb392ddc3308f0d30d0968374ab64e1d26905f83e062b3d85c38eac.png" />
 </div>
 </div>
 </section>
@@ -702,7 +711,7 @@ document.write(`
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;sample variance&#39;)
 </pre></div>
 </div>
-<img alt="../../_images/0c2a6f852c3092db10472362ead845c88b0465ece306cb0e929a2f0502fbbb17.png" src="../../_images/0c2a6f852c3092db10472362ead845c88b0465ece306cb0e929a2f0502fbbb17.png" />
+<img alt="../../_images/ef861976c7bac0dc69e1709aef401306a5fd24f46c60b4834894f70201af319c.png" src="../../_images/ef861976c7bac0dc69e1709aef401306a5fd24f46c60b4834894f70201af319c.png" />
 </div>
 </div>
 </section>
@@ -743,7 +752,7 @@ document.write(`
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.0, 0.5)
 </pre></div>
 </div>
-<img alt="../../_images/27d942c65303635c139fe7a9181872a8ed3b4214a35345c54c899fd4e3629081.png" src="../../_images/27d942c65303635c139fe7a9181872a8ed3b4214a35345c54c899fd4e3629081.png" />
+<img alt="../../_images/94f056952e443ebc9bb7fd0ce39c1449040add6c5afe66e56a40a35bd3d75c85.png" src="../../_images/94f056952e443ebc9bb7fd0ce39c1449040add6c5afe66e56a40a35bd3d75c85.png" />
 </div>
 </div>
 <p>So, the simple sample standard variance is a <em><strong>consistent, but biased</strong></em> estimator of the process variance. Sure, if the sample is large enough, it will eventually converget. But for finite samples, its expected value is <strong>not</strong> equal to the true value of the process variance.</p>
@@ -768,68 +777,164 @@ document.write(`
 <h1>Sampling Distribution &amp; the central limit theorem<a class="headerlink" href="#sampling-distribution-the-central-limit-theorem" title="Permalink to this heading">#</a></h1>
 <p>Since the sample mean is a random variable, it means it has a distribution. The Central Limit Theorem tells us what that distribution is:</p>
 <p><em><strong>Central Limit Theorem:</strong></em>
-For a sequence <span class="math notranslate nohighlight">\(\{X_1,\ldots, X_n\}\)</span>,of independent and identically distributed random variables with mean <span class="math notranslate nohighlight">\(\mu\)</span> and variance <span class="math notranslate nohighlight">\(\sigma^2\)</span>, if the sample size <span class="math notranslate nohighlight">\(n\)</span> is large enough, the distribution of the sample mean is normal with mean <span class="math notranslate nohighlight">\(\mu\)</span> and variance <span class="math notranslate nohighlight">\(\sigma^2/n\)</span>:</p>
+For a sequence <span class="math notranslate nohighlight">\(\{X_1,\ldots, X_n\}\)</span> of independent and identically distributed random variables with mean <span class="math notranslate nohighlight">\(\mu\)</span> and variance <span class="math notranslate nohighlight">\(\sigma^2\)</span>, if the sample size <span class="math notranslate nohighlight">\(n\)</span> is large enough, the distribution of the sample mean is normal with mean <span class="math notranslate nohighlight">\(\mu\)</span> and variance <span class="math notranslate nohighlight">\(\sigma^2/n\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[\overline{X}_n=\frac{1}{n}\sum_{i=1}^n X_i \sim \mathcal N(\mu,\sigma^2/n)\]</div>
 <p>This is one of the most powerful results in statistics. It tells us how quickly the uncertainty in the mean decreases: in particular, the variance decreases as the number of observations (and that the standard deviation decreases as the square root of the number of observations).</p>
 <p><strong>Attention</strong> Notice that the Central Limit Theorem does <strong>not</strong> require the random variables to be normal/gaussian. That’s right, the sample mean of <strong>any</strong> random variable tends to be normal/gaussian for a large enough sample.</p>
 <p><img alt="Patrikc" src="https://c.tenor.com/3xoRK7hFE3gAAAAC/patrick-star-spongebob-squarepants.gif" /></p>
-<p>In the cell below Is a numerical evaluation of the CLT. We will sample means using a sample size <span class="math notranslate nohighlight">\(n=10\)</span>. We will then draw a very large number of realizations of the sample mean. I.e. we will repeatedly draw 10 outcomes and take their sample mean. We will then compare the distribution of these sample means with the theoretical pdf of a gaussian/normal distribution with mean <span class="math notranslate nohighlight">\(\mu\)</span> and variance <span class="math notranslate nohighlight">\(\sigma^2/n\)</span>.</p>
+<p>The cell below shows a numerical evaluation of the CLT for an exponential distribution. We will be using values of <span class="math notranslate nohighlight">\(n=[1,5,25,200]\)</span> for the sample size over which we take the sample mean.</p>
+<ul class="simple">
+<li><p>pick a sample size <span class="math notranslate nohighlight">\(n\)</span> - i.e. the number of samples we are averaging over to compute the sample mean.
+$<span class="math notranslate nohighlight">\( \overline X_n=\frac{1}{n}\sum_i X_n\)</span>$</p></li>
+<li><p>Repeatedly (i.e. <span class="math notranslate nohighlight">\(m=10,000\)</span> times) draw <span class="math notranslate nohighlight">\(n\)</span> samples and take their sample mean.</p></li>
+<li><p>Plot the histogram of the <span class="math notranslate nohighlight">\(m=10,000\)</span> sample means.</p></li>
+<li><p>Compare this histogram with means with the theoretical pdf of a gaussian/normal distribution given by the Central Limit Theorem, i.e. a gaussian/normal with mean  <span class="math notranslate nohighlight">\(\mu_{clt}=\mu_X\)</span> and variance <span class="math notranslate nohighlight">\(\sigma_{clt}^2=\sigma_X^2/n\)</span> (standard deviation <code>scale</code>=<span class="math notranslate nohighlight">\(\sigma_{clt}=\sigma_X/\sqrt n\)</span>).</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span> 
-<span class="n">mu</span><span class="o">=</span><span class="mf">0.4</span><span class="p">;</span>
-<span class="n">sigma</span><span class="o">=</span><span class="mf">0.5</span><span class="p">;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Answer </span>
+<span class="n">m</span><span class="o">=</span><span class="mi">10000</span>
+<span class="n">n</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">100</span><span class="p">]</span>
+<span class="n">Nbins</span><span class="o">=</span><span class="mi">30</span>
 
-<span class="c1"># sample size and number of samples</span>
-<span class="n">sample_size</span><span class="o">=</span><span class="mi">10</span>
-<span class="n">nsamples</span><span class="o">=</span><span class="mi">10000</span>
+<span class="c1"># scale for exponential distribution</span>
+<span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
 
+<span class="c1"># mean and variance for exponential distribution</span>
+<span class="n">mu_x</span><span class="o">=</span><span class="n">scale</span>
+<span class="n">sig_x</span><span class="o">=</span><span class="n">scale</span><span class="o">**</span><span class="mi">2</span>
+<span class="n">fig</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">[</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">])</span>
 
-<span class="c1"># preallocate vector of sample means</span>
-<span class="n">sample_mean</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="n">nsamples</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+<span class="c1"># repeat the exericse for four value n.</span>
+<span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+    <span class="c1"># preallocate vector of sample means</span>
+    <span class="n">sample_mean</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="n">m</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+    <span class="c1"># compute a number of sample means</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
+        <span class="c1"># draw n[j] draws and average them to get the sample mean:</span>
+        <span class="n">X</span><span class="o">=</span><span class="n">stats</span><span class="o">.</span><span class="n">expon</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">scale</span><span class="o">=</span><span class="n">scale</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
+        <span class="n">sample_mean</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">n</span><span class="p">[</span><span class="n">j</span><span class="p">])</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+        
+    
+    <span class="c1">#compute the theoretical pdf given by the CLT</span>
+    <span class="n">mu_clt</span><span class="o">=</span><span class="n">mu_x</span>
+    <span class="n">sig_clt</span><span class="o">=</span><span class="n">sig_x</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">n</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
+    <span class="n">z</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">100</span><span class="p">);</span>
+    <span class="n">norm_pdf</span><span class="o">=</span><span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">z</span><span class="p">,</span><span class="n">loc</span><span class="o">=</span><span class="n">mu_clt</span><span class="p">,</span><span class="n">scale</span><span class="o">=</span><span class="n">sig_clt</span><span class="p">);</span>
 
-<span class="c1"># compute a number nsamples of sample means</span>
-<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">nsamples</span><span class="p">):</span>
-    <span class="n">X_norm</span><span class="o">=</span><span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="n">mu</span><span class="p">,</span><span class="n">scale</span><span class="o">=</span><span class="n">sigma</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">sample_size</span><span class="p">)</span>
-    <span class="n">sample_mean</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">sample_size</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">X_norm</span><span class="p">)</span>
-
-<span class="c1"># the pdf of the normal distribution suggested by the CLT. Let&#39;s plot that from -4 to +4 standard deviations</span>
-<span class="n">mu_clt</span><span class="o">=</span><span class="n">mu</span><span class="p">;</span>
-<span class="n">sigma_clt</span><span class="o">=</span><span class="n">sigma</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">sample_size</span><span class="p">)</span>
-<span class="n">x_clt</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">mu</span><span class="o">-</span><span class="mi">4</span><span class="o">*</span><span class="n">sigma_clt</span><span class="p">,</span><span class="n">mu</span><span class="o">+</span><span class="mi">4</span><span class="o">*</span><span class="n">sigma_clt</span><span class="p">,</span><span class="mi">1000</span><span class="p">)</span>
-<span class="n">pdf_clt</span><span class="o">=</span><span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x_clt</span><span class="p">,</span><span class="n">mu_clt</span><span class="p">,</span><span class="n">sigma_clt</span><span class="p">)</span>
-
-
-<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">sample_mean</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">rwidth</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_clt</span><span class="p">,</span><span class="n">pdf_clt</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;CLT&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">sample_mean</span><span class="p">),</span><span class="n">ymin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">ymax</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span><span class="n">colors</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;expected sample mean&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span><span class="n">ymin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">ymax</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span><span class="n">colors</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;process mean&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;sample variance&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;sample mean&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;number of realizations&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">left</span><span class="o">=-</span><span class="mi">3</span><span class="p">,</span><span class="n">right</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;n=1 years&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">ax</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">sample_mean</span><span class="p">,</span><span class="n">Nbins</span><span class="p">,</span><span class="n">rwidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Sample Mean for n=&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">n</span><span class="p">[</span><span class="n">j</span><span class="p">]))</span>
+    <span class="n">ax</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">z</span><span class="p">,</span><span class="n">norm_pdf</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;gaussian pdf&#39;</span><span class="p">);</span>
+    <span class="n">ax</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">right</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;pdf/histogram&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x13fac7890&gt;
-</pre></div>
-</div>
-<img alt="../../_images/18ef32539ce037f63f3c6e10ea4db8d0a13dc43da190ec64ac19f92e3e19df3b.png" src="../../_images/18ef32539ce037f63f3c6e10ea4db8d0a13dc43da190ec64ac19f92e3e19df3b.png" />
+<img alt="../../_images/ba65496ecb933b335d3c00e921550e87183bd4bdea65a95b3982da037a0e768f.png" src="../../_images/ba65496ecb933b335d3c00e921550e87183bd4bdea65a95b3982da037a0e768f.png" />
 </div>
 </div>
 <section id="id2">
 <h2>Exercise:<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
-<p>Show numerically that the central limit theorem holds for distributions other than the normal distribution. I.e. take a gamma-distributed random variables and take sample means for samples of size <span class="math notranslate nohighlight">\(n\)</span>. If <span class="math notranslate nohighlight">\(n=1\)</span> the sample mean <span class="math notranslate nohighlight">\(\overline X_n=X\)</span> is thus itself a gamma random variable. But as you increase <span class="math notranslate nohighlight">\(n\)</span> you will see it converge to a gaussian/normal.</p>
+<p>Show numerically that the central limit theorem holds for other distributions.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Exercise Block</span>
 </pre></div>
 </div>
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="the-extreme-value-theorem">
+<h1>The extreme value theorem<a class="headerlink" href="#the-extreme-value-theorem" title="Permalink to this heading">#</a></h1>
+<p>The Extreme Value Theorem says if the distribution of block maxima of any distribution converges, than it converges to a GEV distribution.</p>
+<p>For a sequence <span class="math notranslate nohighlight">\(\{X_1,\ldots, X_n\}\)</span> of independent and identically distributed random variables, and for large enough <span class="math notranslate nohighlight">\(n\)</span>, if their maximum converges, it converges to a GEV:</p>
+<div class="math notranslate nohighlight">
+\[\max{\{X_1,\ldots, X_n\}} \sim G(x)\]</div>
+<p>For example, we can consider <span class="math notranslate nohighlight">\(X\)</span> to be the amount of daily precipitation that falls in a certain location. If <span class="math notranslate nohighlight">\(n=365\)</span> than <span class="math notranslate nohighlight">\(Y=\max{\{X_1,\ldots, X_n\}}\)</span> is a random variable that describes the rainiest day in a given year.</p>
+<p>This is a result that is for a sample maxima, what the Central Limit Theorem is for the sample mean. Note that unlike the CLT, the maxima may not always converge. But if it does converge, than it converges to a GEV.</p>
+<p>The power of the GEV, like the power of the CLT, is that you can apply it when you don’t know the underlying distribution. In particular, even if we don’t know the exact distribution of daily precipitation, the CLT tells us that the distribution of annual-mean precipitation should still be normal, and the extreme value theorem tells us that the distribution of annual-max precipitation should be GEV-distributed, allowing us to model these and make predictions of things like flood recurrence times.</p>
+<p>The cells below show the behaviour of sample/block maxima for an exponential and a uniform distribution.</p>
+<section id="exponential-distribution">
+<h2>Exponential distribution<a class="headerlink" href="#exponential-distribution" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span><span class="o">=</span><span class="mi">10000</span>
+<span class="n">n</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">100</span><span class="p">]</span>
+<span class="n">Nbins</span><span class="o">=</span><span class="mi">40</span>
+<span class="n">shape</span><span class="o">=</span><span class="mi">1</span>
+<span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
+
+<span class="n">mu_x</span><span class="o">=</span><span class="n">scale</span>
+<span class="n">sig_x</span><span class="o">=</span><span class="n">scale</span><span class="o">**</span><span class="mi">2</span>
+<span class="n">fig</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">[</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">])</span>
+
+<span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+    <span class="c1"># preallocate vector of sample means</span>
+    <span class="n">sample_max</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="n">m</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
+        <span class="n">X</span><span class="o">=</span><span class="n">stats</span><span class="o">.</span><span class="n">expon</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">scale</span><span class="o">=</span><span class="n">scale</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
+        <span class="n">sample_max</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+    <span class="c1"># compute a number nsamples of sample means</span>
+    <span class="c1"># for each sample, draw sample_size draws and average them to get the sample mean:</span>
+   
+    <span class="n">z</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">10000</span><span class="p">);</span>
+    
+    <span class="c1"># fit a GEV to the data. We will talk more about fitting distributions in the next module.</span>
+    <span class="n">c</span><span class="p">,</span><span class="n">loc_gev</span><span class="p">,</span><span class="n">scale_gev</span><span class="o">=</span><span class="n">stats</span><span class="o">.</span><span class="n">genextreme</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">sample_max</span><span class="p">)</span>
+    
+    <span class="n">gev_pdf</span><span class="o">=</span><span class="n">stats</span><span class="o">.</span><span class="n">genextreme</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">z</span><span class="p">,</span><span class="n">c</span><span class="p">,</span><span class="n">loc</span><span class="o">=</span><span class="n">loc_gev</span><span class="p">,</span><span class="n">scale</span><span class="o">=</span><span class="n">scale_gev</span><span class="p">)</span>
+    
+    <span class="n">ax</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">sample_max</span><span class="p">,</span><span class="n">Nbins</span><span class="p">,</span><span class="n">rwidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Sample Max for n=&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">n</span><span class="p">[</span><span class="n">j</span><span class="p">]))</span>
+    <span class="n">ax</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">z</span><span class="p">,</span><span class="n">gev_pdf</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;GEV&#39;</span><span class="p">);</span>
+    <span class="n">ax</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+    <span class="n">ax</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/849296f392fb1a9416f47fbb464276ab37e0a4414a0bbf9dcf89482760bb88f3.png" src="../../_images/849296f392fb1a9416f47fbb464276ab37e0a4414a0bbf9dcf89482760bb88f3.png" />
+</div>
+</div>
+</section>
+<section id="uniform-distribution">
+<h2>Uniform distribution<a class="headerlink" href="#uniform-distribution" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Uniform Distribution </span>
+<span class="n">m</span><span class="o">=</span><span class="mi">10000</span>
+<span class="n">n</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">100</span><span class="p">]</span>
+<span class="n">Nbins</span><span class="o">=</span><span class="mi">40</span>
+
+<span class="n">scale</span><span class="o">=</span><span class="mi">1000</span><span class="p">;</span>
+
+<span class="n">fig</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">[</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">])</span>
+
+<span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+    <span class="c1"># preallocate vector of sample means</span>
+    <span class="n">sample_max</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
+        <span class="n">X</span><span class="o">=</span><span class="n">stats</span><span class="o">.</span><span class="n">uniform</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">scale</span><span class="o">=</span><span class="n">scale</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
+        <span class="n">sample_max</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+    <span class="c1"># compute a number nsamples of sample means</span>
+    <span class="c1"># for each sample, draw sample_size draws and average them to get the sample mean:</span>
+   
+    <span class="n">z</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1000</span><span class="p">,</span><span class="mi">10000</span><span class="p">);</span>
+    
+
+    <span class="n">c</span><span class="p">,</span><span class="n">loc_gev</span><span class="p">,</span><span class="n">scale_gev</span><span class="o">=</span><span class="n">stats</span><span class="o">.</span><span class="n">genextreme</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">sample_max</span><span class="p">)</span>    
+    <span class="n">gev_pdf</span><span class="o">=</span><span class="n">stats</span><span class="o">.</span><span class="n">genextreme</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">z</span><span class="p">,</span><span class="n">c</span><span class="p">,</span><span class="n">loc</span><span class="o">=</span><span class="n">loc_gev</span><span class="p">,</span><span class="n">scale</span><span class="o">=</span><span class="n">scale_gev</span><span class="p">)</span>
+    
+    <span class="n">ax</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">sample_max</span><span class="p">,</span><span class="n">Nbins</span><span class="p">,</span><span class="n">rwidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Sample Max for n=&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">n</span><span class="p">[</span><span class="n">j</span><span class="p">]))</span>
+    <span class="n">ax</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">z</span><span class="p">,</span><span class="n">gev_pdf</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;GEV&#39;</span><span class="p">);</span>
+    <span class="n">ax</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/05c39896307f6e361ea0b3f7d7a99e0ef4433a097b7c84b6c9265e2fe10a0a04.png" src="../../_images/05c39896307f6e361ea0b3f7d7a99e0ef4433a097b7c84b6c9265e2fe10a0a04.png" />
 </div>
 </div>
 </section>
@@ -872,10 +977,10 @@ Most commonly, we will estimate sample correlation, using the <a class="referenc
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x151aa6450&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x15c272720&gt;]
 </pre></div>
 </div>
-<img alt="../../_images/d957fcb8b67ccfa1843516fb51341699f27bac3da5452609de41d787c3e59556.png" src="../../_images/d957fcb8b67ccfa1843516fb51341699f27bac3da5452609de41d787c3e59556.png" />
+<img alt="../../_images/ae777d6598ab9202c71a15ceac0cd4e22352c4993fb5ccb589fda08f6bd29fb6.png" src="../../_images/ae777d6598ab9202c71a15ceac0cd4e22352c4993fb5ccb589fda08f6bd29fb6.png" />
 </div>
 </div>
 </section>
@@ -919,23 +1024,25 @@ Most commonly, we will estimate sample correlation, using the <a class="referenc
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([0.01649593, 0.03299186, 0.06048507, 0.11822082, 0.27218283,
-        0.45913669, 0.6405919 , 1.04749148, 1.50112952, 1.79530692,
-        2.2791875 , 2.5101305 , 2.56511693, 2.73557486, 2.74382283,
-        2.25719293, 2.07848703, 1.49013224, 1.01724894, 0.73406883,
-        0.54711497, 0.29142808, 0.15121268, 0.09622625, 0.03574118,
-        0.00274932, 0.00824796, 0.00274932, 0.        , 0.00274932]),
- array([-0.47480974, -0.43843712, -0.40206451, -0.3656919 , -0.32931929,
-        -0.29294668, -0.25657407, -0.22020146, -0.18382885, -0.14745624,
-        -0.11108363, -0.07471102, -0.03833841, -0.00196579,  0.03440682,
-         0.07077943,  0.10715204,  0.14352465,  0.17989726,  0.21626987,
-         0.25264248,  0.28901509,  0.3253877 ,  0.36176031,  0.39813293,
-         0.43450554,  0.47087815,  0.50725076,  0.54362337,  0.57999598,
-         0.61636859]),
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([5.43720783e-03, 1.08744157e-02, 1.35930196e-02, 3.80604548e-02,
+        9.78697409e-02, 1.87583670e-01, 4.21383607e-01, 5.98092861e-01,
+        9.13450915e-01, 1.19618572e+00, 1.59853910e+00, 2.16400872e+00,
+        2.38965284e+00, 2.77841320e+00, 2.81103645e+00, 2.54461326e+00,
+        2.35159239e+00, 1.94108319e+00, 1.74262511e+00, 1.30764848e+00,
+        8.75390460e-01, 5.68188218e-01, 2.82734807e-01, 1.71272047e-01,
+        1.08744157e-01, 4.34976626e-02, 1.63116235e-02, 2.71860391e-03,
+        2.71860391e-03, 2.71860391e-03]),
+ array([-0.52942613, -0.49264254, -0.45585896, -0.41907537, -0.38229179,
+        -0.3455082 , -0.30872461, -0.27194103, -0.23515744, -0.19837386,
+        -0.16159027, -0.12480669, -0.0880231 , -0.05123952, -0.01445593,
+         0.02232766,  0.05911124,  0.09589483,  0.13267841,  0.169462  ,
+         0.20624558,  0.24302917,  0.27981276,  0.31659634,  0.35337993,
+         0.39016351,  0.4269471 ,  0.46373068,  0.50051427,  0.53729786,
+         0.57408144]),
  &lt;BarContainer object of 30 artists&gt;)
 </pre></div>
 </div>
-<img alt="../../_images/0f899e40ebf8f12b04b2a65cda7a0366b399072a1d74b06fedc469df48551d65.png" src="../../_images/0f899e40ebf8f12b04b2a65cda7a0366b399072a1d74b06fedc469df48551d65.png" />
+<img alt="../../_images/99b68f282e597ee3ed56ebf61b2315deeb81dc86a6e9f7874470455fe49db98d.png" src="../../_images/99b68f282e597ee3ed56ebf61b2315deeb81dc86a6e9f7874470455fe49db98d.png" />
 </div>
 </div>
 </section>
@@ -944,13 +1051,6 @@ Most commonly, we will estimate sample correlation, using the <a class="referenc
 <ul class="simple">
 <li><p>Redo the scatter plot above (two code blocks above). Set the correlation to zero and, for different sample sizes, draw samples from the distribution.</p></li>
 </ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Exercise Block</span>
-</pre></div>
-</div>
-</div>
-</div>
 </section>
 </section>
 
@@ -1034,6 +1134,11 @@ Most commonly, we will estimate sample correlation, using the <a class="referenc
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#sampling-distribution-the-central-limit-theorem">Sampling Distribution &amp; the central limit theorem</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Exercise:</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#the-extreme-value-theorem">The extreme value theorem</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exponential-distribution">Exponential distribution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#uniform-distribution">Uniform distribution</a></li>
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#sample-covariance-and-correlation">Sample Covariance and Correlation</a><ul class="visible nav section-nav flex-column">

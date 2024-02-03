@@ -66,10 +66,9 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'content/Module02/M02_N01_Estimation';</script>
     <link rel="canonical" href="https://cdds-uiuc.github.io/simles-book/content/Module02/M02_N01_Estimation.html" />
-    <link rel="shortcut icon" href="../../_static/CDDS_logo.jpeg"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Cookbook: Maximum Likelihood Estimator" href="M02_N02_Cookbook_MLE.html" />
+    <link rel="next" title="Cookbook: MLE for Gutenberg-Richter Law" href="M02_N02_Cookbook_Gutenberg-Richter_Law.html" />
     <link rel="prev" title="Sample Statistics" href="../Module01/M01_N04_SampleStatistics.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -203,6 +202,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
+
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">2. Inference</span></p>
 <ul class="current nav bd-sidenav">
@@ -210,7 +210,22 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="M02_N02_Cookbook_MLE.html">Cookbook: Maximum Likelihood Estimator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="M02_N02_Cookbook_Gutenberg-Richter_Law.html">Cookbook: MLE for Gutenberg-Richter Law</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="M02_N03_Cookbook_Precipitation_Return_Times.html">Cookbook: Precipitation return times for Hurricane Harvey</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="M02_Lab2-1.html">Lab 2.1</a></li>
+
+
+
+
+
 
 
 </ul>
@@ -504,7 +519,6 @@ document.write(`
 <span class="c1"># These are some parameters to make figures nice (and big)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">16</span><span class="p">,</span><span class="mi">8</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;text.usetex&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
 <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;legend.fontsize&#39;</span><span class="p">:</span> <span class="s1">&#39;x-large&#39;</span><span class="p">,</span>
           <span class="s1">&#39;figure.figsize&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span>
           <span class="s1">&#39;axes.labelsize&#39;</span><span class="p">:</span> <span class="s1">&#39;x-large&#39;</span><span class="p">,</span>
@@ -660,16 +674,7 @@ went to the novelty store and bought yourself a biased coin. But you don’t kno
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">10</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="n">theta_true</span><span class="o">=</span><span class="mf">0.65</span>
-<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="c1">#Flip the coin</span>
-<span class="ne">---&gt; </span><span class="mi">10</span> <span class="n">x</span><span class="o">=</span><span class="n">stats</span><span class="o">.</span><span class="n">bernoulli</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">p</span><span class="o">=</span><span class="n">theta_true</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="n">Nflips</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">12</span> <span class="c1">#count the ones and zeros</span>
-<span class="g g-Whitespace">     </span><span class="mi">13</span> <span class="n">N0</span><span class="o">=</span><span class="nb">sum</span><span class="p">(</span><span class="n">x</span><span class="o">==</span><span class="mi">0</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;stats&#39; is not defined
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.64
 </pre></div>
 </div>
 </div>
@@ -716,10 +721,10 @@ went to the novelty store and bought yourself a biased coin. But you don’t kno
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x12f3bbe60&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x1431d8b90&gt;
 </pre></div>
 </div>
-<img alt="../../_images/e8e0f93cf53405f3e8a5e058cf7e4c9361adb111848d91d9d4b9aebedcc0fa98.png" src="../../_images/e8e0f93cf53405f3e8a5e058cf7e4c9361adb111848d91d9d4b9aebedcc0fa98.png" />
+<img alt="../../_images/e4b34943d5b473f51a24c5d218e073b0077e5454f68bc61504913bd8bbfc8a05.png" src="../../_images/e4b34943d5b473f51a24c5d218e073b0077e5454f68bc61504913bd8bbfc8a05.png" />
 </div>
 </div>
 </section>
@@ -784,6 +789,157 @@ went to the novelty store and bought yourself a biased coin. But you don’t kno
 <h3>Likelihood as a function of the mean.<a class="headerlink" href="#likelihood-as-a-function-of-the-mean" title="Permalink to this heading">#</a></h3>
 <p>In the cell below we will visualize how the likelihood of a dataset <span class="math notranslate nohighlight">\(x\)</span> containing <span class="math notranslate nohighlight">\(N=20\)</span> draws changes as a function of <span class="math notranslate nohighlight">\(\mu\)</span>. At first, we will keep <span class="math notranslate nohighlight">\(\sigma\)</span> fixed when computing <span class="math notranslate nohighlight">\(p(x|\mu,\sigma)\)</span>.
 We will use synthetic data, where we provide <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(\sigma\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># set parameters for synthetic data </span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="mi">233421</span><span class="p">)</span>
+<span class="n">mu_true</span><span class="o">=</span><span class="mi">5</span>
+<span class="n">sig_true</span><span class="o">=</span><span class="mi">1</span>
+
+<span class="c1"># generate synthetic data</span>
+
+<span class="n">x_var</span><span class="o">=</span><span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="n">mu_true</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">sig_true</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="o">=</span><span class="n">x_var</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">Nsamples</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[5.73541792 4.59128669 5.67946042 5.66998442 6.2729418  7.11995521
+ 5.59525591 6.13115623 1.95810532 6.40934121 4.98045955 6.24052625
+ 3.23506281 7.29882568 6.69172193 5.13690828 5.23322762 3.53067353
+ 5.1935833  5.92951912]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Nsamples</span><span class="o">=</span><span class="mi">20</span>
+<span class="n">x</span><span class="o">=</span><span class="n">x_var</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">Nsamples</span><span class="p">)</span>
+<span class="c1"># take a guess</span>
+
+<span class="n">loc</span><span class="o">=</span><span class="mi">5</span>
+<span class="n">scale</span><span class="o">=</span><span class="mi">1</span>
+
+<span class="n">pdf</span><span class="o">=</span><span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x_support</span><span class="p">,</span><span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">,</span><span class="n">scale</span><span class="o">=</span><span class="n">scale</span><span class="p">)</span>
+
+<span class="n">out</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="n">density</span><span class="o">=</span><span class="s1">&#39;true&#39;</span><span class="p">)</span>
+<span class="n">bins</span><span class="o">=</span><span class="p">(</span><span class="n">out</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">out</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">:])</span><span class="o">/</span><span class="mi">2</span>
+<span class="n">freq</span><span class="o">=</span><span class="n">out</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="n">density</span><span class="o">=</span><span class="s1">&#39;true&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">bins</span><span class="p">,</span><span class="n">freq</span><span class="p">,</span><span class="s1">&#39;ro&#39;</span><span class="p">)</span>
+<span class="c1">#plt.plot(x_support,pdf,&#39;k&#39;)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.0, 10.0)
+</pre></div>
+</div>
+<img alt="../../_images/3936b67d9707764e279e6bf7c7767235476cdd79928939f868f9b5a829a94336.png" src="../../_images/3936b67d9707764e279e6bf7c7767235476cdd79928939f868f9b5a829a94336.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># set parameters for synthetic data </span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="mi">233421</span><span class="p">)</span>
+<span class="n">mu_true</span><span class="o">=</span><span class="mi">5</span>
+<span class="n">sig_true</span><span class="o">=</span><span class="mi">1</span>
+
+<span class="c1"># generate synthetic data</span>
+<span class="n">Nsamples</span><span class="o">=</span><span class="mi">20</span>
+<span class="n">x</span><span class="o">=</span><span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="n">mu_true</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">sig_true</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="n">Nsamples</span><span class="p">)</span>
+
+<span class="c1"># we will evalute the likelihood for four values of mu. </span>
+<span class="n">mu_vec</span><span class="o">=</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]</span>
+
+<span class="c1"># make a plot</span>
+<span class="n">figure</span><span class="p">,</span><span class="n">axs</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">[</span><span class="mi">12</span><span class="p">,</span><span class="mi">12</span><span class="p">])</span>
+
+<span class="c1"># points at which to plot the df</span>
+<span class="n">x_support</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+
+<span class="c1">#cycle over the four possible values of mu</span>
+<span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+    
+    <span class="c1"># plot the probability of a gaussian</span>
+    <span class="n">pdf</span><span class="o">=</span><span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x_support</span><span class="p">,</span><span class="n">loc</span><span class="o">=</span><span class="n">mu_vec</span><span class="p">[</span><span class="n">j</span><span class="p">],</span><span class="n">scale</span><span class="o">=</span><span class="n">sig_true</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_support</span><span class="p">,</span><span class="n">pdf</span><span class="p">,</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="n">density</span><span class="o">=</span><span class="s1">&#39;true&#39;</span><span class="p">)</span>
+    
+    <span class="c1">## for every sample in the data x, plot the data and the value of the likelihood for that data point</span>
+    <span class="c1">#for k in range(len(x)):</span>
+    <span class="c1">#    plt.plot([x[k],x[k]],[0,stats.norm.pdf(x[k],loc=mu_vec[j],scale=sig_true)],&#39;r-o&#39;)</span>
+        
+    <span class="c1">#compute the total log likelihood</span>
+    <span class="n">loglik</span><span class="o">=</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">loc</span><span class="o">=</span><span class="n">mu_vec</span><span class="p">[</span><span class="n">j</span><span class="p">],</span><span class="n">scale</span><span class="o">=</span><span class="n">sig_true</span><span class="p">))))</span>
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x - values of the draws&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;pdf p(x)&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;mu=&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">mu_vec</span><span class="p">[</span><span class="n">j</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/94026e8f601de082eb5bf9999da8821026879c3e1471fa4b55c4eea08efc8ebe.png" src="../../_images/94026e8f601de082eb5bf9999da8821026879c3e1471fa4b55c4eea08efc8ebe.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># set parameters for synthetic data </span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="mi">233421</span><span class="p">)</span>
+<span class="n">mu_true</span><span class="o">=</span><span class="mi">5</span>
+<span class="n">sig_true</span><span class="o">=</span><span class="mi">1</span>
+
+<span class="c1"># generate synthetic data</span>
+<span class="n">Nsamples</span><span class="o">=</span><span class="mi">20</span>
+<span class="n">x</span><span class="o">=</span><span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="n">mu_true</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">sig_true</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="n">Nsamples</span><span class="p">)</span>
+
+<span class="c1"># we will evalute the likelihood for four values of mu. </span>
+<span class="n">mu_vec</span><span class="o">=</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]</span>
+
+<span class="c1"># make a plot</span>
+<span class="n">figure</span><span class="p">,</span><span class="n">axs</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">[</span><span class="mi">12</span><span class="p">,</span><span class="mi">12</span><span class="p">])</span>
+
+<span class="c1"># points at which to plot the df</span>
+<span class="n">x_support</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+
+<span class="c1">#cycle over the four possible values of mu</span>
+<span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+    
+    <span class="c1"># plot the probability of a gaussian</span>
+    <span class="n">pdf</span><span class="o">=</span><span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x_support</span><span class="p">,</span><span class="n">loc</span><span class="o">=</span><span class="n">mu_vec</span><span class="p">[</span><span class="n">j</span><span class="p">],</span><span class="n">scale</span><span class="o">=</span><span class="n">sig_true</span><span class="p">)</span>
+    <span class="c1">#plt.plot(x_support,pdf,&#39;k&#39;)</span>
+    
+    <span class="c1"># for every sample in the data x, plot the data and the value of the likelihood for that data point</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)):</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">x</span><span class="p">[</span><span class="n">k</span><span class="p">],</span><span class="n">x</span><span class="p">[</span><span class="n">k</span><span class="p">]],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span><span class="s1">&#39;r-o&#39;</span><span class="p">)</span>
+        
+    <span class="c1">#compute the total log likelihood</span>
+    <span class="n">loglik</span><span class="o">=</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">loc</span><span class="o">=</span><span class="n">mu_vec</span><span class="p">[</span><span class="n">j</span><span class="p">],</span><span class="n">scale</span><span class="o">=</span><span class="n">sig_true</span><span class="p">))))</span>
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x - values of the draws&#39;</span><span class="p">)</span>
+    <span class="c1">#plt.ylabel(&#39;likelihood p(x | mu,sigma)&#39;)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;mu=&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">mu_vec</span><span class="p">[</span><span class="n">j</span><span class="p">])</span><span class="o">+</span><span class="s1">&#39;;  loglik=&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">loglik</span><span class="p">,</span><span class="mi">1</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/67bd81d4a8cb0ccfdcf8275c919bef0ad6297b2297c940c17f67f488364c0894.png" src="../../_images/67bd81d4a8cb0ccfdcf8275c919bef0ad6297b2297c940c17f67f488364c0894.png" />
+</div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># set parameters for synthetic data </span>
@@ -929,11 +1085,11 @@ We will use synthetic data, where we provide <span class="math notranslate nohig
       </div>
     </a>
     <a class="right-next"
-       href="M02_N02_Cookbook_MLE.html"
+       href="M02_N02_Cookbook_Gutenberg-Richter_Law.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Cookbook: Maximum Likelihood Estimator</p>
+        <p class="prev-next-title">Cookbook: MLE for Gutenberg-Richter Law</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

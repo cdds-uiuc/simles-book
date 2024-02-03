@@ -1,0 +1,1049 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Lab 2.1 &#8212; SIMLES: Statistical Inference and Machine Learning for Earth Sciences</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/Module02/M02_Lab2-1';</script>
+    <link rel="canonical" href="https://cdds-uiuc.github.io/simles-book/content/Module02/M02_Lab2-1.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="Cookbook: Precipitation return times for Hurricane Harvey" href="M02_N03_Cookbook_Precipitation_Return_Times.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/CDDS_logo.png" class="logo__image only-light" alt="SIMLES: Statistical Inference and Machine Learning for Earth Sciences - Home"/>
+    <script>document.write(`<img src="../../_static/CDDS_logo.png" class="logo__image only-dark" alt="SIMLES: Statistical Inference and Machine Learning for Earth Sciences - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    SIMLES
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Programming.html">Programming</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">1. Probability Models</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Module01/M01_N01_Probability_Recap.html">Basics of probabilities</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Module01/M01_N02_Random_Variables.html">Random Variables</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Module01/M01_Lab1.html">Lab 1.1</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Module01/M01_N03_Moments.html">Moments</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Module01/M01_N04_SampleStatistics.html">Sample Statistics</a></li>
+
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">2. Inference</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="M02_N01_Estimation.html">Estimators and the Maximum Likelihood</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="M02_N02_Cookbook_Gutenberg-Richter_Law.html">Cookbook: MLE for Gutenberg-Richter Law</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="M02_N03_Cookbook_Precipitation_Return_Times.html">Cookbook: Precipitation return times for Hurricane Harvey</a></li>
+
+
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Lab 2.1</a></li>
+
+
+
+
+
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/cdds-uiuc/simles-book/master?urlpath=lab/tree/content/Module02/M02_Lab2-1.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/cdds-uiuc/simles-book/blob/master/content/Module02/M02_Lab2-1.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/cdds-uiuc/simles-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/cdds-uiuc/simles-book/issues/new?title=Issue%20on%20page%20%2Fcontent/Module02/M02_Lab2-1.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/content/Module02/M02_Lab2-1.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Lab 2.1</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Lab 2.1</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-covariance-vs-independence">Exercise 1: Covariance vs independence</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1-1-theory">Question 1.1 (Theory):</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1-2-numerical">Question 1.2 (Numerical):</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1-3">Question 1.3</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-central-limit-theorem">Exercise 2: Central Limit Theorem</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2-1-gamma-distribution">Question 2.1: Gamma distribution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2-2-fair-dice-discrete-uniform">Question 2.2: Fair Dice (Discrete Uniform)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2-3-coin-flip-bernoulli">Question 2.3: Coin Flip (Bernoulli)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-generalized-extreme-value-distribution-and-return-times">Exercise 3: Generalized Extreme Value distribution and Return Times</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#block-maxima-annual-maxima">Block Maxima (annual maxima)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-3-1-fit-using-alll-the-data">Question 3.1: Fit using alll the data</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#question-3-2-fit-using-pre-harvey-data">Question 3.2 Fit using pre-Harvey data</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#question-3-3-port-arthur-using-all-the-data">Question 3.3: Port Arthur (using all the data)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#question-3-4-port-arthur-using-pre-harvey-data">Question 3.4: Port Arthur (using pre-Harvey data)</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="lab-2-1">
+<h1>Lab 2.1<a class="headerlink" href="#lab-2-1" title="Permalink to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
+
+<span class="c1"># These are some parameters to make figures nice (and big)</span>
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;legend.fontsize&#39;</span><span class="p">:</span> <span class="s1">&#39;x-large&#39;</span><span class="p">,</span>
+          <span class="s1">&#39;figure.figsize&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span>
+         <span class="s1">&#39;axes.labelsize&#39;</span><span class="p">:</span> <span class="s1">&#39;x-large&#39;</span><span class="p">,</span>
+         <span class="s1">&#39;axes.titlesize&#39;</span><span class="p">:</span><span class="s1">&#39;x-large&#39;</span><span class="p">,</span>
+         <span class="s1">&#39;xtick.labelsize&#39;</span><span class="p">:</span><span class="s1">&#39;x-large&#39;</span><span class="p">,</span>
+         <span class="s1">&#39;ytick.labelsize&#39;</span><span class="p">:</span><span class="s1">&#39;x-large&#39;</span><span class="p">}</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<hr style="border:2px solid black"> </hr></section>
+<section class="tex2jax_ignore mathjax_ignore" id="exercise-1-covariance-vs-independence">
+<h1>Exercise 1: Covariance vs independence<a class="headerlink" href="#exercise-1-covariance-vs-independence" title="Permalink to this heading">#</a></h1>
+<p>Consider a random variables <span class="math notranslate nohighlight">\(\theta\)</span> that is uniformly distributed over the interval <span class="math notranslate nohighlight">\(\left[0,2\pi \right]\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\theta \sim U[0,2\pi],\]</div>
+<p>Now we will use <span class="math notranslate nohighlight">\(\theta\)</span> to build two other random variables, <span class="math notranslate nohighlight">\(X,Y\)</span>, such that</p>
+<div class="math notranslate nohighlight">
+\[X=cos(\theta)\]</div>
+<div class="math notranslate nohighlight">
+\[Y=sin(\theta)\]</div>
+<p>In this construction, X,Y can be considered the horizontal and vertical coordinates of a point that is randomly distributed along the unit circle, with <span class="math notranslate nohighlight">\(\theta\)</span> being the angle, in polar coordinates.</p>
+<p>It should be obvious that <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span> are not independent. In fact, they are perfectly <em>dependent</em> as <span class="math notranslate nohighlight">\(X=\sqrt{1-Y^2}\)</span>. However, their covariance is still zero!</p>
+<section id="question-1-1-theory">
+<h2>Question 1.1 (Theory):<a class="headerlink" href="#question-1-1-theory" title="Permalink to this heading">#</a></h2>
+<p>Prove analyitically that <span class="math notranslate nohighlight">\(Cov(X,Y)=0\)</span>.<br>
+<em>Hints:</em></p>
+<ul class="simple">
+<li><p>To compute expectations, use the fact that since <span class="math notranslate nohighlight">\(X,Y\)</span> are functons of <span class="math notranslate nohighlight">\(\theta \)</span>, then <span class="math notranslate nohighlight">\(p(x)dx=p(\theta)d\theta\)</span> to write <span class="math notranslate nohighlight">\(xp(x)dx=\cos(\theta)p(\theta)d\theta\)</span>. The same holds for <span class="math notranslate nohighlight">\(yp(y)dy\)</span> and <span class="math notranslate nohighlight">\(xyp(x,y)dxdy\)</span>.</p></li>
+<li><p>Depending on your approach, you may also need the fact that <span class="math notranslate nohighlight">\(sin(2\theta)=sin(\theta)cos(\theta)\)</span></p></li>
+</ul>
+<p><em><strong>Answer</strong></em>
+$<span class="math notranslate nohighlight">\( Cov(X,Y)=E[XY]-E[X]E[Y]\)</span>$</p>
+<div class="math notranslate nohighlight">
+\[E\left[X\right]=\int_{0}^{1}xp(x)dx=\int_{0}^{2\pi}\cos\left(\theta\right)p(\theta)d\theta=\int_{0}^{2\pi}\cos\left(\theta\right)\frac{1}{2\pi}d\theta
+=\frac{1}{2\pi}\left.\sin\left(\theta\right)\right|_{0}^{2\pi}=0\]</div>
+<p>Similarly, one can get <span class="math notranslate nohighlight">\(E[Y]=0\)</span></p>
+<div class="math notranslate nohighlight">
+\[E\left[XY\right]=\int_{0}^{1}xyp(x)dx=\int_{0}^{2\pi}\cos\left(\theta\right)\sin\left(\theta\right)p(\theta)d\theta=\int_{0}^{2\pi}\cos\left(2\theta\right)\frac{1}{2\pi}d\theta
+=\frac{1}{2\pi}\frac{1}{2}\left.\sin\left(2\theta\right)\right|_{0}^{2\pi}=0\]</div>
+</section>
+<section id="question-1-2-numerical">
+<h2>Question 1.2 (Numerical):<a class="headerlink" href="#question-1-2-numerical" title="Permalink to this heading">#</a></h2>
+<p>Show, numerically, that expected covariance is zero.</p>
+<ol class="arabic simple">
+<li><p>Draw <span class="math notranslate nohighlight">\(n\)</span> samples <span class="math notranslate nohighlight">\((x_j,y_j)\)</span> from <span class="math notranslate nohighlight">\((X,Y)\)</span> and plot <span class="math notranslate nohighlight">\(y_j\)</span> vs <span class="math notranslate nohighlight">\(x_j\)</span> for <span class="math notranslate nohighlight">\(n=100\)</span>:</p></li>
+<li><p>Compute the sample covariance <span class="math notranslate nohighlight">\(s_{n-1}=\frac{1}{n-1}\sum_{j=1}^{n}(x_j-\overline x_j)(y_j-\overline y)\)</span> of <span class="math notranslate nohighlight">\(X,Y\)</span> for values of <span class="math notranslate nohighlight">\(n\)</span> going from <span class="math notranslate nohighlight">\(n=2\)</span> to <span class="math notranslate nohighlight">\(n=10,000\)</span>. Plot the sample covariance as function of <span class="math notranslate nohighlight">\(n\)</span>. By the Law of Large Numbers the sample covariance will convernge to the process covariance.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Answer Block</span>
+<span class="c1">#1.2.1</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#1.2.2</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="question-1-3">
+<h1>Question 1.3<a class="headerlink" href="#question-1-3" title="Permalink to this heading">#</a></h1>
+<p>Now consider two <em>independent</em> random variables:</p>
+<div class="math notranslate nohighlight">
+\[ R\sim U[0,1]\]</div>
+<div class="math notranslate nohighlight">
+\[ \theta \sim U[0,2\pi]\]</div>
+<p>With</p>
+<div class="math notranslate nohighlight">
+\[ X=R\cos (\theta)\]</div>
+<div class="math notranslate nohighlight">
+\[ Y=R\sin (\theta)\]</div>
+<ul class="simple">
+<li><p>Prove analytically that <span class="math notranslate nohighlight">\(Cov(X,Y)=0\)</span></p></li>
+<li><p>plot <span class="math notranslate nohighlight">\(x_j\)</span> vs <span class="math notranslate nohighlight">\(y_j\)</span> for <span class="math notranslate nohighlight">\(N=1000\)</span> draws of <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span>.</p></li>
+<li><p>Plot the sample covariance for <span class="math notranslate nohighlight">\(n\)</span> going from <span class="math notranslate nohighlight">\(n=2\)</span> to <span class="math notranslate nohighlight">\(n=10,000\)</span> to convince yourself numerically that the covariance is zero.</p></li>
+</ul>
+<p><em><strong>Answer Block</strong></em></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Numerical Answer Block </span>
+<span class="c1">#plot </span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Answer block : plot covariance for n=2 to 10,000</span>
+</pre></div>
+</div>
+</div>
+</div>
+<hr style="border:2px solid black"> </hr></section>
+<section class="tex2jax_ignore mathjax_ignore" id="exercise-2-central-limit-theorem">
+<h1>Exercise 2: Central Limit Theorem<a class="headerlink" href="#exercise-2-central-limit-theorem" title="Permalink to this heading">#</a></h1>
+<p>The central limit theorem says that the distribution of the sample mean of <strong>any</strong> random variable approaches a normal distribution.</p>
+<p><strong>Theorem</strong> Let <span class="math notranslate nohighlight">\( X_1, \cdots , X_n  \)</span> be <span class="math notranslate nohighlight">\(n\)</span> independent and identically distributed (i.i.d) random variables with expectation <span class="math notranslate nohighlight">\(\mu_X\)</span> and variance <span class="math notranslate nohighlight">\(\sigma^2_X\)</span>. The distribution of the sample mean <span class="math notranslate nohighlight">\(\overline X_n=\frac{1}{n}\sum_{i=1}^n X_i\)</span> approaches the distribution of a gaussian</p>
+<div class="math notranslate nohighlight">
+\[\overline X_n \sim \mathcal N (\mu,\sigma^2/n),\]</div>
+<p>for large <span class="math notranslate nohighlight">\(n\)</span>.</p>
+<p><em><strong>Numerics</strong></em> In this exercise, you will convince yourself of this theorem numerically. Here is a recipe for how to do it (following the example in the Sampling Distributions Notebook):</p>
+<ul class="simple">
+<li><p>Pick your probability distribution. The Central Limit Theorem even works for discrete random variable.</p></li>
+<li><p>pick a sample size <span class="math notranslate nohighlight">\(n\)</span> - i.e. the number of samples we are averaging over to compute the sample mean.
+$<span class="math notranslate nohighlight">\( \overline X_n=\frac{1}{n}\sum_i X_n\)</span>$</p></li>
+<li><p>Repeatedly (i.e. <span class="math notranslate nohighlight">\(m=10,000\)</span> times) draw <span class="math notranslate nohighlight">\(n\)</span> samples and take their sample mean.</p></li>
+<li><p>Plot the histogram of the <span class="math notranslate nohighlight">\(m=10,000\)</span> sample means.</p></li>
+<li><p>Compare this histogram with means with the theoretical pdf of a gaussian/normal distribution given by the Central Limit Theorem, i.e. a gaussian/normal with mean  <span class="math notranslate nohighlight">\(\mu_{clt}=\mu_X\)</span> and variance <span class="math notranslate nohighlight">\(\sigma_{clt}^2=\sigma_X^2/n\)</span> (standard deviation <code>scale</code>=<span class="math notranslate nohighlight">\(\sigma_{clt}=\sigma_X/\sqrt n\)</span>).</p></li>
+</ul>
+<p>Do this exercise for four values of <span class="math notranslate nohighlight">\(n=[1,5,25,200]\)</span>, and for the distributions described below:</p>
+<section id="question-2-1-gamma-distribution">
+<h2>Question 2.1: Gamma distribution<a class="headerlink" href="#question-2-1-gamma-distribution" title="Permalink to this heading">#</a></h2>
+<p>Demonstrate, numerically, that the sample mean of a number of an gamma-distributed random variables is approximately normal.</p>
+<p>Look up the exponential distribution method for scipy.stats (Google is your friend). When you sample the gamma distribution you will need to specify a scale and shape. To plot the normal pdf given by the central limit theorem, <span class="math notranslate nohighlight">\(\mathcal N(\mu_X,\sigma_X^2/n)\)</span>, you will then need to compute the mean and variance of the exponential distribution as a function of the shape and scale parameter of the gamma. Look up that relation (Wikipedia article on gamma distributions is your friend).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Answer Block </span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="question-2-2-fair-dice-discrete-uniform">
+<h2>Question 2.2: Fair Dice (Discrete Uniform)<a class="headerlink" href="#question-2-2-fair-dice-discrete-uniform" title="Permalink to this heading">#</a></h2>
+<p>Demonstrate, numerically, that the sample mean of a <strong>fair dice</strong> is approximately normal (i.e. when you add <span class="math notranslate nohighlight">\(n\)</span> rolls). You will need to look up or calculate the mean and variance for a fair dice.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Answer Block</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="question-2-3-coin-flip-bernoulli">
+<h2>Question 2.3: Coin Flip (Bernoulli)<a class="headerlink" href="#question-2-3-coin-flip-bernoulli" title="Permalink to this heading">#</a></h2>
+<p>Demonstrate, numerically, that the sample mean of a <strong>fair coin</strong> (i.e. Bernoulli with <span class="math notranslate nohighlight">\(p=0.5\)</span>) is approximately normal. (Note that <span class="math notranslate nohighlight">\(n=200\)</span> is note quite enought to make the sample mean normal for the Bernoulli, but you should still see the tendency towards normality.</p>
+<p>You will need to look up or calculate the mean and variance for a fair dice.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Answer Block</span>
+</pre></div>
+</div>
+</div>
+</div>
+<hr style="border:2px solid black"> </hr></section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="exercise-3-generalized-extreme-value-distribution-and-return-times">
+<h1>Exercise 3: Generalized Extreme Value distribution and Return Times<a class="headerlink" href="#exercise-3-generalized-extreme-value-distribution-and-return-times" title="Permalink to this heading">#</a></h1>
+<p>Harvey Return Times via GEV</p>
+<p>In this exercise you will estimate the return times for Hurricane Harvey using a Generalized Extreme Value (GEV) distribution
+<a class="reference external" href="https://en.wikipedia.org/wiki/Generalized_extreme_value_distribution">https://en.wikipedia.org/wiki/Generalized_extreme_value_distribution</a></p>
+<p>The Extreme Value Theorem says if the distribution of block maxima of any distribution converges, than it converges to a GEV distribution. (See Sampling Statistics Notebook).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># read data and take a cursory look</span>
+<span class="n">df</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/cdds-uiuc/simles-book/main/content/Module02/data/Beaumont_precip.csv&#39;</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>STATION</th>
+      <th>NAME</th>
+      <th>DATE</th>
+      <th>DAPR</th>
+      <th>MDPR</th>
+      <th>PRCP</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>USC00410613</td>
+      <td>BEAUMONT RESRCH CTR, TX US</td>
+      <td>1947-09-01</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>USC00410613</td>
+      <td>BEAUMONT RESRCH CTR, TX US</td>
+      <td>1947-09-02</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>USC00410613</td>
+      <td>BEAUMONT RESRCH CTR, TX US</td>
+      <td>1947-09-03</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>USC00410613</td>
+      <td>BEAUMONT RESRCH CTR, TX US</td>
+      <td>1947-09-04</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>USC00410613</td>
+      <td>BEAUMONT RESRCH CTR, TX US</td>
+      <td>1947-09-05</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<section id="block-maxima-annual-maxima">
+<h2>Block Maxima (annual maxima)<a class="headerlink" href="#block-maxima-annual-maxima" title="Permalink to this heading">#</a></h2>
+<p>Let’s take the block maxima of precipitation for annual blocks. I.e., for each year, we will only keep the maximum value of daily precipitation that year</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Block Maxima</span>
+<span class="c1">#Convert the Date column to a pandas date object</span>
+<span class="n">df</span><span class="o">.</span><span class="n">DATE</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">DATE</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="c1">#Compute annual maxima</span>
+<span class="n">df_max</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">DATE</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">year</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+
+<span class="c1">#plot annual maxima</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df_max</span><span class="o">.</span><span class="n">PRCP</span><span class="p">,</span><span class="s1">&#39;o&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;year&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Maximum annual precipitation [cm]&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/156936a5a5c98c2450dac279fe8ac2a7c592367c5f8c584abb0c3f0991c01b91.png" src="../../_images/156936a5a5c98c2450dac279fe8ac2a7c592367c5f8c584abb0c3f0991c01b91.png" />
+</div>
+</div>
+<p>The Extreme Value theorem says that the distribution of these annual maxima should be distributed according to a GEV</p>
+</section>
+<section id="question-3-1-fit-using-alll-the-data">
+<h2>Question 3.1: Fit using alll the data<a class="headerlink" href="#question-3-1-fit-using-alll-the-data" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Using all the data, fit a GEV distribution(<code>stats.genextreme.fit</code>) to the distribution of annual maxima (<code>df_max.PRCP</code>).</p></li>
+<li><p>What is the return time for the amount of precipitation that.</p></li>
+<li><p>plot the return times as a function of precipitation amount.</p></li>
+<li><p>plot the return time for Hurricane Harvey on this graph</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Answer  Block</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="question-3-2-fit-using-pre-harvey-data">
+<h1>Question 3.2 Fit using pre-Harvey data<a class="headerlink" href="#question-3-2-fit-using-pre-harvey-data" title="Permalink to this heading">#</a></h1>
+<p>Hindsight is 20/20. But what would people have estimated the probabiltiy of a Harvey-sized rain even would have been <em>before</em> seein Harvey?
+Repeat the exercise using onyl pre-Harvey data.</p>
+<ul class="simple">
+<li><p>Using only data pre-Harvey, fit a GEV distribution(<code>stats.genextreme.fit</code>) to the distribution of annual maxima (<code>df_max.PRCP</code>).</p></li>
+<li><p>What is the return time for the amount of precipitation that. “</p></li>
+<li><p>plot the return times as a function of precipitation amount.</p></li>
+<li><p>plot the return time for Hurricane Harvey on this graph</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#this is how you only choose the data pre-Harvey</span>
+<span class="n">df_max_preHarvey</span><span class="o">=</span><span class="n">df_max</span><span class="p">[</span><span class="n">df_max</span><span class="o">.</span><span class="n">DATE</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">year</span><span class="o">&lt;</span><span class="mi">2017</span><span class="p">]</span>
+
+<span class="c1">#plot annual maxima</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df_max_preHarvey</span><span class="o">.</span><span class="n">PRCP</span><span class="p">,</span><span class="s1">&#39;o&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;year&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Maximum annual precipitation [cm]&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/a02b7cc04eca24d3347eb14d989d9a137916bf37990cfb139e2e8d5610bd63dc.png" src="../../_images/a02b7cc04eca24d3347eb14d989d9a137916bf37990cfb139e2e8d5610bd63dc.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Answer Block</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="question-3-3-port-arthur-using-all-the-data">
+<h1>Question 3.3: Port Arthur (using all the data)<a class="headerlink" href="#question-3-3-port-arthur-using-all-the-data" title="Permalink to this heading">#</a></h1>
+<p>Repeat the analysis in Question 3.1 for Port Arthur data (another station near Houston that got record floods during Hurricane Harvey</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/cdds-uiuc/simles-book/main/content/Module02/data/PortArthur_precip.csv&#39;</span><span class="p">)</span>
+
+<span class="c1"># Block Maxima</span>
+<span class="c1">#Convert the Date column to a pandas date object</span>
+<span class="n">df</span><span class="o">.</span><span class="n">DATE</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">DATE</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="c1">#Compute annual maxima</span>
+<span class="n">df_max</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">DATE</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">year</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+
+<span class="c1">#plot annual maxima</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df_max</span><span class="o">.</span><span class="n">PRCP</span><span class="p">,</span><span class="s1">&#39;o&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;year&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Maximum annual precipitation [cm]&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Port Arthur&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Port Arthur&#39;)
+</pre></div>
+</div>
+<img alt="../../_images/c24894095f39892236ca188fc22c0408e5b2fba3f33175f86138a54134e4f23c.png" src="../../_images/c24894095f39892236ca188fc22c0408e5b2fba3f33175f86138a54134e4f23c.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Answer Block</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="question-3-4-port-arthur-using-pre-harvey-data">
+<h1>Question 3.4: Port Arthur (using pre-Harvey data)<a class="headerlink" href="#question-3-4-port-arthur-using-pre-harvey-data" title="Permalink to this heading">#</a></h1>
+<p>Repeat the analysis in Question 3.2 for Port Arthur data (another station near Houston that got record floods during Hurricane Harvey).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#this is how you only choose the data pre-Harvey</span>
+<span class="n">df_max_preHarvey</span><span class="o">=</span><span class="n">df_max</span><span class="p">[</span><span class="n">df_max</span><span class="o">.</span><span class="n">DATE</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">year</span><span class="o">&lt;</span><span class="mi">2017</span><span class="p">]</span>
+
+<span class="c1">#plot annual maxima</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df_max_preHarvey</span><span class="o">.</span><span class="n">PRCP</span><span class="p">,</span><span class="s1">&#39;o&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;year&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Maximum annual precipitation [cm]&#39;</span><span class="p">);</span>
+
+<span class="n">df</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/cdds-uiuc/simles-book/main/content/Module02/data/PortArthur_precip.csv&#39;</span><span class="p">)</span>
+
+<span class="c1"># Block Maxima</span>
+<span class="c1">#Convert the Date column to a pandas date object</span>
+<span class="n">df</span><span class="o">.</span><span class="n">DATE</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">DATE</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="c1">#Compute annual maxima</span>
+<span class="n">df_max</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">DATE</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">year</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+<span class="n">df_max_preHarvey</span><span class="o">=</span><span class="n">df_max</span><span class="p">[</span><span class="n">df_max</span><span class="o">.</span><span class="n">DATE</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">year</span><span class="o">&lt;</span><span class="mi">2017</span><span class="p">]</span>
+
+<span class="c1">#plot annual maxima</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df_max_preHarvey</span><span class="o">.</span><span class="n">PRCP</span><span class="p">,</span><span class="s1">&#39;o&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;year&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Maximum annual precipitation [cm]&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/f57e5fae0d4832a208aa884c90be32bdf0a0ee2f2ee6e60a5e5d9cb56ae67c52.png" src="../../_images/f57e5fae0d4832a208aa884c90be32bdf0a0ee2f2ee6e60a5e5d9cb56ae67c52.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Answer  Block</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./content/Module02"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="M02_N03_Cookbook_Precipitation_Return_Times.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Cookbook: Precipitation return times for Hurricane Harvey</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Lab 2.1</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-covariance-vs-independence">Exercise 1: Covariance vs independence</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1-1-theory">Question 1.1 (Theory):</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1-2-numerical">Question 1.2 (Numerical):</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1-3">Question 1.3</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-central-limit-theorem">Exercise 2: Central Limit Theorem</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2-1-gamma-distribution">Question 2.1: Gamma distribution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2-2-fair-dice-discrete-uniform">Question 2.2: Fair Dice (Discrete Uniform)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2-3-coin-flip-bernoulli">Question 2.3: Coin Flip (Bernoulli)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-generalized-extreme-value-distribution-and-return-times">Exercise 3: Generalized Extreme Value distribution and Return Times</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#block-maxima-annual-maxima">Block Maxima (annual maxima)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-3-1-fit-using-alll-the-data">Question 3.1: Fit using alll the data</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#question-3-2-fit-using-pre-harvey-data">Question 3.2 Fit using pre-Harvey data</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#question-3-3-port-arthur-using-all-the-data">Question 3.3: Port Arthur (using all the data)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#question-3-4-port-arthur-using-pre-harvey-data">Question 3.4: Port Arthur (using pre-Harvey data)</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Cristian Proistosescu
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

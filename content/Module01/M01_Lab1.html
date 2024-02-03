@@ -66,7 +66,6 @@ const thebe_selector_output = ".output, .cell_output"
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'content/Module01/M01_Lab1';</script>
     <link rel="canonical" href="https://cdds-uiuc.github.io/simles-book/content/Module01/M01_Lab1.html" />
-    <link rel="shortcut icon" href="../../_static/CDDS_logo.jpeg"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Moments" href="M01_N03_Moments.html" />
@@ -203,6 +202,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
+
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">2. Inference</span></p>
 <ul class="nav bd-sidenav">
@@ -210,7 +210,22 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="../Module02/M02_N02_Cookbook_MLE.html">Cookbook: Maximum Likelihood Estimator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Module02/M02_N02_Cookbook_Gutenberg-Richter_Law.html">Cookbook: MLE for Gutenberg-Richter Law</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Module02/M02_N03_Cookbook_Precipitation_Return_Times.html">Cookbook: Precipitation return times for Hurricane Harvey</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Module02/M02_Lab2-1.html">Lab 2.1</a></li>
+
+
+
+
+
 
 
 </ul>
@@ -518,12 +533,7 @@ document.write(`
 <span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
 <span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
 
-
-
 <span class="c1"># These are some parameters to make figures nice (and big)</span>
-<span class="o">%</span><span class="k">matplotlib</span> inline
-<span class="o">%</span><span class="k">config</span> InlineBackend.figure_format = &#39;retina&#39; 
-<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">16</span><span class="p">,</span><span class="mi">8</span>
 <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;legend.fontsize&#39;</span><span class="p">:</span> <span class="s1">&#39;x-large&#39;</span><span class="p">,</span>
           <span class="s1">&#39;figure.figsize&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span>
          <span class="s1">&#39;axes.labelsize&#39;</span><span class="p">:</span> <span class="s1">&#39;x-large&#39;</span><span class="p">,</span>
@@ -577,7 +587,7 @@ document.write(`
 <h2>Question 1.1:<a class="headerlink" href="#question-1-1" title="Permalink to this heading">#</a></h2>
 <p>Compute the probability of rolling a total of 11.</p>
 <p><em>Hint</em>: Use the law of total probability to compute the probability of rolling an eleven, conditional on the roll of the first dice:</p>
-<p><span class="math notranslate nohighlight">\(P(S=11)=\sum_{n=1}^{6}P(S=11|D_{1}=n)\)</span></p>
+<p><span class="math notranslate nohighlight">\(P(S=11)=\sum_{n=1}^{6}P(S=11|D_{1}=n)P(D_1=n)\)</span></p>
 <section id="answer">
 <h3>Answer<a class="headerlink" href="#answer" title="Permalink to this heading">#</a></h3>
 </section>

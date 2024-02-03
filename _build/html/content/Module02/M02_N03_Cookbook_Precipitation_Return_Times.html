@@ -1,0 +1,969 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Cookbook: Precipitation return times for Hurricane Harvey &#8212; SIMLES: Statistical Inference and Machine Learning for Earth Sciences</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/Module02/M02_N03_Cookbook_Precipitation_Return_Times';</script>
+    <link rel="canonical" href="https://cdds-uiuc.github.io/simles-book/content/Module02/M02_N03_Cookbook_Precipitation_Return_Times.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Lab 2.1" href="M02_Lab2-1.html" />
+    <link rel="prev" title="Cookbook: MLE for Gutenberg-Richter Law" href="M02_N02_Cookbook_Gutenberg-Richter_Law.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/CDDS_logo.png" class="logo__image only-light" alt="SIMLES: Statistical Inference and Machine Learning for Earth Sciences - Home"/>
+    <script>document.write(`<img src="../../_static/CDDS_logo.png" class="logo__image only-dark" alt="SIMLES: Statistical Inference and Machine Learning for Earth Sciences - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    SIMLES
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Programming.html">Programming</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">1. Probability Models</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Module01/M01_N01_Probability_Recap.html">Basics of probabilities</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Module01/M01_N02_Random_Variables.html">Random Variables</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Module01/M01_Lab1.html">Lab 1.1</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Module01/M01_N03_Moments.html">Moments</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Module01/M01_N04_SampleStatistics.html">Sample Statistics</a></li>
+
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">2. Inference</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="M02_N01_Estimation.html">Estimators and the Maximum Likelihood</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="M02_N02_Cookbook_Gutenberg-Richter_Law.html">Cookbook: MLE for Gutenberg-Richter Law</a></li>
+
+
+
+
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Cookbook: Precipitation return times for Hurricane Harvey</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="M02_Lab2-1.html">Lab 2.1</a></li>
+
+
+
+
+
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/cdds-uiuc/simles-book/master?urlpath=lab/tree/content/Module02/M02_N03_Cookbook_Precipitation_Return_Times.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/cdds-uiuc/simles-book/blob/master/content/Module02/M02_N03_Cookbook_Precipitation_Return_Times.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/cdds-uiuc/simles-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/cdds-uiuc/simles-book/issues/new?title=Issue%20on%20page%20%2Fcontent/Module02/M02_N03_Cookbook_Precipitation_Return_Times.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/content/Module02/M02_N03_Cookbook_Precipitation_Return_Times.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Cookbook: Precipitation return times for Hurricane Harvey</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Cookbook: Precipitation return times for Hurricane Harvey</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#houston-precipitation">Houston precipitation</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#precipitation-return-times">Precipitation Return times</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#return-times-via-gamma-distribution">Return times via Gamma Distribution</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="cookbook-precipitation-return-times-for-hurricane-harvey">
+<h1>Cookbook: Precipitation return times for Hurricane Harvey<a class="headerlink" href="#cookbook-precipitation-return-times-for-hurricane-harvey" title="Permalink to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="c1"># These are some parameters to make figures nice (and big)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">16</span><span class="p">,</span><span class="mi">8</span>
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;legend.fontsize&#39;</span><span class="p">:</span> <span class="s1">&#39;x-large&#39;</span><span class="p">,</span>
+          <span class="s1">&#39;figure.figsize&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span>
+          <span class="s1">&#39;axes.labelsize&#39;</span><span class="p">:</span> <span class="s1">&#39;x-large&#39;</span><span class="p">,</span>
+         <span class="s1">&#39;axes.titlesize&#39;</span><span class="p">:</span><span class="s1">&#39;x-large&#39;</span><span class="p">,</span>
+         <span class="s1">&#39;xtick.labelsize&#39;</span><span class="p">:</span><span class="s1">&#39;x-large&#39;</span><span class="p">,</span>
+         <span class="s1">&#39;ytick.labelsize&#39;</span><span class="p">:</span><span class="s1">&#39;x-large&#39;</span><span class="p">}</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="houston-precipitation">
+<h1>Houston precipitation<a class="headerlink" href="#houston-precipitation" title="Permalink to this heading">#</a></h1>
+<p>In the wake of Hurricane Harvey, many have described the assocaited flooding as a “500-year event”. How can this be, given that in most places there are only a few decades of data available? In this exercise we apply a simple (and most likely wrong) methodology to estimate <em>return periods</em>, and comment on the wisdom of that concept.</p>
+<p>Let’s load and get to know the data. We are looking at daily precip data (in cm) at Beaumont Research Center and Port Arthur, two of the weather stations in the Houston area that reported very high daily precip totals.</p>
+<p>The data comes from NOAA GHCN:<br>
+<a class="reference external" href="https://www.ncdc.noaa.gov/cdo-web/datasets/GHCND/stations/GHCND:USC00410613/detail">https://www.ncdc.noaa.gov/cdo-web/datasets/GHCND/stations/GHCND:USC00410613/detail</a><br>
+<a class="reference external" href="https://www.ncdc.noaa.gov/cdo-web/datasets/GHCND/stations/GHCND:USW00012917/detail">https://www.ncdc.noaa.gov/cdo-web/datasets/GHCND/stations/GHCND:USW00012917/detail</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># read data and take a cursory look</span>
+<span class="n">df</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/cdds-uiuc/simles-book/main/content/Module02/data/Beaumont_precip.csv&#39;</span><span class="p">)</span>
+
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>STATION</th>
+      <th>NAME</th>
+      <th>DATE</th>
+      <th>DAPR</th>
+      <th>MDPR</th>
+      <th>PRCP</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>USC00410613</td>
+      <td>BEAUMONT RESRCH CTR, TX US</td>
+      <td>1947-09-01</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>USC00410613</td>
+      <td>BEAUMONT RESRCH CTR, TX US</td>
+      <td>1947-09-02</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>USC00410613</td>
+      <td>BEAUMONT RESRCH CTR, TX US</td>
+      <td>1947-09-03</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>USC00410613</td>
+      <td>BEAUMONT RESRCH CTR, TX US</td>
+      <td>1947-09-04</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>USC00410613</td>
+      <td>BEAUMONT RESRCH CTR, TX US</td>
+      <td>1947-09-05</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># plot raw precipitation</span>
+<span class="n">precip_raw</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;PRCP&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">precip_raw</span><span class="o">=</span><span class="n">precip_raw</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">precip_raw</span><span class="p">)</span><span class="o">==</span><span class="kc">False</span><span class="p">]</span> <span class="c1"># take out nans</span>
+
+<span class="n">fig</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">precip_raw</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;day since beginning of record&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Daily Precip (cm)&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../../_images/bd232be8c469de523e380ebc73a36ff50f5d3043e249a90f31e2834283097d18.png" src="../../_images/bd232be8c469de523e380ebc73a36ff50f5d3043e249a90f31e2834283097d18.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot the histogram of the data. </span>
+<span class="c1"># For distributions such as a gamma distribution it makes sense to use a logarithmic axis.</span>
+<span class="c1">#define bin edges and bin widths. </span>
+<span class="c1"># we&#39;ll use the maximum value in the data to define the upper limit</span>
+
+<span class="n">bin_edge_low</span><span class="o">=</span><span class="mi">0</span>
+<span class="n">bin_edge_high</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">precip_raw</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span>
+<span class="n">bin_width</span><span class="o">=</span><span class="mf">0.25</span>
+<span class="n">bin_edges</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">bin_edge_low</span><span class="p">,</span><span class="n">bin_edge_high</span><span class="p">,</span><span class="n">bin_width</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">precip_raw</span><span class="p">,</span><span class="n">bin_edges</span><span class="p">,</span><span class="n">rwidth</span><span class="o">=</span><span class="mf">0.9</span><span class="p">);</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;daily precip (cm)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;count (number of days)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">precip_raw</span><span class="p">,</span><span class="n">bin_edges</span><span class="p">,</span><span class="n">rwidth</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_yscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;daily precip (cm)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;count (number of days)&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/f57aeccd5f2310f6ea39b5aa4fc7f2efd744493353eed60363b76cdc735c2363.png" src="../../_images/f57aeccd5f2310f6ea39b5aa4fc7f2efd744493353eed60363b76cdc735c2363.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># the jump in the first bin indicates a probability mass at 0  ( a large number of days do not see any precipitation). </span>
+<span class="c1"># Let&#39;s only look at days when it rains. While we&#39;re at it, let&#39;s clean NaNs as well.</span>
+<span class="n">precip</span><span class="o">=</span><span class="n">precip_raw</span><span class="p">[</span><span class="n">precip_raw</span><span class="o">&gt;</span><span class="mf">0.01</span><span class="p">]</span>
+
+<span class="c1"># Plot the histogram of the data</span>
+<span class="n">fig</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">precip</span><span class="p">,</span><span class="n">bin_edges</span><span class="p">,</span><span class="n">rwidth</span><span class="o">=</span><span class="mf">0.9</span><span class="p">);</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;daily precip (cm)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;count (number of days)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;daily precip (cm)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;count (number of days)&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">precip</span><span class="p">,</span><span class="n">bin_edges</span><span class="p">,</span><span class="n">rwidth</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_yscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;daily precip (cm)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;count (number of days)&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/90d1165834a1b3f0a865fa5a9c9cecae23a6e25410a89557ab20398091beaa89.png" src="../../_images/90d1165834a1b3f0a865fa5a9c9cecae23a6e25410a89557ab20398091beaa89.png" />
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="precipitation-return-times">
+<h1>Precipitation Return times<a class="headerlink" href="#precipitation-return-times" title="Permalink to this heading">#</a></h1>
+<p>What we want is to compute the return time of the rainiest day recorded at Beaumont Research Center (in years).</p>
+<p>What does this mean? The rainiest day at Beaumont brought <span class="math notranslate nohighlight">\(x\)</span> cm. The return time represents how often we would expect to get <span class="math notranslate nohighlight">\(x\)</span> cm or more of rain at Beaumont. To compute the return time we need to compute the probability of daily rain &gt;<span class="math notranslate nohighlight">\(x\)</span> cm, i.e. <span class="math notranslate nohighlight">\(P(\text{daily rain}&gt;x\text{ cm})\)</span>. The inverse of this probability is the frequency of daily rain &gt;<span class="math notranslate nohighlight">\(x\)</span> cm. Let’s give some examples:</p>
+<ul class="simple">
+<li><p>if the probability of daily rain &gt; 3 cm is <span class="math notranslate nohighlight">\(P(\text{daily rain}&gt;3\text{ cm})=1/30\)</span>, it means we would expect that it rains 3 cm or more once about every 30 day, and we would say 3 cm is a 30 day event.</p></li>
+<li><p>i the probability of daily rain &gt; 50 cm is <span class="math notranslate nohighlight">\(P(\text{daily rain}&gt;50\text{ cm})=1/36500\)</span>, it means we would expect that it rains 3 cm or more once about every 36500 days, or once every 100 years, and we would say 50 cm of rain is 100 year event.</p></li>
+<li><p>The return time is thus the inverse of the probabiltiy of exceedence. I.e. the return time for a rain event <span class="math notranslate nohighlight">\(&gt;3\)</span>cm is <span class="math notranslate nohighlight">\(1/P(\text{daily rain}&gt;3\text{ cm})=30\)</span> days. Similarly, ther return time for a rain event <span class="math notranslate nohighlight">\(&gt;50\)</span> cm is <span class="math notranslate nohighlight">\(1/P(\text{daily rain}&gt;50\text{ cm})=100\)</span> years.</p></li>
+</ul>
+<p>Remember that the probability of daily rain being <em>less</em> than <span class="math notranslate nohighlight">\(x\)</span> cm is given by the cumulative distribution function (CDF): <span class="math notranslate nohighlight">\(P(\text{daily rain}&lt;x\text{ cm})=F(x)\)</span>, so the probability of rain being <em>more</em> than x is given by <span class="math notranslate nohighlight">\(1-F(x)\)</span>, and thus the return time is:</p>
+<div class="math notranslate nohighlight">
+\[ R(x)=\frac{1}{1-F(x)}\]</div>
+<p>So, all we have to do is fit a distribution to the data, and then use its CDF to compute return times.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="return-times-via-gamma-distribution">
+<h1>Return times via Gamma Distribution<a class="headerlink" href="#return-times-via-gamma-distribution" title="Permalink to this heading">#</a></h1>
+<p>Precipitation is often modelled as a gamma distribution. The probability of observing a value <span class="math notranslate nohighlight">\(x_i\)</span> given the three parameters of the gamma distribution: shape, scale, and location, <span class="math notranslate nohighlight">\(\theta={\alpha,\beta,x_o}\)</span> is</p>
+<div class="math notranslate nohighlight">
+\[ p(x_i|\alpha,\beta,x_{0})=\frac{1}{\Gamma(\alpha)\beta^{\alpha}}\left(x_{i}-x_{0}\right)^{\alpha-1}\exp\left(\frac{-\left(x-x_{0}\right)}{\beta}\right) \]</div>
+<p>For N independent events, the log-likelihood is:</p>
+<div class="math notranslate nohighlight">
+\[ \log\mathcal{L}=\sum_{i=1}^{N}\left(-\log\Gamma(\alpha)-\alpha\log\beta+\left(\alpha-1\right)\log\left(x_{i}-x_{o}\right)-\frac{\left(x_{i}-x_{o}\right)}{\beta}\right)\]</div>
+<p>The log-likelihood of the gamma distribution includes the Gamma function. Computing the derivatives of the log-likelihood and setting them to zero requires numerical estimation. In practice, we will rarely compute MLEs by hand. For example, to fit a gamma distribution, we will use the <code>stats.gamma.fit</code> method to obtain maximum likelihood estimates for the parameters.</p>
+<p>The method will output the three parameters of the gamma random variable, shape,scale, and location, denoted in scipy as <code>a,loc,scale</code>,  (see documentation <a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.gamma.html"> here</a>). So you’ll need to call it as <code>alpha_mle,loc_mle,scale_mle=stats.gama.fit( …. )</code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">alpha_mle</span><span class="p">,</span><span class="n">loc_mle</span><span class="p">,</span><span class="n">scale_mle</span><span class="o">=</span><span class="n">stats</span><span class="o">.</span><span class="n">gamma</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">precip</span><span class="p">,</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;mle&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">([</span><span class="n">alpha_mle</span><span class="p">,</span><span class="n">loc_mle</span><span class="p">,</span><span class="n">scale_mle</span><span class="p">])</span>
+<span class="n">x_plot</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">precip</span><span class="p">),</span><span class="mi">200</span><span class="p">)</span>
+<span class="n">gamma_pdf</span><span class="o">=</span><span class="n">stats</span><span class="o">.</span><span class="n">gamma</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x_plot</span><span class="p">,</span><span class="n">alpha_mle</span><span class="p">,</span><span class="n">loc_mle</span><span class="p">,</span><span class="n">scale_mle</span><span class="p">)</span>
+
+
+<span class="c1"># Plot the histogram of the data</span>
+<span class="n">fig</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">precip</span><span class="p">,</span><span class="n">bin_edges</span><span class="p">,</span><span class="n">rwidth</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span><span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;daily precip (cm)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;count (number of days)&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">precip</span><span class="p">,</span><span class="n">bin_edges</span><span class="p">,</span><span class="n">rwidth</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span><span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_yscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_plot</span><span class="p">,</span><span class="n">gamma_pdf</span><span class="p">);</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_plot</span><span class="p">,</span><span class="n">gamma_pdf</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.20740010390299995, 0.019999999999999997, 2.2682740851535863]
+</pre></div>
+</div>
+<img alt="../../_images/a9f3f65eb97c13c83e1056525f0c4a8b8592e6fbdf7cf418b7e9f88233f913cb.png" src="../../_images/a9f3f65eb97c13c83e1056525f0c4a8b8592e6fbdf7cf418b7e9f88233f913cb.png" />
+</div>
+</div>
+<p>Now that we have an mle estimate for <span class="math notranslate nohighlight">\(\theta={\alpha,\beta,l}\)</span>, we can estimate the return times of the as the inverse of the probabiltiy that rain is equal to or exceeds the maximum observed precip.</p>
+<div class="math notranslate nohighlight">
+\[ \text{return time} =\frac{1}{1-F(\max\{x\}|\alpha_{mle},\beta_{mle},l_{mle})}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Return times for Beumont</span>
+<span class="n">prob</span><span class="o">=</span><span class="mi">1</span><span class="o">-</span><span class="n">stats</span><span class="o">.</span><span class="n">gamma</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">precip</span><span class="p">),</span><span class="n">alpha_mle</span><span class="p">,</span><span class="n">loc_mle</span><span class="p">,</span><span class="n">scale_mle</span><span class="p">)</span>
+
+<span class="c1"># compute the return time (in days) and convert to years</span>
+<span class="n">return_time_for_max</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="n">prob</span><span class="o">/</span><span class="mi">365</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">return_time_for_max</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>374.3981822070542
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s plot this data</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#support for cdf plot: let&#39;s go a bit beyond the maximum precipitation</span>
+<span class="n">x</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">precip</span><span class="p">)</span><span class="o">+</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">cdf</span><span class="o">=</span><span class="n">stats</span><span class="o">.</span><span class="n">gamma</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">alpha_mle</span><span class="p">,</span><span class="n">loc_mle</span><span class="p">,</span><span class="n">scale_mle</span><span class="p">)</span>
+<span class="n">return_times</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">cdf</span><span class="p">)</span><span class="o">/</span><span class="mi">365</span>
+
+<span class="n">figure</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">[</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">return_times</span><span class="p">,</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">precip</span><span class="p">),</span><span class="n">return_time_for_max</span><span class="p">,</span><span class="s1">&#39;ro&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;precipitation during Hurricane Harvey&#39;</span><span class="p">);</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Daily Precipitation [mm]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Return Times [years]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x168dc43e0&gt;
+</pre></div>
+</div>
+<img alt="../../_images/5ef20f2dcd60fdd45bb628cf6fa2223dc700e1baf7b67e0893316f9acfb3a6e7.png" src="../../_images/5ef20f2dcd60fdd45bb628cf6fa2223dc700e1baf7b67e0893316f9acfb3a6e7.png" />
+</div>
+</div>
+<p>Let’s repeat the analysis for the Port Arthur data. If you fit a Gamma ditribution and compute the return time of the largest daily rain event, what is the return time?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># read data and take a cursory look</span>
+<span class="n">df</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/cdds-uiuc/simles-book/main/content/Module02/data/PortArthur_precip.csv&#39;</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+
+<span class="c1"># plot raw precipitation</span>
+<span class="n">precip_raw</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;PRCP&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">precip_raw</span><span class="o">=</span><span class="n">precip_raw</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">precip_raw</span><span class="p">)</span><span class="o">==</span><span class="kc">False</span><span class="p">]</span> <span class="c1"># take out nans</span>
+<span class="n">precip</span><span class="o">=</span><span class="n">precip_raw</span><span class="p">[</span><span class="n">precip_raw</span><span class="o">&gt;</span><span class="mf">0.01</span><span class="p">]</span>
+
+<span class="n">alpha_mle</span><span class="p">,</span><span class="n">loc_mle</span><span class="p">,</span><span class="n">scale_mle</span><span class="o">=</span><span class="n">stats</span><span class="o">.</span><span class="n">gamma</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">precip</span><span class="p">,</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;mle&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">([</span><span class="n">alpha_mle</span><span class="p">,</span><span class="n">loc_mle</span><span class="p">,</span><span class="n">scale_mle</span><span class="p">])</span>
+
+<span class="n">x_plot</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">precip</span><span class="p">),</span><span class="mi">200</span><span class="p">)</span>
+<span class="n">gamma_pdf</span><span class="o">=</span><span class="n">stats</span><span class="o">.</span><span class="n">gamma</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x_plot</span><span class="p">,</span><span class="n">alpha_mle</span><span class="p">,</span><span class="n">loc_mle</span><span class="p">,</span><span class="n">scale_mle</span><span class="p">)</span>
+
+
+<span class="c1"># Plot the histogram of the data</span>
+<span class="n">fig</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">precip</span><span class="p">,</span><span class="n">bin_edges</span><span class="p">,</span><span class="n">rwidth</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span><span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;daily precip (cm)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;count (number of days)&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">precip</span><span class="p">,</span><span class="n">bin_edges</span><span class="p">,</span><span class="n">rwidth</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span><span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_yscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_plot</span><span class="p">,</span><span class="n">gamma_pdf</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_plot</span><span class="p">,</span><span class="n">gamma_pdf</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.14266156687516424, 0.019999999999999997, 1.5504222901142262]
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x169db9ac0&gt;]
+</pre></div>
+</div>
+<img alt="../../_images/e63fac194e175f72da109486bc7380628b6cf43afced7aaddd56a37f67b75ce6.png" src="../../_images/e63fac194e175f72da109486bc7380628b6cf43afced7aaddd56a37f67b75ce6.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">prob</span><span class="o">=</span><span class="mi">1</span><span class="o">-</span><span class="n">stats</span><span class="o">.</span><span class="n">gamma</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">precip</span><span class="p">),</span><span class="n">alpha_mle</span><span class="p">,</span><span class="n">loc_mle</span><span class="p">,</span><span class="n">scale_mle</span><span class="p">)</span>
+<span class="mi">1</span><span class="o">/</span><span class="n">prob</span><span class="o">/</span><span class="mi">365</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4080713.548079735
+</pre></div>
+</div>
+</div>
+</div>
+<p>Does that seem reasonable? Why do you think the statistical model fails here? Think of the type of precipitation events that make up the precipitation data at Port Arthur</p>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./content/Module02"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="M02_N02_Cookbook_Gutenberg-Richter_Law.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Cookbook: MLE for Gutenberg-Richter Law</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="M02_Lab2-1.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Lab 2.1</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Cookbook: Precipitation return times for Hurricane Harvey</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#houston-precipitation">Houston precipitation</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#precipitation-return-times">Precipitation Return times</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#return-times-via-gamma-distribution">Return times via Gamma Distribution</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Cristian Proistosescu
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

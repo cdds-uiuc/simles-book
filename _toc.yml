@@ -17,7 +17,9 @@ parts:
   - caption: 2. Inference
     chapters:
     - file: content/Module02/M02_N01_Estimation
-    - file: content/Module02/M02_N02_Cookbook_MLE
+    - file: content/Module02/M02_N02_Cookbook_Gutenberg-Richter_Law
+    - file: content/Module02/M02_N03_Cookbook_Precipitation_Return_Times
+    - file: content/Module02/M02_Lab2-1
 #  - caption: "Inference:Estimation and Hypothesis Testing"
 #    chapters:
 #    - file: content/Module02/M02_N01_Regression

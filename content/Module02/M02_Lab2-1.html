@@ -223,10 +223,6 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
-
-
-
-
 </ul>
 
     </div>
@@ -475,9 +471,9 @@ document.write(`
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-covariance-vs-independence">Exercise 1: Covariance vs independence</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1-1-theory">Question 1.1 (Theory):</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1-2-numerical">Question 1.2 (Numerical):</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1-3">Question 1.3</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1-3">Question 1.3</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-central-limit-theorem">Exercise 2: Central Limit Theorem</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2-1-gamma-distribution">Question 2.1: Gamma distribution</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2-2-fair-dice-discrete-uniform">Question 2.2: Fair Dice (Discrete Uniform)</a></li>
@@ -487,11 +483,11 @@ document.write(`
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-generalized-extreme-value-distribution-and-return-times">Exercise 3: Generalized Extreme Value distribution and Return Times</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#block-maxima-annual-maxima">Block Maxima (annual maxima)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-3-1-fit-using-alll-the-data">Question 3.1: Fit using alll the data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-3-2-fit-using-pre-harvey-data">Question 3.2: Fit using pre-Harvey data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-3-3-port-arthur-using-all-the-data">Question 3.3: Port Arthur (using all the data)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-3-4-port-arthur-using-pre-harvey-data">Question 3.4: Port Arthur (using pre-Harvey data)</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#question-3-2-fit-using-pre-harvey-data">Question 3.2 Fit using pre-Harvey data</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#question-3-3-port-arthur-using-all-the-data">Question 3.3: Port Arthur (using all the data)</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#question-3-4-port-arthur-using-pre-harvey-data">Question 3.4: Port Arthur (using pre-Harvey data)</a></li>
 </ul>
 
             </nav>
@@ -546,15 +542,7 @@ document.write(`
 <li><p>To compute expectations, use the fact that since <span class="math notranslate nohighlight">\(X,Y\)</span> are functons of <span class="math notranslate nohighlight">\(\theta \)</span>, then <span class="math notranslate nohighlight">\(p(x)dx=p(\theta)d\theta\)</span> to write <span class="math notranslate nohighlight">\(xp(x)dx=\cos(\theta)p(\theta)d\theta\)</span>. The same holds for <span class="math notranslate nohighlight">\(yp(y)dy\)</span> and <span class="math notranslate nohighlight">\(xyp(x,y)dxdy\)</span>.</p></li>
 <li><p>Depending on your approach, you may also need the fact that <span class="math notranslate nohighlight">\(sin(2\theta)=sin(\theta)cos(\theta)\)</span></p></li>
 </ul>
-<p><em><strong>Answer</strong></em>
-$<span class="math notranslate nohighlight">\( Cov(X,Y)=E[XY]-E[X]E[Y]\)</span>$</p>
-<div class="math notranslate nohighlight">
-\[E\left[X\right]=\int_{0}^{1}xp(x)dx=\int_{0}^{2\pi}\cos\left(\theta\right)p(\theta)d\theta=\int_{0}^{2\pi}\cos\left(\theta\right)\frac{1}{2\pi}d\theta
-=\frac{1}{2\pi}\left.\sin\left(\theta\right)\right|_{0}^{2\pi}=0\]</div>
-<p>Similarly, one can get <span class="math notranslate nohighlight">\(E[Y]=0\)</span></p>
-<div class="math notranslate nohighlight">
-\[E\left[XY\right]=\int_{0}^{1}xyp(x)dx=\int_{0}^{2\pi}\cos\left(\theta\right)\sin\left(\theta\right)p(\theta)d\theta=\int_{0}^{2\pi}\cos\left(2\theta\right)\frac{1}{2\pi}d\theta
-=\frac{1}{2\pi}\frac{1}{2}\left.\sin\left(2\theta\right)\right|_{0}^{2\pi}=0\]</div>
+<p><em><strong>Answer</strong></em></p>
 </section>
 <section id="question-1-2-numerical">
 <h2>Question 1.2 (Numerical):<a class="headerlink" href="#question-1-2-numerical" title="Permalink to this heading">#</a></h2>
@@ -579,9 +567,8 @@ $<span class="math notranslate nohighlight">\( Cov(X,Y)=E[XY]-E[X]E[Y]\)</span>$
 </div>
 </div>
 </section>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="question-1-3">
-<h1>Question 1.3<a class="headerlink" href="#question-1-3" title="Permalink to this heading">#</a></h1>
+<section id="question-1-3">
+<h2>Question 1.3<a class="headerlink" href="#question-1-3" title="Permalink to this heading">#</a></h2>
 <p>Now consider two <em>independent</em> random variables:</p>
 <div class="math notranslate nohighlight">
 \[ R\sim U[0,1]\]</div>
@@ -614,6 +601,7 @@ $<span class="math notranslate nohighlight">\( Cov(X,Y)=E[XY]-E[X]E[Y]\)</span>$
 </div>
 </div>
 <hr style="border:2px solid black"> </hr></section>
+</section>
 <section class="tex2jax_ignore mathjax_ignore" id="exercise-2-central-limit-theorem">
 <h1>Exercise 2: Central Limit Theorem<a class="headerlink" href="#exercise-2-central-limit-theorem" title="Permalink to this heading">#</a></h1>
 <p>The central limit theorem says that the distribution of the sample mean of <strong>any</strong> random variable approaches a normal distribution.</p>
@@ -799,9 +787,8 @@ $<span class="math notranslate nohighlight">\( \overline X_n=\frac{1}{n}\sum_i X
 </div>
 </div>
 </section>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="question-3-2-fit-using-pre-harvey-data">
-<h1>Question 3.2 Fit using pre-Harvey data<a class="headerlink" href="#question-3-2-fit-using-pre-harvey-data" title="Permalink to this heading">#</a></h1>
+<section id="question-3-2-fit-using-pre-harvey-data">
+<h2>Question 3.2: Fit using pre-Harvey data<a class="headerlink" href="#question-3-2-fit-using-pre-harvey-data" title="Permalink to this heading">#</a></h2>
 <p>Hindsight is 20/20. But what would people have estimated the probabiltiy of a Harvey-sized rain even would have been <em>before</em> seein Harvey?
 Repeat the exercise using onyl pre-Harvey data.</p>
 <ul class="simple">
@@ -834,8 +821,8 @@ Repeat the exercise using onyl pre-Harvey data.</p>
 </div>
 </div>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="question-3-3-port-arthur-using-all-the-data">
-<h1>Question 3.3: Port Arthur (using all the data)<a class="headerlink" href="#question-3-3-port-arthur-using-all-the-data" title="Permalink to this heading">#</a></h1>
+<section id="question-3-3-port-arthur-using-all-the-data">
+<h2>Question 3.3: Port Arthur (using all the data)<a class="headerlink" href="#question-3-3-port-arthur-using-all-the-data" title="Permalink to this heading">#</a></h2>
 <p>Repeat the analysis in Question 3.1 for Port Arthur data (another station near Houston that got record floods during Hurricane Harvey</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -872,8 +859,8 @@ Repeat the exercise using onyl pre-Harvey data.</p>
 </div>
 </div>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="question-3-4-port-arthur-using-pre-harvey-data">
-<h1>Question 3.4: Port Arthur (using pre-Harvey data)<a class="headerlink" href="#question-3-4-port-arthur-using-pre-harvey-data" title="Permalink to this heading">#</a></h1>
+<section id="question-3-4-port-arthur-using-pre-harvey-data">
+<h2>Question 3.4: Port Arthur (using pre-Harvey data)<a class="headerlink" href="#question-3-4-port-arthur-using-pre-harvey-data" title="Permalink to this heading">#</a></h2>
 <p>Repeat the analysis in Question 3.2 for Port Arthur data (another station near Houston that got record floods during Hurricane Harvey).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -913,6 +900,7 @@ Repeat the exercise using onyl pre-Harvey data.</p>
 </div>
 </div>
 </div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -974,9 +962,9 @@ Repeat the exercise using onyl pre-Harvey data.</p>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1-covariance-vs-independence">Exercise 1: Covariance vs independence</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1-1-theory">Question 1.1 (Theory):</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1-2-numerical">Question 1.2 (Numerical):</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1-3">Question 1.3</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1-3">Question 1.3</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-central-limit-theorem">Exercise 2: Central Limit Theorem</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2-1-gamma-distribution">Question 2.1: Gamma distribution</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2-2-fair-dice-discrete-uniform">Question 2.2: Fair Dice (Discrete Uniform)</a></li>
@@ -986,11 +974,11 @@ Repeat the exercise using onyl pre-Harvey data.</p>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-generalized-extreme-value-distribution-and-return-times">Exercise 3: Generalized Extreme Value distribution and Return Times</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#block-maxima-annual-maxima">Block Maxima (annual maxima)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-3-1-fit-using-alll-the-data">Question 3.1: Fit using alll the data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-3-2-fit-using-pre-harvey-data">Question 3.2: Fit using pre-Harvey data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-3-3-port-arthur-using-all-the-data">Question 3.3: Port Arthur (using all the data)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-3-4-port-arthur-using-pre-harvey-data">Question 3.4: Port Arthur (using pre-Harvey data)</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#question-3-2-fit-using-pre-harvey-data">Question 3.2 Fit using pre-Harvey data</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#question-3-3-port-arthur-using-all-the-data">Question 3.3: Port Arthur (using all the data)</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#question-3-4-port-arthur-using-pre-harvey-data">Question 3.4: Port Arthur (using pre-Harvey data)</a></li>
 </ul>
 
   </nav></div>

@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Estimators and the Maximum Likelihood &#8212; SIMLES: Statistical Inference and Machine Learning for Earth Sciences</title>
+    <title>Estimators &#8212; SIMLES: Statistical Inference and Machine Learning for Earth Sciences</title>
   
   
   
@@ -206,7 +206,8 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">2. Inference</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Estimators and the Maximum Likelihood</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Estimators</a></li>
+
 
 
 
@@ -458,7 +459,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Estimators and the Maximum Likelihood</h1>
+    <h1>Estimators</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -468,14 +469,15 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Estimators and the Maximum Likelihood</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Estimators</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#intro-statistical-inference">Intro: Statistical Inference</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#likelihood">Likelihood</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-two-coins">Example: Two coins</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-unknown-coin-infinetely-many-coins">Example: Unknown coin / Infinetely many coins</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#maximum-likelihood-estimator-mle">Maximum Likelihood Estimator: MLE</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#likelihood">Likelihood</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-two-coins">Example: Two coins</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-unknown-coin-infinetely-many-coins">Example: Unknown coin / Infinetely many coins</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#maximum-likelihood-estimator-mle">Maximum Likelihood Estimator: MLE</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mle-estimator">MLE estimator</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#biased-coin-bernoulli-trial">Biased Coin (Bernoulli Trial)</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analytical-solution">Analytical Solution</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-simulation">Numerical simulation.</a></li>
@@ -489,8 +491,18 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mle-estimates-for-a-gaussian">MLE estimates for a Gaussian:</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-regression">Linear Regression</a></li>
 </ul>
 </li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#method-of-moments">Method of moments</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bernoulli-distribution">Bernoulli Distribution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gamma-distribution">Gamma Distribution</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Method of moments</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#other-estimators">Other estimators</a></li>
 </ul>
 
             </nav>
@@ -503,8 +515,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="estimators-and-the-maximum-likelihood">
-<h1>Estimators and the Maximum Likelihood<a class="headerlink" href="#estimators-and-the-maximum-likelihood" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="estimators">
+<h1>Estimators<a class="headerlink" href="#estimators" title="Permalink to this heading">#</a></h1>
 <p><em><strong>Readings: Emile-Geay 5.I-5.IV</strong></em></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -514,7 +526,6 @@ document.write(`
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="c1"># These are some parameters to make figures nice (and big)</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">16</span><span class="p">,</span><span class="mi">8</span>
 <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;legend.fontsize&#39;</span><span class="p">:</span> <span class="s1">&#39;x-large&#39;</span><span class="p">,</span>
           <span class="s1">&#39;figure.figsize&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span>
           <span class="s1">&#39;axes.labelsize&#39;</span><span class="p">:</span> <span class="s1">&#39;x-large&#39;</span><span class="p">,</span>
@@ -558,12 +569,14 @@ x_{M}
 <p>Note that while the data is often given (i.e. a set of field obsevations or lab measurements), it is up to the scientist to choose an appropriate random process to model the data.</p>
 </div>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="likelihood">
-<h1>Likelihood<a class="headerlink" href="#likelihood" title="Permalink to this heading">#</a></h1>
+<section class="tex2jax_ignore mathjax_ignore" id="maximum-likelihood-estimator-mle">
+<h1>Maximum Likelihood Estimator: MLE<a class="headerlink" href="#maximum-likelihood-estimator-mle" title="Permalink to this heading">#</a></h1>
+<section id="likelihood">
+<h2>Likelihood<a class="headerlink" href="#likelihood" title="Permalink to this heading">#</a></h2>
 <p>The probability distribution <span class="math notranslate nohighlight">\(p(x|\theta)\)</span> of the data given parameters is called a likelihood. It describes how likely it is that we would observe the data <span class="math notranslate nohighlight">\(x\)</span> given parameter <span class="math notranslate nohighlight">\(\theta\)</span>.</p>
 <section id="example-two-coins">
-<h2>Example: Two coins<a class="headerlink" href="#example-two-coins" title="Permalink to this heading">#</a></h2>
-<p><em><strong>Example: two coins</strong></em> Your have two coins. Each coin has a probability <span class="math notranslate nohighlight">\(\theta\)</span> of hiting heads.Note that usually the probability of success for a bernoulli trial is denoted by <span class="math notranslate nohighlight">\(p\)</span>, but we will use <span class="math notranslate nohighlight">\(\theta\)</span> here since that is the general notation for a parameter.</p>
+<h3>Example: Two coins<a class="headerlink" href="#example-two-coins" title="Permalink to this heading">#</a></h3>
+<p>Your have two coins. Each coin has a probability <span class="math notranslate nohighlight">\(\theta\)</span> of hiting heads.Note that usually the probability of success for a bernoulli trial is denoted by <span class="math notranslate nohighlight">\(p\)</span>, but we will use <span class="math notranslate nohighlight">\(\theta\)</span> here since that is the general notation for a parameter.</p>
 <p>One is fair (probability of heads is <span class="math notranslate nohighlight">\(\theta_1=0.5\)</span>) and one biased (probability of hitting heads is <span class="math notranslate nohighlight">\(\theta_2=0.65\)</span>). You close your eyes, and ask your friend to toss one of the coins 11 times, and write down the results, denoting heads by 1 and tails by 0. The outcome of the throw is:</p>
 <div class="math notranslate nohighlight">
 \[x=[0,1,0,1,1,1,0,0,1,1]\]</div>
@@ -610,7 +623,7 @@ p(x|theta_2)=0.0003961141546044921
 <p>So the likelihood that the data was generated by a coin with <span class="math notranslate nohighlight">\(\theta=\theta_1=0.5\)</span> is higher than the likelihood that it was generated by a coin with <span class="math notranslate nohighlight">\(\theta=\theta_2=0.65\)</span>.</p>
 </section>
 <section id="example-unknown-coin-infinetely-many-coins">
-<h2>Example: Unknown coin / Infinetely many coins<a class="headerlink" href="#example-unknown-coin-infinetely-many-coins" title="Permalink to this heading">#</a></h2>
+<h3>Example: Unknown coin / Infinetely many coins<a class="headerlink" href="#example-unknown-coin-infinetely-many-coins" title="Permalink to this heading">#</a></h3>
 <p>You
 went to the novelty store and bought yourself a biased coin. But you don’t know the actual probability of it hitting heads or tails, and you want to estimate it. So you throw it N times and you record the outcome as <span class="math notranslate nohighlight">\(1\)</span>s (heads) or <span class="math notranslate nohighlight">\(0\)</span> (tails). This gives you your data vector <span class="math notranslate nohighlight">\(\mathbf{x}\)</span>.</p>
 <p>You can think of it as asking the questions: Let’s say there are infinetely many coins, spanning the range of possible <span class="math notranslate nohighlight">\(\theta\)</span>s from <span class="math notranslate nohighlight">\(0\)</span> to <span class="math notranslate nohighlight">\(1\)</span>. Which of these coins is most likely to have generated this data? So, rather than computing the likelihood for just two coins with known <span class="math notranslate nohighlight">\(\theta_1\)</span> and]<span class="math notranslate nohighlight">\(\theta_2\)</span> as in the previous example, we can compute it for any theta. If the data <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> contains <span class="math notranslate nohighlight">\(N_1\)</span> ones and <span class="math notranslate nohighlight">\(N_0\)</span> zeros, we can compute the likelihood as:</p>
@@ -618,8 +631,8 @@ went to the novelty store and bought yourself a biased coin. But you don’t kno
 \[\mathcal{L}=p(x|\theta)=\theta^{N_1}\cdot (1-\theta)^{N_0}\]</div>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="maximum-likelihood-estimator-mle">
-<h1>Maximum Likelihood Estimator: MLE<a class="headerlink" href="#maximum-likelihood-estimator-mle" title="Permalink to this heading">#</a></h1>
+<section id="mle-estimator">
+<h2>MLE estimator<a class="headerlink" href="#mle-estimator" title="Permalink to this heading">#</a></h2>
 <p>A very common way to estimate <span class="math notranslate nohighlight">\(\theta\)</span> is via the <em><strong>maximum likelihood estimator (MLE)</strong></em>. This is the value of <span class="math notranslate nohighlight">\(\theta\)</span> that maximizes the likelihood of obtaining the observed data:</p>
 <div class="math notranslate nohighlight">
 \[\hat{\theta}_{MLE}=\text{argmax}_\theta \left[ \;p(\mathbf{x}|\theta)\;\right]\]</div>
@@ -629,6 +642,7 @@ went to the novelty store and bought yourself a biased coin. But you don’t kno
 <p>In case the parameter vector contains more than one parameters, then the likelihood equations become:</p>
 <div class="math notranslate nohighlight">
 \[\frac{\partial \mathcal{L}}{\partial \theta_i}=0\]</div>
+</section>
 <section id="biased-coin-bernoulli-trial">
 <h2>Biased Coin (Bernoulli Trial)<a class="headerlink" href="#biased-coin-bernoulli-trial" title="Permalink to this heading">#</a></h2>
 <section id="analytical-solution">
@@ -668,7 +682,7 @@ went to the novelty store and bought yourself a biased coin. But you don’t kno
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.64
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.67
 </pre></div>
 </div>
 </div>
@@ -715,10 +729,10 @@ went to the novelty store and bought yourself a biased coin. But you don’t kno
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x1431d8b90&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x149f41a00&gt;
 </pre></div>
 </div>
-<img alt="../../_images/e4b34943d5b473f51a24c5d218e073b0077e5454f68bc61504913bd8bbfc8a05.png" src="../../_images/e4b34943d5b473f51a24c5d218e073b0077e5454f68bc61504913bd8bbfc8a05.png" />
+<img alt="../../_images/d13993ef2352f416ab1640002a451d73622dfdf3a93c8edc49ba8c50c701adc2.png" src="../../_images/d13993ef2352f416ab1640002a451d73622dfdf3a93c8edc49ba8c50c701adc2.png" />
 </div>
 </div>
 </section>
@@ -755,17 +769,17 @@ went to the novelty store and bought yourself a biased coin. But you don’t kno
 <span class="n">ax</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">theta_hat_mle_vec</span><span class="p">),</span><span class="n">ymin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">ymax</span><span class="o">=</span><span class="n">nsamples</span><span class="o">/</span><span class="mi">5</span><span class="p">,</span><span class="n">colors</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;expected theta mle&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;sample variance&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;number of realizations&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Distribution of Sample variance (sample size=100 )&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Distribution of theta_mle (sample size=100 )&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 <span class="c1">#ax.set_xlim(left=0,right=0.5)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x12f81acf0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x1495c9a00&gt;
 </pre></div>
 </div>
-<img alt="../../_images/0b7edcc2c0046c274532a2697b70e234692f9e1b8f918365f641ad65512e6be8.png" src="../../_images/0b7edcc2c0046c274532a2697b70e234692f9e1b8f918365f641ad65512e6be8.png" />
+<img alt="../../_images/42770bb0ccddb033f1fe913822062ed6c1bde45e5cdfcb8bff37bd49be29c6a8.png" src="../../_images/42770bb0ccddb033f1fe913822062ed6c1bde45e5cdfcb8bff37bd49be29c6a8.png" />
 </div>
 </div>
 </section>
@@ -782,8 +796,13 @@ went to the novelty store and bought yourself a biased coin. But you don’t kno
 <section id="likelihood-as-a-function-of-the-mean">
 <h3>Likelihood as a function of the mean.<a class="headerlink" href="#likelihood-as-a-function-of-the-mean" title="Permalink to this heading">#</a></h3>
 <p>In the cell below we will visualize how the likelihood of a dataset <span class="math notranslate nohighlight">\(x\)</span> containing <span class="math notranslate nohighlight">\(N=20\)</span> draws changes as a function of <span class="math notranslate nohighlight">\(\mu\)</span>. At first, we will keep <span class="math notranslate nohighlight">\(\sigma\)</span> fixed when computing <span class="math notranslate nohighlight">\(p(x|\mu,\sigma)\)</span>.
-We will use synthetic data, where we provide <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(\sigma\)</span>.</p>
-<div class="cell docutils container">
+We will use synthetic data, where we set <span class="math notranslate nohighlight">\(\mu=5\)</span> and <span class="math notranslate nohighlight">\(\sigma=1\)</span>.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># set parameters for synthetic data </span>
 <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="mi">233421</span><span class="p">)</span>
@@ -791,58 +810,53 @@ We will use synthetic data, where we provide <span class="math notranslate nohig
 <span class="n">sig_true</span><span class="o">=</span><span class="mi">1</span>
 
 <span class="c1"># generate synthetic data</span>
-
 <span class="n">x_var</span><span class="o">=</span><span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="n">mu_true</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">sig_true</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="o">=</span><span class="n">x_var</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">Nsamples</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[5.73541792 4.59128669 5.67946042 5.66998442 6.2729418  7.11995521
- 5.59525591 6.13115623 1.95810532 6.40934121 4.98045955 6.24052625
- 3.23506281 7.29882568 6.69172193 5.13690828 5.23322762 3.53067353
- 5.1935833  5.92951912]
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Nsamples</span><span class="o">=</span><span class="mi">20</span>
 <span class="n">x</span><span class="o">=</span><span class="n">x_var</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">Nsamples</span><span class="p">)</span>
-<span class="c1"># take a guess</span>
-
-<span class="n">loc</span><span class="o">=</span><span class="mi">5</span>
-<span class="n">scale</span><span class="o">=</span><span class="mi">1</span>
-
-<span class="n">pdf</span><span class="o">=</span><span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x_support</span><span class="p">,</span><span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">,</span><span class="n">scale</span><span class="o">=</span><span class="n">scale</span><span class="p">)</span>
-
-<span class="n">out</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="n">density</span><span class="o">=</span><span class="s1">&#39;true&#39;</span><span class="p">)</span>
-<span class="n">bins</span><span class="o">=</span><span class="p">(</span><span class="n">out</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">out</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">:])</span><span class="o">/</span><span class="mi">2</span>
-<span class="n">freq</span><span class="o">=</span><span class="n">out</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="n">density</span><span class="o">=</span><span class="s1">&#39;true&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">bins</span><span class="p">,</span><span class="n">freq</span><span class="p">,</span><span class="s1">&#39;ro&#39;</span><span class="p">)</span>
-<span class="c1">#plt.plot(x_support,pdf,&#39;k&#39;)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;x=&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.0, 10.0)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x=[3.15428269 3.56344798 4.15678082 4.60150597 6.00869238 6.07743715
+ 4.62977183 5.70097657 3.93950262 5.82044776 3.75209909 5.00711172
+ 3.62605355 6.13627937 6.12053651 5.11623101 5.0049666  4.87704149
+ 6.36864804 5.36453595]
 </pre></div>
 </div>
-<img alt="../../_images/3936b67d9707764e279e6bf7c7767235476cdd79928939f868f9b5a829a94336.png" src="../../_images/3936b67d9707764e279e6bf7c7767235476cdd79928939f868f9b5a829a94336.png" />
 </div>
 </div>
-<div class="cell docutils container">
+<p>Let’s visualize these draws:</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">figure</span><span class="p">,</span><span class="n">axs</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">[</span><span class="mi">6</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)),</span><span class="s1">&#39;r.&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">([])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$x_i$&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../../_images/63dd58c45d330127a87cfbc20477484c0b9b1def0a64c85c4e674558371cddc5.png" src="../../_images/63dd58c45d330127a87cfbc20477484c0b9b1def0a64c85c4e674558371cddc5.png" />
+</div>
+</div>
+<p>To compute the likelihood, we need to estimate <span class="math notranslate nohighlight">\(p(\mathbf{x}|\theta)\)</span>, which, if the <span class="math notranslate nohighlight">\(x_i\)</span> are independent, becomes <span class="math notranslate nohighlight">\(\prod_i(x_i|\theta)\)</span></p>
+<p>For each <span class="math notranslate nohighlight">\(x_i\)</span> from the figure above, we can visualize it’s likelihood <span class="math notranslate nohighlight">\(\prod_i(x_i|\theta)\)</span> on the y-axis, where the likelihood is just equal the pdf of a gaussian with parameters <span class="math notranslate nohighlight">\(\theta=\{\mu,\sigma\}\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[p(x_i|\theta)=\frac{1}{\sqrt{2\pi\sigma^2}}\exp\left[-\frac{1}{2}\left(\frac{x_i-\mu}{\sigma}\right)^2\right]\]</div>
+<p>If we assume <span class="math notranslate nohighlight">\(\sigma\)</span> is known and choose four possible values of <span class="math notranslate nohighlight">\(\mu\)</span> we can use the <span class="math notranslate nohighlight">\(y\)</span>-axis to draw the likelihood of each data point <span class="math notranslate nohighlight">\(x_i\)</span>:</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># set parameters for synthetic data </span>
 <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="mi">233421</span><span class="p">)</span>
@@ -854,99 +868,7 @@ We will use synthetic data, where we provide <span class="math notranslate nohig
 <span class="n">x</span><span class="o">=</span><span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="n">mu_true</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">sig_true</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="n">Nsamples</span><span class="p">)</span>
 
 <span class="c1"># we will evalute the likelihood for four values of mu. </span>
-<span class="n">mu_vec</span><span class="o">=</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]</span>
-
-<span class="c1"># make a plot</span>
-<span class="n">figure</span><span class="p">,</span><span class="n">axs</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">[</span><span class="mi">12</span><span class="p">,</span><span class="mi">12</span><span class="p">])</span>
-
-<span class="c1"># points at which to plot the df</span>
-<span class="n">x_support</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
-
-<span class="c1">#cycle over the four possible values of mu</span>
-<span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
-    
-    <span class="c1"># plot the probability of a gaussian</span>
-    <span class="n">pdf</span><span class="o">=</span><span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x_support</span><span class="p">,</span><span class="n">loc</span><span class="o">=</span><span class="n">mu_vec</span><span class="p">[</span><span class="n">j</span><span class="p">],</span><span class="n">scale</span><span class="o">=</span><span class="n">sig_true</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_support</span><span class="p">,</span><span class="n">pdf</span><span class="p">,</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
-
-    <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="n">density</span><span class="o">=</span><span class="s1">&#39;true&#39;</span><span class="p">)</span>
-    
-    <span class="c1">## for every sample in the data x, plot the data and the value of the likelihood for that data point</span>
-    <span class="c1">#for k in range(len(x)):</span>
-    <span class="c1">#    plt.plot([x[k],x[k]],[0,stats.norm.pdf(x[k],loc=mu_vec[j],scale=sig_true)],&#39;r-o&#39;)</span>
-        
-    <span class="c1">#compute the total log likelihood</span>
-    <span class="n">loglik</span><span class="o">=</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">loc</span><span class="o">=</span><span class="n">mu_vec</span><span class="p">[</span><span class="n">j</span><span class="p">],</span><span class="n">scale</span><span class="o">=</span><span class="n">sig_true</span><span class="p">))))</span>
-    
-    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x - values of the draws&#39;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;pdf p(x)&#39;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;mu=&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">mu_vec</span><span class="p">[</span><span class="n">j</span><span class="p">]))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../_images/94026e8f601de082eb5bf9999da8821026879c3e1471fa4b55c4eea08efc8ebe.png" src="../../_images/94026e8f601de082eb5bf9999da8821026879c3e1471fa4b55c4eea08efc8ebe.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># set parameters for synthetic data </span>
-<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="mi">233421</span><span class="p">)</span>
-<span class="n">mu_true</span><span class="o">=</span><span class="mi">5</span>
-<span class="n">sig_true</span><span class="o">=</span><span class="mi">1</span>
-
-<span class="c1"># generate synthetic data</span>
-<span class="n">Nsamples</span><span class="o">=</span><span class="mi">20</span>
-<span class="n">x</span><span class="o">=</span><span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="n">mu_true</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">sig_true</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="n">Nsamples</span><span class="p">)</span>
-
-<span class="c1"># we will evalute the likelihood for four values of mu. </span>
-<span class="n">mu_vec</span><span class="o">=</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]</span>
-
-<span class="c1"># make a plot</span>
-<span class="n">figure</span><span class="p">,</span><span class="n">axs</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">[</span><span class="mi">12</span><span class="p">,</span><span class="mi">12</span><span class="p">])</span>
-
-<span class="c1"># points at which to plot the df</span>
-<span class="n">x_support</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
-
-<span class="c1">#cycle over the four possible values of mu</span>
-<span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
-    
-    <span class="c1"># plot the probability of a gaussian</span>
-    <span class="n">pdf</span><span class="o">=</span><span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x_support</span><span class="p">,</span><span class="n">loc</span><span class="o">=</span><span class="n">mu_vec</span><span class="p">[</span><span class="n">j</span><span class="p">],</span><span class="n">scale</span><span class="o">=</span><span class="n">sig_true</span><span class="p">)</span>
-    <span class="c1">#plt.plot(x_support,pdf,&#39;k&#39;)</span>
-    
-    <span class="c1"># for every sample in the data x, plot the data and the value of the likelihood for that data point</span>
-    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)):</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">x</span><span class="p">[</span><span class="n">k</span><span class="p">],</span><span class="n">x</span><span class="p">[</span><span class="n">k</span><span class="p">]],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span><span class="s1">&#39;r-o&#39;</span><span class="p">)</span>
-        
-    <span class="c1">#compute the total log likelihood</span>
-    <span class="n">loglik</span><span class="o">=</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">loc</span><span class="o">=</span><span class="n">mu_vec</span><span class="p">[</span><span class="n">j</span><span class="p">],</span><span class="n">scale</span><span class="o">=</span><span class="n">sig_true</span><span class="p">))))</span>
-    
-    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x - values of the draws&#39;</span><span class="p">)</span>
-    <span class="c1">#plt.ylabel(&#39;likelihood p(x | mu,sigma)&#39;)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;mu=&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">mu_vec</span><span class="p">[</span><span class="n">j</span><span class="p">])</span><span class="o">+</span><span class="s1">&#39;;  loglik=&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">loglik</span><span class="p">,</span><span class="mi">1</span><span class="p">)))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../_images/67bd81d4a8cb0ccfdcf8275c919bef0ad6297b2297c940c17f67f488364c0894.png" src="../../_images/67bd81d4a8cb0ccfdcf8275c919bef0ad6297b2297c940c17f67f488364c0894.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># set parameters for synthetic data </span>
-<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="mi">233421</span><span class="p">)</span>
-<span class="n">mu_true</span><span class="o">=</span><span class="mi">5</span>
-<span class="n">sig_true</span><span class="o">=</span><span class="mi">1</span>
-
-<span class="c1"># generate synthetic data</span>
-<span class="n">Nsamples</span><span class="o">=</span><span class="mi">20</span>
-<span class="n">x</span><span class="o">=</span><span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="n">mu_true</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">sig_true</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="n">Nsamples</span><span class="p">)</span>
-
-<span class="c1"># we will evalute the likelihood for four values of mu. </span>
-<span class="n">mu_vec</span><span class="o">=</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]</span>
+<span class="n">mu_vec</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">7</span><span class="p">]</span>
 
 <span class="c1"># make a plot</span>
 <span class="n">figure</span><span class="p">,</span><span class="n">axs</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">[</span><span class="mi">12</span><span class="p">,</span><span class="mi">12</span><span class="p">])</span>
@@ -969,23 +891,31 @@ We will use synthetic data, where we provide <span class="math notranslate nohig
     <span class="c1">#compute the total log likelihood</span>
     <span class="n">loglik</span><span class="o">=</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">loc</span><span class="o">=</span><span class="n">mu_vec</span><span class="p">[</span><span class="n">j</span><span class="p">],</span><span class="n">scale</span><span class="o">=</span><span class="n">sig_true</span><span class="p">))))</span>
     
-    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x - values of the draws&#39;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;likelihood p(x | mu,sigma)&#39;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;mu=&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">mu_vec</span><span class="p">[</span><span class="n">j</span><span class="p">])</span><span class="o">+</span><span class="s1">&#39;;  loglik=&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">loglik</span><span class="p">,</span><span class="mi">1</span><span class="p">)))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$x_i$ &#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$p(x_i | \mu,\sigma)$&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\mu$=&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">mu_vec</span><span class="p">[</span><span class="n">j</span><span class="p">])</span><span class="o">+</span><span class="s1">&#39;;  loglik=&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">loglik</span><span class="p">,</span><span class="mi">1</span><span class="p">)))</span>
+    
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="../../_images/f3a1ab00cef164722c5e9daaf8844f307a63abbad5286f7a522b9d0c4df824b8.png" src="../../_images/f3a1ab00cef164722c5e9daaf8844f307a63abbad5286f7a522b9d0c4df824b8.png" />
+<img alt="../../_images/c88675c18c60a268996b7fff93bba727a0fef6a02878c9a6166e31397300a5d2.png" src="../../_images/c88675c18c60a268996b7fff93bba727a0fef6a02878c9a6166e31397300a5d2.png" />
 </div>
 </div>
-<p>Notice that when the guess for <span class="math notranslate nohighlight">\(\mu\)</span> is much smaller than the truth, the likelihood of obtaining the data is small, because a lot of the draws are in the tail of the distribution, where the probability is low.</p>
+<p>The title of the figure includes an estimate of the total log-likelihood for the different values of <span class="math notranslate nohighlight">\(\mu\)</span>.</p>
+<p>Notice that when the guess for <span class="math notranslate nohighlight">\(\mu\)</span> is much smaller than the truth, the log-likelihood (and thus the likelihood) of obtaining the data is small.</p>
 </section>
 <section id="likelihood-as-a-function-of-scale">
 <h3>Likelihood as a function of scale<a class="headerlink" href="#likelihood-as-a-function-of-scale" title="Permalink to this heading">#</a></h3>
 <p>In the cell below we will visualize how the likelihood of a dataset <span class="math notranslate nohighlight">\(x\)</span> containing <span class="math notranslate nohighlight">\(N=20\)</span> draws changes as a function of <span class="math notranslate nohighlight">\(\sigma\)</span>. At first, we will keep <span class="math notranslate nohighlight">\(\sigma\)</span> fixed when computing <span class="math notranslate nohighlight">\(p(x|\mu,\sigma)\)</span>.
 We will use synthetic data, where we provide <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(\sigma\)</span>.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="mi">233421</span><span class="p">)</span>
 <span class="n">mu_true</span><span class="o">=</span><span class="mi">5</span>
@@ -995,7 +925,7 @@ We will use synthetic data, where we provide <span class="math notranslate nohig
 <span class="n">x</span><span class="o">=</span><span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="n">mu_true</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">sig_true</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="n">Nsamples</span><span class="p">)</span>
 
 
-<span class="n">sig_vec</span><span class="o">=</span><span class="p">[</span><span class="mf">0.5</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+<span class="n">sig_vec</span><span class="o">=</span><span class="p">[</span><span class="mf">0.25</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span>
 
 <span class="n">figure</span><span class="p">,</span><span class="n">axs</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">[</span><span class="mi">12</span><span class="p">,</span><span class="mi">12</span><span class="p">])</span>
 <span class="n">x_support</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
@@ -1007,7 +937,7 @@ We will use synthetic data, where we provide <span class="math notranslate nohig
     <span class="c1"># plot the pdf of a gaussian </span>
     <span class="n">pdf</span><span class="o">=</span><span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x_support</span><span class="p">,</span><span class="n">loc</span><span class="o">=</span><span class="n">mu_true</span><span class="p">,</span><span class="n">scale</span><span class="o">=</span><span class="n">sig_vec</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_support</span><span class="p">,</span><span class="n">pdf</span><span class="p">,</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">1.75</span><span class="p">)</span>
     
     <span class="c1"># for every sample in the data x, plot the data and the value of the likelihood for that data point</span>
     <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)):</span>
@@ -1016,27 +946,169 @@ We will use synthetic data, where we provide <span class="math notranslate nohig
     <span class="c1">#compute the total likelihood</span>
     <span class="n">loglik</span><span class="o">=</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">loc</span><span class="o">=</span><span class="n">mu_true</span><span class="p">,</span><span class="n">scale</span><span class="o">=</span><span class="n">sig_vec</span><span class="p">[</span><span class="n">j</span><span class="p">]))))</span>
     
-    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x - values of the draws&#39;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;likelihood p(x | mu,sigma)&#39;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;sigma=&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">sig_vec</span><span class="p">[</span><span class="n">j</span><span class="p">])</span><span class="o">+</span><span class="s1">&#39;;  loglik=&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">loglik</span><span class="p">,</span><span class="mi">1</span><span class="p">)))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$x_i$ &#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$p(x_i | \mu,\sigma)$&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\mu$=&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">mu_vec</span><span class="p">[</span><span class="n">j</span><span class="p">])</span><span class="o">+</span><span class="s1">&#39;;  loglik=&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">loglik</span><span class="p">,</span><span class="mi">1</span><span class="p">)))</span>
+    
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
-<img alt="../../_images/13d325007cd3bc4c38ca5f26ae9e110382419fd7b7560d92d1919ef23466d05b.png" src="../../_images/13d325007cd3bc4c38ca5f26ae9e110382419fd7b7560d92d1919ef23466d05b.png" />
+<img alt="../../_images/3775f52233a0876c90e0a4b98404170f9acbc8e2eddef6d9e1b1fab8ad34efe5.png" src="../../_images/3775f52233a0876c90e0a4b98404170f9acbc8e2eddef6d9e1b1fab8ad34efe5.png" />
 </div>
 </div>
 </section>
 <section id="mle-estimates-for-a-gaussian">
 <h3>MLE estimates for a Gaussian:<a class="headerlink" href="#mle-estimates-for-a-gaussian" title="Permalink to this heading">#</a></h3>
-<p>We can easily check that for data drawn from a gaussian distribution, the MLE estimates are:</p>
+<p>For a Gaussian distribution</p>
 <div class="math notranslate nohighlight">
-\[\hat\mu_{mle}=\frac{1}{n}\sum_{i=1}^n X_i\]</div>
+\[\log\mathcal{L}=-\frac{n}{2}\ln\left(2\pi\right)-n\ln\sigma-\frac{1}{2\sigma^{2}}\sum\left(x_{i}-\mu\right)^{2}\]</div>
+<p>and the MLE estimates of <span class="math notranslate nohighlight">\(\mu\)</span>,<span class="math notranslate nohighlight">\(\theta\)</span> are the ones that satisfy:</p>
 <div class="math notranslate nohighlight">
-\[\hat\sigma_{mle}=\frac{1}{n}\sum_{i=1}^n(X_i-\hat\mu_{mle})^2\]</div>
+\[\begin{split}\begin{cases}
+\frac{\partial\mathcal{L}}{\partial\,\mu}\left(\hat{\mu}{}_{mle},\hat{\sigma}{}_{mle}\right)=0\\
+\frac{\partial\mathcal{L}}{\partial\sigma}\left(\hat{\mu}{}_{mle},\hat{\sigma}{}_{mle}\right)=0
+\end{cases}\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{cases}
+\frac{\partial\mathcal{\log L}}{\partial\,\mu}\left(\hat{\mu}{}_{mle},\hat{\sigma}{}_{mle}\right)=0\\
+\frac{\partial\log\mathcal{L}}{\partial\sigma}\left(\hat{\mu}{}_{mle},\hat{\sigma}{}_{mle}\right)=0
+\end{cases}\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{cases}
+\frac{1}{\hat{\sigma}_{mle}^{2}}\sum_{i}\left(x_{i}-\hat{\mu}_{mle}\right)=0\\
+-n\frac{1}{\hat{\sigma}_{mle}}-\frac{-2}{2\hat{\sigma}_{mle}^{3}}\sum_{i}\left(x_{i}-\hat{\mu}_{mle}\right)^{2}=0
+\end{cases}\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{cases}
+\hat{\mu}_{mle}=\frac{1}{n}\sum_{i=1}^{n}x_{i}=\overline{x}_{n}\\
+\hat{\sigma}_{mle}^{2}=\frac{1}{n}\sum_{i=1}^{n}\left(x_{i}-\hat{\mu}_{mle}\right)^{2}=s_{n}
+\end{cases}\end{split}\]</div>
 <p>which are the sample mean and the (biased) sample variance.</p>
 </section>
 </section>
+<section id="linear-regression">
+<h2>Linear Regression<a class="headerlink" href="#linear-regression" title="Permalink to this heading">#</a></h2>
+<p>For the examples considered so far, the data is drawn directly from a standard distribution. But the MLE is applicable to more complex processes.</p>
+<p>For example, we might have data that is linearly, dependent on another process. increasing with time. We might model such a process:</p>
+<div class="math notranslate nohighlight">
+\[ Y=\beta X + \varepsilon\]</div>
+<p>For example, <span class="math notranslate nohighlight">\(X,Y\)</span> might be things we measure in the lab, or in the field. e.g. <span class="math notranslate nohighlight">\(X\)</span> could be temperature, and <span class="math notranslate nohighlight">\(Y\)</span> could be an isotopic ratio that depends on temperature, whereas <span class="math notranslate nohighlight">\(\varepsilon\)</span> can be noise or measurement error, modelled as a gaussian ranodm variable.</p>
+<p>As we shall see soon, we can still use the same approach to estimate the values of <span class="math notranslate nohighlight">\(\beta\)</span> as the value that maximizes the likelihood:</p>
+<div class="math notranslate nohighlight">
+\[\hat{\beta}_{mle}=\arg \max_\beta \left[\log \mathcal L(\beta)\right]=\arg \max_\beta \left[-\sum{y_i-\beta x_i}^2 \right]\]</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="method-of-moments">
+<h1>Method of moments<a class="headerlink" href="#method-of-moments" title="Permalink to this heading">#</a></h1>
+<p>We can build estimators in other ways. For example, we can use the
+method of moments, where we simply estimate the distribution by matching
+the process moments with the sample moments. This might be more evident
+with a few examples:</p>
+<section id="bernoulli-distribution">
+<h2>Bernoulli Distribution<a class="headerlink" href="#bernoulli-distribution" title="Permalink to this heading">#</a></h2>
+<p>Let’s say we have a sample of size <span class="math notranslate nohighlight">\(n\)</span>, <span class="math notranslate nohighlight">\(\mathbf{x}=\left\{ x_{1},x_{2},\ldots,x_{n}\right\}\)</span>  drawm from a coin with probablity
+<span class="math notranslate nohighlight">\(p\)</span> of hitting heads, <span class="math notranslate nohighlight">\(X\sim Bern\left(p\right)\)</span>.  We want to estimate the value of the parameter <span class="math notranslate nohighlight">\(p\)</span>. The first
+moment of the process (or population) is</p>
+<div class="math notranslate nohighlight">
+\[ \mu=E\left(X\right)=p \]</div>
+<p>And the sample mean is:</p>
+<div class="math notranslate nohighlight">
+\[ \overline{x}_{n}=\frac{1}{n}\sum_{i=1}^{n}x_{i}=\frac{n_{1}}{n_{0}+n_{1}} \]</div>
+<p>where <span class="math notranslate nohighlight">\(n_{0}\)</span> and <span class="math notranslate nohighlight">\(n_{1}\)</span> are the number of tails (zeros) and heads
+(ones). The method of moments involves matching the process and sample moments. Setting <span class="math notranslate nohighlight">\(\mu=\overline{x}_{n}\)</span>, we get</p>
+<div class="math notranslate nohighlight">
+\[ \hat{p}_{mm}=\frac{n_{1}}{n_{0}+n_{1}} \]</div>
+<p>Notice that in this case, the methods of moment estimator <span class="math notranslate nohighlight">\(\hat{p}_{mm}\)</span>
+is the same as the maximum likelihood estimator <span class="math notranslate nohighlight">\(\hat{p}_{mle}\)</span>.</p>
+<p>The same holds for a Gaussian distribution, where <span class="math notranslate nohighlight">\(\hat{\mu}_{mle}=\overline{x}_{n}\)</span>
+and <span class="math notranslate nohighlight">\(\hat{\sigma}_{mle}=s_{n}\)</span>. But that is not universally true:</p>
+</section>
+<section id="gamma-distribution">
+<h2>Gamma Distribution<a class="headerlink" href="#gamma-distribution" title="Permalink to this heading">#</a></h2>
+<section id="id1">
+<h3>Method of moments<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<p>The process/population moments of <span class="math notranslate nohighlight">\(X\sim\Gamma\left(\alpha,\beta\right)\)</span>
+are</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{cases}
+m_{1}=E(X)=\mu=\frac{\alpha}{\beta}\\
+m_{2}=E\left(X^{2}\right)=E\left(X^{2}\right)-E(X)^{2}+E(X)^{2}=\sigma^{2}+\mu^{2}=\frac{\alpha}{\beta^{2}}+\frac{\alpha^{2}}{\beta^{2}}
+\end{cases} \end{split}\]</div>
+<p>By matching these with sample moments we get the equation for the
+method of moments estimator:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{cases}
+\hat{\mu}=\overline{x}_{n}=\frac{\hat{\alpha}_{mm}}{\hat{\beta}_{mm}}\\
+\hat{\sigma}^{2}+\hat{\mu}^{2}=\overline{x}_{n}^{2}+s_{n}=\frac{\hat{\alpha}_{mm}^{2}}{\hat{\beta}_{mm}^{2}}+\frac{\hat{\alpha}_{mm}}{\hat{\beta}_{mm}^{2}}
+\end{cases}
+\end{split}\]</div>
+<p>which yields</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{cases}
+\hat{\alpha}_{mm}=\frac{\overline{x}_{n}^{2}}{s_{n}}\\
+\hat{\beta}_{mm}=\frac{\overline{x}_{n}}{s_{n}}
+\end{cases}
+\end{split}\]</div>
+<p>By contrast, the maximum likelihood estimator is obtained from maximizing
+the likelihood:</p>
+<div class="math notranslate nohighlight">
+\[
+\log\mathcal{L}\left(\alpha,\beta\right)=\sum_{i=1}^{n}\left(-\log\Gamma(\alpha)-\alpha\log\beta+\left(\alpha-1\right)\log\left(x_{i}-x_{o}\right)-\frac{\left(x_{i}-x_{o}\right)}{\beta}\right)
+\]</div>
+<p>and the mle estimators for <span class="math notranslate nohighlight">\(\alpha\)</span> and <span class="math notranslate nohighlight">\(\beta\)</span> are obtained by
+setting the partial derivatives to zero. Thus the mle estimators satsify</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{cases}
+\frac{\partial\mathcal{L}}{\partial\alpha}\left(\hat{\alpha}{}_{mle},\hat{\beta}{}_{mle}\right)=0\\
+\frac{\partial L}{\partial\beta}\left(\hat{\alpha}{}_{mle},\hat{\beta}{}_{mle}\right)=0
+\end{cases}
+\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{cases}
+n\left(\ln\hat{\beta}{}_{mle}-\frac{d}{d\alpha}\ln\Gamma\left(\hat{\alpha}{}_{mle}\right)\right)+\sum_{i=1}^{n}\ln\left(x_{i}\right)=0\\
+n\frac{\hat{\alpha}{}_{mle}}{\hat{\beta}{}_{mle}}-\sum_{i=1}^{n}x_{i}=0
+\end{cases}
+\end{split}\]</div>
+<p>Which can be rewritten as:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{cases}
+n\left(\ln\hat{\alpha}-\ln\overline{x}_{n}-\frac{d}{d\alpha}\ln\Gamma\left(\alpha\right)+\overline{\ln\left(x\right)}_{n}\right)=0\\
+\hat{\beta}{}_{mle}=\frac{\hat{\alpha}{}_{mle}}{\overline{x}_{n}}
+\end{cases}
+\end{split}\]</div>
+<p>Notice that for the gamma distribution, the mle and method of moments
+estimators are not identical. Indeed the stats.gamma.fit function
+in scipy allows one to fit alpha and beta using two different methods.</p>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="other-estimators">
+<h1>Other estimators<a class="headerlink" href="#other-estimators" title="Permalink to this heading">#</a></h1>
+<p>We can build yet other estimators. For example,  We talked about how we can
+approximate (i.e. estimate!) the variance of a random process using
+<span class="math notranslate nohighlight">\(n\)</span> samples <span class="math notranslate nohighlight">\(\left\{ x_{1}\ldots x_{n}\right\} \)</span> as:</p>
+<div class="math notranslate nohighlight">
+\[
+s_{n}=\frac{1}{n}\sum_{i=1}^{n}\left(x_{i}-\overline{x}_{n}\right)^{2}
+\]</div>
+<p>And we talked about how we could alter that estimator using Bessel’s
+correction to yield a different estimator of the variance:</p>
+<div class="math notranslate nohighlight">
+\[
+s_{n-1}=\frac{n}{n-1}s_{n}=\frac{1}{n-1}\sum_{i=1}^{n}\left(x_{i}-\overline{x}_{n}\right)^{2}
+\]</div>
+<p>We talked about how this correction might be desirable (sometimes)
+because it yields an unbiased estimator.</p>
+<p>Later in the course we will spend a lot of time looking at a class of estimators called regularized
+estimators. But in principle, we could build any kind of estimator. For example, we could always estimate the sample-mean of the population to be zero. That would be a very poor estimator, but nonetheless it
+would be an estimator.</p>
 </section>
 
     <script type="text/x-thebe-config">
@@ -1103,14 +1175,15 @@ We will use synthetic data, where we provide <span class="math notranslate nohig
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Estimators and the Maximum Likelihood</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Estimators</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#intro-statistical-inference">Intro: Statistical Inference</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#likelihood">Likelihood</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-two-coins">Example: Two coins</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-unknown-coin-infinetely-many-coins">Example: Unknown coin / Infinetely many coins</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#maximum-likelihood-estimator-mle">Maximum Likelihood Estimator: MLE</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#likelihood">Likelihood</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-two-coins">Example: Two coins</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-unknown-coin-infinetely-many-coins">Example: Unknown coin / Infinetely many coins</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#maximum-likelihood-estimator-mle">Maximum Likelihood Estimator: MLE</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mle-estimator">MLE estimator</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#biased-coin-bernoulli-trial">Biased Coin (Bernoulli Trial)</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analytical-solution">Analytical Solution</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-simulation">Numerical simulation.</a></li>
@@ -1124,8 +1197,18 @@ We will use synthetic data, where we provide <span class="math notranslate nohig
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mle-estimates-for-a-gaussian">MLE estimates for a Gaussian:</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-regression">Linear Regression</a></li>
 </ul>
 </li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#method-of-moments">Method of moments</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bernoulli-distribution">Bernoulli Distribution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gamma-distribution">Gamma Distribution</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Method of moments</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#other-estimators">Other estimators</a></li>
 </ul>
 
   </nav></div>

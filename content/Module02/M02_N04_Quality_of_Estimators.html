@@ -1,0 +1,1179 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Quality of Estimators &#8212; SIMLES: Statistical Inference and Machine Learning for Earth Sciences</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/Module02/M02_N04_Quality_of_Estimators';</script>
+    <link rel="canonical" href="https://cdds-uiuc.github.io/simles-book/content/Module02/M02_N04_Quality_of_Estimators.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Hypothesis Testing" href="M02_N05_HypothesisTesting.html" />
+    <link rel="prev" title="Lab 2.1" href="M02_Lab2-1.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/CDDS_logo.png" class="logo__image only-light" alt="SIMLES: Statistical Inference and Machine Learning for Earth Sciences - Home"/>
+    <script>document.write(`<img src="../../_static/CDDS_logo.png" class="logo__image only-dark" alt="SIMLES: Statistical Inference and Machine Learning for Earth Sciences - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    SIMLES
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Programming.html">Programming</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">1. Probability Models</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Module01/M01_N01_Probability_Recap.html">Basics of probabilities</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Module01/M01_N02_Random_Variables.html">Random Variables</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Module01/M01_Lab1.html">Lab 1.1</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Module01/M01_N03_Moments.html">Moments</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Module01/M01_N04_SampleStatistics.html">Sample Statistics</a></li>
+
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">2. Inference</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="M02_N01_Estimation.html">Estimators</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="M02_N02_Cookbook_Gutenberg-Richter_Law.html">Cookbook: MLE for Gutenberg-Richter Law</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="M02_N03_Cookbook_Precipitation_Return_Times.html">Cookbook: Precipitation return times for Hurricane Harvey</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="M02_Lab2-1.html">Lab 2.1</a></li>
+
+
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Quality of Estimators</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="M02_N05_HypothesisTesting.html">Hypothesis Testing</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="M02_Lab2-2.html">Lab 2.2</a></li>
+
+
+
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/cdds-uiuc/simles-book/master?urlpath=lab/tree/content/Module02/M02_N04_Quality_of_Estimators.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/cdds-uiuc/simles-book/blob/master/content/Module02/M02_N04_Quality_of_Estimators.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/cdds-uiuc/simles-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/cdds-uiuc/simles-book/issues/new?title=Issue%20on%20page%20%2Fcontent/Module02/M02_N04_Quality_of_Estimators.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/content/Module02/M02_N04_Quality_of_Estimators.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Quality of Estimators</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Quality of Estimators</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#monte-carlo-approach-synthetic-data">Monte Carlo Approach / synthetic data</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#one-actual-experiment">One actual experiment</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-sample-mean-and-sample-variance">Example: Sample mean and sample variance</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#uncertainty-quantification-mean-squared-error-bias-and-variance">Uncertainty Quantification: Mean Squared Error, Bias, and Variance.</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mean-squared-error">Mean Squared Error</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bias-variance-decomposition-for-estimates">Bias-Variance Decomposition for estimates</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-gamma-distribution">Example: Gamma distribution</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="quality-of-estimators">
+<h1>Quality of Estimators<a class="headerlink" href="#quality-of-estimators" title="Permalink to this heading">#</a></h1>
+<p><strong>Reading: Emile-Geay 5.IV</strong></p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
+<span class="kn">import</span> <span class="nn">seaborn</span>
+
+<span class="c1"># These are some parameters to make figures nice (and big)</span>
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;legend.fontsize&#39;</span><span class="p">:</span> <span class="s1">&#39;x-large&#39;</span><span class="p">,</span>
+          <span class="s1">&#39;figure.figsize&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span>
+         <span class="s1">&#39;axes.labelsize&#39;</span><span class="p">:</span> <span class="s1">&#39;x-large&#39;</span><span class="p">,</span>
+         <span class="s1">&#39;axes.titlesize&#39;</span><span class="p">:</span><span class="s1">&#39;x-large&#39;</span><span class="p">,</span>
+         <span class="s1">&#39;xtick.labelsize&#39;</span><span class="p">:</span><span class="s1">&#39;x-large&#39;</span><span class="p">,</span>
+         <span class="s1">&#39;ytick.labelsize&#39;</span><span class="p">:</span><span class="s1">&#39;x-large&#39;</span><span class="p">}</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="monte-carlo-approach-synthetic-data">
+<h1>Monte Carlo Approach / synthetic data<a class="headerlink" href="#monte-carlo-approach-synthetic-data" title="Permalink to this heading">#</a></h1>
+<section id="one-actual-experiment">
+<h2>One actual experiment<a class="headerlink" href="#one-actual-experiment" title="Permalink to this heading">#</a></h2>
+<p>Imagine we can design an experiment that takes <span class="math notranslate nohighlight">\(n\)</span> independent and
+identical measurements of a random process <span class="math notranslate nohighlight">\(X\)</span>. Each measurement
+can be considered a draw from the same random process, and thus modelled as an independent and identically distributed random variable <span class="math notranslate nohighlight">\(X_{i}\sim X\)</span>. We then want to model our process <span class="math notranslate nohighlight">\(X\)</span> and estimate some parameter <span class="math notranslate nohighlight">\(\theta\)</span> of the model using an estimator <span class="math notranslate nohighlight">\(\hat{\theta}\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[\hat\theta=f(\{X_i\})\]</div>
+<img src="M02_fig_n_measurements.png" alt="n measurements" style="width:300px;"/>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The quality of an estimator describes <em><strong>how close to the true value of the parameter <span class="math notranslate nohighlight">\(\theta_{true}\)</span> can we get using an estimator <span class="math notranslate nohighlight">\(\hat{\theta}\)</span> and <span class="math notranslate nohighlight">\(n\)</span> data points</strong></em>.</p>
+</div>
+<p>It can be that you are planning an experiment or field expedition and want to know how many
+measurements you need to take. Perhaps you are planning
+a field work to measure precipitation in South America, and
+you need to know how many days you should be out there. Or you are planning on
+going to a number of different sites around the tropical Pacific
+and taking coral samples. Each measurement is going to involve significant
+time and expenses, both in the field, and at home (especially if you
+don’t have your own mass-spectrometer). Understanding how your outcome depends on the statistical tool used and the number of observations is importan.</p>
+<p>It can be the case that <span class="math notranslate nohighlight">\(n\)</span> is fixed by some external factor. Say,
+you already have a dataset, and it contains <span class="math notranslate nohighlight">\(n\)</span> observations of precipitation
+or <span class="math notranslate nohighlight">\(n\)</span> earthquakes, or <span class="math notranslate nohighlight">\(n\)</span> boreholes. You want to know how far off from the truth you might be with those <span class="math notranslate nohighlight">\(n\)</span> measurements.</p>
+</section>
+<section id="id1">
+<h2><a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<p>Many hypothetical experiments.</p>
+<p>When analyzing the quality of an estimator we often times ask ourselves:
+what if we had a lot more measurements? Or what if we could repeat
+the experiment a large number of times times (figure below). This doesn’t
+mean that we can repeat the <em>actual</em> experiment, but we can <em>simulate</em> repeating the experiment a very large number of times (<span class="math notranslate nohighlight">\(m\)</span> very large in the figure). This simulation allows to understand how much variability there might be
+in our results. How well, or how wrong might things go?  Ultimately, this will tell us how far from the truth might we be if all we
+have is our estimator <span class="math notranslate nohighlight">\(\hat{\theta}\)</span> and <span class="math notranslate nohighlight">\(n\)</span>.</p>
+<img src="M02_fig_m_experiments.png" alt="n experiments" style="width:400px;"/>
+<p>The general approach to understand the outcomes of any Experiment/measurement/estimation drawn from uncertain data proceeds as follows:</p>
+<ul class="simple">
+<li><p>Model the random process you are interested in studying using one or more random variables.</p></li>
+<li><p>For one or more possible values of  <span class="math notranslate nohighlight">\(n\)</span> (the numbe of measurements per experiment), simulate a very large number of experiments (<span class="math notranslate nohighlight">\(m\)</span>).</p></li>
+<li><p>Apply your estimation technique to the synthetic data generated for each experiment. This could be as simple as taking the sample mean of the <span class="math notranslate nohighlight">\(n\)</span> measurements.</p></li>
+<li><p>Look at how different estimators are distributed (i.e. how far way each of them might be from the truth).</p></li>
+<li><p>If <span class="math notranslate nohighlight">\(n\)</span> is something you can change, repeat the steps above for different value of <span class="math notranslate nohighlight">\(n\)</span></p></li>
+</ul>
+<p>This gives us an idea of the uncertainty in our estimates.</p>
+</section>
+<section id="example-sample-mean-and-sample-variance">
+<h2>Example: Sample mean and sample variance<a class="headerlink" href="#example-sample-mean-and-sample-variance" title="Permalink to this heading">#</a></h2>
+<p>Let’ say we can take <span class="math notranslate nohighlight">\(n\)</span> lab/field measurements of a quantity, each of them with some uncertainty <span class="math notranslate nohighlight">\(\varepsilon\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[X_j= \mu +\varepsilon_j\]</div>
+<p>where we can assume that <span class="math notranslate nohighlight">\(\varepsilon_j\)</span> are the errors. If we assume the errors are random, and there is no bias or drift in the instrument, we can assume, for example, that <span class="math notranslate nohighlight">\(\varepsilon \sim \mathcal N(0,\sigma_\varepsilon^2)\)</span>. In this case,</p>
+<div class="math notranslate nohighlight">
+\[X_j~\sim \mathcal N (0,\sigma^2)\]</div>
+<p>Let’s say we can take 10 samples. We will choose a given value of <span class="math notranslate nohighlight">\(\mu_{true}\)</span> and <span class="math notranslate nohighlight">\(\sigma^2_{true}\)</span> and generate synthetic data. Let’s start by simulating 5 experiments. For each synthetic experiment, we will estimate the sample mean and sample variance and compare it with the truth.</p>
+<p>We will estimate the mean using the sample mean as</p>
+<div class="math notranslate nohighlight">
+\[\hat \mu = \overline{X}_n=\frac{1}{n}\sum X_i\]</div>
+<p>while for sample variance we will us both the uncorrected and corrected sample variance estimators:</p>
+<div class="math notranslate nohighlight">
+\[\hat\sigma^2_n=s_{n}^2=\frac{1}{n}\sum (X-\overline{X}_n)^2\]</div>
+<div class="math notranslate nohighlight">
+\[\hat\sigma^2_{n-1}=s_{n-1}^2=\frac{1}{n-1}\sum (X-\overline{X}_n)^2\]</div>
+<p>The cell below shows the outcome of 5 synthetic experiments, each one taking 10 measurements, and the resulting sample mean and sample variances.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">###### np.random.seed(seed=70)</span>
+<span class="n">n</span><span class="o">=</span><span class="mi">10</span><span class="p">;</span>
+<span class="n">m</span><span class="o">=</span><span class="mi">5</span><span class="p">;</span>
+<span class="n">loc</span><span class="o">=</span><span class="mi">5</span>
+<span class="n">scale</span><span class="o">=</span><span class="mf">1.5</span><span class="p">;</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">[</span><span class="mi">16</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
+
+<span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="p">):</span> 
+    <span class="n">X</span><span class="o">=</span><span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">,</span><span class="n">scale</span><span class="o">=</span><span class="n">scale</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
+    <span class="n">Xn</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">X</span><span class="p">);</span>
+    <span class="n">sn</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+    <span class="n">sn1</span><span class="o">=</span><span class="p">(</span><span class="n">n</span><span class="o">/</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">j</span><span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="p">)),</span><span class="s1">&#39;k.&#39;</span><span class="p">)</span>
+    
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Xn</span><span class="p">,</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="s1">&#39;ro&#39;</span><span class="p">)</span>
+    
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sn</span><span class="p">,</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="s1">&#39;ro&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sn1</span><span class="p">,</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="s1">&#39;go&#39;</span><span class="p">)</span>
+    
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$x_i$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Experiment #&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">5.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Measurements &#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Xn</span><span class="p">,</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="s1">&#39;ro&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$\hat\mu$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\overline</span><span class="si">{x}</span><span class="s1">_n$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Sample mean&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">loc</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">5.5</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$\mu_</span><span class="si">{true}</span><span class="s1">$&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">5.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sn</span><span class="p">,</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="s1">&#39;ro&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$\hat \sigma_n$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sn1</span><span class="p">,</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="s1">&#39;go&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$\hat \sigma_{n-1}$&#39;</span><span class="p">)</span>
+    
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$s_n$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Sample variance &#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">scale</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">5.5</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;true $\sigma$&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">5.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../../_images/7749b11e114d6f1d71c7e0234dc7ef55cb12f6ec2ddec7e204261f99e3deded3.png" src="../../_images/7749b11e114d6f1d71c7e0234dc7ef55cb12f6ec2ddec7e204261f99e3deded3.png" />
+</div>
+</div>
+<p>Again, in reality, we will only have access to one experiment. But this Monte Carlo approach allows us to understand what is the possible range of results we could get from a single experiment.</p>
+<p>To get a better picture, we can crank up the number of synthetic experiment, to get a full distribution of the outcome of our estimation:</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="mi">70</span><span class="p">)</span>
+<span class="n">n</span><span class="o">=</span><span class="mi">10</span><span class="p">;</span>
+<span class="n">m</span><span class="o">=</span><span class="mi">50000</span><span class="p">;</span>
+<span class="n">loc</span><span class="o">=</span><span class="mi">5</span>
+<span class="n">scale</span><span class="o">=</span><span class="mf">1.5</span><span class="p">;</span>
+
+
+<span class="n">Xn</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+<span class="n">sn</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+<span class="n">sn1</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+
+<span class="n">vn</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+<span class="n">vn1</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="p">):</span> 
+    <span class="n">X</span><span class="o">=</span><span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">,</span><span class="n">scale</span><span class="o">=</span><span class="n">scale</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
+    <span class="n">Xn</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">X</span><span class="p">);</span>
+    <span class="n">sn</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+    <span class="n">sn1</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">n</span><span class="o">/</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+    <span class="n">vn</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">n</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">X</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">X</span><span class="p">))</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">vn1</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">X</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">X</span><span class="p">))</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">[</span><span class="mi">16</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
+<span class="n">X</span><span class="o">=</span><span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">,</span><span class="n">scale</span><span class="o">=</span><span class="n">scale</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="o">*</span><span class="n">m</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">Xn</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="s1">&#39;true&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$x_n$&#39;</span><span class="p">)</span>
+<span class="c1">#plt.ylabel(&#39;Experiment #&#39;)`</span>
+<span class="c1">#plt.vlines(loc,0.5,5.5)</span>
+<span class="c1">#plt.ylim(0.5,5.5)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Measurements &#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">loc</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;true $\mu$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">loc</span><span class="p">),</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$E(\hat \mu^2$)&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Sample Mean&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">vn</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="s1">&#39;true&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">vn1</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="s1">&#39;true&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$s_n$&#39;</span><span class="p">)</span>
+<span class="c1">#plt.ylabel(&#39;Experiment #&#39;)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">scale</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;true $\sigma^2$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">vn</span><span class="p">),</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$E(\hat \sigma_</span><span class="si">{n}</span><span class="s1">^2$)&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">,</span><span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">vn1</span><span class="p">),</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$E(\hat \sigma_{n-1}^2$)&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="c1">#plt.ylim(0.5,5.5)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Sample Variance&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../../_images/07737446c7fb515e4096a3055587c8f4a0772fee9d36c73f8132870c0aff3cd4.png" src="../../_images/07737446c7fb515e4096a3055587c8f4a0772fee9d36c73f8132870c0aff3cd4.png" />
+</div>
+</div>
+<section id="exercise">
+<h3>Exercise:<a class="headerlink" href="#exercise" title="Permalink to this heading">#</a></h3>
+<p>Repeat the analysis for a different number of measurements.</p>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="uncertainty-quantification-mean-squared-error-bias-and-variance">
+<h1>Uncertainty Quantification: Mean Squared Error, Bias, and Variance.<a class="headerlink" href="#uncertainty-quantification-mean-squared-error-bias-and-variance" title="Permalink to this heading">#</a></h1>
+<section id="mean-squared-error">
+<h2>Mean Squared Error<a class="headerlink" href="#mean-squared-error" title="Permalink to this heading">#</a></h2>
+<p>When we report the results of an attempt to quantify a quantity <span class="math notranslate nohighlight">\(\theta\)</span> we usually report it as:</p>
+<div class="math notranslate nohighlight">
+\[ \theta_{true}=\hat\theta + e\]</div>
+<p>where <span class="math notranslate nohighlight">\(e\)</span> is the error (i.e. the difference between our truth and the estimate, <span class="math notranslate nohighlight">\(e=(\theta_{true}-\hat\theta\)</span>).</p>
+<p>Indeed, the distributions showed above quantify precisely the distribution of <span class="math notranslate nohighlight">\(e\)</span>, i.e. how far our estimate of a parameter <span class="math notranslate nohighlight">\(\theta\)</span> (be it, <span class="math notranslate nohighlight">\(\mu\)</span>, or <span class="math notranslate nohighlight">\(\sigma\)</span>) is from the truth:</p>
+<div class="math notranslate nohighlight">
+\[\hat \theta = \theta_{true} - e\]</div>
+<p>The error <span class="math notranslate nohighlight">\(e\)</span> is to some degree random (or, at least, unknown). The way we quantify the error is through it’s by quantifying the mean squared error:</p>
+<div class="math notranslate nohighlight">
+\[MSE=E\left[\left(\hat \theta - \theta_{true}\right)^2\right]\]</div>
+<p>Notice that if the error is symmetric about the true value (such as for the sample mean estimator), the mean error would be zero, which is why we use the mean <em>squared</em> error.</p>
+</section>
+<section id="bias-variance-decomposition-for-estimates">
+<h2>Bias-Variance Decomposition for estimates<a class="headerlink" href="#bias-variance-decomposition-for-estimates" title="Permalink to this heading">#</a></h2>
+<p>The mean squared error is usually decomposed into a bias term and a variance term:</p>
+<div class="math notranslate nohighlight">
+\[E\left[\left(\hat{\theta}-\theta_{true}\right)^{2}\right]=E\left[\hat{\theta}^{2}-2\hat{\theta}\theta_{true}-\theta_{true}^{2}\right]\]</div>
+<p>If we use linearity, and the fact that <span class="math notranslate nohighlight">\(\theta_{true}\)</span> is a number and thus <span class="math notranslate nohighlight">\(E\left[\theta_{true}\right]=\theta_{true}\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[=E\left[\hat{\theta}^{2}\right]-2E\left[\hat{\theta}\right]\theta_{true}-\theta_{true}^{2}\]</div>
+<p>We can now use the property of variance, <span class="math notranslate nohighlight">\(E\left[\left(\hat{\theta}-E\left[\hat{\theta}\right]\right)^{2}\right]=E\left[\hat{\theta}^{2}\right]-E\left[\hat{\theta}\right]^{2}\)</span> and rewrite the first term:</p>
+<div class="math notranslate nohighlight">
+\[=E\left[\left(\hat{\theta}-E\left[\hat{\theta}\right]\right)^{2}\right]+E\left[\hat{\theta}\right]^{2}-2E\left[\hat{\theta}\right]\theta_{true}-\theta_{true}^{2}\]</div>
+<div class="math notranslate nohighlight">
+\[MSE=E\left[\left(\hat{\theta}-\theta_{true}\right)^{2}\right]=\underset{variance}{\underbrace{E\left[\left(\hat{\theta}-E\left[\hat{\theta}\right]\right)^{2}\right]}}+=\underset{bias}{\underbrace{\left(E\left[\hat{\theta}\right]-\theta_{true}\right)^{2}}}\]</div>
+<p>The figures belows shows an idealized view of the bias-variance decomposition. Notice the similarity with the plot for sample variance above.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">[</span><span class="mi">12</span><span class="p">,</span><span class="mi">5</span><span class="p">])</span>
+
+<span class="n">loc_true</span><span class="o">=</span><span class="mi">4</span><span class="p">;</span>
+<span class="n">mse</span><span class="o">=</span><span class="mf">1.5</span><span class="p">;</span>
+<span class="n">loc_est</span><span class="o">=</span><span class="mi">1</span>
+
+<span class="n">x_support</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">pdf</span><span class="o">=</span><span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x_support</span><span class="p">,</span><span class="n">loc</span><span class="o">=</span><span class="n">loc_est</span><span class="p">,</span><span class="n">scale</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">mse</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_support</span><span class="p">,</span><span class="n">pdf</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$p(\hat\theta$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">loc_true</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">loc_est</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">arrow</span><span class="p">(</span><span class="n">loc_true</span><span class="p">,</span> <span class="mf">0.45</span><span class="p">,</span> <span class="n">loc_est</span><span class="o">-</span><span class="n">loc_true</span><span class="o">+</span><span class="mf">0.1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span><span class="n">head_width</span><span class="o">=</span><span class="mf">0.02</span><span class="p">,</span><span class="n">head_length</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">arrow</span><span class="p">(</span><span class="n">loc_est</span><span class="p">,</span> <span class="mf">0.35</span><span class="p">,</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">mse</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span><span class="n">head_width</span><span class="o">=</span><span class="mf">0.02</span><span class="p">,</span><span class="n">head_length</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">arrow</span><span class="p">(</span><span class="n">loc_est</span><span class="p">,</span> <span class="mf">0.35</span><span class="p">,</span> <span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">mse</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span><span class="n">head_width</span><span class="o">=</span><span class="mf">0.02</span><span class="p">,</span><span class="n">head_length</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.55</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\theta$&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">loc_true</span><span class="p">,</span><span class="mf">0.52</span><span class="p">,</span><span class="sa">r</span><span class="s1">&#39;$\theta_</span><span class="si">{true}</span><span class="s1">$&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">loc_est</span><span class="p">,</span><span class="mf">0.52</span><span class="p">,</span><span class="sa">r</span><span class="s1">&#39;$E[\hat \theta]$&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mf">0.47</span><span class="p">,</span><span class="sa">r</span><span class="s1">&#39;bias=$E[\hat \theta]-\theta_</span><span class="si">{true}</span><span class="s1">$&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">1.1</span><span class="p">,</span><span class="mf">0.37</span><span class="p">,</span><span class="sa">r</span><span class="s1">&#39;$\sqrt</span><span class="si">{variance}</span><span class="s1">=\sqrt{E[(\hat\theta-E[\hat \theta])^2]}$&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../../_images/a401b277b1649c5798d4ba28e233e6594206b29cd3e45723696e39078569b475.png" src="../../_images/a401b277b1649c5798d4ba28e233e6594206b29cd3e45723696e39078569b475.png" />
+</div>
+</div>
+</section>
+<section id="example-gamma-distribution">
+<h2>Example: Gamma distribution<a class="headerlink" href="#example-gamma-distribution" title="Permalink to this heading">#</a></h2>
+<p>Let’s now look at the case where are two parameters we want to estimate simultaneously.</p>
+<p>In this case, let’s assume we are modelling our data as arising from a gamma distribution with parameters <span class="math notranslate nohighlight">\(\alpha\)</span> and <span class="math notranslate nohighlight">\(\beta\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[X\sim \Gamma \left(\alpha,\beta\right)\]</div>
+<p>and we want to estimate <span class="math notranslate nohighlight">\(\hat\alpha\)</span> and <span class="math notranslate nohighlight">\(\hat\beta\)</span> using <span class="math notranslate nohighlight">\(n\)</span> measurements. Let’s compare how the maximum likelihood estimators (<span class="math notranslate nohighlight">\(\hat\alpha_{mle},\hat\beta_{mle}\)</span>) and the method of moments estimators (<span class="math notranslate nohighlight">\(\hat\alpha_{mm},\hat\beta_{mm}\)</span>) compare.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="mi">70</span><span class="p">)</span>
+<span class="n">n</span><span class="o">=</span><span class="mi">10</span><span class="p">;</span>
+<span class="n">m</span><span class="o">=</span><span class="mi">5</span><span class="p">;</span>
+<span class="n">loc</span><span class="o">=</span><span class="mi">0</span>
+<span class="n">scale</span><span class="o">=</span><span class="mf">1.5</span><span class="p">;</span>
+<span class="n">shape</span><span class="o">=</span><span class="mi">1</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">[</span><span class="mi">16</span><span class="p">,</span><span class="mi">8</span><span class="p">])</span>
+
+<span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="p">):</span> 
+    <span class="n">X</span><span class="o">=</span><span class="n">stats</span><span class="o">.</span><span class="n">gamma</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="n">shape</span><span class="p">,</span><span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">,</span><span class="n">scale</span><span class="o">=</span><span class="n">scale</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
+
+    <span class="n">out</span><span class="o">=</span><span class="n">stats</span><span class="o">.</span><span class="n">gamma</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">floc</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;mle&#39;</span><span class="p">)</span>
+    <span class="n">shape_mle</span><span class="o">=</span><span class="n">out</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">scale_mle</span><span class="o">=</span><span class="n">out</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+        
+    <span class="n">out</span><span class="o">=</span><span class="n">stats</span><span class="o">.</span><span class="n">gamma</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">floc</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;mm&#39;</span><span class="p">)</span>
+    <span class="n">shape_mm</span><span class="o">=</span><span class="n">out</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">scale_mm</span><span class="o">=</span><span class="n">out</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+
+    
+    <span class="c1">#plt.subplot(1,3,1)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="o">*</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="s1">&#39;k.&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">j</span><span class="o">==</span><span class="mi">2</span><span class="p">:</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Precip&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">j</span><span class="o">==</span><span class="mi">5</span><span class="p">:</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;rainy day #&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">j</span><span class="o">&lt;</span><span class="mi">5</span><span class="p">:</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">([])</span>
+    
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">shape_mm</span><span class="p">,</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="s1">&#39;go&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">shape_mle</span><span class="p">,</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="s1">&#39;ro&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Experiment #&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;shape $\alpha$&#39;</span><span class="p">)</span>
+    
+    <span class="k">if</span> <span class="n">j</span><span class="o">==</span><span class="mi">4</span><span class="p">:</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">shape_mm</span><span class="p">,</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="s1">&#39;go&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$\hat\alpha_</span><span class="si">{mm}</span><span class="s1">$&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">shape_mle</span><span class="p">,</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="s1">&#39;ro&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$\hat\alpha_</span><span class="si">{mle}</span><span class="s1">$&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">scale</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">5.5</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$\alpha_</span><span class="si">{true}</span><span class="s1">$&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">8</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">5.5</span><span class="p">)</span>
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">scale_mm</span><span class="p">,</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="s1">&#39;go&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">scale_mle</span><span class="p">,</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="s1">&#39;ro&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;scale $\beta$&#39;</span><span class="p">)</span>
+    
+    <span class="k">if</span> <span class="n">j</span><span class="o">==</span><span class="mi">4</span><span class="p">:</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">shape_mm</span><span class="p">,</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="s1">&#39;go&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$\hat\beta_</span><span class="si">{mm}</span><span class="s1">$&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">shape_mle</span><span class="p">,</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="s1">&#39;ro&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$\hat\beta_</span><span class="si">{mle}</span><span class="s1">$&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">shape</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">5.5</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$\beta_</span><span class="si">{true}</span><span class="s1">$&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">5.5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../../_images/7ebc289636c21a29b7c5594b0aa70feaf642d8d8b63643b57c21bd0dc7c03a92.png" src="../../_images/7ebc289636c21a29b7c5594b0aa70feaf642d8d8b63643b57c21bd0dc7c03a92.png" />
+</div>
+</div>
+<p>We can increase the number <span class="math notranslate nohighlight">\(m\)</span> of synthetic experiments, to get a sense for the distribution of each estimator:</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="mi">70</span><span class="p">)</span>
+<span class="n">n</span><span class="o">=</span><span class="mi">10</span><span class="p">;</span>
+<span class="n">m</span><span class="o">=</span><span class="mi">500</span><span class="p">;</span>
+<span class="n">loc</span><span class="o">=</span><span class="mi">0</span>
+<span class="n">alpha_true</span><span class="o">=</span><span class="mf">1.5</span><span class="p">;</span>
+<span class="n">beta_true</span><span class="o">=</span><span class="mi">1</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">[</span><span class="mi">16</span><span class="p">,</span><span class="mi">8</span><span class="p">])</span>
+
+<span class="n">alpha_mle</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+<span class="n">beta_mle</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+<span class="n">alpha_mm</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+<span class="n">beta_mm</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="p">):</span> 
+    <span class="n">X</span><span class="o">=</span><span class="n">stats</span><span class="o">.</span><span class="n">gamma</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="n">alpha_true</span><span class="p">,</span><span class="n">loc</span><span class="o">=</span><span class="n">loc</span><span class="p">,</span><span class="n">scale</span><span class="o">=</span><span class="n">beta_true</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
+
+    <span class="n">out</span><span class="o">=</span><span class="n">stats</span><span class="o">.</span><span class="n">gamma</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">floc</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;mle&#39;</span><span class="p">)</span>
+    <span class="n">alpha_mle</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">=</span><span class="n">out</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">beta_mle</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">=</span><span class="n">out</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+        
+    <span class="n">out</span><span class="o">=</span><span class="n">stats</span><span class="o">.</span><span class="n">gamma</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">floc</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;mm&#39;</span><span class="p">)</span>
+    <span class="n">alpha_mm</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">=</span><span class="n">out</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">beta_mm</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">=</span><span class="n">out</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+    
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">[</span><span class="mi">16</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">alpha_mm</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">30</span><span class="p">),</span> <span class="n">density</span><span class="o">=</span><span class="s1">&#39;true&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">alpha_mle</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">30</span><span class="p">),</span> <span class="n">density</span><span class="o">=</span><span class="s1">&#39;true&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\alpha$&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">alpha_true</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$\alpha_</span><span class="si">{true}</span><span class="s1">$&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">alpha_mm</span><span class="p">),</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$E(\hat \alpha_</span><span class="si">{mm}</span><span class="s1">^2$)&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">,</span><span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">alpha_mle</span><span class="p">),</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$E(\hat \alpha_</span><span class="si">{mle}</span><span class="s1">^2$)&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">beta_mm</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">30</span><span class="p">),</span> <span class="n">density</span><span class="o">=</span><span class="s1">&#39;true&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">beta_mle</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">30</span><span class="p">),</span> <span class="n">density</span><span class="o">=</span><span class="s1">&#39;true&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\beta$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">beta_true</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$\beta_</span><span class="si">{true}</span><span class="s1">$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">beta_mm</span><span class="p">),</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$E(\hat \beta_</span><span class="si">{mm}</span><span class="s1">^2$)&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">,</span><span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">beta_mle</span><span class="p">),</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$E(\hat \beta_</span><span class="si">{mle}</span><span class="s1">^2$)&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+
+
+        
+    
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.0, 3.0)
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 1600x800 with 0 Axes&gt;
+</pre></div>
+</div>
+<img alt="../../_images/5e4017e78afb0ff331ec2ce81ff273ee170dac632ec8582784c743098efb2d83.png" src="../../_images/5e4017e78afb0ff331ec2ce81ff273ee170dac632ec8582784c743098efb2d83.png" />
+</div>
+</div>
+<p>We can also visualize  <span class="math notranslate nohighlight">\(\hat\alpha, \hat\beta\)</span> in a 2D scatter plot:</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Answer </span>
+<span class="n">m</span><span class="o">=</span><span class="mi">100</span>
+<span class="n">n</span><span class="o">=</span><span class="p">[</span><span class="mi">10</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">50</span><span class="p">]</span>
+<span class="n">Nbins</span><span class="o">=</span><span class="mi">30</span>
+<span class="n">v</span><span class="o">=</span><span class="mi">50</span><span class="p">;</span>
+<span class="c1"># scale for exponential distribution</span>
+<span class="n">alpha_true</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
+<span class="n">beta_true</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
+
+<span class="n">fig</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">[</span><span class="mi">16</span><span class="p">,</span><span class="mi">6</span><span class="p">])</span>
+
+<span class="c1"># repeat the exericse for four value n.</span>
+<span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+    <span class="c1"># preallocate vector of sample means</span>
+    <span class="n">alpha_mle</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+    <span class="n">beta_mle</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+    <span class="n">alpha_mm</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+    <span class="n">beta_mm</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+    <span class="c1"># compute a number of sample means</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
+        <span class="c1"># draw n[j] draws and average them to get the sample mean:</span>
+        <span class="n">X</span><span class="o">=</span><span class="n">stats</span><span class="o">.</span><span class="n">gamma</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="n">alpha_true</span><span class="p">,</span><span class="n">scale</span><span class="o">=</span><span class="n">beta_true</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="n">n</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
+        <span class="n">out</span><span class="o">=</span><span class="n">stats</span><span class="o">.</span><span class="n">gamma</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">floc</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;mle&#39;</span><span class="p">)</span>
+        <span class="n">alpha_mle</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">=</span><span class="n">out</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">beta_mle</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">=</span><span class="n">out</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+        
+        <span class="n">out</span><span class="o">=</span><span class="n">stats</span><span class="o">.</span><span class="n">gamma</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">floc</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;mm&#39;</span><span class="p">)</span>
+        <span class="n">alpha_mm</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">=</span><span class="n">out</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">beta_mm</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">=</span><span class="n">out</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+        
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">alpha_mm</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="n">v</span><span class="p">],</span><span class="n">beta_mm</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="n">v</span><span class="p">],</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;.&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$\hat{\theta}_</span><span class="si">{mm}</span><span class="s1">$&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;tab:orange&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">alpha_mm</span><span class="p">),</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">beta_mm</span><span class="p">),</span><span class="n">s</span><span class="o">=</span><span class="mi">75</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$\hat{\theta}_</span><span class="si">{mm}</span><span class="s1">$&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;tab:orange&#39;</span><span class="p">,</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">alpha_mle</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="n">v</span><span class="p">],</span><span class="n">beta_mle</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="n">v</span><span class="p">],</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;.&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$\hat{\theta}_</span><span class="si">{mle}</span><span class="s1">$&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;tab:blue&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">alpha_mle</span><span class="p">),</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">beta_mle</span><span class="p">),</span><span class="n">s</span><span class="o">=</span><span class="mi">75</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$\hat{\theta}_</span><span class="si">{mle}</span><span class="s1">$&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;tab:blue&#39;</span><span class="p">,</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">alpha_true</span><span class="p">,</span><span class="n">beta_true</span><span class="p">,</span><span class="n">s</span><span class="o">=</span><span class="mi">75</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$\theta_</span><span class="si">{true}</span><span class="s1">$&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39; $\alpha$&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39; $\beta$&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">n</span><span class="p">[</span><span class="n">j</span><span class="p">])</span><span class="o">+</span><span class="s1">&#39; measurements&#39;</span><span class="p">)</span>
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../../_images/87cee5eb80b354906dbaa4655fbdd1d3243ab3e1a2ccc2c329775da33d29f083.png" src="../../_images/87cee5eb80b354906dbaa4655fbdd1d3243ab3e1a2ccc2c329775da33d29f083.png" />
+</div>
+</div>
+<p>Notice that for <span class="math notranslate nohighlight">\(n=10\)</span> measurements, the <span class="math notranslate nohighlight">\(E[\hat\alpha_{mm}]\)</span> is outside the plot. For 20 measurements, there is still significant bias in <span class="math notranslate nohighlight">\(\alpha_{mm}\)</span>. So for small number of measurements, the mle estimator is much better than the method of moments for estimating the parameters of a gamma distribution.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./content/Module02"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="M02_Lab2-1.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Lab 2.1</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="M02_N05_HypothesisTesting.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Hypothesis Testing</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Quality of Estimators</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#monte-carlo-approach-synthetic-data">Monte Carlo Approach / synthetic data</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#one-actual-experiment">One actual experiment</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-sample-mean-and-sample-variance">Example: Sample mean and sample variance</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#uncertainty-quantification-mean-squared-error-bias-and-variance">Uncertainty Quantification: Mean Squared Error, Bias, and Variance.</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mean-squared-error">Mean Squared Error</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bias-variance-decomposition-for-estimates">Bias-Variance Decomposition for estimates</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-gamma-distribution">Example: Gamma distribution</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Cristian Proistosescu
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

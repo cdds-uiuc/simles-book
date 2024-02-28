@@ -225,6 +225,19 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
+<li class="toctree-l1"><a class="reference internal" href="../Module02/M02_N04_Quality_of_Estimators.html">Quality of Estimators</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Module02/M02_N05_HypothesisTesting.html">Hypothesis Testing</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Module02/M02_Lab2-2.html">Lab 2.2</a></li>
+
+
+
+
+
 </ul>
 
     </div>
@@ -520,10 +533,7 @@ document.write(`
 <span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
 
 <span class="c1"># These are some parameters to make figures nice (and big)</span>
-<span class="o">%</span><span class="k">matplotlib</span> inline
-<span class="o">%</span><span class="k">config</span> InlineBackend.figure_format = &#39;retina&#39; 
 <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">16</span><span class="p">,</span><span class="mi">8</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;text.usetex&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
 <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;legend.fontsize&#39;</span><span class="p">:</span> <span class="s1">&#39;x-large&#39;</span><span class="p">,</span>
           <span class="s1">&#39;figure.figsize&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span>
          <span class="s1">&#39;axes.labelsize&#39;</span><span class="p">:</span> <span class="s1">&#39;x-large&#39;</span><span class="p">,</span>
@@ -653,11 +663,11 @@ The pdf of a normally distributed r.v. with location parameter <span class="math
 
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_norm</span><span class="p">,</span><span class="n">pdf_norm</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.15</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;$\mu$&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">mu</span><span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">sigma</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.15</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;$\mu$-2 $\sigma$&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">,</span><span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">mu</span><span class="o">-</span><span class="n">sigma</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.15</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;$\mu$-1 $\sigma$&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">mu</span><span class="o">+</span><span class="n">sigma</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.15</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;$\mu$+1 $\sigma$&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">mu</span><span class="o">+</span><span class="mi">2</span><span class="o">*</span><span class="n">sigma</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.15</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;$\mu$+2 $\sigma$&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.15</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$\mu$&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">mu</span><span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">sigma</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.15</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$\mu$-2 $\sigma$&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">,</span><span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">mu</span><span class="o">-</span><span class="n">sigma</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.15</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$\mu$-1 $\sigma$&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">mu</span><span class="o">+</span><span class="n">sigma</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.15</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$\mu$+1 $\sigma$&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">mu</span><span class="o">+</span><span class="mi">2</span><span class="o">*</span><span class="n">sigma</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.15</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$\mu$+2 $\sigma$&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;probability density&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Pdf of a gaussian/normal random variable with mean and standard deviations&#39;</span><span class="p">)</span>
@@ -665,32 +675,10 @@ The pdf of a normally distributed r.v. with location parameter <span class="math
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;&gt;:14: SyntaxWarning: invalid escape sequence &#39;\m&#39;
-&lt;&gt;:15: SyntaxWarning: invalid escape sequence &#39;\m&#39;
-&lt;&gt;:16: SyntaxWarning: invalid escape sequence &#39;\m&#39;
-&lt;&gt;:17: SyntaxWarning: invalid escape sequence &#39;\m&#39;
-&lt;&gt;:18: SyntaxWarning: invalid escape sequence &#39;\m&#39;
-&lt;&gt;:14: SyntaxWarning: invalid escape sequence &#39;\m&#39;
-&lt;&gt;:15: SyntaxWarning: invalid escape sequence &#39;\m&#39;
-&lt;&gt;:16: SyntaxWarning: invalid escape sequence &#39;\m&#39;
-&lt;&gt;:17: SyntaxWarning: invalid escape sequence &#39;\m&#39;
-&lt;&gt;:18: SyntaxWarning: invalid escape sequence &#39;\m&#39;
-/var/folders/pr/3_264g5j1d15jdsjfgsqbdj80000gp/T/ipykernel_12648/693198820.py:14: SyntaxWarning: invalid escape sequence &#39;\m&#39;
-  plt.vlines(mu,0,0.15,label=&#39;$\mu$&#39;,color=&#39;k&#39;)
-/var/folders/pr/3_264g5j1d15jdsjfgsqbdj80000gp/T/ipykernel_12648/693198820.py:15: SyntaxWarning: invalid escape sequence &#39;\m&#39;
-  plt.vlines(mu-2*sigma,0,0.15,label=&#39;$\mu$-2 $\sigma$&#39;,color=&#39;g&#39;,linestyle=&#39;--&#39;)
-/var/folders/pr/3_264g5j1d15jdsjfgsqbdj80000gp/T/ipykernel_12648/693198820.py:16: SyntaxWarning: invalid escape sequence &#39;\m&#39;
-  plt.vlines(mu-sigma,0,0.15,label=&#39;$\mu$-1 $\sigma$&#39;,color=&#39;g&#39;)
-/var/folders/pr/3_264g5j1d15jdsjfgsqbdj80000gp/T/ipykernel_12648/693198820.py:17: SyntaxWarning: invalid escape sequence &#39;\m&#39;
-  plt.vlines(mu+sigma,0,0.15,label=&#39;$\mu$+1 $\sigma$&#39;,color=&#39;b&#39;)
-/var/folders/pr/3_264g5j1d15jdsjfgsqbdj80000gp/T/ipykernel_12648/693198820.py:18: SyntaxWarning: invalid escape sequence &#39;\m&#39;
-  plt.vlines(mu+2*sigma,0,0.15,label=&#39;$\mu$+2 $\sigma$&#39;,color=&#39;b&#39;,linestyle=&#39;--&#39;)
-</pre></div>
-</div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Pdf of a gaussian/normal random variable with mean and standard deviations&#39;)
 </pre></div>
 </div>
-<img alt="../../_images/b2a0d475f1268f2d7a5103a1fc549e9adad575b7a09c8803278bf2c1f8388f3d.png" src="../../_images/b2a0d475f1268f2d7a5103a1fc549e9adad575b7a09c8803278bf2c1f8388f3d.png" />
+<img alt="../../_images/0976aa640fc43cb0e6f5feb20e641283eb80a515e53cbf3ad92c58aa7bdb1f9b.png" src="../../_images/0976aa640fc43cb0e6f5feb20e641283eb80a515e53cbf3ad92c58aa7bdb1f9b.png" />
 </div>
 </div>
 </section>
@@ -825,7 +813,7 @@ Cov(X,Y) &amp; Var(Y)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/9ca536ba73140dfee163739e126b11f1788544a4cd1970ef3d4b9829f40374ba.png" src="../../_images/9ca536ba73140dfee163739e126b11f1788544a4cd1970ef3d4b9829f40374ba.png" />
+<img alt="../../_images/bef9b70934826058c4b362f4ab13fd93cf0f29d1921acb1eca3c9d83f030dad2.png" src="../../_images/bef9b70934826058c4b362f4ab13fd93cf0f29d1921acb1eca3c9d83f030dad2.png" />
 </div>
 </div>
 </section>
@@ -870,8 +858,12 @@ Cov(X,Y) &amp; Var(Y)
 <span class="n">X</span><span class="o">=</span><span class="n">stats</span><span class="o">.</span><span class="n">uniform</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">loc</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span><span class="n">scale</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="n">Ndraws</span><span class="p">);</span>
 <span class="n">Y</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="n">Ndraws</span><span class="p">])</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">Ndraws</span><span class="p">):</span>
-    <span class="n">Y</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">scale</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="p">]),</span><span class="n">size</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">Y</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">scale</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+
+<span class="n">fig</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">[</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">,</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
 
 <span class="n">scov</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">Ndraws</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">X</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">X</span><span class="p">))</span><span class="o">*</span><span class="p">(</span><span class="n">Y</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">Y</span><span class="p">)))</span>
 
@@ -880,14 +872,10 @@ Cov(X,Y) &amp; Var(Y)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/pr/3_264g5j1d15jdsjfgsqbdj80000gp/T/ipykernel_13144/1250704771.py:5: DeprecationWarning: Conversion of an array with ndim &gt; 0 to a scalar is deprecated, and will error in future. Ensure you extract a single element from your array before performing this operation. (Deprecated NumPy 1.25.)
-  Y[i]=stats.norm.rvs(loc=0,scale=np.abs(X[i]),size=1)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-0.0016495823691105975
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.0030003670026860947
-</pre></div>
-</div>
-<img alt="../../_images/385b4edec91b6939a6221a4cd902b1848e42655a257bc2bea6e30e0684f87177.png" src="../../_images/385b4edec91b6939a6221a4cd902b1848e42655a257bc2bea6e30e0684f87177.png" />
+<img alt="../../_images/a6251cee799675ee6cbc41708c19b0808c7fd95d142c279fafa2c6ad304800c1.png" src="../../_images/a6251cee799675ee6cbc41708c19b0808c7fd95d142c279fafa2c6ad304800c1.png" />
 </div>
 </div>
 </section>

@@ -225,6 +225,19 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
+<li class="toctree-l1"><a class="reference internal" href="M02_N04_Quality_of_Estimators.html">Quality of Estimators</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="M02_N05_HypothesisTesting.html">Hypothesis Testing</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="M02_Lab2-2.html">Lab 2.2</a></li>
+
+
+
+
+
 </ul>
 
     </div>
@@ -489,6 +502,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#likelihood-as-a-function-of-the-mean">Likelihood as a function of the mean.</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#likelihood-as-a-function-of-scale">Likelihood as a function of scale</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mle-estimates-for-a-gaussian">MLE estimates for a Gaussian:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise:</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-regression">Linear Regression</a></li>
@@ -789,10 +803,10 @@ went to the novelty store and bought yourself a biased coin. But you don’t kno
 <p>Now let’s consider the case where we are assuming the data is drawn from a Gaussian/Normal random variable, which is defined in terms of two parameters: its mean <span class="math notranslate nohighlight">\(\mu\)</span> and variance <span class="math notranslate nohighlight">\(\sigma\)</span>.</p>
 <p>Say we have <span class="math notranslate nohighlight">\(N\)</span> data <span class="math notranslate nohighlight">\(x_i,i\in {1,N}\)</span>  the data vector <span class="math notranslate nohighlight">\(\mathbf{x}\)</span>. Assuming the data points were independent, the likelihood of obtaining the data <span class="math notranslate nohighlight">\(x\)</span> from a gaussian with parameters <span class="math notranslate nohighlight">\(\theta={\mu,\sigma}\)</span> is:</p>
 <div class="math notranslate nohighlight">
-\[\mathcal{L}=p(\mathbf{x}|\theta)=\prod_{i=1}^{N}p(x_{i}|\mu,\sigma)=\prod_{i=1}^{N}\frac{1}{\sqrt{2\pi\sigma^{2}}}\exp\left[-\frac{1}{2}\left(\frac{x_{i}-\mu}{\sigma}\right)^{2}\right]\]</div>
+\[\mathcal{L}=p(\mathbf{x}|\theta)=\prod_{i=1}^{N}p(x_{i}|\mu,\sigma)=\prod_{i=1}^{N}\left(2\pi\sigma^{2}\right)^{-1/2}\exp\left[-\frac{1}{2}\left(\frac{x_{i}-\mu}{\sigma}\right)^{2}\right]\]</div>
 <p>It is often more convenient to work with the log likelihood. This is both because it transforms products into sums, and gets rid of exponentials, but also because, by virtue of being a product of numbers less than on, the regular likelihood ends up being very small for large datasets, leading to numerical errors. Since the logarithm is a monotonic function, maximizing the log likelihood is the same as maximizing the likelihood itself. For the gaussian distribution the log-likelihood is:</p>
 <div class="math notranslate nohighlight">
-\[ \log\mathcal{L}=-\frac{n}{2}\log\left(2\pi\right)-\sigma-\frac{1}{2\sigma^{2}}\sum\left(x_{i}-\mu\right)^{2}\]</div>
+\[\log\mathcal{L}=-\frac{n}{2}\ln\left(2\pi\right)-n\ln\sigma-\frac{1}{2\sigma^{2}}\sum\left(x_{i}-\mu\right)^{2}\]</div>
 <section id="likelihood-as-a-function-of-the-mean">
 <h3>Likelihood as a function of the mean.<a class="headerlink" href="#likelihood-as-a-function-of-the-mean" title="Permalink to this heading">#</a></h3>
 <p>In the cell below we will visualize how the likelihood of a dataset <span class="math notranslate nohighlight">\(x\)</span> containing <span class="math notranslate nohighlight">\(N=20\)</span> draws changes as a function of <span class="math notranslate nohighlight">\(\mu\)</span>. At first, we will keep <span class="math notranslate nohighlight">\(\sigma\)</span> fixed when computing <span class="math notranslate nohighlight">\(p(x|\mu,\sigma)\)</span>.
@@ -846,8 +860,8 @@ We will use synthetic data, where we set <span class="math notranslate nohighlig
 <img alt="../../_images/63dd58c45d330127a87cfbc20477484c0b9b1def0a64c85c4e674558371cddc5.png" src="../../_images/63dd58c45d330127a87cfbc20477484c0b9b1def0a64c85c4e674558371cddc5.png" />
 </div>
 </div>
-<p>To compute the likelihood, we need to estimate <span class="math notranslate nohighlight">\(p(\mathbf{x}|\theta)\)</span>, which, if the <span class="math notranslate nohighlight">\(x_i\)</span> are independent, becomes <span class="math notranslate nohighlight">\(\prod_i(x_i|\theta)\)</span></p>
-<p>For each <span class="math notranslate nohighlight">\(x_i\)</span> from the figure above, we can visualize it’s likelihood <span class="math notranslate nohighlight">\(\prod_i(x_i|\theta)\)</span> on the y-axis, where the likelihood is just equal the pdf of a gaussian with parameters <span class="math notranslate nohighlight">\(\theta=\{\mu,\sigma\}\)</span>:</p>
+<p>To compute the likelihood, we need to estimate <span class="math notranslate nohighlight">\(p(\mathbf{x}|\theta)\)</span>, which, if the <span class="math notranslate nohighlight">\(x_i\)</span> are independent, becomes <span class="math notranslate nohighlight">\(\prod_i p(x_i|\theta)\)</span></p>
+<p>For each <span class="math notranslate nohighlight">\(x_i\)</span> from the figure above, we can visualize it’s likelihood <span class="math notranslate nohighlight">\(p(x_i|\theta)\)</span> on the y-axis, where the likelihood is just equal the pdf of a gaussian with parameters <span class="math notranslate nohighlight">\(\theta=\{\mu,\sigma\}\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[p(x_i|\theta)=\frac{1}{\sqrt{2\pi\sigma^2}}\exp\left[-\frac{1}{2}\left(\frac{x_i-\mu}{\sigma}\right)^2\right]\]</div>
 <p>If we assume <span class="math notranslate nohighlight">\(\sigma\)</span> is known and choose four possible values of <span class="math notranslate nohighlight">\(\mu\)</span> we can use the <span class="math notranslate nohighlight">\(y\)</span>-axis to draw the likelihood of each data point <span class="math notranslate nohighlight">\(x_i\)</span>:</p>
@@ -904,7 +918,7 @@ We will use synthetic data, where we set <span class="math notranslate nohighlig
 </div>
 </div>
 <p>The title of the figure includes an estimate of the total log-likelihood for the different values of <span class="math notranslate nohighlight">\(\mu\)</span>.</p>
-<p>Notice that when the guess for <span class="math notranslate nohighlight">\(\mu\)</span> is much smaller than the truth, the log-likelihood (and thus the likelihood) of obtaining the data is small.</p>
+<p>Notice that when the guess for the mean is far away from the true (e.g. <span class="math notranslate nohighlight">\(\mu=1\)</span>  vs <span class="math notranslate nohighlight">\(\mu_{true}=5\)</span>) many of the points are very unlikely because they would have to be drawn from the tail of the distribution. As <span class="math notranslate nohighlight">\(\mu\)</span> gets closer to the truth, the likelihood the log-likelihood (and thus the likelihood) of obtaining the data is small.</p>
 </section>
 <section id="likelihood-as-a-function-of-scale">
 <h3>Likelihood as a function of scale<a class="headerlink" href="#likelihood-as-a-function-of-scale" title="Permalink to this heading">#</a></h3>
@@ -986,6 +1000,52 @@ We will use synthetic data, where we provide <span class="math notranslate nohig
 \hat{\sigma}_{mle}^{2}=\frac{1}{n}\sum_{i=1}^{n}\left(x_{i}-\hat{\mu}_{mle}\right)^{2}=s_{n}
 \end{cases}\end{split}\]</div>
 <p>which are the sample mean and the (biased) sample variance.</p>
+</section>
+<section id="exercise">
+<h3>Exercise:<a class="headerlink" href="#exercise" title="Permalink to this heading">#</a></h3>
+<p>Estimate <span class="math notranslate nohighlight">\(\hat{\mu}_{mle}\)</span> and <span class="math notranslate nohighlight">\(\sigma{\mu}_{mle}\)</span> for the dataset provided above. Compare that with what you get from the <code>stats.norm.fit</code> function.</p>
+<p>x=[3.15428269 3.56344798 4.15678082 4.60150597 6.00869238 6.07743715
+4.62977183 5.70097657 3.93950262 5.82044776 3.75209909 5.00711172
+3.62605355 6.13627937 6.12053651 5.11623101 5.0049666  4.87704149
+6.36864804 5.36453595</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#setting a random seed means that we will always get the same random numbers</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="mi">233421</span><span class="p">)</span>
+<span class="n">mu_true</span><span class="o">=</span><span class="mi">5</span>
+<span class="n">sig_true</span><span class="o">=</span><span class="mi">1</span>
+
+<span class="n">x_var</span><span class="o">=</span><span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="n">mu_true</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">sig_true</span><span class="p">)</span>
+<span class="n">x</span><span class="o">=</span><span class="n">x_var</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">Nsamples</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[3.15428269 3.56344798 4.15678082 4.60150597 6.00869238 6.07743715
+ 4.62977183 5.70097657 3.93950262 5.82044776 3.75209909 5.00711172
+ 3.62605355 6.13627937 6.12053651 5.11623101 5.0049666  4.87704149
+ 6.36864804 5.36453595]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#stats fit</span>
+<span class="n">loc</span><span class="p">,</span><span class="n">scale</span><span class="o">=</span><span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">loc</span><span class="p">,</span><span class="n">scale</span><span class="p">)</span>
+
+<span class="c1">#do it yourself</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.951317454849802 0.9727238494226641
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="linear-regression">
@@ -1098,17 +1158,15 @@ approximate (i.e. estimate!) the variance of a random process using
 \[
 s_{n}=\frac{1}{n}\sum_{i=1}^{n}\left(x_{i}-\overline{x}_{n}\right)^{2}
 \]</div>
-<p>And we talked about how we could alter that estimator using Bessel’s
-correction to yield a different estimator of the variance:</p>
+<p>And we talked about how we build a different estimator by applying Bessel’s correction to <span class="math notranslate nohighlight">\(s_{n}\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[
 s_{n-1}=\frac{n}{n-1}s_{n}=\frac{1}{n-1}\sum_{i=1}^{n}\left(x_{i}-\overline{x}_{n}\right)^{2}
 \]</div>
-<p>We talked about how this correction might be desirable (sometimes)
-because it yields an unbiased estimator.</p>
-<p>Later in the course we will spend a lot of time looking at a class of estimators called regularized
-estimators. But in principle, we could build any kind of estimator. For example, we could always estimate the sample-mean of the population to be zero. That would be a very poor estimator, but nonetheless it
-would be an estimator.</p>
+<p>This correction might be desirable (sometimes) because it yields an unbiased estimator.</p>
+<p>But in principle, we could build any kind of estimator. A large part of (frequentist) statistics deals with building better estimators, that might have more desirable properties than MLE or method of moments.</p>
+<p>For example, we could always estimate the sample-mean of the population to be zero. That would be a very poor estimator, but nonetheless it would be an estimator.</p>
+<p>Later in the course we will spend a lot of time looking at a class of estimators called regularized estimators for dealing with linear regression.</p>
 </section>
 
     <script type="text/x-thebe-config">
@@ -1195,6 +1253,7 @@ would be an estimator.</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#likelihood-as-a-function-of-the-mean">Likelihood as a function of the mean.</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#likelihood-as-a-function-of-scale">Likelihood as a function of scale</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mle-estimates-for-a-gaussian">MLE estimates for a Gaussian:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise:</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-regression">Linear Regression</a></li>

@@ -1,0 +1,1163 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Lab 2.2 &#8212; SIMLES: Statistical Inference and Machine Learning for Earth Sciences</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/Module02/M02_Lab2-2';</script>
+    <link rel="canonical" href="https://cdds-uiuc.github.io/simles-book/content/Module02/M02_Lab2-2.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="Hypothesis Testing" href="M02_N05_HypothesisTesting.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/CDDS_logo.png" class="logo__image only-light" alt="SIMLES: Statistical Inference and Machine Learning for Earth Sciences - Home"/>
+    <script>document.write(`<img src="../../_static/CDDS_logo.png" class="logo__image only-dark" alt="SIMLES: Statistical Inference and Machine Learning for Earth Sciences - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    SIMLES
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Programming.html">Programming</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">1. Probability Models</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Module01/M01_N01_Probability_Recap.html">Basics of probabilities</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Module01/M01_N02_Random_Variables.html">Random Variables</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Module01/M01_Lab1.html">Lab 1.1</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Module01/M01_N03_Moments.html">Moments</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Module01/M01_N04_SampleStatistics.html">Sample Statistics</a></li>
+
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">2. Inference</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="M02_N01_Estimation.html">Estimators</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="M02_N02_Cookbook_Gutenberg-Richter_Law.html">Cookbook: MLE for Gutenberg-Richter Law</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="M02_N03_Cookbook_Precipitation_Return_Times.html">Cookbook: Precipitation return times for Hurricane Harvey</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="M02_Lab2-1.html">Lab 2.1</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="M02_N04_Quality_of_Estimators.html">Quality of Estimators</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="M02_N05_HypothesisTesting.html">Hypothesis Testing</a></li>
+
+
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Lab 2.2</a></li>
+
+
+
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/cdds-uiuc/simles-book/master?urlpath=lab/tree/content/Module02/M02_Lab2-2.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/cdds-uiuc/simles-book/blob/master/content/Module02/M02_Lab2-2.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/cdds-uiuc/simles-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/cdds-uiuc/simles-book/issues/new?title=Issue%20on%20page%20%2Fcontent/Module02/M02_Lab2-2.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/content/Module02/M02_Lab2-2.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Lab 2.2</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Lab 2.2</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1-correlation-between-two-independent-random-variables">Part 1:  Correlation between two independent random variables.</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1-1">Question 1.1</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1-2">Question 1.2</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2-obliquity-pacing-of-pleistocene-ice-ages">Part 2: Obliquity Pacing of Pleistocene Ice Ages</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#data-pleistocene-delta-18-o-and-obliquity">Data: Pleistocene <span class="math notranslate nohighlight">\(\delta^{18}\)</span>O and Obliquity</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#phase-of-terminations">Phase of terminations</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#illustration-of-phase-calculation">Illustration of phase calculation:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#phase-estimation">Phase estimation</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#the-null-hypothesis">The Null Hypothesis</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2-1-evaluate-h-0">Question 2.1: Evaluate <span class="math notranslate nohighlight">\(H_0\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2-2-alternate-hypothesis">Question 2.2: Alternate hypothesis</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="lab-2-2">
+<h1>Lab 2.2<a class="headerlink" href="#lab-2-2" title="Permalink to this heading">#</a></h1>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#%reset </span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">signal</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">optimize</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;legend.fontsize&#39;</span><span class="p">:</span> <span class="s1">&#39;x-large&#39;</span><span class="p">,</span>
+          <span class="s1">&#39;figure.figsize&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span>
+         <span class="s1">&#39;axes.labelsize&#39;</span><span class="p">:</span> <span class="s1">&#39;x-large&#39;</span><span class="p">,</span>
+         <span class="s1">&#39;axes.titlesize&#39;</span><span class="p">:</span><span class="s1">&#39;x-large&#39;</span><span class="p">,</span>
+         <span class="s1">&#39;xtick.labelsize&#39;</span><span class="p">:</span><span class="s1">&#39;x-large&#39;</span><span class="p">,</span>
+         <span class="s1">&#39;ytick.labelsize&#39;</span><span class="p">:</span><span class="s1">&#39;x-large&#39;</span><span class="p">}</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="part-1-correlation-between-two-independent-random-variables">
+<h1>Part 1:  Correlation between two independent random variables.<a class="headerlink" href="#part-1-correlation-between-two-independent-random-variables" title="Permalink to this heading">#</a></h1>
+<p>In <a class="reference external" href="https://cdds-uiuc.github.io/simles-book/content/Module01/M01_N04_SampleStatistics.html#">sample statistics</a> we talked about how one can get spurious correlations between two independent random variables.</p>
+<p>Let’s say we have two set of <span class="math notranslate nohighlight">\(N\)</span> observations from two random variables <span class="math notranslate nohighlight">\(X_1,X_2\)</span> and we want to test the null hypothesis that they are independent using squared correlation (<span class="math notranslate nohighlight">\(\rho^2\)</span>) where <span class="math notranslate nohighlight">\(\rho\)</span> is the Pearson correlation coefficient.</p>
+<section id="question-1-1">
+<h2>Question 1.1<a class="headerlink" href="#question-1-1" title="Permalink to this heading">#</a></h2>
+<p>For <span class="math notranslate nohighlight">\(N=20\)</span> simulate numerically then null distribution of <span class="math notranslate nohighlight">\(\rho^2\)</span> under the nully hypothesis that <span class="math notranslate nohighlight">\(X_1\)</span> and <span class="math notranslate nohighlight">\(X_2\)</span> are independent Gaussian random variables with the same variance. Plot the distribution and the critical value for rejecting the null hypothesis with 95% confidence.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Solution</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="question-1-2">
+<h2>Question 1.2<a class="headerlink" href="#question-1-2" title="Permalink to this heading">#</a></h2>
+<p>Plot the critical value as a function of <span class="math notranslate nohighlight">\(N\)</span> for values of <span class="math notranslate nohighlight">\(N\)</span> between 5 and 50.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Solution</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="part-2-obliquity-pacing-of-pleistocene-ice-ages">
+<h1>Part 2: Obliquity Pacing of Pleistocene Ice Ages<a class="headerlink" href="#part-2-obliquity-pacing-of-pleistocene-ice-ages" title="Permalink to this heading">#</a></h1>
+<p>Required reading: <a href="https://doi.org/10.1038/nature03401">Huybers and Wunsch (2004)</a>.</p>
+<p>In this lab we will apply hypothesis testing to evaluate whether obliquity might be pacing the Pleistocene Ice Ages.
+This lab broadly follows <a href="https://doi.org/10.1038/nature03401">Huybers and Wunsch (2004)</a>.</p>
+<p>Since the data from that paper is not available, we will use a slightly different dataset and technique. Ideally, the result of our hypothesis test should not be too sensitive to small methodological differences.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="data-pleistocene-delta-18-o-and-obliquity">
+<h1>Data: Pleistocene <span class="math notranslate nohighlight">\(\delta^{18}\)</span>O and Obliquity<a class="headerlink" href="#data-pleistocene-delta-18-o-and-obliquity" title="Permalink to this heading">#</a></h1>
+<p>We’ll use the <a class="reference external" href="https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2004PA001071">Lisiecky and Raymo</a> stack of sediment <span class="math notranslate nohighlight">\(\delta^{18}O\)</span> measurements, which is representative of ice volume during the Pleistocene Ice Ages.</p>
+<p>We’ll use the Berger ‘91 Orbital solution to look at variations in Obliquity over the last 700kyrs.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Let&#39;s load the data and take a look at it</span>
+<span class="n">url</span><span class="o">=</span><span class="s1">&#39;https://raw.githubusercontent.com/cdds-uiuc/simles-book/main/content/Module02/data/LR04.csv&#39;</span>
+<span class="n">df_LR04</span>   <span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">);</span>
+<span class="n">age</span><span class="o">=</span><span class="n">df_LR04</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">]</span>
+<span class="n">d18</span><span class="o">=</span><span class="n">df_LR04</span><span class="p">[</span><span class="s1">&#39;d18O&#39;</span><span class="p">]</span>
+
+<span class="c1"># Load orbital solutions</span>
+<span class="n">url</span><span class="o">=</span><span class="s1">&#39;https://github.com/cdds-uiuc/simles-book/raw/main/content/Module02/data/orbital.csv&#39;</span>
+<span class="n">df_orbital</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">);</span>
+<span class="n">orb_age</span><span class="o">=-</span><span class="n">df_orbital</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">]</span>
+<span class="n">obliq</span>  <span class="o">=</span><span class="n">df_orbital</span><span class="p">[</span><span class="s1">&#39;obliquity&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">[</span><span class="mi">12</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">age</span><span class="p">,</span><span class="n">d18</span><span class="p">,</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$-\delta^</span><span class="si">{18}</span><span class="s1">O$&#39;</span><span class="p">);</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">700</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;age (ka)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">invert_yaxis</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../../_images/99fe85ed9dd5d4a7abc9dfa5a434be79d2870dde6dd2d8a8650fce6bcdac01c7.png" src="../../_images/99fe85ed9dd5d4a7abc9dfa5a434be79d2870dde6dd2d8a8650fce6bcdac01c7.png" />
+</div>
+</div>
+<p>Following hallowed paleoclimate tradition we will simply identify the mid-points of terminations by hand. We’ll then visualize the data</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">terminations</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">([</span><span class="mi">622</span><span class="p">,</span> <span class="mi">534</span><span class="p">,</span> <span class="mi">423</span><span class="p">,</span> <span class="mi">336</span><span class="p">,</span> <span class="mi">244</span><span class="p">,</span> <span class="mi">220</span><span class="p">,</span> <span class="mi">132</span><span class="p">,</span> <span class="mi">13</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">[</span><span class="mi">12</span><span class="p">,</span><span class="mi">8</span><span class="p">])</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">age</span><span class="p">,</span><span class="o">-</span><span class="n">d18</span><span class="p">,</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$-\delta^</span><span class="si">{18}</span><span class="s1">O$&#39;</span><span class="p">);</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([])</span>
+<span class="c1">#ax[0].set_ylim(bottom=-1.1,top=1.1)</span>
+
+<span class="c1"># plot terminations</span>
+<span class="n">terminations_df</span><span class="o">=</span><span class="n">df_LR04</span><span class="p">[</span><span class="n">df_LR04</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">terminations</span><span class="p">)]</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">terminations_df</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">],</span><span class="o">-</span><span class="n">terminations_df</span><span class="p">[</span><span class="s1">&#39;d18O&#39;</span><span class="p">],</span><span class="s1">&#39;ro&#39;</span><span class="p">,</span><span class="n">markersize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">orb_age</span><span class="p">,</span><span class="n">obliq</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;obliquity&#39;</span><span class="p">);</span>
+
+<span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
+    <span class="n">ax</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">right</span><span class="o">=</span><span class="mi">700</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../../_images/6974e6a92f398a040967443a08ea6159ea446a87169a7ceabfdfa3cd421d66a8.png" src="../../_images/6974e6a92f398a040967443a08ea6159ea446a87169a7ceabfdfa3cd421d66a8.png" />
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="phase-of-terminations">
+<h1>Phase of terminations<a class="headerlink" href="#phase-of-terminations" title="Permalink to this heading">#</a></h1>
+<p>Next, we’ll need to compute the phase of obliquity at the moment of terminations.
+Huybers Wunsch 2004 mention a “stroboscopic” sampling of obliquity, but do not give much detail.
+So instead, we’ll use a very rough methodology illustrated below, where we take advantage of the fact that obliquity varies with a period of <strong>aproximately</strong> 41kyr.</p>
+<section id="illustration-of-phase-calculation">
+<h2>Illustration of phase calculation:<a class="headerlink" href="#illustration-of-phase-calculation" title="Permalink to this heading">#</a></h2>
+<p>We’ll take at a point in time <span class="math notranslate nohighlight">\(t_0\)</span> and we’ll look at the previous <span class="math notranslate nohighlight">\(41\)</span> kyr before <span class="math notranslate nohighlight">\(t_0\)</span> (one full period of obliquity). We’ll normalize obliquity to have zero mean, and a range of -1 to 1, and call the normalized obliquity over the 41ka preceeding <span class="math notranslate nohighlight">\(t_0\)</span> as <span class="math notranslate nohighlight">\(y(t_0)\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[y(t_0)=\frac{obliq(t_0)-\overline{obliq(t_0)}}{\left[\text{max}(obliq(t_0))-\text{min}(obliq(t_0))\right]/2}\]</div>
+<p>We’ll compare this normalized obliquity with a cosine function</p>
+<p>$<span class="math notranslate nohighlight">\(\hat y(t_0,\phi) =\cos\left(2\pi\frac{t-t_0}{T} +\phi\right)\)</span>$,</p>
+<p>where<span class="math notranslate nohighlight">\(\phi\)</span> is the phase difference.</p>
+<p>If the best fit between normalized obliquity, <span class="math notranslate nohighlight">\(y(t_0)\)</span> and the cosine <span class="math notranslate nohighlight">\(\hat y(t_0,\phi)\)</span> is obtained for <span class="math notranslate nohighlight">\(\phi=0\)</span> that means that obliquity peaks right at <span class="math notranslate nohighlight">\(t_0\)</span>. In the example below, for <span class="math notranslate nohighlight">\(t_0\)</span> the best fit is for <span class="math notranslate nohighlight">\(\phi=60\)</span>, indicating that the obliquity peaked before <span class="math notranslate nohighlight">\(t_0\)</span>. Since the entire cycle of 360 degrees takes 41 years, it means obliquity peaked at a time <span class="math notranslate nohighlight">\(t=60/360*41\approx 9\)</span> ka.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Some functions we need to compute phase</span>
+<span class="n">t0</span><span class="o">=</span><span class="mi">42</span>
+<span class="n">period</span><span class="o">=</span><span class="mi">41</span>
+<span class="n">time</span><span class="o">=</span><span class="n">t0</span><span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">41</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">normalize</span><span class="p">(</span><span class="n">obliq</span><span class="p">):</span>
+    <span class="n">y</span><span class="o">=</span><span class="p">(</span><span class="n">obliq</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">obliq</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">obliq</span><span class="p">)</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">obliq</span><span class="p">))</span><span class="o">*</span><span class="mi">2</span>
+    <span class="k">return</span> <span class="n">y</span>
+
+<span class="k">def</span> <span class="nf">y_hat</span><span class="p">(</span><span class="n">phi</span><span class="p">):</span>
+    <span class="n">period</span><span class="o">=</span><span class="mi">41</span>
+    <span class="n">y_hat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">41</span><span class="p">)</span><span class="o">/</span><span class="mi">41</span><span class="o">+</span><span class="n">phi</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">180</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">y_hat</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span><span class="n">normalize</span><span class="p">(</span><span class="n">obliq</span><span class="p">[</span><span class="n">time</span><span class="p">]),</span><span class="s1">&#39;k&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;obliquity (normalized)&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span><span class="n">y_hat</span><span class="p">(</span><span class="n">phi</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span><span class="s1">&#39;--&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$\hat y(t_0,\phi)$;  $\phi=0$&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span><span class="n">y_hat</span><span class="p">(</span><span class="n">phi</span><span class="o">=-</span><span class="mi">30</span><span class="p">),</span><span class="s1">&#39;--&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$\hat y(t_0,\phi)$;  $\phi=30$&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span><span class="n">y_hat</span><span class="p">(</span><span class="n">phi</span><span class="o">=-</span><span class="mi">60</span><span class="p">),</span><span class="s1">&#39;--&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$\hat y(t_0,\phi)$;  $\phi=60$&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span><span class="n">y_hat</span><span class="p">(</span><span class="n">phi</span><span class="o">=-</span><span class="mi">90</span><span class="p">),</span><span class="s1">&#39;--&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$\hat y(t_0,\phi)$;  $\phi=90$&#39;</span><span class="p">)</span>
+<span class="c1">#ax.vlines(t0,-1,1,&#39;k&#39;)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;age [ka]&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Normalized Units&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="n">t0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(42.0, 84.0)
+</pre></div>
+</div>
+<img alt="../../_images/35a7b2098a3c131f44ad62178bc0a9f687eb64813b81471692ad8bbea1242424.png" src="../../_images/35a7b2098a3c131f44ad62178bc0a9f687eb64813b81471692ad8bbea1242424.png" />
+</div>
+</div>
+</section>
+<section id="phase-estimation">
+<h2>Phase estimation<a class="headerlink" href="#phase-estimation" title="Permalink to this heading">#</a></h2>
+<p>At any point <span class="math notranslate nohighlight">\(t_0\)</span> we compute the phase of obliquity by finding the phase difference <span class="math notranslate nohighlight">\(\phi\)</span> that minimizes the misfit over the 41 ka preceeding <span class="math notranslate nohighlight">\(t_0\)</span> between the normalized obliquity and a shifted cosine</p>
+<div class="math notranslate nohighlight">
+\[\phi =\arg \text{min}_\phi \left[J(\phi,t_0)\right]\]</div>
+<div class="math notranslate nohighlight">
+\[J(\phi, t_0)=\sum_{t=t_0}^{t_0+41}\left[ y(t)-\cos\left(2\pi\frac{t-t_0}{T} +\phi\right)  \right]^2\]</div>
+<div class="math notranslate nohighlight">
+\[J(\phi, t_0)=\sum_{t=t_0}^{t_0+41}\left[ y(t)-\hat y(\phi,t,t_0)  \right]^2\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># define a cost function that computes the phase misfit </span>
+<span class="k">def</span> <span class="nf">J_cost</span><span class="p">(</span><span class="n">phi</span><span class="p">,</span><span class="n">y</span><span class="p">):</span>
+    <span class="n">res</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">normalize</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="o">-</span><span class="n">y_hat</span><span class="p">(</span><span class="n">phi</span><span class="p">))</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">res</span>
+
+<span class="n">obliq_phase</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">700</span><span class="p">)</span>
+<span class="n">t0</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">700</span><span class="p">)</span>
+
+<span class="c1"># for each time point over the last 700kyr, compute the phase as the phase that minimizes the misfit:</span>
+<span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">700</span><span class="p">):</span>
+    <span class="n">time</span><span class="o">=</span><span class="n">t0</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">41</span><span class="p">)</span>
+    <span class="n">y</span><span class="o">=</span><span class="n">obliq</span><span class="p">[</span><span class="n">j</span><span class="p">:</span><span class="n">j</span><span class="o">+</span><span class="mi">41</span><span class="p">]</span>
+    <span class="n">out</span><span class="o">=</span><span class="n">optimize</span><span class="o">.</span><span class="n">least_squares</span><span class="p">(</span><span class="n">J_cost</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">args</span><span class="o">=</span><span class="p">[</span><span class="n">y</span><span class="p">]);</span>
+    <span class="n">obliq_phase</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">=</span><span class="n">out</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can plot the phase of obqliquity (normalized such that <span class="math notranslate nohighlight">\(-180^\circ:180^\circ\)</span> corresponds to <span class="math notranslate nohighlight">\(-1:1\)</span>). Our estimation seems to have worked pretty well. Notice that the obliquity minima correspond to <span class="math notranslate nohighlight">\(\phi=-1\equiv 180^\circ\)</span> degrees of phase difference, and the obliquity maxima correspond to a phase of <span class="math notranslate nohighlight">\(\phi=0\equiv 0^\circ\)</span></p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">orb_age</span><span class="p">,</span><span class="n">normalize</span><span class="p">(</span><span class="n">obliq</span><span class="p">),</span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;obliquity [normalized]&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">orb_age</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">700</span><span class="p">],</span><span class="n">obliq_phase</span><span class="o">/</span><span class="mi">180</span><span class="p">,</span><span class="s1">&#39;k--&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;phase of obliquity $[\phi/180]$&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Normalized Units&#39;</span><span class="p">);</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">right</span><span class="o">=</span><span class="mi">700</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../../_images/4a3ec88a5938e771b0d78a892e51e90f26ddfaf5f1681f29d6179ec7511a6769.png" src="../../_images/4a3ec88a5938e771b0d78a892e51e90f26ddfaf5f1681f29d6179ec7511a6769.png" />
+</div>
+</div>
+<p>Next we’ll evaluate the phase of obliquity at glacial terminations, plot the phasors and compute Rayleigh’s R (Fig.1 in Huybers &amp; Wunsch 2004).</p>
+<p>Rayleigh’s R is the test statistic for our null hypothesis test. It is  measure of how tight are obliquity and terminations coupled. If R is large, than terminations always happen near the same phase of obliquity. If R is small, terminations can occur at any point in an an obliquity cycle.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># compute the phase of obliquity at terminations and transform the phase in radians</span>
+<span class="n">phi_obliq_terms</span>    <span class="o">=</span><span class="n">obliq_phase</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">terminations</span><span class="p">)]</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">180</span>
+
+<span class="c1"># compute Raileigh&#39;s R</span>
+<span class="n">R_obliq</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="mi">8</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">phi_obliq_terms</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">phi_obliq_terms</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">[</span><span class="mi">12</span><span class="p">,</span><span class="mi">8</span><span class="p">])</span>
+
+<span class="c1">#plot obliquity</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">orb_age</span><span class="p">,</span><span class="n">obliq</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;obliquity&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">right</span><span class="o">=</span><span class="mi">700</span><span class="p">)</span>
+
+<span class="c1"># plot d18O stack and terminations</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">age</span><span class="p">,</span><span class="o">-</span><span class="n">d18</span><span class="p">,</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="n">terminations_df</span><span class="o">=</span><span class="n">df_LR04</span><span class="p">[</span><span class="n">df_LR04</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">terminations</span><span class="p">)]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">terminations_df</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">],</span><span class="o">-</span><span class="n">terminations_df</span><span class="p">[</span><span class="s1">&#39;d18O&#39;</span><span class="p">],</span><span class="s1">&#39;ro&#39;</span><span class="p">,</span><span class="n">markersize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$-\delta^</span><span class="si">{18}</span><span class="s1">O$&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">([])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">right</span><span class="o">=</span><span class="mi">700</span><span class="p">)</span>
+<span class="c1">#ax[0].set_ylim(bottom=-1.1,top=1.1)</span>
+
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+
+<span class="n">x</span><span class="o">=-</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">phi_obliq_terms</span><span class="p">)</span>
+<span class="n">y</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">phi_obliq_terms</span><span class="p">)</span>
+<span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;7&#39;</span><span class="p">,</span><span class="s1">&#39;6&#39;</span><span class="p">,</span><span class="s1">&#39;5&#39;</span><span class="p">,</span><span class="s1">&#39;4&#39;</span><span class="p">,</span><span class="s1">&#39;3b&#39;</span><span class="p">,</span><span class="s1">&#39;3a&#39;</span><span class="p">,</span><span class="s1">&#39;2&#39;</span><span class="p">,</span><span class="s1">&#39;1&#39;</span><span class="p">]</span>
+
+<span class="n">circle_1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">Circle</span><span class="p">((</span> <span class="mi">0</span> <span class="p">,</span> <span class="mi">0</span> <span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;None&#39;</span> <span class="p">,</span><span class="n">edgecolor</span><span class="o">=</span><span class="p">[</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.5</span><span class="p">],</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">circle_r</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">Circle</span><span class="p">((</span> <span class="mi">0</span> <span class="p">,</span> <span class="mi">0</span> <span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="n">R_obliq</span><span class="p">,</span><span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;None&#39;</span> <span class="p">,</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">add_artist</span><span class="p">(</span><span class="n">circle_1</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">add_artist</span><span class="p">(</span><span class="n">circle_r</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">arrow</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="o">/</span><span class="mi">8</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="mi">1</span><span class="o">/</span><span class="mi">8</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">y</span><span class="p">),</span><span class="n">length_includes_head</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">head_width</span><span class="o">=</span><span class="mf">0.075</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="s1">&#39;ro&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="s1">&#39;ko&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span> <span class="mi">1</span> <span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">([])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">([])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="n">left</span><span class="o">=-</span><span class="mf">1.5</span><span class="p">,</span><span class="n">right</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="n">bottom</span><span class="o">=-</span><span class="mf">1.5</span><span class="p">,</span><span class="n">top</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;$R_</span><span class="si">{obs}</span><span class="s1">$=&#39;</span><span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">array2string</span><span class="p">(</span><span class="n">R_obliq</span><span class="p">,</span><span class="n">precision</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">8</span><span class="p">):</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">labels</span><span class="p">[</span><span class="n">j</span><span class="p">],(</span><span class="n">x</span><span class="p">[</span><span class="n">j</span><span class="p">],</span><span class="n">y</span><span class="p">[</span><span class="n">j</span><span class="p">]),</span><span class="n">textcoords</span><span class="o">=</span><span class="s1">&#39;offset points&#39;</span><span class="p">,</span><span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">*</span><span class="mi">20</span><span class="p">,</span><span class="n">y</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">*</span><span class="mi">10</span><span class="p">),</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+
+    
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../../_images/ae66a561e369ab800911b14f96042938542690617ca89e7bad2a1d704c78f1df.png" src="../../_images/ae66a561e369ab800911b14f96042938542690617ca89e7bad2a1d704c78f1df.png" />
+</div>
+</div>
+<p>In the figure above the circle represents the phase of obliquity. Each red dot represents the phase of obliquity at each of the terminations (1-7). These would be called phasors.</p>
+<p>Rayleigh’s <span class="math notranslate nohighlight">\(R\)</span> represents a vector average of the phasors for all terminations.</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="the-null-hypothesis">
+<h1>The Null Hypothesis<a class="headerlink" href="#the-null-hypothesis" title="Permalink to this heading">#</a></h1>
+<p>Rayleigh’s R is the test statistic for our null hypothesis test. It is  measure of how tight are obliquity and terminations coupled.</p>
+<p>We want to know whether such tight coupling could arise by chance. To do so will generate a null hypothesis wherein glacial terminations are not affected by obliquity. We will then compute the <span class="math notranslate nohighlight">\(R\)</span> statistic between obliquity and this model for termination. The model is described in Huybers &amp; Wunsch 2004:</p>
+<div class="math notranslate nohighlight">
+\[ \text{if } V_t&lt;T_0:\;V_{t+1}=V_t+\eta_t\]</div>
+<p>where <span class="math notranslate nohighlight">\(\eta_t \sim \mathcal N (\mu=1,\sigma=2)\)</span>. The non-zero mean will cause an average increase in ice volume. When the ice volume crosses the threshold <span class="math notranslate nohighlight">\(V_t&gt;T_0\)</span>, it will deglaciate completely over a period of 10 kyr.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
+
+<span class="k">def</span> <span class="nf">H0</span><span class="p">(</span><span class="n">obliq_phase</span><span class="p">):</span>
+    <span class="n">V</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">700</span><span class="p">)</span>   <span class="c1">#initialize ice volume</span>
+    <span class="n">t</span><span class="o">=</span><span class="mi">699</span>             <span class="c1">#starting point</span>
+    <span class="n">T0</span><span class="o">=</span><span class="mi">90</span>             <span class="c1">#threshold for deglaciation</span>
+    <span class="n">terminations</span><span class="o">=</span><span class="p">[]</span>   <span class="c1">#list to store time of termination</span>
+    
+    <span class="k">while</span> <span class="n">t</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">:</span>    
+        <span class="k">if</span> <span class="n">V</span><span class="p">[</span><span class="n">t</span><span class="p">]</span><span class="o">&lt;</span><span class="n">T0</span><span class="p">:</span>    <span class="c1"># below threshold</span>
+            <span class="n">V</span><span class="p">[</span><span class="n">t</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="n">V</span><span class="p">[</span><span class="n">t</span><span class="p">]</span><span class="o">+</span><span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mf">1.1</span><span class="p">,</span><span class="n">scale</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span> 
+            <span class="n">t</span><span class="o">=</span><span class="n">t</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span>        
+        <span class="k">elif</span> <span class="n">t</span><span class="o">&gt;</span><span class="mi">10</span><span class="p">:</span>     <span class="c1">#crossing threshold at &gt;10ky before present</span>
+            <span class="n">terminations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">t</span><span class="o">-</span><span class="mi">5</span><span class="p">)</span>            <span class="c1">#note termination</span>
+            <span class="n">V</span><span class="p">[</span><span class="n">t</span><span class="o">-</span><span class="mi">10</span><span class="p">:</span><span class="n">t</span><span class="p">]</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">V</span><span class="p">[</span><span class="n">t</span><span class="p">],</span><span class="mi">10</span><span class="p">)</span>  <span class="c1">#deglaciate in 10kye</span>
+            <span class="n">t</span><span class="o">=</span><span class="n">t</span><span class="o">-</span><span class="mi">10</span>                            
+        <span class="k">else</span><span class="p">:</span>          
+            <span class="c1">#we have an exception to catch.</span>
+            <span class="c1">#if we cross the threshold with less than 10ky left before present day, </span>
+            <span class="c1"># we can&#39;t just skip 10ky. </span>
+            
+            <span class="n">V</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">t</span><span class="p">]</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">V</span><span class="p">[</span><span class="n">t</span><span class="p">],</span><span class="mi">10</span><span class="p">)[</span><span class="o">-</span><span class="n">t</span><span class="p">:]</span>  <span class="c1">#only keep data until present day</span>
+            <span class="k">if</span> <span class="n">t</span><span class="o">&gt;=</span><span class="mi">5</span><span class="p">:</span>    
+                <span class="n">terminations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">t</span><span class="o">-</span><span class="mi">5</span><span class="p">)</span>
+            <span class="n">t</span><span class="o">=</span><span class="mi">0</span>
+
+    <span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">terminations</span><span class="p">)</span>
+    <span class="n">phi_obliq_terms</span>    <span class="o">=</span><span class="n">obliq_phase</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">terminations</span><span class="p">)]</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">180</span>
+    <span class="n">R_obliq</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="mi">8</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">phi_obliq_terms</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">phi_obliq_terms</span><span class="p">)))</span>
+
+        
+    <span class="k">return</span> <span class="n">R_obliq</span><span class="p">,</span> <span class="n">terminations</span><span class="p">,</span><span class="n">phi_obliq_terms</span><span class="p">,</span><span class="n">V</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
+
+<span class="k">def</span> <span class="nf">H0</span><span class="p">(</span><span class="n">obliq_phase</span><span class="p">):</span>
+    <span class="n">V</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">700</span><span class="p">)</span>   <span class="c1">#initialize ice volume</span>
+    <span class="n">t</span><span class="o">=</span><span class="mi">0</span>             <span class="c1">#starting point</span>
+    <span class="n">T0</span><span class="o">=</span><span class="mi">90</span>             <span class="c1">#threshold for deglaciation</span>
+    <span class="n">terminations</span><span class="o">=</span><span class="p">[]</span>   <span class="c1">#list to store time of termination</span>
+    
+    <span class="k">while</span> <span class="n">t</span><span class="o">&lt;</span><span class="mi">699</span><span class="p">:</span>    
+        <span class="k">if</span> <span class="n">V</span><span class="p">[</span><span class="n">t</span><span class="p">]</span><span class="o">&lt;</span><span class="n">T0</span><span class="p">:</span>    <span class="c1"># below threshold</span>
+            <span class="n">V</span><span class="p">[</span><span class="n">t</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="n">V</span><span class="p">[</span><span class="n">t</span><span class="p">]</span><span class="o">+</span><span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mf">1.1</span><span class="p">,</span><span class="n">scale</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span> 
+            <span class="n">t</span><span class="o">=</span><span class="n">t</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span>        
+        <span class="k">elif</span> <span class="n">t</span><span class="o">&lt;</span><span class="mi">689</span><span class="p">:</span>     <span class="c1">#crossing threshold at &gt;10ky before present</span>
+            <span class="n">terminations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">t</span><span class="o">+</span><span class="mi">5</span><span class="p">)</span>            <span class="c1">#note termination</span>
+            <span class="n">V</span><span class="p">[</span><span class="n">t</span><span class="p">:</span><span class="n">t</span><span class="o">+</span><span class="mi">10</span><span class="p">]</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">V</span><span class="p">[</span><span class="n">t</span><span class="p">],</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>  <span class="c1">#deglaciate in 10kye</span>
+            <span class="n">t</span><span class="o">=</span><span class="n">t</span><span class="o">+</span><span class="mi">10</span>  
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">t</span><span class="o">=</span><span class="mi">700</span><span class="p">;</span>
+            <span class="c1">#we have an exception to catch.</span>
+            <span class="c1">#if we cross the threshold with less than 10ky left before present day, </span>
+            <span class="c1"># we can&#39;t just skip 10ky. </span>
+            
+            <span class="c1">#V[]=np.linspace(0,V[t],10)[t:698]  #only keep data until present day</span>
+            <span class="c1">#if t&gt;=5:    </span>
+            <span class="c1">#    terminations.append(t+5)</span>
+            <span class="c1">#t=0</span>
+
+    <span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">terminations</span><span class="p">)</span>
+    <span class="n">phi_obliq_terms</span>    <span class="o">=</span><span class="n">obliq_phase</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">terminations</span><span class="p">)]</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">180</span>
+    <span class="n">R_obliq</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="mi">8</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">phi_obliq_terms</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="n">j</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">phi_obliq_terms</span><span class="p">)))</span>
+
+        
+    <span class="k">return</span> <span class="n">R_obliq</span><span class="p">,</span> <span class="n">terminations</span><span class="p">,</span><span class="n">phi_obliq_terms</span><span class="p">,</span><span class="n">V</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s generate two realizations of the null nypothesis and plot them. We’ll plot obliquity two realizations of the d18O stack under the null hypothesis, and the phasor R.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">[</span><span class="mi">12</span><span class="p">,</span><span class="mi">12</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">orb_age</span><span class="p">,</span><span class="n">obliq</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;$obliquity$&#39;</span><span class="p">);</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;age (ka)&#39;</span><span class="p">);</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">700</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
+
+
+    <span class="n">R_obliq_H0</span><span class="p">,</span><span class="n">terminations_H0</span><span class="p">,</span><span class="n">phi_obliq_terms_H0</span><span class="p">,</span><span class="n">V</span><span class="o">=</span><span class="n">H0</span><span class="p">(</span><span class="n">obliq_phase</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">k</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">V</span><span class="p">,</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">terminations_H0</span><span class="p">,</span><span class="n">V</span><span class="p">[</span><span class="n">terminations_H0</span><span class="p">],</span><span class="s1">&#39;ro&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Ice Volume [-$\delta^18 O$]&#39;</span><span class="p">);</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">invert_yaxis</span><span class="p">()</span>
+
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="n">k</span><span class="o">+</span><span class="mi">3</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+    <span class="n">x</span><span class="o">=-</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">phi_obliq_terms_H0</span><span class="p">)</span>
+    <span class="n">y</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">phi_obliq_terms_H0</span><span class="p">)</span>
+    <span class="n">labels</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">terminations_H0</span><span class="p">))</span>
+
+    <span class="n">circle_1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">Circle</span><span class="p">((</span> <span class="mi">0</span> <span class="p">,</span> <span class="mi">0</span> <span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;None&#39;</span> <span class="p">,</span><span class="n">edgecolor</span><span class="o">=</span><span class="p">[</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.5</span><span class="p">],</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">circle_r</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">Circle</span><span class="p">((</span> <span class="mi">0</span> <span class="p">,</span> <span class="mi">0</span> <span class="p">),</span> <span class="n">radius</span><span class="o">=</span><span class="n">R_obliq_H0</span><span class="p">,</span><span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;None&#39;</span> <span class="p">,</span><span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">add_artist</span><span class="p">(</span><span class="n">circle_1</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">add_artist</span><span class="p">(</span><span class="n">circle_r</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">arrow</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="o">/</span><span class="mi">8</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="mi">1</span><span class="o">/</span><span class="mi">8</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">y</span><span class="p">),</span><span class="n">length_includes_head</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">head_width</span><span class="o">=</span><span class="mf">0.075</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="s1">&#39;ro&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="s1">&#39;ko&#39;</span><span class="p">)</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([])</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([])</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span> <span class="mi">1</span> <span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">left</span><span class="o">=-</span><span class="mf">1.5</span><span class="p">,</span><span class="n">right</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="n">bottom</span><span class="o">=-</span><span class="mf">1.5</span><span class="p">,</span><span class="n">top</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;$R_</span><span class="si">{H_0}</span><span class="s1">$=&#39;</span><span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">array2string</span><span class="p">(</span><span class="n">R_obliq_H0</span><span class="p">,</span><span class="n">precision</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
+
+
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">terminations_H0</span><span class="p">)):</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">labels</span><span class="p">[</span><span class="n">j</span><span class="p">],(</span><span class="n">x</span><span class="p">[</span><span class="n">j</span><span class="p">],</span><span class="n">y</span><span class="p">[</span><span class="n">j</span><span class="p">]),</span><span class="n">textcoords</span><span class="o">=</span><span class="s1">&#39;offset points&#39;</span><span class="p">,</span><span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">*</span><span class="mi">20</span><span class="p">,</span><span class="n">y</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">*</span><span class="mi">10</span><span class="p">),</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+    
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../../_images/aea13e086a6fd602c1ac24651266cd804bc77660c0398d7dc0c8fb89b05456a5.png" src="../../_images/aea13e086a6fd602c1ac24651266cd804bc77660c0398d7dc0c8fb89b05456a5.png" />
+</div>
+</div>
+<section id="question-2-1-evaluate-h-0">
+<h2>Question 2.1: Evaluate <span class="math notranslate nohighlight">\(H_0\)</span><a class="headerlink" href="#question-2-1-evaluate-h-0" title="Permalink to this heading">#</a></h2>
+<p>Generate a distribution of the null hypothesis, <span class="math notranslate nohighlight">\(H_0\)</span>, that is a distribution of the R-statistic for samples of the noise-model. Evaluate the p-value for the R-statistics of the glacial terminations.</p>
+<p>To do this, follow the example in the Null Hypothesis notebook. Generate 5000 realizations of  <span class="math notranslate nohighlight">\(R_{H_0}\)</span>.Plot the histogram of <span class="math notranslate nohighlight">\(R_{H_0}\)</span>, the critical value <span class="math notranslate nohighlight">\(R_{crit}\)</span> and the observed value <span class="math notranslate nohighlight">\(R_{obs}\)</span>.</p>
+<p>Can we still reject the null hypothesis, despite our simpler approach?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Solution:</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="question-2-2-alternate-hypothesis">
+<h2>Question 2.2: Alternate hypothesis<a class="headerlink" href="#question-2-2-alternate-hypothesis" title="Permalink to this heading">#</a></h2>
+<p>Generate an alternate hypothesis as described in Eqn (2) in Huybers &amp; Wunsch 2004. You will need to take the function H0 (modelling Eqn 1) and make a very simialr funcion H1 (modelling Eqn 2) to model the alternate hypothesis. In this situation, the threshold needs to be dependent on normalized obliquity.</p>
+<p>Use a value of a=20 for Eqn 2. (rather than a=15 suggested in the paper).</p>
+<p>Are the observations consistent with the alternate hypothesis?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./content/Module02"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="M02_N05_HypothesisTesting.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Hypothesis Testing</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Lab 2.2</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1-correlation-between-two-independent-random-variables">Part 1:  Correlation between two independent random variables.</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1-1">Question 1.1</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1-2">Question 1.2</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2-obliquity-pacing-of-pleistocene-ice-ages">Part 2: Obliquity Pacing of Pleistocene Ice Ages</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#data-pleistocene-delta-18-o-and-obliquity">Data: Pleistocene <span class="math notranslate nohighlight">\(\delta^{18}\)</span>O and Obliquity</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#phase-of-terminations">Phase of terminations</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#illustration-of-phase-calculation">Illustration of phase calculation:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#phase-estimation">Phase estimation</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#the-null-hypothesis">The Null Hypothesis</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2-1-evaluate-h-0">Question 2.1: Evaluate <span class="math notranslate nohighlight">\(H_0\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2-2-alternate-hypothesis">Question 2.2: Alternate hypothesis</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Cristian Proistosescu
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

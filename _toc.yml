@@ -23,6 +23,12 @@ parts:
     - file: content/Module02/M02_N04_Quality_of_Estimators
     - file: content/Module02/M02_N05_HypothesisTesting
     - file: content/Module02/M02_Lab2-2
+  - caption: 3. Machine Learning
+    chapters:
+    - file: content/DeepLearn/LogReg_Classification_binary
+    - file: content/DeepLearn/LogReg_Classification
+    - file: content/DeepLearn/Neural_Net_Classification
+    - file: content/DeepLearn/Neural_Net_Regression
 #  - caption: "Inference:Estimation and Hypothesis Testing"
 #    chapters:
 #    - file: content/Module02/M02_N01_Regression

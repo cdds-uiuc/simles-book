@@ -259,6 +259,11 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
+<li class="toctree-l1"><a class="reference internal" href="CNN.html">Convolutional Neural Nets for Image Recognition</a></li>
+
+
+
+
 </ul>
 
     </div>
@@ -561,10 +566,27 @@ document.write(`
 <h2>Read Data<a class="headerlink" href="#read-data" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">urllib.request</span>
+<span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlretrieve</span><span class="p">(</span><span class="s2">&quot;https://github.com/cdds-uiuc/simles-book/raw/main/content/DeepLearn/t10k-images-idx3-ubyte.gz&quot;</span><span class="p">,</span> <span class="s2">&quot;t10k-images-idx3-ubyte.gz&quot;</span><span class="p">)</span>
+<span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlretrieve</span><span class="p">(</span><span class="s2">&quot;https://github.com/cdds-uiuc/simles-book/raw/main/content/DeepLearn/t10k-labels-idx1-ubyte.gz&quot;</span><span class="p">,</span> <span class="s2">&quot;t10k-labels-idx1-ubyte.gz&quot;</span><span class="p">)</span>
+<span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlretrieve</span><span class="p">(</span><span class="s2">&quot;https://github.com/cdds-uiuc/simles-book/raw/main/content/DeepLearn/train-images-idx3-ubyte.gz&quot;</span><span class="p">,</span> <span class="s2">&quot;train-images-idx3-ubyte.gz&quot;</span><span class="p">)</span>
+<span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlretrieve</span><span class="p">(</span><span class="s2">&quot;https://github.com/cdds-uiuc/simles-book/raw/main/content/DeepLearn/train-labels-idx1-ubyte.gz&quot;</span><span class="p">,</span> <span class="s2">&quot;train-labels-idx1-ubyte.gz&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;train-labels-idx1-ubyte.gz&#39;, &lt;http.client.HTTPMessage at 0x13b726870&gt;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Training data</span>
 
 <span class="c1"># images</span>
 <span class="n">f</span> <span class="o">=</span> <span class="n">gzip</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;train-images-idx3-ubyte.gz&#39;</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+
 <span class="n">image_size</span> <span class="o">=</span> <span class="mi">28</span>
 <span class="n">n_images_train</span> <span class="o">=</span> <span class="mi">50000</span>
 
@@ -665,7 +687,7 @@ test data
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/c3e15e502bf0095f4c44959d812f4d2676716a172ec206f7907d6ba1a24552ee.png" src="../../_images/c3e15e502bf0095f4c44959d812f4d2676716a172ec206f7907d6ba1a24552ee.png" />
+<img alt="../../_images/7a0deffd95693e0be3b3c891224365038884367fed22111f245e46926eda02c2.png" src="../../_images/7a0deffd95693e0be3b3c891224365038884367fed22111f245e46926eda02c2.png" />
 </div>
 </div>
 </section>
@@ -741,7 +763,7 @@ test data
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/802a734de9b0fe3ec06721ecfdc29f749835ce7fe7be975c22d4f4677925718c.png" src="../../_images/802a734de9b0fe3ec06721ecfdc29f749835ce7fe7be975c22d4f4677925718c.png" />
+<img alt="../../_images/22153d3490e6bfa80806e3ca8e9a263a0850186c67eee97f66fa6c50b050c73b.png" src="../../_images/22153d3490e6bfa80806e3ca8e9a263a0850186c67eee97f66fa6c50b050c73b.png" />
 </div>
 </div>
 </section>

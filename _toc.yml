@@ -29,6 +29,7 @@ parts:
     - file: content/DeepLearn/LogReg_Classification
     - file: content/DeepLearn/Neural_Net_Classification
     - file: content/DeepLearn/Neural_Net_Regression
+    - file: content/DeepLearn/CNN
 #  - caption: "Inference:Estimation and Hypothesis Testing"
 #    chapters:
 #    - file: content/Module02/M02_N01_Regression

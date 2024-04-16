@@ -12,3 +12,4 @@ dependencies:
   - xarray=2024.1.1
   - cartopy=0.22.0
   - seaborn=0.13.2
+  - tensorflow=2.15.0

@@ -20,6 +20,7 @@ parts:
     - file: content/Module02/M02_N02_Cookbook_Gutenberg-Richter_Law
     - file: content/Module02/M02_N03_Cookbook_Precipitation_Return_Times
     - file: content/Module02/M02_Lab2-1
+    - file: content/Module02/M02_Lab2-1-Solutions
     - file: content/Module02/M02_N04_Quality_of_Estimators
     - file: content/Module02/M02_N05_HypothesisTesting
     - file: content/Module02/M02_Lab2-2

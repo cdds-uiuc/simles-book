@@ -222,6 +222,14 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
+<li class="toctree-l1"><a class="reference internal" href="../Module02/M02_Lab2-1-Solutions.html">Lab 2.1</a></li>
+
+
+
+
+
+
+
 <li class="toctree-l1"><a class="reference internal" href="../Module02/M02_N04_Quality_of_Estimators.html">Quality of Estimators</a></li>
 
 
@@ -571,9 +579,6 @@ document.write(`
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.15.0
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;/device:GPU:0&#39;
-</pre></div>
-</div>
 </div>
 </div>
 </section>
@@ -605,12 +610,6 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Downloading data from https://www.cs.toronto.edu/~kriz/cifar-10-python.tar.gz
-170498071/170498071 [==============================] - 13s 0us/step
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -636,7 +635,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/ed3d61858898511a19629c1978d66b5a35de04728808730ffdb7a45cf3f16d63.png" src="../../_images/ed3d61858898511a19629c1978d66b5a35de04728808730ffdb7a45cf3f16d63.png" />
+<img alt="../../_images/7aafacb911fd792741d92f3f4532868f60ea25ba0f3fcbfaa3be48e2bf36147a.png" src="../../_images/7aafacb911fd792741d92f3f4532868f60ea25ba0f3fcbfaa3be48e2bf36147a.png" />
 </div>
 </div>
 </section>
@@ -727,7 +726,7 @@ document.write(`
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>tf.Tensor([0. 0. 0. 0. 0. 0. 0. 0. 1. 0.], shape=(10,), dtype=float32)
 </pre></div>
 </div>
-<img alt="../../_images/a82724e6133342ffd9df0ebe84eaff8a8126c00e679d06a4314af1138968d852.png" src="../../_images/a82724e6133342ffd9df0ebe84eaff8a8126c00e679d06a4314af1138968d852.png" />
+<img alt="../../_images/a60f5e875a5009c384935c070ac68a70a0e86448e8a581a5500544335e30ae76.png" src="../../_images/a60f5e875a5009c384935c070ac68a70a0e86448e8a581a5500544335e30ae76.png" />
 </div>
 </div>
 <p>The image is an image of a ship. The one-hot encoding vector holds the value of the ship class.</p>
@@ -779,6 +778,11 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>WARNING:absl:At this time, the v2.11+ optimizer `tf.keras.optimizers.RMSprop` runs slowly on M1/M2 Macs, please use the legacy Keras optimizer instead, located at `tf.keras.optimizers.legacy.RMSprop`.
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="four-layers">
@@ -817,7 +821,7 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">batch_size</span> <span class="o">=</span> <span class="mi">32</span>
-<span class="n">epochs</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">epochs</span> <span class="o">=</span> <span class="mi">2</span>
 </pre></div>
 </div>
 </div>
@@ -834,26 +838,10 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1/10
-1563/1563 [==============================] - 10s 5ms/step - loss: 2.1453 - acc: 0.1906
-Epoch 2/10
-1563/1563 [==============================] - 8s 5ms/step - loss: 1.8775 - acc: 0.3087
-Epoch 3/10
-1563/1563 [==============================] - 7s 5ms/step - loss: 1.7653 - acc: 0.3447
-Epoch 4/10
-1563/1563 [==============================] - 8s 5ms/step - loss: 1.6949 - acc: 0.3713
-Epoch 5/10
-1563/1563 [==============================] - 7s 5ms/step - loss: 1.6460 - acc: 0.3932
-Epoch 6/10
-1563/1563 [==============================] - 8s 5ms/step - loss: 1.6065 - acc: 0.4062
-Epoch 7/10
-1563/1563 [==============================] - 8s 5ms/step - loss: 1.5686 - acc: 0.4256
-Epoch 8/10
-1563/1563 [==============================] - 8s 5ms/step - loss: 1.5428 - acc: 0.4338
-Epoch 9/10
-1563/1563 [==============================] - 8s 5ms/step - loss: 1.5169 - acc: 0.4489
-Epoch 10/10
-1563/1563 [==============================] - 8s 5ms/step - loss: 1.4885 - acc: 0.4584
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1/2
+1563/1563 [==============================] - 71s 45ms/step - loss: 1.8762 - acc: 0.3108
+Epoch 2/2
+1563/1563 [==============================] - 75s 48ms/step - loss: 1.5431 - acc: 0.4385
 </pre></div>
 </div>
 </div>
@@ -876,9 +864,6 @@ Epoch 10/10
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../../_images/bcf373de784bb8078683c8e92eae1feae7d265175dd0ccb445d2b243f0f90f80.png" src="../../_images/bcf373de784bb8078683c8e92eae1feae7d265175dd0ccb445d2b243f0f90f80.png" />
-</div>
 </div>
 <p>The accuracy increases over time and the loss decreases over time.</p>
 <p>If you run the model for ~50 epochs, the accuracy of our validation set seems to slightly decrease towards the end even thought our training accuracy increased. Running the model for even more epochs might cause our model to be susceptible to overfitting.</p>
@@ -888,11 +873,6 @@ Epoch 10/10
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test_loss</span><span class="p">,</span> <span class="n">test_acc</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">x_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>313/313 [==============================] - 1s 3ms/step - loss: 0.7059 - acc: 0.7609
 </pre></div>
 </div>
 </div>
@@ -915,11 +895,6 @@ Epoch 10/10
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>313/313 [==============================] - 2s 6ms/step
-</pre></div>
-</div>
-</div>
 </div>
 <p>Run the following cell to plot the confusion matrix. We see that our model classifies frogs pretty well, with 900 out of the 1000 frog images heving been classified correctly. We can also see that there is relatively high confusion between cats and dogs.</p>
 <div class="cell docutils container">
@@ -930,9 +905,6 @@ Epoch 10/10
 <span class="n">ConfusionMatrixDisplay</span><span class="o">.</span><span class="n">from_predictions</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred_classes</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">Blues</span><span class="p">,</span><span class="n">normalize</span><span class="o">=</span><span class="s1">&#39;true&#39;</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">);</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../_images/871610dd1c3bea323ea51d74ef04bf95b0075abc54a97a02be81e3cb8e3b4c42.png" src="../../_images/871610dd1c3bea323ea51d74ef04bf95b0075abc54a97a02be81e3cb8e3b4c42.png" />
 </div>
 </div>
 </section>
